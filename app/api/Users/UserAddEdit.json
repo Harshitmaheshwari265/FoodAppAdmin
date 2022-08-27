@@ -1,0 +1,798 @@
+{
+  "meta": {
+    "options": {
+      "linkedFile": "/views/user-view.ejs",
+      "linkedForm": "scformAddUser"
+    },
+    "$_POST": [
+      {
+        "type": "text",
+        "fieldName": "AddUserId",
+        "name": "AddUserId"
+      },
+      {
+        "type": "text",
+        "fieldName": "user_fname",
+        "options": {
+          "rules": {
+            "core:required": {
+              "param": ""
+            }
+          }
+        },
+        "name": "user_fname"
+      },
+      {
+        "type": "text",
+        "fieldName": "user_lname",
+        "options": {
+          "rules": {
+            "core:required": {
+              "param": ""
+            }
+          }
+        },
+        "name": "user_lname"
+      },
+      {
+        "type": "number",
+        "fieldName": "mobile",
+        "options": {
+          "rules": {
+            "core:required": {
+              "param": ""
+            },
+            "core:number": {}
+          }
+        },
+        "name": "mobile"
+      },
+      {
+        "type": "number",
+        "fieldName": "whatsapp_no",
+        "options": {
+          "rules": {
+            "core:number": {}
+          }
+        },
+        "name": "whatsapp_no"
+      },
+      {
+        "type": "text",
+        "fieldName": "emailid",
+        "options": {
+          "rules": {
+            "core:email": {}
+          }
+        },
+        "name": "emailid"
+      },
+      {
+        "type": "number",
+        "fieldName": "pin",
+        "options": {
+          "rules": {
+            "core:number": {}
+          }
+        },
+        "name": "pin"
+      },
+      {
+        "type": "text",
+        "fieldName": "district",
+        "name": "district"
+      },
+      {
+        "type": "date",
+        "fieldName": "dob",
+        "options": {
+          "rules": {
+            "core:date": {}
+          }
+        },
+        "name": "dob"
+      },
+      {
+        "type": "text",
+        "fieldName": "user_type_name",
+        "options": {
+          "rules": {
+            "core:required": {
+              "param": ""
+            }
+          }
+        },
+        "name": "user_type_name"
+      },
+      {
+        "type": "text",
+        "fieldName": "is_whatsapp",
+        "name": "is_whatsapp"
+      },
+      {
+        "type": "text",
+        "fieldName": "status",
+        "name": "status"
+      },
+      {
+        "type": "text",
+        "fieldName": "address",
+        "name": "address"
+      },
+      {
+        "type": "text",
+        "fieldName": "remarks",
+        "name": "remarks"
+      }
+    ],
+    "$_SERVER": [
+      {
+        "type": "text",
+        "name": "REMOTE_ADDR"
+      }
+    ]
+  },
+  "exec": {
+    "steps": [
+      {
+        "name": "",
+        "module": "auth",
+        "action": "restrict",
+        "options": {
+          "provider": "security",
+          "permissions": [
+            "write"
+          ],
+          "loginUrl": "/login",
+          "forbiddenUrl": "/403-forbidden"
+        }
+      },
+      {
+        "name": "identity",
+        "module": "auth",
+        "action": "identify",
+        "options": {
+          "provider": "security"
+        },
+        "output": false,
+        "meta": []
+      },
+      {
+        "name": "",
+        "module": "core",
+        "action": "condition",
+        "options": {
+          "if": "{{$_POST.AddUserId}}",
+          "then": {
+            "steps": [
+              {
+                "name": "UserUpdate",
+                "module": "dbupdater",
+                "action": "update",
+                "options": {
+                  "connection": "FoodApp",
+                  "sql": {
+                    "type": "update",
+                    "values": [
+                      {
+                        "table": "m_customer",
+                        "column": "user_type_id",
+                        "type": "number",
+                        "value": "{{$_POST.user_type_name}}"
+                      },
+                      {
+                        "table": "m_customer",
+                        "column": "fname",
+                        "type": "text",
+                        "value": "{{$_POST.user_fname}}"
+                      },
+                      {
+                        "table": "m_customer",
+                        "column": "lname",
+                        "type": "text",
+                        "value": "{{$_POST.user_lname}}"
+                      },
+                      {
+                        "table": "m_customer",
+                        "column": "is_watsapp",
+                        "type": "text",
+                        "value": "{{$_POST.is_whatsapp}}"
+                      },
+                      {
+                        "table": "m_customer",
+                        "column": "watsapp_no",
+                        "type": "text",
+                        "value": "{{$_POST.whatsapp_no}}"
+                      },
+                      {
+                        "table": "m_customer",
+                        "column": "customer_email",
+                        "type": "text",
+                        "value": "{{$_POST.emailid}}"
+                      },
+                      {
+                        "table": "m_customer",
+                        "column": "user_dob",
+                        "type": "text",
+                        "value": "{{$_POST.dob}}"
+                      },
+                      {
+                        "table": "m_customer",
+                        "column": "address",
+                        "type": "text",
+                        "value": "{{$_POST.address}}"
+                      },
+                      {
+                        "table": "m_customer",
+                        "column": "pin",
+                        "type": "text",
+                        "value": "{{$_POST.pin}}"
+                      },
+                      {
+                        "table": "m_customer",
+                        "column": "district",
+                        "type": "text",
+                        "value": "{{$_POST.district}}"
+                      },
+                      {
+                        "table": "m_customer",
+                        "column": "status",
+                        "type": "number",
+                        "value": "{{$_POST.status}}"
+                      },
+                      {
+                        "table": "m_customer",
+                        "column": "remarks",
+                        "type": "text",
+                        "value": "{{$_POST.remarks}}"
+                      },
+                      {
+                        "table": "m_customer",
+                        "column": "updated_on",
+                        "type": "datetime",
+                        "value": "{{NOW}}"
+                      }
+                    ],
+                    "table": "m_customer",
+                    "wheres": {
+                      "condition": "AND",
+                      "rules": [
+                        {
+                          "id": "id",
+                          "field": "id",
+                          "type": "double",
+                          "operator": "equal",
+                          "value": "{{$_POST.AddUserId}}",
+                          "data": {
+                            "column": "id"
+                          },
+                          "operation": "="
+                        }
+                      ],
+                      "conditional": null,
+                      "valid": true
+                    },
+                    "returning": "id",
+                    "query": "UPDATE m_customer\nSET user_type_id = :P1 /* {{$_POST.user_type_name}} */, fname = :P2 /* {{$_POST.user_fname}} */, lname = :P3 /* {{$_POST.user_lname}} */, is_watsapp = :P4 /* {{$_POST.is_whatsapp}} */, watsapp_no = :P5 /* {{$_POST.whatsapp_no}} */, customer_email = :P6 /* {{$_POST.emailid}} */, user_dob = :P7 /* {{$_POST.dob}} */, address = :P8 /* {{$_POST.address}} */, pin = :P9 /* {{$_POST.pin}} */, district = :P10 /* {{$_POST.district}} */, status = :P11 /* {{$_POST.status}} */, remarks = :P12 /* {{$_POST.remarks}} */, updated_on = :P13 /* {{NOW}} */\nWHERE id = :P14 /* {{$_POST.AddUserId}} */",
+                    "params": [
+                      {
+                        "name": ":P1",
+                        "type": "expression",
+                        "value": "{{$_POST.user_type_name}}"
+                      },
+                      {
+                        "name": ":P2",
+                        "type": "expression",
+                        "value": "{{$_POST.user_fname}}"
+                      },
+                      {
+                        "name": ":P3",
+                        "type": "expression",
+                        "value": "{{$_POST.user_lname}}"
+                      },
+                      {
+                        "name": ":P4",
+                        "type": "expression",
+                        "value": "{{$_POST.is_whatsapp}}"
+                      },
+                      {
+                        "name": ":P5",
+                        "type": "expression",
+                        "value": "{{$_POST.whatsapp_no}}"
+                      },
+                      {
+                        "name": ":P6",
+                        "type": "expression",
+                        "value": "{{$_POST.emailid}}"
+                      },
+                      {
+                        "name": ":P7",
+                        "type": "expression",
+                        "value": "{{$_POST.dob}}"
+                      },
+                      {
+                        "name": ":P8",
+                        "type": "expression",
+                        "value": "{{$_POST.address}}"
+                      },
+                      {
+                        "name": ":P9",
+                        "type": "expression",
+                        "value": "{{$_POST.pin}}"
+                      },
+                      {
+                        "name": ":P10",
+                        "type": "expression",
+                        "value": "{{$_POST.district}}"
+                      },
+                      {
+                        "name": ":P11",
+                        "type": "expression",
+                        "value": "{{$_POST.status}}"
+                      },
+                      {
+                        "name": ":P12",
+                        "type": "expression",
+                        "value": "{{$_POST.remarks}}"
+                      },
+                      {
+                        "name": ":P13",
+                        "type": "expression",
+                        "value": "{{NOW}}"
+                      },
+                      {
+                        "operator": "equal",
+                        "type": "expression",
+                        "name": ":P14",
+                        "value": "{{$_POST.AddUserId}}"
+                      }
+                    ]
+                  }
+                },
+                "meta": [
+                  {
+                    "name": "affected",
+                    "type": "number"
+                  }
+                ]
+              },
+              {
+                "name": "Resp",
+                "module": "core",
+                "action": "response",
+                "options": {
+                  "status": 200,
+                  "data": "User Updated Successfully"
+                },
+                "output": true
+              }
+            ]
+          },
+          "else": {
+            "steps": [
+              {
+                "name": "validate",
+                "module": "validator",
+                "action": "validate",
+                "options": {
+                  "data": [
+                    {
+                      "name": "validate_1",
+                      "value": "{{$_POST.mobile}}",
+                      "rules": {
+                        "db:notexists": {
+                          "param": {
+                            "connection": "FoodApp",
+                            "table": "m_customer",
+                            "column": "mobile"
+                          },
+                          "message": "This Mobile No already registered with us"
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              {
+                "name": "Password",
+                "module": "core",
+                "action": "setvalue",
+                "options": {
+                  "value": "{{UUID.md5(123456).substr(1, 9)}}"
+                },
+                "meta": [],
+                "outputType": "text"
+              },
+              {
+                "name": "AddNewUser",
+                "module": "dbupdater",
+                "action": "insert",
+                "options": {
+                  "connection": "FoodApp",
+                  "sql": {
+                    "type": "insert",
+                    "values": [
+                      {
+                        "table": "m_customer",
+                        "column": "user_type_id",
+                        "type": "number",
+                        "value": "{{$_POST.user_type_name}}"
+                      },
+                      {
+                        "table": "m_customer",
+                        "column": "fname",
+                        "type": "text",
+                        "value": "{{$_POST.user_fname}}"
+                      },
+                      {
+                        "table": "m_customer",
+                        "column": "lname",
+                        "type": "text",
+                        "value": "{{$_POST.user_lname}}"
+                      },
+                      {
+                        "table": "m_customer",
+                        "column": "mobile",
+                        "type": "text",
+                        "value": "{{$_POST.mobile}}"
+                      },
+                      {
+                        "table": "m_customer",
+                        "column": "is_watsapp",
+                        "type": "text",
+                        "value": "{{$_POST.is_whatsapp}}"
+                      },
+                      {
+                        "table": "m_customer",
+                        "column": "watsapp_no",
+                        "type": "text",
+                        "value": "{{$_POST.whatsapp_no}}"
+                      },
+                      {
+                        "table": "m_customer",
+                        "column": "customer_email",
+                        "type": "text",
+                        "value": "{{$_POST.emailid.lowercase()}}"
+                      },
+                      {
+                        "table": "m_customer",
+                        "column": "user_password",
+                        "type": "text",
+                        "value": "{{Password.sha256(NOW)}}"
+                      },
+                      {
+                        "table": "m_customer",
+                        "column": "salt",
+                        "type": "text",
+                        "value": "{{NOW}}"
+                      },
+                      {
+                        "table": "m_customer",
+                        "column": "user_dob",
+                        "type": "text",
+                        "value": "{{$_POST.dob}}"
+                      },
+                      {
+                        "table": "m_customer",
+                        "column": "address",
+                        "type": "text",
+                        "value": "{{$_POST.address}}"
+                      },
+                      {
+                        "table": "m_customer",
+                        "column": "pin",
+                        "type": "text",
+                        "value": "{{$_POST.pin}}"
+                      },
+                      {
+                        "table": "m_customer",
+                        "column": "district",
+                        "type": "text",
+                        "value": "{{$_POST.district}}"
+                      },
+                      {
+                        "table": "m_customer",
+                        "column": "wallet_bal",
+                        "type": "text",
+                        "value": "{{0}}"
+                      },
+                      {
+                        "table": "m_customer",
+                        "column": "ip_address",
+                        "type": "text",
+                        "value": "{{$_SERVER.REMOTE_ADDR}}"
+                      },
+                      {
+                        "table": "m_customer",
+                        "column": "signup_via",
+                        "type": "text",
+                        "value": "{{'Admin'}}"
+                      },
+                      {
+                        "table": "m_customer",
+                        "column": "status",
+                        "type": "number",
+                        "value": "{{1}}"
+                      },
+                      {
+                        "table": "m_customer",
+                        "column": "created_by",
+                        "type": "number",
+                        "value": "{{identity}}"
+                      },
+                      {
+                        "table": "m_customer",
+                        "column": "created_on",
+                        "type": "datetime",
+                        "value": "{{NOW}}"
+                      },
+                      {
+                        "table": "m_customer",
+                        "column": "blank1",
+                        "type": "text",
+                        "value": "{{Password}}"
+                      }
+                    ],
+                    "table": "m_customer",
+                    "returning": "id",
+                    "query": "INSERT INTO m_customer\n(user_type_id, fname, lname, mobile, is_watsapp, watsapp_no, customer_email, user_password, salt, user_dob, address, pin, district, wallet_bal, ip_address, signup_via, status, created_by, created_on, blank1) VALUES (:P1 /* {{$_POST.user_type_name}} */, :P2 /* {{$_POST.user_fname}} */, :P3 /* {{$_POST.user_lname}} */, :P4 /* {{$_POST.mobile}} */, :P5 /* {{$_POST.is_whatsapp}} */, :P6 /* {{$_POST.whatsapp_no}} */, :P7 /* {{$_POST.emailid.lowercase()}} */, :P8 /* {{Password.sha256(NOW)}} */, :P9 /* {{NOW}} */, :P10 /* {{$_POST.dob}} */, :P11 /* {{$_POST.address}} */, :P12 /* {{$_POST.pin}} */, :P13 /* {{$_POST.district}} */, :P14 /* {{0}} */, :P15 /* {{$_SERVER.REMOTE_ADDR}} */, :P16 /* {{'Admin'}} */, :P17 /* {{1}} */, :P18 /* {{identity}} */, :P19 /* {{NOW}} */, :P20 /* {{Password}} */)",
+                    "params": [
+                      {
+                        "name": ":P1",
+                        "type": "expression",
+                        "value": "{{$_POST.user_type_name}}"
+                      },
+                      {
+                        "name": ":P2",
+                        "type": "expression",
+                        "value": "{{$_POST.user_fname}}"
+                      },
+                      {
+                        "name": ":P3",
+                        "type": "expression",
+                        "value": "{{$_POST.user_lname}}"
+                      },
+                      {
+                        "name": ":P4",
+                        "type": "expression",
+                        "value": "{{$_POST.mobile}}"
+                      },
+                      {
+                        "name": ":P5",
+                        "type": "expression",
+                        "value": "{{$_POST.is_whatsapp}}"
+                      },
+                      {
+                        "name": ":P6",
+                        "type": "expression",
+                        "value": "{{$_POST.whatsapp_no}}"
+                      },
+                      {
+                        "name": ":P7",
+                        "type": "expression",
+                        "value": "{{$_POST.emailid.lowercase()}}"
+                      },
+                      {
+                        "name": ":P8",
+                        "type": "expression",
+                        "value": "{{Password.sha256(NOW)}}"
+                      },
+                      {
+                        "name": ":P9",
+                        "type": "expression",
+                        "value": "{{NOW}}"
+                      },
+                      {
+                        "name": ":P10",
+                        "type": "expression",
+                        "value": "{{$_POST.dob}}"
+                      },
+                      {
+                        "name": ":P11",
+                        "type": "expression",
+                        "value": "{{$_POST.address}}"
+                      },
+                      {
+                        "name": ":P12",
+                        "type": "expression",
+                        "value": "{{$_POST.pin}}"
+                      },
+                      {
+                        "name": ":P13",
+                        "type": "expression",
+                        "value": "{{$_POST.district}}"
+                      },
+                      {
+                        "name": ":P14",
+                        "type": "expression",
+                        "value": "{{0}}"
+                      },
+                      {
+                        "name": ":P15",
+                        "type": "expression",
+                        "value": "{{$_SERVER.REMOTE_ADDR}}"
+                      },
+                      {
+                        "name": ":P16",
+                        "type": "expression",
+                        "value": "{{'Admin'}}"
+                      },
+                      {
+                        "name": ":P17",
+                        "type": "expression",
+                        "value": "{{1}}"
+                      },
+                      {
+                        "name": ":P18",
+                        "type": "expression",
+                        "value": "{{identity}}"
+                      },
+                      {
+                        "name": ":P19",
+                        "type": "expression",
+                        "value": "{{NOW}}"
+                      },
+                      {
+                        "name": ":P20",
+                        "type": "expression",
+                        "value": "{{Password}}"
+                      }
+                    ]
+                  }
+                },
+                "meta": [
+                  {
+                    "name": "identity",
+                    "type": "text"
+                  },
+                  {
+                    "name": "affected",
+                    "type": "number"
+                  }
+                ]
+              },
+              {
+                "name": "",
+                "module": "core",
+                "action": "condition",
+                "options": {
+                  "if": "{{$_POST.user_type_name==6}}",
+                  "then": {
+                    "steps": {
+                      "name": "AddShippingAddress",
+                      "module": "dbupdater",
+                      "action": "insert",
+                      "options": {
+                        "connection": "FoodApp",
+                        "sql": {
+                          "type": "insert",
+                          "values": [
+                            {
+                              "table": "r_shipping_add",
+                              "column": "c_id",
+                              "type": "number",
+                              "value": "{{AddNewUser.identity}}"
+                            },
+                            {
+                              "table": "r_shipping_add",
+                              "column": "mobile",
+                              "type": "text",
+                              "value": "{{$_POST.mobile}}"
+                            },
+                            {
+                              "table": "r_shipping_add",
+                              "column": "address1",
+                              "type": "text",
+                              "value": "{{$_POST.address}}"
+                            },
+                            {
+                              "table": "r_shipping_add",
+                              "column": "district",
+                              "type": "text",
+                              "value": "{{$_POST.district}}"
+                            },
+                            {
+                              "table": "r_shipping_add",
+                              "column": "pin",
+                              "type": "text",
+                              "value": "{{$_POST.pin}}"
+                            },
+                            {
+                              "table": "r_shipping_add",
+                              "column": "status",
+                              "type": "number",
+                              "value": "{{1}}"
+                            },
+                            {
+                              "table": "r_shipping_add",
+                              "column": "created_by",
+                              "type": "number",
+                              "value": "{{identity}}"
+                            },
+                            {
+                              "table": "r_shipping_add",
+                              "column": "created_on",
+                              "type": "datetime",
+                              "value": "{{NOW}}"
+                            }
+                          ],
+                          "table": "r_shipping_add",
+                          "returning": "id",
+                          "query": "INSERT INTO r_shipping_add\n(c_id, mobile, address1, district, pin, status, created_by, created_on) VALUES (:P1 /* {{AddNewUser.identity}} */, :P2 /* {{$_POST.mobile}} */, :P3 /* {{$_POST.address}} */, :P4 /* {{$_POST.district}} */, :P5 /* {{$_POST.pin}} */, :P6 /* {{1}} */, :P7 /* {{identity}} */, :P8 /* {{NOW}} */)",
+                          "params": [
+                            {
+                              "name": ":P1",
+                              "type": "expression",
+                              "value": "{{AddNewUser.identity}}"
+                            },
+                            {
+                              "name": ":P2",
+                              "type": "expression",
+                              "value": "{{$_POST.mobile}}"
+                            },
+                            {
+                              "name": ":P3",
+                              "type": "expression",
+                              "value": "{{$_POST.address}}"
+                            },
+                            {
+                              "name": ":P4",
+                              "type": "expression",
+                              "value": "{{$_POST.district}}"
+                            },
+                            {
+                              "name": ":P5",
+                              "type": "expression",
+                              "value": "{{$_POST.pin}}"
+                            },
+                            {
+                              "name": ":P6",
+                              "type": "expression",
+                              "value": "{{1}}"
+                            },
+                            {
+                              "name": ":P7",
+                              "type": "expression",
+                              "value": "{{identity}}"
+                            },
+                            {
+                              "name": ":P8",
+                              "type": "expression",
+                              "value": "{{NOW}}"
+                            }
+                          ]
+                        }
+                      },
+                      "meta": [
+                        {
+                          "name": "identity",
+                          "type": "text"
+                        },
+                        {
+                          "name": "affected",
+                          "type": "number"
+                        }
+                      ]
+                    }
+                  }
+                },
+                "outputType": "boolean"
+              },
+              {
+                "name": "Resp",
+                "module": "core",
+                "action": "response",
+                "options": {
+                  "status": 200,
+                  "data": "User Added Successfully"
+                },
+                "output": true
+              }
+            ]
+          }
+        },
+        "outputType": "boolean"
+      }
+    ]
+  }
+}

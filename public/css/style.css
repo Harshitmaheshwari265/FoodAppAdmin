@@ -1,0 +1,41 @@
+/*custom CSS*/
+
+.bg-gito{
+    background-color: #1b2a47;
+}
+.compulsory{
+    color: red;
+    font-weight: bold;
+}
+.invalid-feedback{
+    color: red;
+}
+.text-git-center{
+    text-align: center !important;
+}
+
+.dot-veg {
+  height: 25px;
+  width: 25px;
+  background-color: #22aa00;
+  border-radius: 50%;
+  display: inline-block;
+}
+.dot-non-veg {
+  width: 0;
+  height: 0;
+  border-left: 50px solid transparent;
+  border-right: 50px solid transparent;
+  border-bottom: 100px solid #da1519;
+}
+.gito-py-0{
+    padding-top: 0px !important;
+    padding-bottom: 0px !important;
+}
+.width-100{
+    width: 100px;
+}
+.p-lr-0{
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+}

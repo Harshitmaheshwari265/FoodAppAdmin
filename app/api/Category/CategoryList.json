@@ -1,0 +1,797 @@
+{
+  "meta": {
+    "$_GET": [
+      {
+        "type": "text",
+        "name": "offset"
+      },
+      {
+        "type": "text",
+        "name": "limit"
+      },
+      {
+        "type": "text",
+        "name": "sort"
+      },
+      {
+        "type": "text",
+        "name": "dir"
+      },
+      {
+        "type": "text",
+        "name": "market_id"
+      },
+      {
+        "type": "text",
+        "name": "cat_type_id"
+      },
+      {
+        "type": "text",
+        "name": "search_value"
+      }
+    ]
+  },
+  "exec": {
+    "steps": [
+      {
+        "name": "",
+        "module": "auth",
+        "action": "restrict",
+        "options": {
+          "provider": "security",
+          "permissions": [
+            "write"
+          ],
+          "loginUrl": "/login",
+          "forbiddenUrl": "/403-forbidden"
+        }
+      },
+      {
+        "name": "",
+        "module": "core",
+        "action": "condition",
+        "options": {
+          "if": "{{$_GET.cat_type_id}}",
+          "then": {
+            "steps": {
+              "name": "CategoryList",
+              "module": "dbconnector",
+              "action": "paged",
+              "options": {
+                "connection": "FoodApp",
+                "sql": {
+                  "type": "SELECT",
+                  "columns": [
+                    {
+                      "table": "m_category",
+                      "column": "id"
+                    },
+                    {
+                      "table": "m_category",
+                      "column": "en_name"
+                    },
+                    {
+                      "table": "m_category",
+                      "column": "bn_name"
+                    },
+                    {
+                      "table": "m_category",
+                      "column": "hin_name"
+                    },
+                    {
+                      "table": "m_category",
+                      "column": "image"
+                    },
+                    {
+                      "table": "m_category",
+                      "column": "remarks"
+                    },
+                    {
+                      "table": "m_category",
+                      "column": "status"
+                    },
+                    {
+                      "table": "m_category",
+                      "column": "created_on"
+                    }
+                  ],
+                  "table": {
+                    "name": "m_category"
+                  },
+                  "primary": "id",
+                  "joins": [],
+                  "wheres": {
+                    "condition": "AND",
+                    "rules": [
+                      {
+                        "id": "m_category.market_id",
+                        "field": "m_category.market_id",
+                        "type": "double",
+                        "operator": "equal",
+                        "value": "{{$_GET.market_id}}",
+                        "data": {
+                          "table": "m_category",
+                          "column": "market_id",
+                          "type": "number",
+                          "columnObj": {
+                            "type": "reference",
+                            "primary": false,
+                            "unique": false,
+                            "nullable": true,
+                            "references": "id",
+                            "inTable": "m_market",
+                            "referenceType": "integer",
+                            "onUpdate": "NO ACTION",
+                            "onDelete": "NO ACTION",
+                            "name": "market_id"
+                          }
+                        },
+                        "operation": "="
+                      },
+                      {
+                        "id": "m_category.cat_type_id",
+                        "field": "m_category.cat_type_id",
+                        "type": "double",
+                        "operator": "equal",
+                        "value": "{{$_GET.cat_type_id}}",
+                        "data": {
+                          "table": "m_category",
+                          "column": "cat_type_id",
+                          "type": "number",
+                          "columnObj": {
+                            "type": "reference",
+                            "primary": false,
+                            "unique": false,
+                            "nullable": true,
+                            "references": "id",
+                            "inTable": "m_category_type",
+                            "referenceType": "integer",
+                            "onUpdate": "NO ACTION",
+                            "onDelete": "NO ACTION",
+                            "name": "cat_type_id"
+                          }
+                        },
+                        "operation": "="
+                      }
+                    ],
+                    "conditional": null,
+                    "valid": true
+                  },
+                  "query": "SELECT id, en_name, bn_name, hin_name, image, remarks, status, created_on\nFROM m_category\nWHERE market_id = :P1 /* {{$_GET.market_id}} */ AND cat_type_id = :P2 /* {{$_GET.cat_type_id}} */\nORDER BY id DESC",
+                  "params": [
+                    {
+                      "operator": "equal",
+                      "type": "expression",
+                      "name": ":P1",
+                      "value": "{{$_GET.market_id}}"
+                    },
+                    {
+                      "operator": "equal",
+                      "type": "expression",
+                      "name": ":P2",
+                      "value": "{{$_GET.cat_type_id}}"
+                    }
+                  ],
+                  "orders": [
+                    {
+                      "table": "m_category",
+                      "column": "id",
+                      "direction": "DESC"
+                    }
+                  ]
+                }
+              },
+              "output": true,
+              "meta": [
+                {
+                  "name": "offset",
+                  "type": "number"
+                },
+                {
+                  "name": "limit",
+                  "type": "number"
+                },
+                {
+                  "name": "total",
+                  "type": "number"
+                },
+                {
+                  "name": "page",
+                  "type": "object",
+                  "sub": [
+                    {
+                      "name": "offset",
+                      "type": "object",
+                      "sub": [
+                        {
+                          "name": "first",
+                          "type": "number"
+                        },
+                        {
+                          "name": "prev",
+                          "type": "number"
+                        },
+                        {
+                          "name": "next",
+                          "type": "number"
+                        },
+                        {
+                          "name": "last",
+                          "type": "number"
+                        }
+                      ]
+                    },
+                    {
+                      "name": "current",
+                      "type": "number"
+                    },
+                    {
+                      "name": "total",
+                      "type": "number"
+                    }
+                  ]
+                },
+                {
+                  "name": "data",
+                  "type": "array",
+                  "sub": [
+                    {
+                      "type": "number",
+                      "name": "id"
+                    },
+                    {
+                      "type": "text",
+                      "name": "en_name"
+                    },
+                    {
+                      "type": "text",
+                      "name": "bn_name"
+                    },
+                    {
+                      "type": "text",
+                      "name": "hin_name"
+                    },
+                    {
+                      "type": "text",
+                      "name": "image"
+                    },
+                    {
+                      "type": "text",
+                      "name": "remarks"
+                    },
+                    {
+                      "type": "number",
+                      "name": "status"
+                    },
+                    {
+                      "type": "datetime",
+                      "name": "created_on"
+                    }
+                  ]
+                }
+              ],
+              "outputType": "object"
+            }
+          },
+          "else": {
+            "steps": {
+              "name": "CategoryList",
+              "module": "dbconnector",
+              "action": "paged",
+              "options": {
+                "connection": "FoodApp",
+                "sql": {
+                  "type": "SELECT",
+                  "columns": [
+                    {
+                      "table": "m_category",
+                      "column": "id"
+                    },
+                    {
+                      "table": "m_category",
+                      "column": "en_name"
+                    },
+                    {
+                      "table": "m_category",
+                      "column": "bn_name"
+                    },
+                    {
+                      "table": "m_category",
+                      "column": "hin_name"
+                    },
+                    {
+                      "table": "m_category",
+                      "column": "image"
+                    },
+                    {
+                      "table": "m_category",
+                      "column": "remarks"
+                    },
+                    {
+                      "table": "m_category",
+                      "column": "status"
+                    },
+                    {
+                      "table": "m_category",
+                      "column": "created_on"
+                    },
+                    {
+                      "table": "m_category",
+                      "column": "cat_type_id"
+                    },
+                    {
+                      "table": "mct",
+                      "column": "type_name_en"
+                    }
+                  ],
+                  "table": {
+                    "name": "m_category"
+                  },
+                  "primary": "id",
+                  "joins": [
+                    {
+                      "table": "m_category_type",
+                      "column": "*",
+                      "alias": "mct",
+                      "type": "LEFT",
+                      "clauses": {
+                        "condition": "AND",
+                        "rules": [
+                          {
+                            "table": "mct",
+                            "column": "id",
+                            "operator": "equal",
+                            "value": {
+                              "table": "m_category",
+                              "column": "cat_type_id"
+                            },
+                            "operation": "="
+                          }
+                        ]
+                      },
+                      "primary": "id"
+                    }
+                  ],
+                  "wheres": {
+                    "condition": "AND",
+                    "rules": [
+                      {
+                        "id": "m_category.market_id",
+                        "field": "m_category.market_id",
+                        "type": "double",
+                        "operator": "equal",
+                        "value": "{{$_GET.market_id}}",
+                        "data": {
+                          "table": "m_category",
+                          "column": "market_id",
+                          "type": "number",
+                          "columnObj": {
+                            "type": "reference",
+                            "primary": false,
+                            "unique": false,
+                            "nullable": true,
+                            "references": "id",
+                            "inTable": "m_market",
+                            "referenceType": "integer",
+                            "onUpdate": "NO ACTION",
+                            "onDelete": "NO ACTION",
+                            "name": "market_id"
+                          }
+                        },
+                        "operation": "="
+                      }
+                    ],
+                    "conditional": null,
+                    "valid": true
+                  },
+                  "query": "SELECT m_category.id, m_category.en_name, m_category.bn_name, m_category.hin_name, m_category.image, m_category.remarks, m_category.status, m_category.created_on, m_category.cat_type_id, mct.type_name_en\nFROM m_category\nLEFT JOIN m_category_type AS mct ON (mct.id = m_category.cat_type_id)\nWHERE m_category.market_id = :P1 /* {{$_GET.market_id}} */\nORDER BY m_category.id DESC",
+                  "params": [
+                    {
+                      "operator": "equal",
+                      "type": "expression",
+                      "name": ":P1",
+                      "value": "{{$_GET.market_id}}"
+                    }
+                  ],
+                  "orders": [
+                    {
+                      "table": "m_category",
+                      "column": "id",
+                      "direction": "DESC"
+                    }
+                  ]
+                }
+              },
+              "output": true,
+              "meta": [
+                {
+                  "name": "offset",
+                  "type": "number"
+                },
+                {
+                  "name": "limit",
+                  "type": "number"
+                },
+                {
+                  "name": "total",
+                  "type": "number"
+                },
+                {
+                  "name": "page",
+                  "type": "object",
+                  "sub": [
+                    {
+                      "name": "offset",
+                      "type": "object",
+                      "sub": [
+                        {
+                          "name": "first",
+                          "type": "number"
+                        },
+                        {
+                          "name": "prev",
+                          "type": "number"
+                        },
+                        {
+                          "name": "next",
+                          "type": "number"
+                        },
+                        {
+                          "name": "last",
+                          "type": "number"
+                        }
+                      ]
+                    },
+                    {
+                      "name": "current",
+                      "type": "number"
+                    },
+                    {
+                      "name": "total",
+                      "type": "number"
+                    }
+                  ]
+                },
+                {
+                  "name": "data",
+                  "type": "array",
+                  "sub": [
+                    {
+                      "type": "number",
+                      "name": "id"
+                    },
+                    {
+                      "type": "text",
+                      "name": "en_name"
+                    },
+                    {
+                      "type": "text",
+                      "name": "bn_name"
+                    },
+                    {
+                      "type": "text",
+                      "name": "hin_name"
+                    },
+                    {
+                      "type": "text",
+                      "name": "image"
+                    },
+                    {
+                      "type": "text",
+                      "name": "remarks"
+                    },
+                    {
+                      "type": "number",
+                      "name": "status"
+                    },
+                    {
+                      "type": "datetime",
+                      "name": "created_on"
+                    },
+                    {
+                      "type": "number",
+                      "name": "cat_type_id"
+                    },
+                    {
+                      "type": "text",
+                      "name": "type_name_en"
+                    }
+                  ]
+                }
+              ],
+              "outputType": "object"
+            }
+          }
+        },
+        "outputType": "boolean"
+      },
+      {
+        "name": "",
+        "module": "core",
+        "action": "condition",
+        "options": {
+          "if": "{{$_GET.search_value}}",
+          "then": {
+            "steps": {
+              "name": "CategoryList",
+              "module": "dbconnector",
+              "action": "paged",
+              "options": {
+                "connection": "FoodApp",
+                "sql": {
+                  "type": "SELECT",
+                  "columns": [
+                    {
+                      "table": "m_category",
+                      "column": "id"
+                    },
+                    {
+                      "table": "m_category",
+                      "column": "en_name"
+                    },
+                    {
+                      "table": "m_category",
+                      "column": "bn_name"
+                    },
+                    {
+                      "table": "m_category",
+                      "column": "hin_name"
+                    },
+                    {
+                      "table": "m_category",
+                      "column": "image"
+                    },
+                    {
+                      "table": "m_category",
+                      "column": "remarks"
+                    },
+                    {
+                      "table": "m_category",
+                      "column": "status"
+                    },
+                    {
+                      "table": "m_category",
+                      "column": "created_on"
+                    }
+                  ],
+                  "table": {
+                    "name": "m_category"
+                  },
+                  "primary": "id",
+                  "joins": [],
+                  "wheres": {
+                    "condition": "AND",
+                    "rules": [
+                      {
+                        "condition": "OR",
+                        "rules": [
+                          {
+                            "id": "m_category.en_name",
+                            "field": "m_category.en_name",
+                            "type": "string",
+                            "operator": "contains",
+                            "value": "{{$_GET.search_value}}",
+                            "data": {
+                              "table": "m_category",
+                              "column": "en_name",
+                              "type": "text",
+                              "columnObj": {
+                                "type": "string",
+                                "maxLength": -5,
+                                "primary": false,
+                                "unique": false,
+                                "nullable": true,
+                                "name": "en_name"
+                              }
+                            },
+                            "operation": "LIKE"
+                          },
+                          {
+                            "id": "m_category.hin_name",
+                            "field": "m_category.hin_name",
+                            "type": "string",
+                            "operator": "contains",
+                            "value": "{{$_GET.search_value}}",
+                            "data": {
+                              "table": "m_category",
+                              "column": "hin_name",
+                              "type": "text",
+                              "columnObj": {
+                                "type": "string",
+                                "maxLength": -5,
+                                "primary": false,
+                                "unique": false,
+                                "nullable": true,
+                                "name": "hin_name"
+                              }
+                            },
+                            "operation": "LIKE"
+                          },
+                          {
+                            "id": "m_category.bn_name",
+                            "field": "m_category.bn_name",
+                            "type": "string",
+                            "operator": "contains",
+                            "value": "{{$_GET.search_value}}",
+                            "data": {
+                              "table": "m_category",
+                              "column": "bn_name",
+                              "type": "text",
+                              "columnObj": {
+                                "type": "string",
+                                "maxLength": -5,
+                                "primary": false,
+                                "unique": false,
+                                "nullable": true,
+                                "name": "bn_name"
+                              }
+                            },
+                            "operation": "LIKE"
+                          }
+                        ],
+                        "conditional": null
+                      },
+                      {
+                        "id": "m_category.market_id",
+                        "field": "m_category.market_id",
+                        "type": "double",
+                        "operator": "equal",
+                        "value": "{{$_GET.market_id}}",
+                        "data": {
+                          "table": "m_category",
+                          "column": "market_id",
+                          "type": "number",
+                          "columnObj": {
+                            "type": "reference",
+                            "primary": false,
+                            "unique": false,
+                            "nullable": true,
+                            "references": "id",
+                            "inTable": "m_market",
+                            "referenceType": "integer",
+                            "onUpdate": "NO ACTION",
+                            "onDelete": "NO ACTION",
+                            "name": "market_id"
+                          }
+                        },
+                        "operation": "="
+                      }
+                    ],
+                    "conditional": null,
+                    "valid": true
+                  },
+                  "query": "SELECT id, en_name, bn_name, hin_name, image, remarks, status, created_on\nFROM m_category\nWHERE (en_name LIKE :P1 /* {{$_GET.search_value}} */ OR hin_name LIKE :P2 /* {{$_GET.search_value}} */ OR bn_name LIKE :P3 /* {{$_GET.search_value}} */) AND market_id = :P4 /* {{$_GET.market_id}} */\nORDER BY id DESC",
+                  "params": [
+                    {
+                      "operator": "contains",
+                      "type": "expression",
+                      "name": ":P1",
+                      "value": "{{$_GET.search_value}}"
+                    },
+                    {
+                      "operator": "contains",
+                      "type": "expression",
+                      "name": ":P2",
+                      "value": "{{$_GET.search_value}}"
+                    },
+                    {
+                      "operator": "contains",
+                      "type": "expression",
+                      "name": ":P3",
+                      "value": "{{$_GET.search_value}}"
+                    },
+                    {
+                      "operator": "equal",
+                      "type": "expression",
+                      "name": ":P4",
+                      "value": "{{$_GET.market_id}}"
+                    }
+                  ],
+                  "orders": [
+                    {
+                      "table": "m_category",
+                      "column": "id",
+                      "direction": "DESC",
+                      "recid": 1
+                    }
+                  ]
+                }
+              },
+              "output": true,
+              "meta": [
+                {
+                  "name": "offset",
+                  "type": "number"
+                },
+                {
+                  "name": "limit",
+                  "type": "number"
+                },
+                {
+                  "name": "total",
+                  "type": "number"
+                },
+                {
+                  "name": "page",
+                  "type": "object",
+                  "sub": [
+                    {
+                      "name": "offset",
+                      "type": "object",
+                      "sub": [
+                        {
+                          "name": "first",
+                          "type": "number"
+                        },
+                        {
+                          "name": "prev",
+                          "type": "number"
+                        },
+                        {
+                          "name": "next",
+                          "type": "number"
+                        },
+                        {
+                          "name": "last",
+                          "type": "number"
+                        }
+                      ]
+                    },
+                    {
+                      "name": "current",
+                      "type": "number"
+                    },
+                    {
+                      "name": "total",
+                      "type": "number"
+                    }
+                  ]
+                },
+                {
+                  "name": "data",
+                  "type": "array",
+                  "sub": [
+                    {
+                      "type": "number",
+                      "name": "id"
+                    },
+                    {
+                      "type": "text",
+                      "name": "en_name"
+                    },
+                    {
+                      "type": "text",
+                      "name": "bn_name"
+                    },
+                    {
+                      "type": "text",
+                      "name": "hin_name"
+                    },
+                    {
+                      "type": "text",
+                      "name": "image"
+                    },
+                    {
+                      "type": "text",
+                      "name": "remarks"
+                    },
+                    {
+                      "type": "number",
+                      "name": "status"
+                    },
+                    {
+                      "type": "datetime",
+                      "name": "created_on"
+                    }
+                  ]
+                }
+              ],
+              "outputType": "object"
+            }
+          }
+        },
+        "outputType": "boolean"
+      }
+    ]
+  }
+}

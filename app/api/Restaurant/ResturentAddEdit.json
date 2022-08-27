@@ -1,0 +1,3935 @@
+{
+  "meta": {
+    "options": {
+      "linkedFile": "/views/restaurants.ejs",
+      "linkedForm": "scformAddEditRestDetails"
+    },
+    "$_POST": [
+      {
+        "type": "text",
+        "fieldName": "EditRestaurantId",
+        "name": "EditRestaurantId"
+      },
+      {
+        "type": "text",
+        "fieldName": "MarketId",
+        "name": "MarketId"
+      },
+      {
+        "type": "text",
+        "fieldName": "CategoryTypeId",
+        "name": "CategoryTypeId"
+      },
+      {
+        "type": "text",
+        "fieldName": "shop_name_en",
+        "options": {
+          "rules": {
+            "core:required": {
+              "param": ""
+            }
+          }
+        },
+        "name": "shop_name_en"
+      },
+      {
+        "type": "text",
+        "fieldName": "shop_name_bn",
+        "options": {
+          "rules": {
+            "core:required": {
+              "param": ""
+            }
+          }
+        },
+        "name": "shop_name_bn"
+      },
+      {
+        "type": "text",
+        "fieldName": "shop_name_hin",
+        "options": {
+          "rules": {
+            "core:required": {
+              "param": ""
+            }
+          }
+        },
+        "name": "shop_name_hin"
+      },
+      {
+        "type": "number",
+        "fieldName": "shop_mobile_no",
+        "options": {
+          "rules": {
+            "core:required": {
+              "param": ""
+            },
+            "core:number": {}
+          }
+        },
+        "name": "shop_mobile_no"
+      },
+      {
+        "type": "number",
+        "fieldName": "whatsapp_no",
+        "options": {
+          "rules": {
+            "core:number": {}
+          }
+        },
+        "name": "whatsapp_no"
+      },
+      {
+        "type": "text",
+        "fieldName": "owner_name",
+        "name": "owner_name"
+      },
+      {
+        "type": "text",
+        "fieldName": "email_id",
+        "options": {
+          "rules": {
+            "core:email": {}
+          }
+        },
+        "name": "email_id"
+      },
+      {
+        "type": "text",
+        "fieldName": "gst_in",
+        "name": "gst_in"
+      },
+      {
+        "type": "text",
+        "fieldName": "pan_no",
+        "name": "pan_no"
+      },
+      {
+        "type": "text",
+        "fieldName": "pin",
+        "name": "pin"
+      },
+      {
+        "type": "text",
+        "fieldName": "rmc_no",
+        "name": "rmc_no"
+      },
+      {
+        "type": "file",
+        "fieldName": "logo",
+        "name": "logo",
+        "sub": [
+          {
+            "type": "text",
+            "name": "name"
+          },
+          {
+            "type": "text",
+            "name": "type"
+          },
+          {
+            "type": "number",
+            "name": "size"
+          },
+          {
+            "type": "text",
+            "name": "error"
+          }
+        ],
+        "outputType": "file"
+      },
+      {
+        "type": "file",
+        "fieldName": "CoverImage",
+        "name": "CoverImage",
+        "sub": [
+          {
+            "type": "text",
+            "name": "name"
+          },
+          {
+            "type": "text",
+            "name": "type"
+          },
+          {
+            "type": "number",
+            "name": "size"
+          },
+          {
+            "type": "text",
+            "name": "error"
+          }
+        ],
+        "outputType": "file"
+      },
+      {
+        "type": "file",
+        "fieldName": "SlidingImage1",
+        "name": "SlidingImage1",
+        "sub": [
+          {
+            "type": "text",
+            "name": "name"
+          },
+          {
+            "type": "text",
+            "name": "type"
+          },
+          {
+            "type": "number",
+            "name": "size"
+          },
+          {
+            "type": "text",
+            "name": "error"
+          }
+        ],
+        "outputType": "file"
+      },
+      {
+        "type": "file",
+        "fieldName": "SlidingImage2",
+        "name": "SlidingImage2",
+        "sub": [
+          {
+            "type": "text",
+            "name": "name"
+          },
+          {
+            "type": "text",
+            "name": "type"
+          },
+          {
+            "type": "number",
+            "name": "size"
+          },
+          {
+            "type": "text",
+            "name": "error"
+          }
+        ],
+        "outputType": "file"
+      },
+      {
+        "type": "file",
+        "fieldName": "SlidingImage3",
+        "name": "SlidingImage3",
+        "sub": [
+          {
+            "type": "text",
+            "name": "name"
+          },
+          {
+            "type": "text",
+            "name": "type"
+          },
+          {
+            "type": "number",
+            "name": "size"
+          },
+          {
+            "type": "text",
+            "name": "error"
+          }
+        ],
+        "outputType": "file"
+      },
+      {
+        "type": "file",
+        "fieldName": "upload_pan",
+        "name": "upload_pan",
+        "sub": [
+          {
+            "type": "text",
+            "name": "name"
+          },
+          {
+            "type": "text",
+            "name": "type"
+          },
+          {
+            "type": "number",
+            "name": "size"
+          },
+          {
+            "type": "text",
+            "name": "error"
+          }
+        ],
+        "outputType": "file"
+      },
+      {
+        "type": "file",
+        "fieldName": "upload_gstin",
+        "name": "upload_gstin",
+        "sub": [
+          {
+            "type": "text",
+            "name": "name"
+          },
+          {
+            "type": "text",
+            "name": "type"
+          },
+          {
+            "type": "number",
+            "name": "size"
+          },
+          {
+            "type": "text",
+            "name": "error"
+          }
+        ],
+        "outputType": "file"
+      },
+      {
+        "type": "file",
+        "fieldName": "upload_rmc",
+        "name": "upload_rmc",
+        "sub": [
+          {
+            "type": "text",
+            "name": "name"
+          },
+          {
+            "type": "text",
+            "name": "type"
+          },
+          {
+            "type": "number",
+            "name": "size"
+          },
+          {
+            "type": "text",
+            "name": "error"
+          }
+        ],
+        "outputType": "file"
+      },
+      {
+        "type": "file",
+        "fieldName": "upload_fsc",
+        "name": "upload_fsc",
+        "sub": [
+          {
+            "type": "text",
+            "name": "name"
+          },
+          {
+            "type": "text",
+            "name": "type"
+          },
+          {
+            "type": "number",
+            "name": "size"
+          },
+          {
+            "type": "text",
+            "name": "error"
+          }
+        ],
+        "outputType": "file"
+      },
+      {
+        "type": "file",
+        "fieldName": "upload_aadhar_front",
+        "name": "upload_aadhar_front",
+        "sub": [
+          {
+            "type": "text",
+            "name": "name"
+          },
+          {
+            "type": "text",
+            "name": "type"
+          },
+          {
+            "type": "number",
+            "name": "size"
+          },
+          {
+            "type": "text",
+            "name": "error"
+          }
+        ],
+        "outputType": "file"
+      },
+      {
+        "type": "file",
+        "fieldName": "upload_aadhar_back",
+        "name": "upload_aadhar_back",
+        "sub": [
+          {
+            "type": "text",
+            "name": "name"
+          },
+          {
+            "type": "text",
+            "name": "type"
+          },
+          {
+            "type": "number",
+            "name": "size"
+          },
+          {
+            "type": "text",
+            "name": "error"
+          }
+        ],
+        "outputType": "file"
+      },
+      {
+        "type": "file",
+        "fieldName": "other_id_proof",
+        "name": "other_id_proof",
+        "sub": [
+          {
+            "type": "text",
+            "name": "name"
+          },
+          {
+            "type": "text",
+            "name": "type"
+          },
+          {
+            "type": "number",
+            "name": "size"
+          },
+          {
+            "type": "text",
+            "name": "error"
+          }
+        ],
+        "outputType": "file"
+      },
+      {
+        "type": "file",
+        "fieldName": "bank_account",
+        "name": "bank_account",
+        "sub": [
+          {
+            "type": "text",
+            "name": "name"
+          },
+          {
+            "type": "text",
+            "name": "type"
+          },
+          {
+            "type": "number",
+            "name": "size"
+          },
+          {
+            "type": "text",
+            "name": "error"
+          }
+        ],
+        "outputType": "file"
+      },
+      {
+        "type": "file",
+        "fieldName": "owner_image",
+        "name": "owner_image",
+        "sub": [
+          {
+            "type": "text",
+            "name": "name"
+          },
+          {
+            "type": "text",
+            "name": "type"
+          },
+          {
+            "type": "number",
+            "name": "size"
+          },
+          {
+            "type": "text",
+            "name": "error"
+          }
+        ],
+        "outputType": "file"
+      },
+      {
+        "type": "text",
+        "fieldName": "is_watsapp",
+        "name": "is_watsapp"
+      },
+      {
+        "type": "text",
+        "fieldName": "is_rmc",
+        "name": "is_rmc"
+      },
+      {
+        "type": "text",
+        "fieldName": "is_fsc",
+        "name": "is_fsc"
+      },
+      {
+        "type": "text",
+        "fieldName": "is_sliding_img",
+        "name": "is_sliding_img"
+      },
+      {
+        "type": "text",
+        "fieldName": "status",
+        "name": "status"
+      },
+      {
+        "type": "text",
+        "fieldName": "address",
+        "name": "address"
+      },
+      {
+        "type": "text",
+        "fieldName": "remarks",
+        "name": "remarks"
+      },
+      {
+        "type": "text",
+        "name": "sliding_image1"
+      },
+      {
+        "type": "text",
+        "name": "sliding_image2"
+      },
+      {
+        "type": "text",
+        "name": "sliding_image3"
+      },
+      {
+        "type": "text",
+        "name": "sliding_image4"
+      },
+      {
+        "type": "number",
+        "name": "created_by"
+      },
+      {
+        "type": "datetime",
+        "name": "created_on"
+      },
+      {
+        "type": "text",
+        "name": "cover_image"
+      },
+      {
+        "type": "text",
+        "name": "agreement_copy1"
+      },
+      {
+        "type": "text",
+        "name": "agreement_copy2"
+      },
+      {
+        "type": "text",
+        "name": "agreement_copy3"
+      },
+      {
+        "type": "text",
+        "name": "agreement_copy4"
+      },
+      {
+        "type": "text",
+        "name": "blank1"
+      },
+      {
+        "type": "text",
+        "name": "blank2"
+      },
+      {
+        "type": "text",
+        "name": "blank3"
+      },
+      {
+        "type": "datetime",
+        "name": "updated_on"
+      },
+      {
+        "type": "datetime",
+        "name": "deleted_on"
+      },
+      {
+        "type": "number",
+        "name": "market_id"
+      },
+      {
+        "type": "number",
+        "name": "cat_type_id"
+      },
+      {
+        "type": "text",
+        "name": "gen_shop_id"
+      },
+      {
+        "type": "text",
+        "name": "shop_logo"
+      },
+      {
+        "type": "text",
+        "name": "watsapp_no"
+      },
+      {
+        "type": "text",
+        "name": "balance_amount"
+      },
+      {
+        "type": "text",
+        "name": "kyc_status"
+      },
+      {
+        "type": "number",
+        "name": "id"
+      },
+      {
+        "type": "text",
+        "name": "sliding_image5"
+      }
+    ]
+  },
+  "exec": {
+    "steps": [
+      {
+        "name": "",
+        "module": "auth",
+        "action": "restrict",
+        "options": {
+          "provider": "security",
+          "permissions": [
+            "write"
+          ],
+          "loginUrl": "/login",
+          "forbiddenUrl": "/403-forbidden"
+        }
+      },
+      {
+        "name": "identity",
+        "module": "auth",
+        "action": "identify",
+        "options": {
+          "provider": "security"
+        },
+        "output": false,
+        "meta": []
+      },
+      {
+        "name": "",
+        "module": "core",
+        "action": "condition",
+        "options": {
+          "if": "{{$_POST.EditRestaurantId}}",
+          "then": {
+            "steps": [
+              {
+                "name": "GetOldImage",
+                "module": "dbconnector",
+                "action": "single",
+                "options": {
+                  "connection": "FoodApp",
+                  "sql": {
+                    "type": "SELECT",
+                    "columns": [
+                      {
+                        "table": "m_restaurant",
+                        "column": "shop_logo"
+                      },
+                      {
+                        "table": "rsi",
+                        "column": "sliding_image1"
+                      },
+                      {
+                        "table": "rsi",
+                        "column": "sliding_image2"
+                      },
+                      {
+                        "table": "rsi",
+                        "column": "sliding_image3"
+                      },
+                      {
+                        "table": "rsi",
+                        "column": "cover_image"
+                      },
+                      {
+                        "table": "rkyc",
+                        "column": "upload_pan"
+                      },
+                      {
+                        "table": "rkyc",
+                        "column": "upload_gstin"
+                      },
+                      {
+                        "table": "rkyc",
+                        "column": "upload_rmc"
+                      },
+                      {
+                        "table": "rkyc",
+                        "column": "upload_fsc"
+                      },
+                      {
+                        "table": "rkyc",
+                        "column": "upload_aadhar_front"
+                      },
+                      {
+                        "table": "rkyc",
+                        "column": "upload_aadhar_back"
+                      },
+                      {
+                        "table": "rkyc",
+                        "column": "other_id_proof"
+                      },
+                      {
+                        "table": "rkyc",
+                        "column": "bank_account"
+                      },
+                      {
+                        "table": "rkyc",
+                        "column": "owner_image"
+                      }
+                    ],
+                    "table": {
+                      "name": "m_restaurant"
+                    },
+                    "primary": "id",
+                    "joins": [
+                      {
+                        "table": "rest_sliding_img",
+                        "column": "*",
+                        "alias": "rsi",
+                        "type": "LEFT",
+                        "clauses": {
+                          "condition": "AND",
+                          "rules": [
+                            {
+                              "table": "rsi",
+                              "column": "rest_id",
+                              "operator": "equal",
+                              "value": {
+                                "table": "m_restaurant",
+                                "column": "id"
+                              },
+                              "operation": "="
+                            }
+                          ]
+                        },
+                        "primary": "id"
+                      },
+                      {
+                        "table": "rest_kyc_doc",
+                        "column": "*",
+                        "alias": "rkyc",
+                        "type": "LEFT",
+                        "clauses": {
+                          "condition": "AND",
+                          "rules": [
+                            {
+                              "table": "rkyc",
+                              "column": "rest_id",
+                              "operator": "equal",
+                              "value": {
+                                "table": "m_restaurant",
+                                "column": "id"
+                              },
+                              "operation": "="
+                            }
+                          ]
+                        },
+                        "primary": "id"
+                      }
+                    ],
+                    "query": "SELECT m_restaurant.shop_logo, rsi.sliding_image1, rsi.sliding_image2, rsi.sliding_image3, rsi.cover_image, rkyc.upload_pan, rkyc.upload_gstin, rkyc.upload_rmc, rkyc.upload_fsc, rkyc.upload_aadhar_front, rkyc.upload_aadhar_back, rkyc.other_id_proof, rkyc.bank_account, rkyc.owner_image\nFROM m_restaurant\nLEFT JOIN rest_sliding_img AS rsi ON (rsi.rest_id = m_restaurant.id) LEFT JOIN rest_kyc_doc AS rkyc ON (rkyc.rest_id = m_restaurant.id)",
+                    "params": []
+                  }
+                },
+                "output": false,
+                "meta": [
+                  {
+                    "type": "text",
+                    "name": "shop_logo"
+                  },
+                  {
+                    "type": "text",
+                    "name": "sliding_image1"
+                  },
+                  {
+                    "type": "text",
+                    "name": "sliding_image2"
+                  },
+                  {
+                    "type": "text",
+                    "name": "sliding_image3"
+                  },
+                  {
+                    "type": "text",
+                    "name": "cover_image"
+                  },
+                  {
+                    "type": "text",
+                    "name": "upload_pan"
+                  },
+                  {
+                    "type": "text",
+                    "name": "upload_gstin"
+                  },
+                  {
+                    "type": "text",
+                    "name": "upload_rmc"
+                  },
+                  {
+                    "type": "text",
+                    "name": "upload_fsc"
+                  },
+                  {
+                    "type": "text",
+                    "name": "upload_aadhar_front"
+                  },
+                  {
+                    "type": "text",
+                    "name": "upload_aadhar_back"
+                  },
+                  {
+                    "type": "text",
+                    "name": "other_id_proof"
+                  },
+                  {
+                    "type": "text",
+                    "name": "bank_account"
+                  },
+                  {
+                    "type": "text",
+                    "name": "owner_image"
+                  }
+                ],
+                "outputType": "object"
+              },
+              {
+                "name": "",
+                "module": "core",
+                "action": "condition",
+                "options": {
+                  "if": "{{$_POST.logo}}",
+                  "then": {
+                    "steps": [
+                      {
+                        "name": "uploadLogo",
+                        "module": "upload",
+                        "action": "upload",
+                        "options": {
+                          "fields": "{{$_POST.logo}}",
+                          "path": "/public/assets/img/restaurant",
+                          "replaceSpace": true,
+                          "replaceDiacritics": true,
+                          "asciiOnly": true,
+                          "throwErrors": true,
+                          "overwrite": true,
+                          "template": "{guid}{ext}"
+                        },
+                        "meta": [
+                          {
+                            "name": "name",
+                            "type": "text"
+                          },
+                          {
+                            "name": "path",
+                            "type": "text"
+                          },
+                          {
+                            "name": "url",
+                            "type": "text"
+                          },
+                          {
+                            "name": "type",
+                            "type": "text"
+                          },
+                          {
+                            "name": "size",
+                            "type": "text"
+                          },
+                          {
+                            "name": "error",
+                            "type": "number"
+                          }
+                        ],
+                        "outputType": "file"
+                      },
+                      {
+                        "name": "fileExists",
+                        "module": "fs",
+                        "action": "exists",
+                        "options": {
+                          "path": "{{'/public'+GetOldImage.shop_logo}}",
+                          "then": {
+                            "steps": {
+                              "name": "fileRemove",
+                              "module": "fs",
+                              "action": "remove",
+                              "options": {
+                                "path": "{{'/public'+GetOldImage.shop_logo}}"
+                              },
+                              "outputType": "boolean"
+                            }
+                          }
+                        },
+                        "outputType": "boolean"
+                      }
+                    ]
+                  }
+                },
+                "outputType": "boolean"
+              },
+              {
+                "name": "UpRestaurantDetails",
+                "module": "dbupdater",
+                "action": "update",
+                "options": {
+                  "connection": "FoodApp",
+                  "sql": {
+                    "type": "update",
+                    "values": [
+                      {
+                        "table": "m_restaurant",
+                        "column": "shop_name_en",
+                        "type": "text",
+                        "value": "{{$_POST.shop_name_en}}"
+                      },
+                      {
+                        "table": "m_restaurant",
+                        "column": "shop_name_bn",
+                        "type": "text",
+                        "value": "{{$_POST.shop_name_bn}}"
+                      },
+                      {
+                        "table": "m_restaurant",
+                        "column": "shop_name_hin",
+                        "type": "text",
+                        "value": "{{$_POST.shop_name_hin}}"
+                      },
+                      {
+                        "table": "m_restaurant",
+                        "column": "shop_logo",
+                        "type": "text",
+                        "value": "{{$_POST.logo?+'/assets/img/restaurant/'+uploadLogo.name:''}}",
+                        "condition": "{{$_POST.logo?+'/assets/img/restaurant/'+uploadLogo.name:''}}"
+                      },
+                      {
+                        "table": "m_restaurant",
+                        "column": "shop_mobile_no",
+                        "type": "text",
+                        "value": "{{$_POST.shop_mobile_no}}"
+                      },
+                      {
+                        "table": "m_restaurant",
+                        "column": "is_watsapp",
+                        "type": "text",
+                        "value": "{{$_POST.is_watsapp}}"
+                      },
+                      {
+                        "table": "m_restaurant",
+                        "column": "watsapp_no",
+                        "type": "text",
+                        "value": "{{$_POST.whatsapp_no}}"
+                      },
+                      {
+                        "table": "m_restaurant",
+                        "column": "email_id",
+                        "type": "text",
+                        "value": "{{$_POST.email_id}}"
+                      },
+                      {
+                        "table": "m_restaurant",
+                        "column": "owner_name",
+                        "type": "text",
+                        "value": "{{$_POST.owner_name}}"
+                      },
+                      {
+                        "table": "m_restaurant",
+                        "column": "gst_in",
+                        "type": "text",
+                        "value": "{{$_POST.gst_in}}"
+                      },
+                      {
+                        "table": "m_restaurant",
+                        "column": "is_rmc",
+                        "type": "text",
+                        "value": "{{$_POST.is_rmc}}"
+                      },
+                      {
+                        "table": "m_restaurant",
+                        "column": "rmc_no",
+                        "type": "text",
+                        "value": "{{$_POST.rmc_no}}"
+                      },
+                      {
+                        "table": "m_restaurant",
+                        "column": "is_fsc",
+                        "type": "text",
+                        "value": "{{$_POST.is_fsc}}"
+                      },
+                      {
+                        "table": "m_restaurant",
+                        "column": "is_sliding_img",
+                        "type": "text",
+                        "value": "{{$_POST.is_sliding_img}}"
+                      },
+                      {
+                        "table": "m_restaurant",
+                        "column": "pan_no",
+                        "type": "text",
+                        "value": "{{$_POST.pan_no}}"
+                      },
+                      {
+                        "table": "m_restaurant",
+                        "column": "address",
+                        "type": "text",
+                        "value": "{{$_POST.address}}"
+                      },
+                      {
+                        "table": "m_restaurant",
+                        "column": "pin",
+                        "type": "text",
+                        "value": "{{$_POST.pin}}"
+                      },
+                      {
+                        "table": "m_restaurant",
+                        "column": "kyc_status",
+                        "type": "text",
+                        "value": "{{$_POST.kyc_status}}"
+                      },
+                      {
+                        "table": "m_restaurant",
+                        "column": "status",
+                        "type": "number",
+                        "value": "{{$_POST.status}}"
+                      },
+                      {
+                        "table": "m_restaurant",
+                        "column": "remarks",
+                        "type": "text",
+                        "value": "{{$_POST.remarks}}"
+                      },
+                      {
+                        "table": "m_restaurant",
+                        "column": "updated_on",
+                        "type": "datetime",
+                        "value": "{{NOW}}"
+                      }
+                    ],
+                    "table": "m_restaurant",
+                    "wheres": {
+                      "condition": "AND",
+                      "rules": [
+                        {
+                          "id": "id",
+                          "field": "id",
+                          "type": "double",
+                          "operator": "equal",
+                          "value": "{{$_POST.EditRestaurantId}}",
+                          "data": {
+                            "column": "id"
+                          },
+                          "operation": "="
+                        }
+                      ],
+                      "conditional": null,
+                      "valid": true
+                    },
+                    "returning": "id",
+                    "query": "UPDATE m_restaurant\nSET shop_name_en = :P1 /* {{$_POST.shop_name_en}} */, shop_name_bn = :P2 /* {{$_POST.shop_name_bn}} */, shop_name_hin = :P3 /* {{$_POST.shop_name_hin}} */, shop_logo = :P4 /* {{$_POST.logo?+'/assets/img/restaurant/'+uploadLogo.name:''}} */, shop_mobile_no = :P5 /* {{$_POST.shop_mobile_no}} */, is_watsapp = :P6 /* {{$_POST.is_watsapp}} */, watsapp_no = :P7 /* {{$_POST.whatsapp_no}} */, email_id = :P8 /* {{$_POST.email_id}} */, owner_name = :P9 /* {{$_POST.owner_name}} */, gst_in = :P10 /* {{$_POST.gst_in}} */, is_rmc = :P11 /* {{$_POST.is_rmc}} */, rmc_no = :P12 /* {{$_POST.rmc_no}} */, is_fsc = :P13 /* {{$_POST.is_fsc}} */, is_sliding_img = :P14 /* {{$_POST.is_sliding_img}} */, pan_no = :P15 /* {{$_POST.pan_no}} */, address = :P16 /* {{$_POST.address}} */, pin = :P17 /* {{$_POST.pin}} */, kyc_status = :P18 /* {{$_POST.kyc_status}} */, status = :P19 /* {{$_POST.status}} */, remarks = :P20 /* {{$_POST.remarks}} */, updated_on = :P21 /* {{NOW}} */\nWHERE id = :P22 /* {{$_POST.EditRestaurantId}} */",
+                    "params": [
+                      {
+                        "name": ":P1",
+                        "type": "expression",
+                        "value": "{{$_POST.shop_name_en}}"
+                      },
+                      {
+                        "name": ":P2",
+                        "type": "expression",
+                        "value": "{{$_POST.shop_name_bn}}"
+                      },
+                      {
+                        "name": ":P3",
+                        "type": "expression",
+                        "value": "{{$_POST.shop_name_hin}}"
+                      },
+                      {
+                        "name": ":P4",
+                        "type": "expression",
+                        "value": "{{$_POST.logo?+'/assets/img/restaurant/'+uploadLogo.name:''}}"
+                      },
+                      {
+                        "name": ":P5",
+                        "type": "expression",
+                        "value": "{{$_POST.shop_mobile_no}}"
+                      },
+                      {
+                        "name": ":P6",
+                        "type": "expression",
+                        "value": "{{$_POST.is_watsapp}}"
+                      },
+                      {
+                        "name": ":P7",
+                        "type": "expression",
+                        "value": "{{$_POST.whatsapp_no}}"
+                      },
+                      {
+                        "name": ":P8",
+                        "type": "expression",
+                        "value": "{{$_POST.email_id}}"
+                      },
+                      {
+                        "name": ":P9",
+                        "type": "expression",
+                        "value": "{{$_POST.owner_name}}"
+                      },
+                      {
+                        "name": ":P10",
+                        "type": "expression",
+                        "value": "{{$_POST.gst_in}}"
+                      },
+                      {
+                        "name": ":P11",
+                        "type": "expression",
+                        "value": "{{$_POST.is_rmc}}"
+                      },
+                      {
+                        "name": ":P12",
+                        "type": "expression",
+                        "value": "{{$_POST.rmc_no}}"
+                      },
+                      {
+                        "name": ":P13",
+                        "type": "expression",
+                        "value": "{{$_POST.is_fsc}}"
+                      },
+                      {
+                        "name": ":P14",
+                        "type": "expression",
+                        "value": "{{$_POST.is_sliding_img}}"
+                      },
+                      {
+                        "name": ":P15",
+                        "type": "expression",
+                        "value": "{{$_POST.pan_no}}"
+                      },
+                      {
+                        "name": ":P16",
+                        "type": "expression",
+                        "value": "{{$_POST.address}}"
+                      },
+                      {
+                        "name": ":P17",
+                        "type": "expression",
+                        "value": "{{$_POST.pin}}"
+                      },
+                      {
+                        "name": ":P18",
+                        "type": "expression",
+                        "value": "{{$_POST.kyc_status}}"
+                      },
+                      {
+                        "name": ":P19",
+                        "type": "expression",
+                        "value": "{{$_POST.status}}"
+                      },
+                      {
+                        "name": ":P20",
+                        "type": "expression",
+                        "value": "{{$_POST.remarks}}"
+                      },
+                      {
+                        "name": ":P21",
+                        "type": "expression",
+                        "value": "{{NOW}}"
+                      },
+                      {
+                        "operator": "equal",
+                        "type": "expression",
+                        "name": ":P22",
+                        "value": "{{$_POST.EditRestaurantId}}"
+                      }
+                    ]
+                  }
+                },
+                "meta": [
+                  {
+                    "name": "affected",
+                    "type": "number"
+                  }
+                ]
+              },
+              {
+                "name": "",
+                "module": "core",
+                "action": "condition",
+                "options": {
+                  "if": "{{$_POST.CoverImage}}",
+                  "then": {
+                    "steps": [
+                      {
+                        "name": "uploadCoverImage",
+                        "module": "upload",
+                        "action": "upload",
+                        "options": {
+                          "fields": "{{$_POST.CoverImage}}",
+                          "path": "/public/assets/img/restaurant",
+                          "replaceSpace": true,
+                          "replaceDiacritics": true,
+                          "asciiOnly": true,
+                          "overwrite": true,
+                          "template": "{guid}{ext}"
+                        },
+                        "meta": [
+                          {
+                            "name": "name",
+                            "type": "text"
+                          },
+                          {
+                            "name": "path",
+                            "type": "text"
+                          },
+                          {
+                            "name": "url",
+                            "type": "text"
+                          },
+                          {
+                            "name": "type",
+                            "type": "text"
+                          },
+                          {
+                            "name": "size",
+                            "type": "text"
+                          },
+                          {
+                            "name": "error",
+                            "type": "number"
+                          }
+                        ],
+                        "outputType": "file"
+                      },
+                      {
+                        "name": "fileExistsCoverImage",
+                        "module": "fs",
+                        "action": "exists",
+                        "options": {
+                          "path": "{{'/public'+GetOldImage.cover_image}}",
+                          "then": {
+                            "steps": {
+                              "name": "fileRemoveCoverImage",
+                              "module": "fs",
+                              "action": "remove",
+                              "options": {
+                                "path": "{{'/public'+GetOldImage.cover_image}}"
+                              },
+                              "outputType": "boolean"
+                            }
+                          }
+                        },
+                        "outputType": "boolean"
+                      }
+                    ]
+                  }
+                },
+                "outputType": "boolean"
+              },
+              {
+                "name": "",
+                "module": "core",
+                "action": "condition",
+                "options": {
+                  "if": "{{$_POST.SlidingImage1}}",
+                  "then": {
+                    "steps": [
+                      {
+                        "name": "uploadSlidingImage1",
+                        "module": "upload",
+                        "action": "upload",
+                        "options": {
+                          "fields": "{{$_POST.SlidingImage1}}",
+                          "path": "/public/assets/img/restaurant-sliding-img",
+                          "replaceSpace": true,
+                          "replaceDiacritics": true,
+                          "asciiOnly": true,
+                          "overwrite": true,
+                          "template": "{guid}{ext}"
+                        },
+                        "meta": [
+                          {
+                            "name": "name",
+                            "type": "text"
+                          },
+                          {
+                            "name": "path",
+                            "type": "text"
+                          },
+                          {
+                            "name": "url",
+                            "type": "text"
+                          },
+                          {
+                            "name": "type",
+                            "type": "text"
+                          },
+                          {
+                            "name": "size",
+                            "type": "text"
+                          },
+                          {
+                            "name": "error",
+                            "type": "number"
+                          }
+                        ],
+                        "outputType": "file"
+                      },
+                      {
+                        "name": "fileExistsSlidingImage1",
+                        "module": "fs",
+                        "action": "exists",
+                        "options": {
+                          "path": "{{'/public'+GetOldImage.sliding_image1}}",
+                          "then": {
+                            "steps": {
+                              "name": "fileRemoveSlidingImage1",
+                              "module": "fs",
+                              "action": "remove",
+                              "options": {
+                                "path": "{{'/public'+GetOldImage.sliding_image1}}"
+                              },
+                              "outputType": "boolean"
+                            }
+                          }
+                        },
+                        "outputType": "boolean"
+                      }
+                    ]
+                  }
+                },
+                "outputType": "boolean"
+              },
+              {
+                "name": "",
+                "module": "core",
+                "action": "condition",
+                "options": {
+                  "if": "{{$_POST.SlidingImage2}}",
+                  "then": {
+                    "steps": [
+                      {
+                        "name": "uploadSlidingImage2",
+                        "module": "upload",
+                        "action": "upload",
+                        "options": {
+                          "fields": "{{$_POST.SlidingImage2}}",
+                          "path": "/public/assets/img/restaurant-sliding-img",
+                          "replaceSpace": true,
+                          "replaceDiacritics": true,
+                          "asciiOnly": true,
+                          "overwrite": true,
+                          "template": "{guid}{ext}"
+                        },
+                        "meta": [
+                          {
+                            "name": "name",
+                            "type": "text"
+                          },
+                          {
+                            "name": "path",
+                            "type": "text"
+                          },
+                          {
+                            "name": "url",
+                            "type": "text"
+                          },
+                          {
+                            "name": "type",
+                            "type": "text"
+                          },
+                          {
+                            "name": "size",
+                            "type": "text"
+                          },
+                          {
+                            "name": "error",
+                            "type": "number"
+                          }
+                        ],
+                        "outputType": "file"
+                      },
+                      {
+                        "name": "fileExistsSlidingImage2",
+                        "module": "fs",
+                        "action": "exists",
+                        "options": {
+                          "path": "{{'/public'+GetOldImage.sliding_image2}}",
+                          "then": {
+                            "steps": {
+                              "name": "fileRemoveSlidingImage2",
+                              "module": "fs",
+                              "action": "remove",
+                              "options": {
+                                "path": "{{'/public'+GetOldImage.sliding_image2}}"
+                              },
+                              "outputType": "boolean"
+                            }
+                          }
+                        },
+                        "outputType": "boolean"
+                      }
+                    ]
+                  }
+                },
+                "outputType": "boolean"
+              },
+              {
+                "name": "",
+                "module": "core",
+                "action": "condition",
+                "options": {
+                  "if": "{{$_POST.SlidingImage3}}",
+                  "then": {
+                    "steps": [
+                      {
+                        "name": "uploadSlidingImage3",
+                        "module": "upload",
+                        "action": "upload",
+                        "options": {
+                          "fields": "{{$_POST.SlidingImage3}}",
+                          "path": "/public/assets/img/restaurant-sliding-img",
+                          "replaceSpace": true,
+                          "replaceDiacritics": true,
+                          "asciiOnly": true,
+                          "overwrite": true,
+                          "template": "{guid}{ext}"
+                        },
+                        "meta": [
+                          {
+                            "name": "name",
+                            "type": "text"
+                          },
+                          {
+                            "name": "path",
+                            "type": "text"
+                          },
+                          {
+                            "name": "url",
+                            "type": "text"
+                          },
+                          {
+                            "name": "type",
+                            "type": "text"
+                          },
+                          {
+                            "name": "size",
+                            "type": "text"
+                          },
+                          {
+                            "name": "error",
+                            "type": "number"
+                          }
+                        ],
+                        "outputType": "file"
+                      },
+                      {
+                        "name": "fileExistsSlidingImage3",
+                        "module": "fs",
+                        "action": "exists",
+                        "options": {
+                          "path": "{{'/public'+GetOldImage.sliding_image3}}",
+                          "then": {
+                            "steps": {
+                              "name": "fileRemoveSlidingImage3",
+                              "module": "fs",
+                              "action": "remove",
+                              "options": {
+                                "path": "{{'/public'+GetOldImage.sliding_image3}}"
+                              },
+                              "outputType": "boolean"
+                            }
+                          }
+                        },
+                        "outputType": "boolean"
+                      }
+                    ]
+                  }
+                },
+                "outputType": "boolean"
+              },
+              {
+                "name": "UpSlidingImage",
+                "module": "dbupdater",
+                "action": "update",
+                "options": {
+                  "connection": "FoodApp",
+                  "sql": {
+                    "type": "update",
+                    "values": [
+                      {
+                        "table": "rest_sliding_img",
+                        "column": "sliding_image1",
+                        "type": "text",
+                        "value": "{{$_POST.SlidingImage1?+'/assets/img/restaurant-sliding-img/'+uploadSlidingImage1.name:GetOldImage.sliding_image1}}",
+                        "condition": "{{$_POST.SlidingImage1?+'/assets/img/restaurant-sliding-img/'+uploadSlidingImage1.name:GetOldImage.sliding_image1}}"
+                      },
+                      {
+                        "table": "rest_sliding_img",
+                        "column": "sliding_image2",
+                        "type": "text",
+                        "value": "{{$_POST.SlidingImage2?+'/assets/img/restaurant-sliding-img/'+uploadSlidingImage2.name:GetOldImage.sliding_image2}}",
+                        "condition": "{{$_POST.SlidingImage2?+'/assets/img/restaurant-sliding-img/'+uploadSlidingImage2.name:GetOldImage.sliding_image2}}"
+                      },
+                      {
+                        "table": "rest_sliding_img",
+                        "column": "sliding_image3",
+                        "type": "text",
+                        "value": "{{$_POST.sliding_image3?+'/assets/img/restaurant-sliding-img/'+uploadSlidingImage3.name:GetOldImage.sliding_image3}}",
+                        "condition": "{{$_POST.sliding_image3?+'/assets/img/restaurant-sliding-img/'+uploadSlidingImage3.name:GetOldImage.sliding_image3}}"
+                      },
+                      {
+                        "table": "rest_sliding_img",
+                        "column": "cover_image",
+                        "type": "text",
+                        "value": "{{$_POST.CoverImage?+'/assets/img/restaurant/'+uploadCoverImage.name:GetOldImage.cover_image}}",
+                        "condition": "{{$_POST.CoverImage?+'/assets/img/restaurant/'+uploadCoverImage.name:GetOldImage.cover_image}}"
+                      },
+                      {
+                        "table": "rest_sliding_img",
+                        "column": "updated_on",
+                        "type": "datetime",
+                        "value": "{{NOW}}"
+                      }
+                    ],
+                    "table": "rest_sliding_img",
+                    "wheres": {
+                      "condition": "AND",
+                      "rules": [
+                        {
+                          "id": "rest_id",
+                          "field": "rest_id",
+                          "type": "double",
+                          "operator": "equal",
+                          "value": "{{$_POST.EditRestaurantId}}",
+                          "data": {
+                            "column": "rest_id"
+                          },
+                          "operation": "="
+                        }
+                      ],
+                      "conditional": null,
+                      "valid": true
+                    },
+                    "returning": "id",
+                    "query": "UPDATE rest_sliding_img\nSET sliding_image1 = :P1 /* {{$_POST.SlidingImage1?+'/assets/img/restaurant-sliding-img/'+uploadSlidingImage1.name:GetOldImage.sliding_image1}} */, sliding_image2 = :P2 /* {{$_POST.SlidingImage2?+'/assets/img/restaurant-sliding-img/'+uploadSlidingImage2.name:GetOldImage.sliding_image2}} */, sliding_image3 = :P3 /* {{$_POST.sliding_image3?+'/assets/img/restaurant-sliding-img/'+uploadSlidingImage3.name:GetOldImage.sliding_image3}} */, cover_image = :P4 /* {{$_POST.CoverImage?+'/assets/img/restaurant/'+uploadCoverImage.name:GetOldImage.cover_image}} */, updated_on = :P5 /* {{NOW}} */\nWHERE rest_id = :P6 /* {{$_POST.EditRestaurantId}} */",
+                    "params": [
+                      {
+                        "name": ":P1",
+                        "type": "expression",
+                        "value": "{{$_POST.SlidingImage1?+'/assets/img/restaurant-sliding-img/'+uploadSlidingImage1.name:GetOldImage.sliding_image1}}"
+                      },
+                      {
+                        "name": ":P2",
+                        "type": "expression",
+                        "value": "{{$_POST.SlidingImage2?+'/assets/img/restaurant-sliding-img/'+uploadSlidingImage2.name:GetOldImage.sliding_image2}}"
+                      },
+                      {
+                        "name": ":P3",
+                        "type": "expression",
+                        "value": "{{$_POST.sliding_image3?+'/assets/img/restaurant-sliding-img/'+uploadSlidingImage3.name:GetOldImage.sliding_image3}}"
+                      },
+                      {
+                        "name": ":P4",
+                        "type": "expression",
+                        "value": "{{$_POST.CoverImage?+'/assets/img/restaurant/'+uploadCoverImage.name:GetOldImage.cover_image}}"
+                      },
+                      {
+                        "name": ":P5",
+                        "type": "expression",
+                        "value": "{{NOW}}"
+                      },
+                      {
+                        "operator": "equal",
+                        "type": "expression",
+                        "name": ":P6",
+                        "value": "{{$_POST.EditRestaurantId}}"
+                      }
+                    ]
+                  }
+                },
+                "meta": [
+                  {
+                    "name": "affected",
+                    "type": "number"
+                  }
+                ]
+              },
+              {
+                "name": "",
+                "module": "core",
+                "action": "condition",
+                "options": {
+                  "if": "{{$_POST.upload_pan}}",
+                  "then": {
+                    "steps": [
+                      {
+                        "name": "uploadPAN",
+                        "module": "upload",
+                        "action": "upload",
+                        "options": {
+                          "fields": "{{$_POST.upload_pan}}",
+                          "path": "/public/assets/img/restaurant-kyc",
+                          "replaceSpace": true,
+                          "replaceDiacritics": true,
+                          "asciiOnly": true,
+                          "overwrite": true,
+                          "template": "{guid}{ext}",
+                          "throwErrors": true
+                        },
+                        "meta": [
+                          {
+                            "name": "name",
+                            "type": "text"
+                          },
+                          {
+                            "name": "path",
+                            "type": "text"
+                          },
+                          {
+                            "name": "url",
+                            "type": "text"
+                          },
+                          {
+                            "name": "type",
+                            "type": "text"
+                          },
+                          {
+                            "name": "size",
+                            "type": "text"
+                          },
+                          {
+                            "name": "error",
+                            "type": "number"
+                          }
+                        ],
+                        "outputType": "file"
+                      },
+                      {
+                        "name": "fileExistsPAN",
+                        "module": "fs",
+                        "action": "exists",
+                        "options": {
+                          "path": "{{'/public'+GetOldImage.upload_pan}}",
+                          "then": {
+                            "steps": {
+                              "name": "fileRemovePAN",
+                              "module": "fs",
+                              "action": "remove",
+                              "options": {
+                                "path": "{{'/public'+GetOldImage.upload_pan}}"
+                              },
+                              "outputType": "boolean"
+                            }
+                          }
+                        },
+                        "outputType": "boolean"
+                      }
+                    ]
+                  }
+                },
+                "outputType": "boolean"
+              },
+              {
+                "name": "",
+                "module": "core",
+                "action": "condition",
+                "options": {
+                  "if": "{{$_POST.upload_gstin}}",
+                  "then": {
+                    "steps": [
+                      {
+                        "name": "uploadGstIn",
+                        "module": "upload",
+                        "action": "upload",
+                        "options": {
+                          "fields": "{{$_POST.upload_gstin}}",
+                          "path": "/public/assets/img/restaurant-kyc",
+                          "replaceSpace": true,
+                          "replaceDiacritics": true,
+                          "asciiOnly": true,
+                          "overwrite": true,
+                          "template": "{guid}{ext}",
+                          "throwErrors": true
+                        },
+                        "meta": [
+                          {
+                            "name": "name",
+                            "type": "text"
+                          },
+                          {
+                            "name": "path",
+                            "type": "text"
+                          },
+                          {
+                            "name": "url",
+                            "type": "text"
+                          },
+                          {
+                            "name": "type",
+                            "type": "text"
+                          },
+                          {
+                            "name": "size",
+                            "type": "text"
+                          },
+                          {
+                            "name": "error",
+                            "type": "number"
+                          }
+                        ],
+                        "outputType": "file"
+                      },
+                      {
+                        "name": "fileExistsGSTIN",
+                        "module": "fs",
+                        "action": "exists",
+                        "options": {
+                          "path": "{{'/public'+GetOldImage.upload_gstin}}",
+                          "then": {
+                            "steps": {
+                              "name": "fileRemoveGSTIN",
+                              "module": "fs",
+                              "action": "remove",
+                              "options": {
+                                "path": "{{'/public'+GetOldImage.upload_gstin}}"
+                              },
+                              "outputType": "boolean"
+                            }
+                          }
+                        },
+                        "outputType": "boolean"
+                      }
+                    ]
+                  }
+                },
+                "outputType": "boolean"
+              },
+              {
+                "name": "",
+                "module": "core",
+                "action": "condition",
+                "options": {
+                  "if": "{{$_POST.upload_rmc}}",
+                  "then": {
+                    "steps": [
+                      {
+                        "name": "uploadRMC",
+                        "module": "upload",
+                        "action": "upload",
+                        "options": {
+                          "fields": "{{$_POST.upload_rmc}}",
+                          "path": "/public/assets/img/restaurant-kyc",
+                          "replaceSpace": true,
+                          "replaceDiacritics": true,
+                          "asciiOnly": true,
+                          "overwrite": true,
+                          "template": "{guid}{ext}",
+                          "throwErrors": true
+                        },
+                        "meta": [
+                          {
+                            "name": "name",
+                            "type": "text"
+                          },
+                          {
+                            "name": "path",
+                            "type": "text"
+                          },
+                          {
+                            "name": "url",
+                            "type": "text"
+                          },
+                          {
+                            "name": "type",
+                            "type": "text"
+                          },
+                          {
+                            "name": "size",
+                            "type": "text"
+                          },
+                          {
+                            "name": "error",
+                            "type": "number"
+                          }
+                        ],
+                        "outputType": "file"
+                      },
+                      {
+                        "name": "fileExistsRMC",
+                        "module": "fs",
+                        "action": "exists",
+                        "options": {
+                          "path": "{{'/public'+GetOldImage.upload_rmc}}",
+                          "then": {
+                            "steps": {
+                              "name": "fileRemoveRMC",
+                              "module": "fs",
+                              "action": "remove",
+                              "options": {
+                                "path": "{{'/public'+GetOldImage.upload_rmc}}"
+                              },
+                              "outputType": "boolean"
+                            }
+                          }
+                        },
+                        "outputType": "boolean"
+                      }
+                    ]
+                  }
+                },
+                "outputType": "boolean"
+              },
+              {
+                "name": "",
+                "module": "core",
+                "action": "condition",
+                "options": {
+                  "if": "{{$_POST.upload_fsc}}",
+                  "then": {
+                    "steps": [
+                      {
+                        "name": "uploadFSC",
+                        "module": "upload",
+                        "action": "upload",
+                        "options": {
+                          "fields": "{{$_POST.upload_fsc}}",
+                          "path": "/public/assets/img/restaurant-kyc",
+                          "replaceSpace": true,
+                          "replaceDiacritics": true,
+                          "asciiOnly": true,
+                          "overwrite": true,
+                          "template": "{guid}{ext}",
+                          "throwErrors": true
+                        },
+                        "meta": [
+                          {
+                            "name": "name",
+                            "type": "text"
+                          },
+                          {
+                            "name": "path",
+                            "type": "text"
+                          },
+                          {
+                            "name": "url",
+                            "type": "text"
+                          },
+                          {
+                            "name": "type",
+                            "type": "text"
+                          },
+                          {
+                            "name": "size",
+                            "type": "text"
+                          },
+                          {
+                            "name": "error",
+                            "type": "number"
+                          }
+                        ],
+                        "outputType": "file"
+                      },
+                      {
+                        "name": "fileExistsFSC",
+                        "module": "fs",
+                        "action": "exists",
+                        "options": {
+                          "path": "{{'/public'+GetOldImage.upload_fsc}}",
+                          "then": {
+                            "steps": {
+                              "name": "fileRemoveFSC",
+                              "module": "fs",
+                              "action": "remove",
+                              "options": {
+                                "path": "{{'/public'+GetOldImage.upload_fsc}}"
+                              },
+                              "outputType": "boolean"
+                            }
+                          }
+                        },
+                        "outputType": "boolean"
+                      }
+                    ]
+                  }
+                },
+                "outputType": "boolean"
+              },
+              {
+                "name": "",
+                "module": "core",
+                "action": "condition",
+                "options": {
+                  "if": "{{$_POST.upload_aadhar_front}}",
+                  "then": {
+                    "steps": [
+                      {
+                        "name": "uploadAadharFront",
+                        "module": "upload",
+                        "action": "upload",
+                        "options": {
+                          "fields": "{{$_POST.upload_aadhar_front}}",
+                          "path": "/public/assets/img/restaurant-kyc",
+                          "replaceSpace": true,
+                          "replaceDiacritics": true,
+                          "asciiOnly": true,
+                          "overwrite": true,
+                          "template": "{guid}{ext}",
+                          "throwErrors": true
+                        },
+                        "meta": [
+                          {
+                            "name": "name",
+                            "type": "text"
+                          },
+                          {
+                            "name": "path",
+                            "type": "text"
+                          },
+                          {
+                            "name": "url",
+                            "type": "text"
+                          },
+                          {
+                            "name": "type",
+                            "type": "text"
+                          },
+                          {
+                            "name": "size",
+                            "type": "text"
+                          },
+                          {
+                            "name": "error",
+                            "type": "number"
+                          }
+                        ],
+                        "outputType": "file"
+                      },
+                      {
+                        "name": "fileExistsAadharFront",
+                        "module": "fs",
+                        "action": "exists",
+                        "options": {
+                          "path": "{{'/public'+GetOldImage.upload_aadhar_front}}",
+                          "then": {
+                            "steps": {
+                              "name": "fileRemoveAadharFront",
+                              "module": "fs",
+                              "action": "remove",
+                              "options": {
+                                "path": "{{'/public'+GetOldImage.upload_aadhar_front}}"
+                              },
+                              "outputType": "boolean"
+                            }
+                          }
+                        },
+                        "outputType": "boolean"
+                      }
+                    ]
+                  }
+                },
+                "outputType": "boolean"
+              },
+              {
+                "name": "",
+                "module": "core",
+                "action": "condition",
+                "options": {
+                  "if": "{{$_POST.upload_aadhar_back}}",
+                  "then": {
+                    "steps": [
+                      {
+                        "name": "uploadAadharBack",
+                        "module": "upload",
+                        "action": "upload",
+                        "options": {
+                          "fields": "{{$_POST.upload_aadhar_back}}",
+                          "path": "/public/assets/img/restaurant-kyc",
+                          "replaceSpace": true,
+                          "replaceDiacritics": true,
+                          "asciiOnly": true,
+                          "overwrite": true,
+                          "template": "{guid}{ext}",
+                          "throwErrors": true
+                        },
+                        "meta": [
+                          {
+                            "name": "name",
+                            "type": "text"
+                          },
+                          {
+                            "name": "path",
+                            "type": "text"
+                          },
+                          {
+                            "name": "url",
+                            "type": "text"
+                          },
+                          {
+                            "name": "type",
+                            "type": "text"
+                          },
+                          {
+                            "name": "size",
+                            "type": "text"
+                          },
+                          {
+                            "name": "error",
+                            "type": "number"
+                          }
+                        ],
+                        "outputType": "file"
+                      },
+                      {
+                        "name": "fileExistsAadharBack",
+                        "module": "fs",
+                        "action": "exists",
+                        "options": {
+                          "path": "{{'/public'+GetOldImage.upload_aadhar_back}}",
+                          "then": {
+                            "steps": {
+                              "name": "fileRemoveAadharBack",
+                              "module": "fs",
+                              "action": "remove",
+                              "options": {
+                                "path": "{{'/public'+GetOldImage.upload_aadhar_back}}"
+                              },
+                              "outputType": "boolean"
+                            }
+                          }
+                        },
+                        "outputType": "boolean"
+                      }
+                    ]
+                  }
+                },
+                "outputType": "boolean"
+              },
+              {
+                "name": "",
+                "module": "core",
+                "action": "condition",
+                "options": {
+                  "if": "{{$_POST.other_id_proof}}",
+                  "then": {
+                    "steps": [
+                      {
+                        "name": "uploadOtherId",
+                        "module": "upload",
+                        "action": "upload",
+                        "options": {
+                          "fields": "{{$_POST.other_id_proof}}",
+                          "path": "/public/assets/img/restaurant-kyc",
+                          "replaceSpace": true,
+                          "replaceDiacritics": true,
+                          "asciiOnly": true,
+                          "overwrite": true,
+                          "template": "{guid}{ext}",
+                          "throwErrors": true
+                        },
+                        "meta": [
+                          {
+                            "name": "name",
+                            "type": "text"
+                          },
+                          {
+                            "name": "path",
+                            "type": "text"
+                          },
+                          {
+                            "name": "url",
+                            "type": "text"
+                          },
+                          {
+                            "name": "type",
+                            "type": "text"
+                          },
+                          {
+                            "name": "size",
+                            "type": "text"
+                          },
+                          {
+                            "name": "error",
+                            "type": "number"
+                          }
+                        ],
+                        "outputType": "file"
+                      },
+                      {
+                        "name": "fileExistsOtherId",
+                        "module": "fs",
+                        "action": "exists",
+                        "options": {
+                          "path": "{{'/public'+GetOldImage.other_id_proof}}",
+                          "then": {
+                            "steps": {
+                              "name": "fileRemoveOtherId",
+                              "module": "fs",
+                              "action": "remove",
+                              "options": {
+                                "path": "{{'/public'+GetOldImage.other_id_proof}}"
+                              },
+                              "outputType": "boolean"
+                            }
+                          }
+                        },
+                        "outputType": "boolean"
+                      }
+                    ]
+                  }
+                },
+                "outputType": "boolean"
+              },
+              {
+                "name": "",
+                "module": "core",
+                "action": "condition",
+                "options": {
+                  "if": "{{$_POST.bank_account}}",
+                  "then": {
+                    "steps": [
+                      {
+                        "name": "uploadBankAC",
+                        "module": "upload",
+                        "action": "upload",
+                        "options": {
+                          "fields": "{{$_POST.bank_account}}",
+                          "path": "/public/assets/img/restaurant-kyc",
+                          "replaceSpace": true,
+                          "replaceDiacritics": true,
+                          "asciiOnly": true,
+                          "overwrite": true,
+                          "template": "{guid}{ext}",
+                          "throwErrors": true
+                        },
+                        "meta": [
+                          {
+                            "name": "name",
+                            "type": "text"
+                          },
+                          {
+                            "name": "path",
+                            "type": "text"
+                          },
+                          {
+                            "name": "url",
+                            "type": "text"
+                          },
+                          {
+                            "name": "type",
+                            "type": "text"
+                          },
+                          {
+                            "name": "size",
+                            "type": "text"
+                          },
+                          {
+                            "name": "error",
+                            "type": "number"
+                          }
+                        ],
+                        "outputType": "file"
+                      },
+                      {
+                        "name": "fileExistsBankAC",
+                        "module": "fs",
+                        "action": "exists",
+                        "options": {
+                          "path": "{{'/public'+GetOldImage.bank_account}}",
+                          "then": {
+                            "steps": {
+                              "name": "fileRemoveBankAC",
+                              "module": "fs",
+                              "action": "remove",
+                              "options": {
+                                "path": "{{'/public'+GetOldImage.bank_account}}"
+                              },
+                              "outputType": "boolean"
+                            }
+                          }
+                        },
+                        "outputType": "boolean"
+                      }
+                    ]
+                  }
+                },
+                "outputType": "boolean"
+              },
+              {
+                "name": "",
+                "module": "core",
+                "action": "condition",
+                "options": {
+                  "if": "{{$_POST.owner_image}}",
+                  "then": {
+                    "steps": [
+                      {
+                        "name": "uploadOwnerImage",
+                        "module": "upload",
+                        "action": "upload",
+                        "options": {
+                          "fields": "{{$_POST.owner_image}}",
+                          "path": "/public/assets/img/restaurant-kyc",
+                          "replaceSpace": true,
+                          "replaceDiacritics": true,
+                          "asciiOnly": true,
+                          "overwrite": true,
+                          "template": "{guid}{ext}",
+                          "throwErrors": true
+                        },
+                        "meta": [
+                          {
+                            "name": "name",
+                            "type": "text"
+                          },
+                          {
+                            "name": "path",
+                            "type": "text"
+                          },
+                          {
+                            "name": "url",
+                            "type": "text"
+                          },
+                          {
+                            "name": "type",
+                            "type": "text"
+                          },
+                          {
+                            "name": "size",
+                            "type": "text"
+                          },
+                          {
+                            "name": "error",
+                            "type": "number"
+                          }
+                        ],
+                        "outputType": "file"
+                      },
+                      {
+                        "name": "fileExistsOwnerImage",
+                        "module": "fs",
+                        "action": "exists",
+                        "options": {
+                          "path": "{{'/public'+GetOldImage.owner_image}}",
+                          "then": {
+                            "steps": {
+                              "name": "fileRemoveOwnerImage",
+                              "module": "fs",
+                              "action": "remove",
+                              "options": {
+                                "path": "{{'/public'+GetOldImage.owner_image}}"
+                              },
+                              "outputType": "boolean"
+                            }
+                          }
+                        },
+                        "outputType": "boolean"
+                      }
+                    ]
+                  }
+                },
+                "outputType": "boolean"
+              },
+              {
+                "name": "UpRestKYC",
+                "module": "dbupdater",
+                "action": "update",
+                "options": {
+                  "connection": "FoodApp",
+                  "sql": {
+                    "type": "update",
+                    "values": [
+                      {
+                        "table": "rest_kyc_doc",
+                        "column": "upload_pan",
+                        "type": "text",
+                        "value": "{{$_POST.upload_pan?+'/assets/img/restaurant-kyc/'+uploadPAN.name:GetOldImage.upload_pan}}",
+                        "condition": "{{$_POST.upload_pan?+'/assets/img/restaurant-kyc/'+uploadPAN.name:GetOldImage.upload_pan}}"
+                      },
+                      {
+                        "table": "rest_kyc_doc",
+                        "column": "upload_gstin",
+                        "type": "text",
+                        "value": "{{$_POST.upload_gstin?+'/assets/img/restaurant-kyc/'+uploadGstIn.name:GetOldImage.upload_gstin}}",
+                        "condition": "{{$_POST.upload_gstin?+'/assets/img/restaurant-kyc/'+uploadGstIn.name:GetOldImage.upload_gstin}}"
+                      },
+                      {
+                        "table": "rest_kyc_doc",
+                        "column": "upload_rmc",
+                        "type": "text",
+                        "value": "{{$_POST.upload_rmc?+'/assets/img/restaurant-kyc/'+uploadRMC.name:GetOldImage.upload_rmc}}",
+                        "condition": "{{$_POST.upload_rmc?+'/assets/img/restaurant-kyc/'+uploadRMC.name:GetOldImage.upload_rmc}}"
+                      },
+                      {
+                        "table": "rest_kyc_doc",
+                        "column": "upload_fsc",
+                        "type": "text",
+                        "value": "{{$_POST.upload_fsc?+'/assets/img/restaurant-kyc/'+uploadFSC.name:GetOldImage.upload_fsc}}",
+                        "condition": "{{$_POST.upload_fsc?+'/assets/img/restaurant-kyc/'+uploadFSC.name:GetOldImage.upload_fsc}}"
+                      },
+                      {
+                        "table": "rest_kyc_doc",
+                        "column": "upload_aadhar_front",
+                        "type": "text",
+                        "value": "{{$_POST.upload_aadhar_front?+'/assets/img/restaurant-kyc/'+uploadAadharFront.name:GetOldImage.upload_aadhar_front}}",
+                        "condition": "{{$_POST.upload_aadhar_front?+'/assets/img/restaurant-kyc/'+uploadAadharFront.name:GetOldImage.upload_aadhar_front}}"
+                      },
+                      {
+                        "table": "rest_kyc_doc",
+                        "column": "upload_aadhar_back",
+                        "type": "text",
+                        "value": "{{$_POST.upload_aadhar_back?+'/assets/img/restaurant-kyc/'+uploadAadharBack.name:GetOldImage.upload_aadhar_back}}",
+                        "condition": "{{$_POST.upload_aadhar_back?+'/assets/img/restaurant-kyc/'+uploadAadharBack.name:GetOldImage.upload_aadhar_back}}"
+                      },
+                      {
+                        "table": "rest_kyc_doc",
+                        "column": "other_id_proof",
+                        "type": "text",
+                        "value": "{{$_POST.other_id_proof?+'/assets/img/restaurant-kyc/'+uploadOtherId.name:GetOldImage.other_id_proof}}",
+                        "condition": "{{$_POST.other_id_proof?+'/assets/img/restaurant-kyc/'+uploadOtherId.name:GetOldImage.other_id_proof}}"
+                      },
+                      {
+                        "table": "rest_kyc_doc",
+                        "column": "bank_account",
+                        "type": "text",
+                        "value": "{{$_POST.bank_account?+'/assets/img/restaurant-kyc/'+uploadBankAC.name:GetOldImage.bank_account}}",
+                        "condition": "{{$_POST.bank_account?+'/assets/img/restaurant-kyc/'+uploadBankAC.name:GetOldImage.bank_account}}"
+                      },
+                      {
+                        "table": "rest_kyc_doc",
+                        "column": "owner_image",
+                        "type": "text",
+                        "value": "{{$_POST.owner_image?+'/assets/img/restaurant-kyc/'+uploadOwnerImage.name:GetOldImage.owner_image}}",
+                        "condition": "{{$_POST.owner_image?+'/assets/img/restaurant-kyc/'+uploadOwnerImage.name:GetOldImage.owner_image}}"
+                      },
+                      {
+                        "table": "rest_kyc_doc",
+                        "column": "updated_on",
+                        "type": "datetime",
+                        "value": "{{NOW}}"
+                      }
+                    ],
+                    "table": "rest_kyc_doc",
+                    "wheres": {
+                      "condition": "AND",
+                      "rules": [
+                        {
+                          "id": "rest_id",
+                          "field": "rest_id",
+                          "type": "double",
+                          "operator": "equal",
+                          "value": "{{$_POST.EditRestaurantId}}",
+                          "data": {
+                            "column": "rest_id"
+                          },
+                          "operation": "="
+                        }
+                      ],
+                      "conditional": null,
+                      "valid": true
+                    },
+                    "returning": "id",
+                    "query": "UPDATE rest_kyc_doc\nSET upload_pan = :P1 /* {{$_POST.upload_pan?+'/assets/img/restaurant-kyc/'+uploadPAN.name:GetOldImage.upload_pan}} */, upload_gstin = :P2 /* {{$_POST.upload_gstin?+'/assets/img/restaurant-kyc/'+uploadGstIn.name:GetOldImage.upload_gstin}} */, upload_rmc = :P3 /* {{$_POST.upload_rmc?+'/assets/img/restaurant-kyc/'+uploadRMC.name:GetOldImage.upload_rmc}} */, upload_fsc = :P4 /* {{$_POST.upload_fsc?+'/assets/img/restaurant-kyc/'+uploadFSC.name:GetOldImage.upload_fsc}} */, upload_aadhar_front = :P5 /* {{$_POST.upload_aadhar_front?+'/assets/img/restaurant-kyc/'+uploadAadharFront.name:GetOldImage.upload_aadhar_front}} */, upload_aadhar_back = :P6 /* {{$_POST.upload_aadhar_back?+'/assets/img/restaurant-kyc/'+uploadAadharBack.name:GetOldImage.upload_aadhar_back}} */, other_id_proof = :P7 /* {{$_POST.other_id_proof?+'/assets/img/restaurant-kyc/'+uploadOtherId.name:GetOldImage.other_id_proof}} */, bank_account = :P8 /* {{$_POST.bank_account?+'/assets/img/restaurant-kyc/'+uploadBankAC.name:GetOldImage.bank_account}} */, owner_image = :P9 /* {{$_POST.owner_image?+'/assets/img/restaurant-kyc/'+uploadOwnerImage.name:GetOldImage.owner_image}} */, updated_on = :P10 /* {{NOW}} */\nWHERE rest_id = :P11 /* {{$_POST.EditRestaurantId}} */",
+                    "params": [
+                      {
+                        "name": ":P1",
+                        "type": "expression",
+                        "value": "{{$_POST.upload_pan?+'/assets/img/restaurant-kyc/'+uploadPAN.name:GetOldImage.upload_pan}}"
+                      },
+                      {
+                        "name": ":P2",
+                        "type": "expression",
+                        "value": "{{$_POST.upload_gstin?+'/assets/img/restaurant-kyc/'+uploadGstIn.name:GetOldImage.upload_gstin}}"
+                      },
+                      {
+                        "name": ":P3",
+                        "type": "expression",
+                        "value": "{{$_POST.upload_rmc?+'/assets/img/restaurant-kyc/'+uploadRMC.name:GetOldImage.upload_rmc}}"
+                      },
+                      {
+                        "name": ":P4",
+                        "type": "expression",
+                        "value": "{{$_POST.upload_fsc?+'/assets/img/restaurant-kyc/'+uploadFSC.name:GetOldImage.upload_fsc}}"
+                      },
+                      {
+                        "name": ":P5",
+                        "type": "expression",
+                        "value": "{{$_POST.upload_aadhar_front?+'/assets/img/restaurant-kyc/'+uploadAadharFront.name:GetOldImage.upload_aadhar_front}}"
+                      },
+                      {
+                        "name": ":P6",
+                        "type": "expression",
+                        "value": "{{$_POST.upload_aadhar_back?+'/assets/img/restaurant-kyc/'+uploadAadharBack.name:GetOldImage.upload_aadhar_back}}"
+                      },
+                      {
+                        "name": ":P7",
+                        "type": "expression",
+                        "value": "{{$_POST.other_id_proof?+'/assets/img/restaurant-kyc/'+uploadOtherId.name:GetOldImage.other_id_proof}}"
+                      },
+                      {
+                        "name": ":P8",
+                        "type": "expression",
+                        "value": "{{$_POST.bank_account?+'/assets/img/restaurant-kyc/'+uploadBankAC.name:GetOldImage.bank_account}}"
+                      },
+                      {
+                        "name": ":P9",
+                        "type": "expression",
+                        "value": "{{$_POST.owner_image?+'/assets/img/restaurant-kyc/'+uploadOwnerImage.name:GetOldImage.owner_image}}"
+                      },
+                      {
+                        "name": ":P10",
+                        "type": "expression",
+                        "value": "{{NOW}}"
+                      },
+                      {
+                        "operator": "equal",
+                        "type": "expression",
+                        "name": ":P11",
+                        "value": "{{$_POST.EditRestaurantId}}"
+                      }
+                    ]
+                  }
+                },
+                "meta": [
+                  {
+                    "name": "affected",
+                    "type": "number"
+                  }
+                ]
+              },
+              {
+                "name": "Resp",
+                "module": "core",
+                "action": "response",
+                "options": {
+                  "status": 200,
+                  "data": "Restaurant/ Shop Record Updated Successfully."
+                },
+                "output": true
+              }
+            ]
+          },
+          "else": {
+            "steps": [
+              {
+                "name": "GetRest",
+                "module": "dbconnector",
+                "action": "single",
+                "options": {
+                  "connection": "FoodApp",
+                  "sql": {
+                    "type": "SELECT",
+                    "columns": [
+                      {
+                        "table": "m_restaurant",
+                        "column": "id",
+                        "alias": "CountId",
+                        "aggregate": "COUNT"
+                      }
+                    ],
+                    "table": {
+                      "name": "m_restaurant"
+                    },
+                    "primary": "id",
+                    "joins": [],
+                    "groupBy": [],
+                    "wheres": {
+                      "condition": "AND",
+                      "rules": [
+                        {
+                          "id": "m_restaurant.market_id",
+                          "field": "m_restaurant.market_id",
+                          "type": "double",
+                          "operator": "equal",
+                          "value": "{{$_POST.MarketId}}",
+                          "data": {
+                            "table": "m_restaurant",
+                            "column": "market_id",
+                            "type": "number",
+                            "columnObj": {
+                              "type": "reference",
+                              "primary": false,
+                              "unique": false,
+                              "nullable": true,
+                              "references": "id",
+                              "inTable": "m_market",
+                              "referenceType": "integer",
+                              "onUpdate": "NO ACTION",
+                              "onDelete": "NO ACTION",
+                              "name": "market_id"
+                            }
+                          },
+                          "operation": "="
+                        }
+                      ],
+                      "conditional": null,
+                      "valid": true
+                    },
+                    "query": "SELECT COUNT(id) AS CountId\nFROM m_restaurant\nWHERE market_id = :P1 /* {{$_POST.MarketId}} */",
+                    "params": [
+                      {
+                        "operator": "equal",
+                        "type": "expression",
+                        "name": ":P1",
+                        "value": "{{$_POST.MarketId}}"
+                      }
+                    ]
+                  }
+                },
+                "output": false,
+                "meta": [
+                  {
+                    "type": "number",
+                    "name": "CountId"
+                  }
+                ],
+                "outputType": "object"
+              },
+              {
+                "name": "GetRestCode",
+                "module": "dbconnector",
+                "action": "single",
+                "options": {
+                  "connection": "FoodApp",
+                  "sql": {
+                    "type": "SELECT",
+                    "columns": [
+                      {
+                        "table": "m_market",
+                        "column": "market_code"
+                      }
+                    ],
+                    "table": {
+                      "name": "m_market"
+                    },
+                    "primary": "id",
+                    "joins": [],
+                    "query": "SELECT market_code\nFROM m_market\nWHERE id = :P1 /* {{$_POST.MarketId}} */",
+                    "params": [
+                      {
+                        "operator": "equal",
+                        "type": "expression",
+                        "name": ":P1",
+                        "value": "{{$_POST.MarketId}}"
+                      }
+                    ],
+                    "wheres": {
+                      "condition": "AND",
+                      "rules": [
+                        {
+                          "id": "m_market.id",
+                          "field": "m_market.id",
+                          "type": "double",
+                          "operator": "equal",
+                          "value": "{{$_POST.MarketId}}",
+                          "data": {
+                            "table": "m_market",
+                            "column": "id",
+                            "type": "number",
+                            "columnObj": {
+                              "type": "increments",
+                              "default": "",
+                              "primary": true,
+                              "unique": true,
+                              "nullable": false,
+                              "name": "id"
+                            }
+                          },
+                          "operation": "="
+                        }
+                      ],
+                      "conditional": null,
+                      "valid": true
+                    }
+                  }
+                },
+                "output": false,
+                "meta": [
+                  {
+                    "type": "text",
+                    "name": "market_code"
+                  }
+                ],
+                "outputType": "object"
+              },
+              {
+                "name": "NewRestId",
+                "module": "core",
+                "action": "setvalue",
+                "options": {
+                  "value": "{{GetRestCode.market_code+(GetRest.CountId.toNumber()+1)}}"
+                },
+                "meta": [
+                  {
+                    "name": "market_code",
+                    "type": "text"
+                  }
+                ],
+                "outputType": "text",
+                "output": false
+              },
+              {
+                "name": "",
+                "module": "core",
+                "action": "condition",
+                "options": {
+                  "if": "{{$_POST.logo}}",
+                  "then": {
+                    "steps": {
+                      "name": "uploadLogo",
+                      "module": "upload",
+                      "action": "upload",
+                      "options": {
+                        "fields": "{{$_POST.logo}}",
+                        "path": "/public/assets/img/restaurant",
+                        "replaceSpace": true,
+                        "replaceDiacritics": true,
+                        "asciiOnly": true,
+                        "throwErrors": true,
+                        "overwrite": true,
+                        "template": "{guid}{ext}"
+                      },
+                      "meta": [
+                        {
+                          "name": "name",
+                          "type": "text"
+                        },
+                        {
+                          "name": "path",
+                          "type": "text"
+                        },
+                        {
+                          "name": "url",
+                          "type": "text"
+                        },
+                        {
+                          "name": "type",
+                          "type": "text"
+                        },
+                        {
+                          "name": "size",
+                          "type": "text"
+                        },
+                        {
+                          "name": "error",
+                          "type": "number"
+                        }
+                      ],
+                      "outputType": "file"
+                    }
+                  }
+                },
+                "outputType": "boolean"
+              },
+              {
+                "name": "AddRestaurant",
+                "module": "dbupdater",
+                "action": "insert",
+                "options": {
+                  "connection": "FoodApp",
+                  "sql": {
+                    "type": "insert",
+                    "values": [
+                      {
+                        "table": "m_restaurant",
+                        "column": "market_id",
+                        "type": "number",
+                        "value": "{{$_POST.MarketId}}"
+                      },
+                      {
+                        "table": "m_restaurant",
+                        "column": "cat_type_id",
+                        "type": "number",
+                        "value": "{{$_POST.CategoryTypeId}}"
+                      },
+                      {
+                        "table": "m_restaurant",
+                        "column": "gen_shop_id",
+                        "type": "text",
+                        "value": "{{NewRestId}}"
+                      },
+                      {
+                        "table": "m_restaurant",
+                        "column": "shop_name_en",
+                        "type": "text",
+                        "value": "{{$_POST.shop_name_en}}"
+                      },
+                      {
+                        "table": "m_restaurant",
+                        "column": "shop_name_bn",
+                        "type": "text",
+                        "value": "{{$_POST.shop_name_bn}}"
+                      },
+                      {
+                        "table": "m_restaurant",
+                        "column": "shop_name_hin",
+                        "type": "text",
+                        "value": "{{$_POST.shop_name_hin}}"
+                      },
+                      {
+                        "table": "m_restaurant",
+                        "column": "shop_mobile_no",
+                        "type": "text",
+                        "value": "{{$_POST.shop_mobile_no}}"
+                      },
+                      {
+                        "table": "m_restaurant",
+                        "column": "is_watsapp",
+                        "type": "text",
+                        "value": "{{$_POST.is_watsapp}}"
+                      },
+                      {
+                        "table": "m_restaurant",
+                        "column": "watsapp_no",
+                        "type": "text",
+                        "value": "{{$_POST.whatsapp_no}}"
+                      },
+                      {
+                        "table": "m_restaurant",
+                        "column": "email_id",
+                        "type": "text",
+                        "value": "{{$_POST.email_id}}"
+                      },
+                      {
+                        "table": "m_restaurant",
+                        "column": "owner_name",
+                        "type": "text",
+                        "value": "{{$_POST.owner_name}}"
+                      },
+                      {
+                        "table": "m_restaurant",
+                        "column": "gst_in",
+                        "type": "text",
+                        "value": "{{$_POST.gst_in}}"
+                      },
+                      {
+                        "table": "m_restaurant",
+                        "column": "is_rmc",
+                        "type": "text",
+                        "value": "{{$_POST.is_rmc}}"
+                      },
+                      {
+                        "table": "m_restaurant",
+                        "column": "rmc_no",
+                        "type": "text",
+                        "value": "{{$_POST.rmc_no}}"
+                      },
+                      {
+                        "table": "m_restaurant",
+                        "column": "is_fsc",
+                        "type": "text",
+                        "value": "{{$_POST.is_fsc}}"
+                      },
+                      {
+                        "table": "m_restaurant",
+                        "column": "balance_amount",
+                        "type": "text",
+                        "value": "{{0}}"
+                      },
+                      {
+                        "table": "m_restaurant",
+                        "column": "is_sliding_img",
+                        "type": "text",
+                        "value": "{{$_POST.is_sliding_img}}"
+                      },
+                      {
+                        "table": "m_restaurant",
+                        "column": "pan_no",
+                        "type": "text",
+                        "value": "{{$_POST.pan_no}}"
+                      },
+                      {
+                        "table": "m_restaurant",
+                        "column": "address",
+                        "type": "text",
+                        "value": "{{$_POST.address}}"
+                      },
+                      {
+                        "table": "m_restaurant",
+                        "column": "pin",
+                        "type": "text",
+                        "value": "{{$_POST.pin}}"
+                      },
+                      {
+                        "table": "m_restaurant",
+                        "column": "status",
+                        "type": "number",
+                        "value": "{{1}}"
+                      },
+                      {
+                        "table": "m_restaurant",
+                        "column": "created_by",
+                        "type": "number",
+                        "value": "{{identity}}"
+                      },
+                      {
+                        "table": "m_restaurant",
+                        "column": "created_on",
+                        "type": "datetime",
+                        "value": "{{NOW}}"
+                      },
+                      {
+                        "table": "m_restaurant",
+                        "column": "kyc_status",
+                        "type": "text",
+                        "value": "{{0}}"
+                      },
+                      {
+                        "table": "m_restaurant",
+                        "column": "shop_logo",
+                        "type": "text",
+                        "value": "{{$_POST.logo?+'/assets/img/restaurant/'+uploadLogo.name:''}}",
+                        "condition": "{{$_POST.logo?+'/assets/img/restaurant/'+uploadLogo.name:''}}"
+                      }
+                    ],
+                    "table": "m_restaurant",
+                    "returning": "id",
+                    "query": "INSERT INTO m_restaurant\n(market_id, cat_type_id, gen_shop_id, shop_name_en, shop_name_bn, shop_name_hin, shop_mobile_no, is_watsapp, watsapp_no, email_id, owner_name, gst_in, is_rmc, rmc_no, is_fsc, balance_amount, is_sliding_img, pan_no, address, pin, status, created_by, created_on, kyc_status, shop_logo) VALUES (:P1 /* {{$_POST.MarketId}} */, :P2 /* {{$_POST.CategoryTypeId}} */, :P3 /* {{NewRestId}} */, :P4 /* {{$_POST.shop_name_en}} */, :P5 /* {{$_POST.shop_name_bn}} */, :P6 /* {{$_POST.shop_name_hin}} */, :P7 /* {{$_POST.shop_mobile_no}} */, :P8 /* {{$_POST.is_watsapp}} */, :P9 /* {{$_POST.whatsapp_no}} */, :P10 /* {{$_POST.email_id}} */, :P11 /* {{$_POST.owner_name}} */, :P12 /* {{$_POST.gst_in}} */, :P13 /* {{$_POST.is_rmc}} */, :P14 /* {{$_POST.rmc_no}} */, :P15 /* {{$_POST.is_fsc}} */, :P16 /* {{0}} */, :P17 /* {{$_POST.is_sliding_img}} */, :P18 /* {{$_POST.pan_no}} */, :P19 /* {{$_POST.address}} */, :P20 /* {{$_POST.pin}} */, :P21 /* {{1}} */, :P22 /* {{identity}} */, :P23 /* {{NOW}} */, :P24 /* {{0}} */, :P25 /* {{$_POST.logo?+'/assets/img/restaurant/'+uploadLogo.name:''}} */)",
+                    "params": [
+                      {
+                        "name": ":P1",
+                        "type": "expression",
+                        "value": "{{$_POST.MarketId}}"
+                      },
+                      {
+                        "name": ":P2",
+                        "type": "expression",
+                        "value": "{{$_POST.CategoryTypeId}}"
+                      },
+                      {
+                        "name": ":P3",
+                        "type": "expression",
+                        "value": "{{NewRestId}}"
+                      },
+                      {
+                        "name": ":P4",
+                        "type": "expression",
+                        "value": "{{$_POST.shop_name_en}}"
+                      },
+                      {
+                        "name": ":P5",
+                        "type": "expression",
+                        "value": "{{$_POST.shop_name_bn}}"
+                      },
+                      {
+                        "name": ":P6",
+                        "type": "expression",
+                        "value": "{{$_POST.shop_name_hin}}"
+                      },
+                      {
+                        "name": ":P7",
+                        "type": "expression",
+                        "value": "{{$_POST.shop_mobile_no}}"
+                      },
+                      {
+                        "name": ":P8",
+                        "type": "expression",
+                        "value": "{{$_POST.is_watsapp}}"
+                      },
+                      {
+                        "name": ":P9",
+                        "type": "expression",
+                        "value": "{{$_POST.whatsapp_no}}"
+                      },
+                      {
+                        "name": ":P10",
+                        "type": "expression",
+                        "value": "{{$_POST.email_id}}"
+                      },
+                      {
+                        "name": ":P11",
+                        "type": "expression",
+                        "value": "{{$_POST.owner_name}}"
+                      },
+                      {
+                        "name": ":P12",
+                        "type": "expression",
+                        "value": "{{$_POST.gst_in}}"
+                      },
+                      {
+                        "name": ":P13",
+                        "type": "expression",
+                        "value": "{{$_POST.is_rmc}}"
+                      },
+                      {
+                        "name": ":P14",
+                        "type": "expression",
+                        "value": "{{$_POST.rmc_no}}"
+                      },
+                      {
+                        "name": ":P15",
+                        "type": "expression",
+                        "value": "{{$_POST.is_fsc}}"
+                      },
+                      {
+                        "name": ":P16",
+                        "type": "expression",
+                        "value": "{{0}}"
+                      },
+                      {
+                        "name": ":P17",
+                        "type": "expression",
+                        "value": "{{$_POST.is_sliding_img}}"
+                      },
+                      {
+                        "name": ":P18",
+                        "type": "expression",
+                        "value": "{{$_POST.pan_no}}"
+                      },
+                      {
+                        "name": ":P19",
+                        "type": "expression",
+                        "value": "{{$_POST.address}}"
+                      },
+                      {
+                        "name": ":P20",
+                        "type": "expression",
+                        "value": "{{$_POST.pin}}"
+                      },
+                      {
+                        "name": ":P21",
+                        "type": "expression",
+                        "value": "{{1}}"
+                      },
+                      {
+                        "name": ":P22",
+                        "type": "expression",
+                        "value": "{{identity}}"
+                      },
+                      {
+                        "name": ":P23",
+                        "type": "expression",
+                        "value": "{{NOW}}"
+                      },
+                      {
+                        "name": ":P24",
+                        "type": "expression",
+                        "value": "{{0}}"
+                      },
+                      {
+                        "name": ":P25",
+                        "type": "expression",
+                        "value": "{{$_POST.logo?+'/assets/img/restaurant/'+uploadLogo.name:''}}"
+                      }
+                    ]
+                  }
+                },
+                "meta": [
+                  {
+                    "name": "identity",
+                    "type": "text"
+                  },
+                  {
+                    "name": "affected",
+                    "type": "number"
+                  }
+                ],
+                "output": false
+              },
+              {
+                "name": "",
+                "module": "core",
+                "action": "condition",
+                "options": {
+                  "if": "{{$_POST.CoverImage}}",
+                  "then": {
+                    "steps": {
+                      "name": "uploadCoverImage",
+                      "module": "upload",
+                      "action": "upload",
+                      "options": {
+                        "fields": "{{$_POST.CoverImage}}",
+                        "path": "/public/assets/img/restaurant",
+                        "replaceSpace": true,
+                        "replaceDiacritics": true,
+                        "asciiOnly": true,
+                        "overwrite": true,
+                        "template": "{guid}{ext}"
+                      },
+                      "meta": [
+                        {
+                          "name": "name",
+                          "type": "text"
+                        },
+                        {
+                          "name": "path",
+                          "type": "text"
+                        },
+                        {
+                          "name": "url",
+                          "type": "text"
+                        },
+                        {
+                          "name": "type",
+                          "type": "text"
+                        },
+                        {
+                          "name": "size",
+                          "type": "text"
+                        },
+                        {
+                          "name": "error",
+                          "type": "number"
+                        }
+                      ],
+                      "outputType": "file"
+                    }
+                  }
+                },
+                "outputType": "boolean"
+              },
+              {
+                "name": "",
+                "module": "core",
+                "action": "condition",
+                "options": {
+                  "if": "{{$_POST.SlidingImage1}}",
+                  "then": {
+                    "steps": {
+                      "name": "uploadSlidingImage1",
+                      "module": "upload",
+                      "action": "upload",
+                      "options": {
+                        "fields": "{{$_POST.SlidingImage1}}",
+                        "path": "/public/assets/img/restaurant-sliding-img",
+                        "replaceSpace": true,
+                        "replaceDiacritics": true,
+                        "asciiOnly": true,
+                        "overwrite": true,
+                        "template": "{guid}{ext}"
+                      },
+                      "meta": [
+                        {
+                          "name": "name",
+                          "type": "text"
+                        },
+                        {
+                          "name": "path",
+                          "type": "text"
+                        },
+                        {
+                          "name": "url",
+                          "type": "text"
+                        },
+                        {
+                          "name": "type",
+                          "type": "text"
+                        },
+                        {
+                          "name": "size",
+                          "type": "text"
+                        },
+                        {
+                          "name": "error",
+                          "type": "number"
+                        }
+                      ],
+                      "outputType": "file"
+                    }
+                  }
+                },
+                "outputType": "boolean"
+              },
+              {
+                "name": "",
+                "module": "core",
+                "action": "condition",
+                "options": {
+                  "if": "{{$_POST.SlidingImage2}}",
+                  "then": {
+                    "steps": {
+                      "name": "uploadSlidingImage2_copy",
+                      "module": "upload",
+                      "action": "upload",
+                      "options": {
+                        "fields": "{{$_POST.SlidingImage2}}",
+                        "path": "/public/assets/img/restaurant-sliding-img",
+                        "replaceSpace": true,
+                        "replaceDiacritics": true,
+                        "asciiOnly": true,
+                        "overwrite": true,
+                        "template": "{guid}{ext}"
+                      },
+                      "meta": [
+                        {
+                          "name": "name",
+                          "type": "text"
+                        },
+                        {
+                          "name": "path",
+                          "type": "text"
+                        },
+                        {
+                          "name": "url",
+                          "type": "text"
+                        },
+                        {
+                          "name": "type",
+                          "type": "text"
+                        },
+                        {
+                          "name": "size",
+                          "type": "text"
+                        },
+                        {
+                          "name": "error",
+                          "type": "number"
+                        }
+                      ],
+                      "outputType": "file"
+                    }
+                  }
+                },
+                "outputType": "boolean"
+              },
+              {
+                "name": "",
+                "module": "core",
+                "action": "condition",
+                "options": {
+                  "if": "{{$_POST.SlidingImage3}}",
+                  "then": {
+                    "steps": {
+                      "name": "uploadSlidingImage3",
+                      "module": "upload",
+                      "action": "upload",
+                      "options": {
+                        "fields": "{{$_POST.SlidingImage3}}",
+                        "path": "/public/assets/img/restaurant-sliding-img",
+                        "replaceSpace": true,
+                        "replaceDiacritics": true,
+                        "asciiOnly": true,
+                        "overwrite": true,
+                        "template": "{guid}{ext}"
+                      },
+                      "meta": [
+                        {
+                          "name": "name",
+                          "type": "text"
+                        },
+                        {
+                          "name": "path",
+                          "type": "text"
+                        },
+                        {
+                          "name": "url",
+                          "type": "text"
+                        },
+                        {
+                          "name": "type",
+                          "type": "text"
+                        },
+                        {
+                          "name": "size",
+                          "type": "text"
+                        },
+                        {
+                          "name": "error",
+                          "type": "number"
+                        }
+                      ],
+                      "outputType": "file"
+                    }
+                  }
+                },
+                "outputType": "boolean"
+              },
+              {
+                "name": "AddSlidingImage",
+                "module": "dbupdater",
+                "action": "insert",
+                "options": {
+                  "connection": "FoodApp",
+                  "sql": {
+                    "type": "insert",
+                    "values": [
+                      {
+                        "table": "rest_sliding_img",
+                        "column": "rest_id",
+                        "type": "number",
+                        "value": "{{AddRestaurant.identity}}"
+                      },
+                      {
+                        "table": "rest_sliding_img",
+                        "column": "sliding_image1",
+                        "type": "text",
+                        "value": "{{$_POST.sliding_image1?+'/assets/img/restaurant-sliding-img/'+uploadSlidingImage1.name:''}}",
+                        "condition": "{{$_POST.sliding_image1?+'/assets/img/restaurant-sliding-img/'+uploadSlidingImage1.name:''}}"
+                      },
+                      {
+                        "table": "rest_sliding_img",
+                        "column": "sliding_image2",
+                        "type": "text",
+                        "value": "{{$_POST.SlidingImage2?+'/assets/img/restaurant-sliding-img/'+uploadSlidingImage2.name:''}}",
+                        "condition": "{{$_POST.SlidingImage2?+'/assets/img/restaurant-sliding-img/'+uploadSlidingImage2.name:''}}"
+                      },
+                      {
+                        "table": "rest_sliding_img",
+                        "column": "sliding_image3",
+                        "type": "text",
+                        "value": "{{$_POST.sliding_image3?+'/assets/img/restaurant-sliding-img/'+uploadSlidingImage3.name:''}}",
+                        "condition": "{{$_POST.sliding_image3?+'/assets/img/restaurant-sliding-img/'+uploadSlidingImage3.name:''}}"
+                      },
+                      {
+                        "table": "rest_sliding_img",
+                        "column": "cover_image",
+                        "type": "text",
+                        "value": "{{$_POST.CoverImage?+'/assets/img/restaurant/'+uploadCoverImage.name:''}}",
+                        "condition": "{{$_POST.CoverImage?+'/assets/img/restaurant/'+uploadCoverImage.name:''}}"
+                      },
+                      {
+                        "table": "rest_sliding_img",
+                        "column": "status",
+                        "type": "number",
+                        "value": "{{1}}"
+                      },
+                      {
+                        "table": "rest_sliding_img",
+                        "column": "created_by",
+                        "type": "number",
+                        "value": "{{identity}}"
+                      },
+                      {
+                        "table": "rest_sliding_img",
+                        "column": "created_on",
+                        "type": "datetime",
+                        "value": "{{NOW}}"
+                      }
+                    ],
+                    "table": "rest_sliding_img",
+                    "returning": "id",
+                    "query": "INSERT INTO rest_sliding_img\n(rest_id, sliding_image1, sliding_image2, sliding_image3, cover_image, status, created_by, created_on) VALUES (:P1 /* {{AddRestaurant.identity}} */, :P2 /* {{$_POST.sliding_image1?+'/assets/img/restaurant-sliding-img/'+uploadSlidingImage1.name:''}} */, :P3 /* {{$_POST.SlidingImage2?+'/assets/img/restaurant-sliding-img/'+uploadSlidingImage2.name:''}} */, :P4 /* {{$_POST.sliding_image3?+'/assets/img/restaurant-sliding-img/'+uploadSlidingImage3.name:''}} */, :P5 /* {{$_POST.CoverImage?+'/assets/img/restaurant/'+uploadCoverImage.name:''}} */, :P6 /* {{1}} */, :P7 /* {{identity}} */, :P8 /* {{NOW}} */)",
+                    "params": [
+                      {
+                        "name": ":P1",
+                        "type": "expression",
+                        "value": "{{AddRestaurant.identity}}"
+                      },
+                      {
+                        "name": ":P2",
+                        "type": "expression",
+                        "value": "{{$_POST.sliding_image1?+'/assets/img/restaurant-sliding-img/'+uploadSlidingImage1.name:''}}"
+                      },
+                      {
+                        "name": ":P3",
+                        "type": "expression",
+                        "value": "{{$_POST.SlidingImage2?+'/assets/img/restaurant-sliding-img/'+uploadSlidingImage2.name:''}}"
+                      },
+                      {
+                        "name": ":P4",
+                        "type": "expression",
+                        "value": "{{$_POST.sliding_image3?+'/assets/img/restaurant-sliding-img/'+uploadSlidingImage3.name:''}}"
+                      },
+                      {
+                        "name": ":P5",
+                        "type": "expression",
+                        "value": "{{$_POST.CoverImage?+'/assets/img/restaurant/'+uploadCoverImage.name:''}}"
+                      },
+                      {
+                        "name": ":P6",
+                        "type": "expression",
+                        "value": "{{1}}"
+                      },
+                      {
+                        "name": ":P7",
+                        "type": "expression",
+                        "value": "{{identity}}"
+                      },
+                      {
+                        "name": ":P8",
+                        "type": "expression",
+                        "value": "{{NOW}}"
+                      }
+                    ]
+                  }
+                },
+                "meta": [
+                  {
+                    "name": "identity",
+                    "type": "text"
+                  },
+                  {
+                    "name": "affected",
+                    "type": "number"
+                  }
+                ]
+              },
+              {
+                "name": "",
+                "module": "core",
+                "action": "condition",
+                "options": {
+                  "if": "{{$_POST.upload_pan}}",
+                  "then": {
+                    "steps": {
+                      "name": "uploadPAN",
+                      "module": "upload",
+                      "action": "upload",
+                      "options": {
+                        "fields": "{{$_POST.upload_pan}}",
+                        "path": "/public/assets/img/restaurant-kyc",
+                        "replaceSpace": true,
+                        "replaceDiacritics": true,
+                        "asciiOnly": true,
+                        "overwrite": true,
+                        "template": "{guid}{ext}",
+                        "throwErrors": true
+                      },
+                      "meta": [
+                        {
+                          "name": "name",
+                          "type": "text"
+                        },
+                        {
+                          "name": "path",
+                          "type": "text"
+                        },
+                        {
+                          "name": "url",
+                          "type": "text"
+                        },
+                        {
+                          "name": "type",
+                          "type": "text"
+                        },
+                        {
+                          "name": "size",
+                          "type": "text"
+                        },
+                        {
+                          "name": "error",
+                          "type": "number"
+                        }
+                      ],
+                      "outputType": "file"
+                    }
+                  }
+                },
+                "outputType": "boolean"
+              },
+              {
+                "name": "",
+                "module": "core",
+                "action": "condition",
+                "options": {
+                  "if": "{{$_POST.upload_gstin}}",
+                  "then": {
+                    "steps": {
+                      "name": "uploadGstIn",
+                      "module": "upload",
+                      "action": "upload",
+                      "options": {
+                        "fields": "{{$_POST.upload_gstin}}",
+                        "path": "/public/assets/img/restaurant-kyc",
+                        "replaceSpace": true,
+                        "replaceDiacritics": true,
+                        "asciiOnly": true,
+                        "overwrite": true,
+                        "template": "{guid}{ext}",
+                        "throwErrors": true
+                      },
+                      "meta": [
+                        {
+                          "name": "name",
+                          "type": "text"
+                        },
+                        {
+                          "name": "path",
+                          "type": "text"
+                        },
+                        {
+                          "name": "url",
+                          "type": "text"
+                        },
+                        {
+                          "name": "type",
+                          "type": "text"
+                        },
+                        {
+                          "name": "size",
+                          "type": "text"
+                        },
+                        {
+                          "name": "error",
+                          "type": "number"
+                        }
+                      ],
+                      "outputType": "file"
+                    }
+                  }
+                },
+                "outputType": "boolean"
+              },
+              {
+                "name": "",
+                "module": "core",
+                "action": "condition",
+                "options": {
+                  "if": "{{$_POST.upload_rmc}}",
+                  "then": {
+                    "steps": {
+                      "name": "uploadRMC",
+                      "module": "upload",
+                      "action": "upload",
+                      "options": {
+                        "fields": "{{$_POST.upload_rmc}}",
+                        "path": "/public/assets/img/restaurant-kyc",
+                        "replaceSpace": true,
+                        "replaceDiacritics": true,
+                        "asciiOnly": true,
+                        "overwrite": true,
+                        "template": "{guid}{ext}",
+                        "throwErrors": true
+                      },
+                      "meta": [
+                        {
+                          "name": "name",
+                          "type": "text"
+                        },
+                        {
+                          "name": "path",
+                          "type": "text"
+                        },
+                        {
+                          "name": "url",
+                          "type": "text"
+                        },
+                        {
+                          "name": "type",
+                          "type": "text"
+                        },
+                        {
+                          "name": "size",
+                          "type": "text"
+                        },
+                        {
+                          "name": "error",
+                          "type": "number"
+                        }
+                      ],
+                      "outputType": "file"
+                    }
+                  }
+                },
+                "outputType": "boolean"
+              },
+              {
+                "name": "",
+                "module": "core",
+                "action": "condition",
+                "options": {
+                  "if": "{{$_POST.upload_fsc}}",
+                  "then": {
+                    "steps": {
+                      "name": "uploadFSC",
+                      "module": "upload",
+                      "action": "upload",
+                      "options": {
+                        "fields": "{{$_POST.upload_fsc}}",
+                        "path": "/public/assets/img/restaurant-kyc",
+                        "replaceSpace": true,
+                        "replaceDiacritics": true,
+                        "asciiOnly": true,
+                        "overwrite": true,
+                        "template": "{guid}{ext}",
+                        "throwErrors": true
+                      },
+                      "meta": [
+                        {
+                          "name": "name",
+                          "type": "text"
+                        },
+                        {
+                          "name": "path",
+                          "type": "text"
+                        },
+                        {
+                          "name": "url",
+                          "type": "text"
+                        },
+                        {
+                          "name": "type",
+                          "type": "text"
+                        },
+                        {
+                          "name": "size",
+                          "type": "text"
+                        },
+                        {
+                          "name": "error",
+                          "type": "number"
+                        }
+                      ],
+                      "outputType": "file"
+                    }
+                  }
+                },
+                "outputType": "boolean"
+              },
+              {
+                "name": "",
+                "module": "core",
+                "action": "condition",
+                "options": {
+                  "if": "{{$_POST.upload_aadhar_front}}",
+                  "then": {
+                    "steps": {
+                      "name": "uploadAadharFront",
+                      "module": "upload",
+                      "action": "upload",
+                      "options": {
+                        "fields": "{{$_POST.upload_aadhar_front}}",
+                        "path": "/public/assets/img/restaurant-kyc",
+                        "replaceSpace": true,
+                        "replaceDiacritics": true,
+                        "asciiOnly": true,
+                        "overwrite": true,
+                        "template": "{guid}{ext}",
+                        "throwErrors": true
+                      },
+                      "meta": [
+                        {
+                          "name": "name",
+                          "type": "text"
+                        },
+                        {
+                          "name": "path",
+                          "type": "text"
+                        },
+                        {
+                          "name": "url",
+                          "type": "text"
+                        },
+                        {
+                          "name": "type",
+                          "type": "text"
+                        },
+                        {
+                          "name": "size",
+                          "type": "text"
+                        },
+                        {
+                          "name": "error",
+                          "type": "number"
+                        }
+                      ],
+                      "outputType": "file"
+                    }
+                  }
+                },
+                "outputType": "boolean"
+              },
+              {
+                "name": "",
+                "module": "core",
+                "action": "condition",
+                "options": {
+                  "if": "{{$_POST.upload_aadhar_back}}",
+                  "then": {
+                    "steps": {
+                      "name": "uploadAadharBack",
+                      "module": "upload",
+                      "action": "upload",
+                      "options": {
+                        "fields": "{{$_POST.upload_aadhar_back}}",
+                        "path": "/public/assets/img/restaurant-kyc",
+                        "replaceSpace": true,
+                        "replaceDiacritics": true,
+                        "asciiOnly": true,
+                        "overwrite": true,
+                        "template": "{guid}{ext}",
+                        "throwErrors": true
+                      },
+                      "meta": [
+                        {
+                          "name": "name",
+                          "type": "text"
+                        },
+                        {
+                          "name": "path",
+                          "type": "text"
+                        },
+                        {
+                          "name": "url",
+                          "type": "text"
+                        },
+                        {
+                          "name": "type",
+                          "type": "text"
+                        },
+                        {
+                          "name": "size",
+                          "type": "text"
+                        },
+                        {
+                          "name": "error",
+                          "type": "number"
+                        }
+                      ],
+                      "outputType": "file"
+                    }
+                  }
+                },
+                "outputType": "boolean"
+              },
+              {
+                "name": "",
+                "module": "core",
+                "action": "condition",
+                "options": {
+                  "if": "{{$_POST.other_id_proof}}",
+                  "then": {
+                    "steps": {
+                      "name": "uploadOtherId",
+                      "module": "upload",
+                      "action": "upload",
+                      "options": {
+                        "fields": "{{$_POST.other_id_proof}}",
+                        "path": "/public/assets/img/restaurant-kyc",
+                        "replaceSpace": true,
+                        "replaceDiacritics": true,
+                        "asciiOnly": true,
+                        "overwrite": true,
+                        "template": "{guid}{ext}",
+                        "throwErrors": true
+                      },
+                      "meta": [
+                        {
+                          "name": "name",
+                          "type": "text"
+                        },
+                        {
+                          "name": "path",
+                          "type": "text"
+                        },
+                        {
+                          "name": "url",
+                          "type": "text"
+                        },
+                        {
+                          "name": "type",
+                          "type": "text"
+                        },
+                        {
+                          "name": "size",
+                          "type": "text"
+                        },
+                        {
+                          "name": "error",
+                          "type": "number"
+                        }
+                      ],
+                      "outputType": "file"
+                    }
+                  }
+                },
+                "outputType": "boolean"
+              },
+              {
+                "name": "",
+                "module": "core",
+                "action": "condition",
+                "options": {
+                  "if": "{{$_POST.bank_account}}",
+                  "then": {
+                    "steps": {
+                      "name": "uploadBankAC",
+                      "module": "upload",
+                      "action": "upload",
+                      "options": {
+                        "fields": "{{$_POST.bank_account}}",
+                        "path": "/public/assets/img/restaurant-kyc",
+                        "replaceSpace": true,
+                        "replaceDiacritics": true,
+                        "asciiOnly": true,
+                        "overwrite": true,
+                        "template": "{guid}{ext}",
+                        "throwErrors": true
+                      },
+                      "meta": [
+                        {
+                          "name": "name",
+                          "type": "text"
+                        },
+                        {
+                          "name": "path",
+                          "type": "text"
+                        },
+                        {
+                          "name": "url",
+                          "type": "text"
+                        },
+                        {
+                          "name": "type",
+                          "type": "text"
+                        },
+                        {
+                          "name": "size",
+                          "type": "text"
+                        },
+                        {
+                          "name": "error",
+                          "type": "number"
+                        }
+                      ],
+                      "outputType": "file"
+                    }
+                  }
+                },
+                "outputType": "boolean"
+              },
+              {
+                "name": "",
+                "module": "core",
+                "action": "condition",
+                "options": {
+                  "if": "{{$_POST.owner_image}}",
+                  "then": {
+                    "steps": {
+                      "name": "uploadOwnerImage",
+                      "module": "upload",
+                      "action": "upload",
+                      "options": {
+                        "fields": "{{$_POST.owner_image}}",
+                        "path": "/public/assets/img/restaurant-kyc",
+                        "replaceSpace": true,
+                        "replaceDiacritics": true,
+                        "asciiOnly": true,
+                        "overwrite": true,
+                        "template": "{guid}{ext}",
+                        "throwErrors": true
+                      },
+                      "meta": [
+                        {
+                          "name": "name",
+                          "type": "text"
+                        },
+                        {
+                          "name": "path",
+                          "type": "text"
+                        },
+                        {
+                          "name": "url",
+                          "type": "text"
+                        },
+                        {
+                          "name": "type",
+                          "type": "text"
+                        },
+                        {
+                          "name": "size",
+                          "type": "text"
+                        },
+                        {
+                          "name": "error",
+                          "type": "number"
+                        }
+                      ],
+                      "outputType": "file"
+                    }
+                  }
+                },
+                "outputType": "boolean"
+              },
+              {
+                "name": "AddKYCDoc",
+                "module": "dbupdater",
+                "action": "insert",
+                "options": {
+                  "connection": "FoodApp",
+                  "sql": {
+                    "type": "insert",
+                    "values": [
+                      {
+                        "table": "rest_kyc_doc",
+                        "column": "rest_id",
+                        "type": "number",
+                        "value": "{{AddRestaurant.identity}}"
+                      },
+                      {
+                        "table": "rest_kyc_doc",
+                        "column": "upload_pan",
+                        "type": "text",
+                        "value": "{{$_POST.upload_pan?+'/assets/img/restaurant-kyc/'+uploadPAN.name:''}}",
+                        "condition": "{{$_POST.upload_pan?+'/assets/img/restaurant-kyc/'+uploadPAN.name:''}}"
+                      },
+                      {
+                        "table": "rest_kyc_doc",
+                        "column": "upload_gstin",
+                        "type": "text",
+                        "value": "{{$_POST.upload_gstin?+'/assets/img/restaurant-kyc/'+uploadGstIn.name:''}}",
+                        "condition": "{{$_POST.upload_gstin?+'/assets/img/restaurant-kyc/'+uploadGstIn.name:''}}"
+                      },
+                      {
+                        "table": "rest_kyc_doc",
+                        "column": "upload_rmc",
+                        "type": "text",
+                        "value": "{{$_POST.upload_rmc?+'/assets/img/restaurant-kyc/'+uploadRMC.name:''}}",
+                        "condition": "{{$_POST.upload_rmc?+'/assets/img/restaurant-kyc/'+uploadRMC.name:''}}"
+                      },
+                      {
+                        "table": "rest_kyc_doc",
+                        "column": "upload_fsc",
+                        "type": "text",
+                        "value": "{{$_POST.upload_fsc?+'/assets/img/restaurant-kyc/'+uploadFSC.name:''}}",
+                        "condition": "{{$_POST.upload_fsc?+'/assets/img/restaurant-kyc/'+uploadFSC.name:''}}"
+                      },
+                      {
+                        "table": "rest_kyc_doc",
+                        "column": "upload_aadhar_front",
+                        "type": "text",
+                        "value": "{{$_POST.upload_aadhar_front?+'/assets/img/restaurant-kyc/'+uploadAadharFront.name:''}}",
+                        "condition": "{{$_POST.upload_aadhar_front?+'/assets/img/restaurant-kyc/'+uploadAadharFront.name:''}}"
+                      },
+                      {
+                        "table": "rest_kyc_doc",
+                        "column": "upload_aadhar_back",
+                        "type": "text",
+                        "value": "{{$_POST.upload_aadhar_back?+'/assets/img/restaurant-kyc/'+uploadAadharBack.name:''}}",
+                        "condition": "{{$_POST.upload_aadhar_back?+'/assets/img/restaurant-kyc/'+uploadAadharBack.name:''}}"
+                      },
+                      {
+                        "table": "rest_kyc_doc",
+                        "column": "other_id_proof",
+                        "type": "text",
+                        "value": "{{$_POST.other_id_proof?+'/assets/img/restaurant-kyc/'+uploadOtherId.name:''}}",
+                        "condition": "{{$_POST.other_id_proof?+'/assets/img/restaurant-kyc/'+uploadOtherId.name:''}}"
+                      },
+                      {
+                        "table": "rest_kyc_doc",
+                        "column": "bank_account",
+                        "type": "text",
+                        "value": "{{$_POST.bank_account?+'/assets/img/restaurant-kyc/'+uploadBankAC.name:''}}",
+                        "condition": "{{$_POST.bank_account?+'/assets/img/restaurant-kyc/'+uploadBankAC.name:''}}"
+                      },
+                      {
+                        "table": "rest_kyc_doc",
+                        "column": "owner_image",
+                        "type": "text",
+                        "value": "{{$_POST.owner_image?+'/assets/img/restaurant-kyc/'+uploadOwnerImage.name:''}}",
+                        "condition": "{{$_POST.owner_image?+'/assets/img/restaurant-kyc/'+uploadOwnerImage.name:''}}"
+                      },
+                      {
+                        "table": "rest_kyc_doc",
+                        "column": "status",
+                        "type": "number",
+                        "value": "{{1}}"
+                      },
+                      {
+                        "table": "rest_kyc_doc",
+                        "column": "created_by",
+                        "type": "number",
+                        "value": "{{identity}}"
+                      },
+                      {
+                        "table": "rest_kyc_doc",
+                        "column": "created_on",
+                        "type": "datetime",
+                        "value": "{{NOW}}"
+                      }
+                    ],
+                    "table": "rest_kyc_doc",
+                    "returning": "id",
+                    "query": "INSERT INTO rest_kyc_doc\n(rest_id, upload_pan, upload_gstin, upload_rmc, upload_fsc, upload_aadhar_front, upload_aadhar_back, other_id_proof, bank_account, owner_image, status, created_by, created_on) VALUES (:P1 /* {{AddRestaurant.identity}} */, :P2 /* {{$_POST.upload_pan?+'/assets/img/restaurant-kyc/'+uploadPAN.name:''}} */, :P3 /* {{$_POST.upload_gstin?+'/assets/img/restaurant-kyc/'+uploadGstIn.name:''}} */, :P4 /* {{$_POST.upload_rmc?+'/assets/img/restaurant-kyc/'+uploadRMC.name:''}} */, :P5 /* {{$_POST.upload_fsc?+'/assets/img/restaurant-kyc/'+uploadFSC.name:''}} */, :P6 /* {{$_POST.upload_aadhar_front?+'/assets/img/restaurant-kyc/'+uploadAadharFront.name:''}} */, :P7 /* {{$_POST.upload_aadhar_back?+'/assets/img/restaurant-kyc/'+uploadAadharBack.name:''}} */, :P8 /* {{$_POST.other_id_proof?+'/assets/img/restaurant-kyc/'+uploadOtherId.name:''}} */, :P9 /* {{$_POST.bank_account?+'/assets/img/restaurant-kyc/'+uploadBankAC.name:''}} */, :P10 /* {{$_POST.owner_image?+'/assets/img/restaurant-kyc/'+uploadOwnerImage.name:''}} */, :P11 /* {{1}} */, :P12 /* {{identity}} */, :P13 /* {{NOW}} */)",
+                    "params": [
+                      {
+                        "name": ":P1",
+                        "type": "expression",
+                        "value": "{{AddRestaurant.identity}}"
+                      },
+                      {
+                        "name": ":P2",
+                        "type": "expression",
+                        "value": "{{$_POST.upload_pan?+'/assets/img/restaurant-kyc/'+uploadPAN.name:''}}"
+                      },
+                      {
+                        "name": ":P3",
+                        "type": "expression",
+                        "value": "{{$_POST.upload_gstin?+'/assets/img/restaurant-kyc/'+uploadGstIn.name:''}}"
+                      },
+                      {
+                        "name": ":P4",
+                        "type": "expression",
+                        "value": "{{$_POST.upload_rmc?+'/assets/img/restaurant-kyc/'+uploadRMC.name:''}}"
+                      },
+                      {
+                        "name": ":P5",
+                        "type": "expression",
+                        "value": "{{$_POST.upload_fsc?+'/assets/img/restaurant-kyc/'+uploadFSC.name:''}}"
+                      },
+                      {
+                        "name": ":P6",
+                        "type": "expression",
+                        "value": "{{$_POST.upload_aadhar_front?+'/assets/img/restaurant-kyc/'+uploadAadharFront.name:''}}"
+                      },
+                      {
+                        "name": ":P7",
+                        "type": "expression",
+                        "value": "{{$_POST.upload_aadhar_back?+'/assets/img/restaurant-kyc/'+uploadAadharBack.name:''}}"
+                      },
+                      {
+                        "name": ":P8",
+                        "type": "expression",
+                        "value": "{{$_POST.other_id_proof?+'/assets/img/restaurant-kyc/'+uploadOtherId.name:''}}"
+                      },
+                      {
+                        "name": ":P9",
+                        "type": "expression",
+                        "value": "{{$_POST.bank_account?+'/assets/img/restaurant-kyc/'+uploadBankAC.name:''}}"
+                      },
+                      {
+                        "name": ":P10",
+                        "type": "expression",
+                        "value": "{{$_POST.owner_image?+'/assets/img/restaurant-kyc/'+uploadOwnerImage.name:''}}"
+                      },
+                      {
+                        "name": ":P11",
+                        "type": "expression",
+                        "value": "{{1}}"
+                      },
+                      {
+                        "name": ":P12",
+                        "type": "expression",
+                        "value": "{{identity}}"
+                      },
+                      {
+                        "name": ":P13",
+                        "type": "expression",
+                        "value": "{{NOW}}"
+                      }
+                    ]
+                  }
+                },
+                "meta": [
+                  {
+                    "name": "identity",
+                    "type": "text"
+                  },
+                  {
+                    "name": "affected",
+                    "type": "number"
+                  }
+                ]
+              },
+              {
+                "name": "Resp",
+                "module": "core",
+                "action": "response",
+                "options": {
+                  "status": 200,
+                  "data": "Record Submitted Successfully"
+                },
+                "output": true
+              }
+            ]
+          }
+        },
+        "outputType": "boolean"
+      }
+    ]
+  }
+}

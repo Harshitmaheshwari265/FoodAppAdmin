@@ -1,0 +1,212 @@
+<!-- Wappler include head-page="layouts/main" fontawesome_5="cdn" bootstrap5="local" is="dmx-app" id="userview" appConnect="local" components="{dmxBootstrap5Navigation:{},dmxDataTraversal:{},dmxBootstrap5Modal:{},dmxValidator:{},dmxStateManagement:{},dmxBootstrap5TableGenerator:{},dmxBootstrap5PagingGenerator:{},dmxFormatter:{}}" -->
+<meta name="ac:route" content="/user-view">
+<dmx-query-manager id="qm"></dmx-query-manager>
+<dmx-serverconnect id="scPostalCode" url="/api/UniversalAPI/PostalCode" dmx-param:pincode="modalAddUsers.scformAddUser.pin.value" noload></dmx-serverconnect>
+<dmx-serverconnect id="scUserType" url="/api/Users/GetUserType"></dmx-serverconnect>
+<dmx-serverconnect id="scUserList" url="/api/Users/UsersList" dmx-param:user_type="user_type_select.value" dmx-param:offset="qm.data.offset" dmx-param:limit="10" dmx-param:sort="qm.data.sort" dmx-param:dir="qm.data.dir" dmx-param:search_value="formSearch.SearchValue.value.titlecase()"></dmx-serverconnect>
+<dmx-data-view id="dvUserList" dmx-bind:data="content.scUserList.data.FetchUsers.data"></dmx-data-view>
+<dmx-data-detail id="ddUserList" dmx-bind:data="content.dvUserList.data" key="id"></dmx-data-detail>
+<div class="breadcome-area">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="breadcome-list">
+                    <div class="row">
+                        <div class="col-lg-8 col-md-8 col-sm-8 col-12">
+                            <div class="breadcomb-wp">
+                                <div class="breadcomb-icon">
+                                    <i class="icon nalika-home"></i>
+                                </div>
+                                <div class="breadcomb-ctn">
+                                    <h2>User List</h2>
+                                    <p>Customers:<span class="bread-ntd">500</span>&emsp;Restaurants:<span class="bread-ntd">20</span>&emsp; Delivery Person:<span class="bread-ntd">10</span>&emsp; CC:<span class="bread-ntd">02</span>&emsp; Manager:<span class="bread-ntd">1</span>&emsp; Admin:<span class="bread-ntd">1</span></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-12">
+                            <div class="breadcomb-report">
+                                <select class="form-control pro-edt-select form-control-primary" type="text" id="user_type_select" dmx-bind:options="scUserType.data.UserTypeList.data" optiontext="type_name+' ('+type_code+')'" optionvalue="id" dmx-bind:value="6">
+                                    <option value="">Select</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="product-status mg-b-30">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="product-status-wrap">
+                    <h4>All User List</h4>
+                    <div class="add-product">
+                        <a href="#" data-toggle="modal" data-target="#modalAddUsers">Add New User</a>
+                    </div>
+                    <div class="breadcome-heading">
+                        <form role="search" class="" id="formSearch">
+                            <input type="text" placeholder="Search..." class="form-control" id="SearchValue">
+                            <a href=""><i class="fa fa-search"></i></a>
+                        </form>
+                    </div>
+                    <div class="table-responsive product-status-wrap">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th class="sorting" dmx-on:click="qm.set('sort','fname');qm.set('offset',qm.data.offset == 'desc' ? 'asc' : 'desc')" dmx-class:sorting_asc="qm.data.sort=='fname' && qm.data.offset == 'asc'" dmx-class:sorting_desc="qm.data.sort=='fname' && qm.data.offset == 'desc'">Fname</th>
+                                    <th class="sorting" dmx-on:click="qm.set('sort','lname');qm.set('offset',qm.data.offset == 'desc' ? 'asc' : 'desc')" dmx-class:sorting_asc="qm.data.sort=='lname' && qm.data.offset == 'asc'" dmx-class:sorting_desc="qm.data.sort=='lname' && qm.data.offset == 'desc'">Lname</th>
+                                    <th class="sorting" dmx-on:click="qm.set('sort','mobile');qm.set('offset',qm.data.offset == 'desc' ? 'asc' : 'desc')" dmx-class:sorting_asc="qm.data.sort=='mobile' && qm.data.offset == 'asc'" dmx-class:sorting_desc="qm.data.sort=='mobile' && qm.data.offset == 'desc'">Mobile</th>
+                                    <th class="sorting" dmx-on:click="qm.set('sort','is_watsapp');qm.set('offset',qm.data.offset == 'desc' ? 'asc' : 'desc')" dmx-class:sorting_asc="qm.data.sort=='is_watsapp' && qm.data.offset == 'asc'" dmx-class:sorting_desc="qm.data.sort=='is_watsapp' && qm.data.offset == 'desc'">Is watsapp</th>
+                                    <th class="sorting" dmx-on:click="qm.set('sort','watsapp_no');qm.set('offset',qm.data.offset == 'desc' ? 'asc' : 'desc')" dmx-class:sorting_asc="qm.data.sort=='watsapp_no' && qm.data.offset == 'asc'" dmx-class:sorting_desc="qm.data.sort=='watsapp_no' && qm.data.offset == 'desc'">Watsapp no</th>
+                                    <th class="sorting" dmx-on:click="qm.set('sort','customer_email');qm.set('offset',qm.data.offset == 'desc' ? 'asc' : 'desc')" dmx-class:sorting_asc="qm.data.sort=='customer_email' && qm.data.offset == 'asc'" dmx-class:sorting_desc="qm.data.sort=='customer_email' && qm.data.offset == 'desc'">Customer email</th>
+                                    <th class="sorting" dmx-on:click="qm.set('sort','wallet_bal');qm.set('offset',qm.data.offset == 'desc' ? 'asc' : 'desc')" dmx-class:sorting_asc="qm.data.sort=='wallet_bal' && qm.data.offset == 'asc'" dmx-class:sorting_desc="qm.data.sort=='wallet_bal' && qm.data.offset == 'desc'">Wallet bal</th>
+                                    <th class="sorting" dmx-on:click="qm.set('sort','address');qm.set('offset',qm.data.offset == 'desc' ? 'asc' : 'desc')" dmx-class:sorting_asc="qm.data.sort=='address' && qm.data.offset == 'asc'" dmx-class:sorting_desc="qm.data.sort=='address' && qm.data.offset == 'desc'">Address</th>
+                                    <th class="sorting" dmx-on:click="qm.set('sort','district');qm.set('offset',qm.data.offset == 'desc' ? 'asc' : 'desc')" dmx-class:sorting_asc="qm.data.sort=='district' && qm.data.offset == 'asc'" dmx-class:sorting_desc="qm.data.sort=='district' && qm.data.offset == 'desc'">District</th>
+                                    <th class="sorting" dmx-on:click="qm.set('sort','pin');qm.set('offset',qm.data.offset == 'desc' ? 'asc' : 'desc')" dmx-class:sorting_asc="qm.data.sort=='pin' && qm.data.offset == 'asc'" dmx-class:sorting_desc="qm.data.sort=='pin' && qm.data.offset == 'desc'">Pin</th>
+                                    <th>Status</th>
+                                    <th style="min-width: 110px;">Action</th>
+                                    <th class="sorting" dmx-on:click="qm.set('sort','created_on');qm.set('offset',qm.data.offset == 'desc' ? 'asc' : 'desc')" dmx-class:sorting_asc="qm.data.sort=='created_on' && qm.data.offset == 'asc'" dmx-class:sorting_desc="qm.data.sort=='created_on' && qm.data.offset == 'desc'" style="min-width: 100px;">Created on</th>
+                                    <th class="sorting" dmx-on:click="qm.set('sort','signup_via');qm.set('offset',qm.data.offset == 'desc' ? 'asc' : 'desc')" dmx-class:sorting_asc="qm.data.sort=='signup_via' && qm.data.offset == 'asc'" dmx-class:sorting_desc="qm.data.sort=='signup_via' && qm.data.offset == 'desc'">Signup Via</th>
+                                    <th class="sorting" dmx-on:click="qm.set('sort','user_dob');qm.set('offset',qm.data.offset == 'desc' ? 'asc' : 'desc')" dmx-class:sorting_asc="qm.data.sort=='user_dob' && qm.data.offset == 'asc'" dmx-class:sorting_desc="qm.data.sort=='user_dob' && qm.data.offset == 'desc'">DOB</th>
+                                </tr>
+                            </thead>
+                            <tbody is="dmx-repeat" dmx-generator="bs5table" dmx-bind:repeat="dvUserList.data" id="tableRepeat" key="id" dmx-state="qm" dmx-sort="sort" dmx-order="offset">
+                                <tr>
+                                    <td>{{$index+1}}</td>
+                                    <td dmx-text="fname"></td>
+                                    <td dmx-text="lname"></td>
+                                    <td dmx-text="mobile"></td>
+                                    <td dmx-text="is_watsapp"></td>
+                                    <td dmx-text="watsapp_no"></td>
+                                    <td dmx-text="customer_email" style="max-width: 100px !important; overflow: auto;"></td>
+                                    <td class="text-git-center" dmx-text="wallet_bal"></td>
+                                    <td dmx-text="address"></td>
+                                    <td dmx-text="district"></td>
+                                    <td dmx-text="pin"></td>
+                                    <td><button dmx-class:pd-setting="status==1" dmx-class:ds-setting="status==0">{{(status==1)?'Active':'InActive'}}</button></td>
+                                    <td>
+                                        <button title="Edit" class="pd-setting-ed" data-toggle="modal" data-target="#modalAddUsers" dmx-on:click="ddUserList.select(id)"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+                                        <button data-toggle="tooltip" title="Shipping Address" class="pd-setting-ed"><i class="fas fa-shipping-fast" aria-hidden="true"></i></button>
+                                    </td>
+                                    <td dmx-text="created_on.formatDate('dd-MM-yyyy hh:mm:ss A')"></td>
+                                    <td dmx-text="signup_via"></td>
+                                    <td dmx-text="user_dob"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="text-light" dmx-show="content.scUserList.data.FetchUsers.data.length==0">
+                        <p class="text-center fa-2x text-warning">
+                            No record Found!
+                        </p>
+                    </div>
+                    <ul class="pagination" dmx-populate="scUserList.data.FetchUsers" dmx-state="qm" dmx-offset="offset" dmx-generator="bs5paging">
+                        <li class="page-item" dmx-class:disabled="scUserList.data.FetchUsers.page.current == 1" aria-label="First">
+                            <a href="javascript:void(0)" class="page-link" dmx-on:click="qm.set('offset',scUserList.data.FetchUsers.page.offset.first)"><span aria-hidden="true">&lsaquo;&lsaquo;</span></a>
+                        </li>
+                        <li class="page-item" dmx-class:disabled="scUserList.data.FetchUsers.page.current == 1" aria-label="Previous">
+                            <a href="javascript:void(0)" class="page-link" dmx-on:click="qm.set('offset',scUserList.data.FetchUsers.page.offset.prev)"><span aria-hidden="true">&lsaquo;</span></a>
+                        </li>
+                        <li class="page-item" dmx-class:active="title == scUserList.data.FetchUsers.page.current" dmx-class:disabled="!active" dmx-repeat="scUserList.data.FetchUsers.getServerConnectPagination(2,1,'...')">
+                            <a href="javascript:void(0)" class="page-link" dmx-on:click="qm.set('offset',(page-1)*scUserList.data.FetchUsers.limit)">{{title}}</a>
+                        </li>
+                        <li class="page-item" dmx-class:disabled="scUserList.data.FetchUsers.page.current ==  scUserList.data.FetchUsers.page.total" aria-label="Next">
+                            <a href="javascript:void(0)" class="page-link" dmx-on:click="qm.set('offset',scUserList.data.FetchUsers.page.offset.next)"><span aria-hidden="true">&rsaquo;</span></a>
+                        </li>
+                        <li class="page-item" dmx-class:disabled="scUserList.data.FetchUsers.page.current ==  scUserList.data.FetchUsers.page.total" aria-label="Last">
+                            <a href="javascript:void(0)" class="page-link" dmx-on:click="qm.set('offset',scUserList.data.FetchUsers.page.offset.last)"><span aria-hidden="true">&rsaquo;&rsaquo;</span></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- modal start -->
+<div id="modalAddUsers" class="modal modal-adminpro-general Customwidth-popup-WarningModal fade" role="dialog" is="dmx-bs5-modal" tabindex="-1">
+    <form id="scformAddUser" is="dmx-serverconnect-form" method="post" action="/api/Users/UserAddEdit" dmx-generator="bootstrap5" dmx-form-type="horizontal" dmx-on:success="scUserList.load({user_type: user_type_name.value});notifMain.success(content.modalAddUsers.scformAddUser.data);modalAddUsers.scformAddUser.reset(true);" dmx-on:forbidden="notifMain.warning(lastError.response)" dmx-on:error="notifMain.warning(lastError.response)" dmx-on:unauthorized="notifMain.warning(lastError.response)" dmx-on:invalid="notifMain.warning(lastError.response.data.validate_1)">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="modal-close-area modal-close-df">
+                        <a class="close" data-dismiss="modal" href="#"><i class="fa fa-close"></i></a>
+                    </div>
+                    <h4 class="modal-title">{{content.ddUserList.data.id?'Edit User':'Add A New User'}}</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row mx-0">
+                        <input type="hidden" name="AddUserId" id="AddUserId" dmx-bind:value="content.ddUserList.data.id">
+                        <div class="col-12 col-md-6 mg-b-15">
+                            <label>User Type <span class="compulsory">*</span></label>
+                            <select class="select2_demo_3 form-control" dmx-bind:options="content.scUserType.data.UserTypeList.data" optiontext="type_name" optionvalue="id" required="" name="user_type_name" dmx-bind:value="content.ddUserList.data.user_type_id">
+                                <option value="">Select</option>
+                            </select>
+                        </div>
+                        <div class="col-12 col-md-6 mg-b-15">
+                            <label>First Name<span class="compulsory">*</span></label>
+                            <input type="text" class="select2_demo_3 form-control" name="user_fname" required="" dmx-bind:value="content.ddUserList.data.fname">
+                        </div>
+                        <div class="col-12 col-md-6 mg-b-15">
+                            <label>Last Name<span class="compulsory">*</span></label>
+                            <input type="text" class="select2_demo_3 form-control" name="user_lname" required="" dmx-bind:value="content.ddUserList.data.lname">
+                        </div>
+                        <div class="col-12 col-md-6 mg-b-15">
+                            <label>Mobile</label>
+                            <input class="select2_demo_3 form-control" name="mobile" type="number" required="" dmx-bind:value="content.ddUserList.data.mobile">
+                        </div>
+                        <div class="col-12 col-md-6 mg-b-15">
+                            <label>Is this your whatsapp Number?</label>
+                            <select class="select2_demo_3 form-control" id="is_whatsapp" name="is_whatsapp" dmx-bind:value="content.ddUserList.data.is_watsapp">
+                                <option value="Yes">Yes</option>
+                                <option value="No">No</option>
+                            </select>
+                        </div>
+                        <div class="col-12 col-md-6 mg-b-15" dmx-show="is_whatsapp.value=='No'">
+                            <label>Whatsapp Number</label>
+                            <input class="select2_demo_3 form-control" name="whatsapp_no" type="number" dmx-bind:value="content.ddUserList.data.watsapp_no">
+                        </div>
+                        <div class="col-12 col-md-6 mg-b-15">
+                            <label>EmailId</label>
+                            <input class="select2_demo_3 form-control" name="emailid" type="email" dmx-bind:value="content.ddUserList.data.customer_email">
+                        </div>
+                        <div class="col-12 col-md-6 mg-b-15">
+                            <label>PIN</label>
+                            <input type="number" class="select2_demo_3 form-control " name="pin" placeholder="Area PIN Code" dmx-on:changed="scPostalCode.load()" dmx-bind:value="content.ddUserList.data.pin">
+                        </div>
+                        <div class="col-12 col-md-6 mg-b-15">
+                            <label>District</label>
+                            <input type="text" class="select2_demo_3 form-control " name="district" placeholder="Enter District Name" dmx-bind:value="content.scPostalCode.data.apiPINCode.data[0].PostOffice[0].District?content.scPostalCode.data.apiPINCode.data[0].PostOffice[0].District:content.ddUserList.data.district">
+                        </div>
+                        <div class="col-12 col-md-6 mg-b-15">
+                            <label>Address</label>
+                            <textarea type="text" class="select2_demo_3 form-control" name="address" id="address" placeholder="Enter Your Postal Address" dmx-bind:value="content.ddUserList.data.address"></textarea>
+                        </div>
+                        <div class="col-12 col-md-6 mg-b-15">
+                            <label>DOB (For Security Question or Celebration Offer)</label>
+                            <input type="date" class="select2_demo_3 form-control" name="dob" id="dob" dmx-bind:value="content.ddUserList.data.user_dob">
+                        </div>
+                        <div class="col-12 col-md-6 mg-b-15" dmx-show="content.ddUserList.data.id">
+                            <label>Status</label>
+                            <select class="select2_demo_3 form-control" id="status" name="status" dmx-bind:value="content.ddUserList.data.status">
+                                <option value="1">Active</option>
+                                <option value="0">InActive</option>
+                            </select>
+                        </div>
+                        <div class="col-12 col-md-6 mg-b-15" dmx-show="content.ddUserList.data.id">
+                            <label>Remarks</label>
+                            <textarea type="text" class="select2_demo_3 form-control" name="remarks" id="remarks" placeholder="Enter Any remarks" dmx-bind:value="content.ddUserList.data.remarks"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary" type="submit" dmx-bind:disabled="state.executing">{{content.ddUserList.data.id?'Update':'Submit'}}<span class="spinner-border spinner-border-sm text-success" role="status" dmx-show="state.executing"></span></button>
+                    <button data-dismiss="modal" class="btn btn-warning">Close</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

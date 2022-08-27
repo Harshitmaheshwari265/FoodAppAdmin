@@ -1,0 +1,185 @@
+{
+  "meta": {
+    "$_GET": [
+      {
+        "type": "text",
+        "name": "sort"
+      },
+      {
+        "type": "text",
+        "name": "dir"
+      },
+      {
+        "type": "text",
+        "name": "market_id"
+      },
+      {
+        "type": "text",
+        "name": "category_type_id"
+      }
+    ]
+  },
+  "exec": {
+    "steps": [
+      {
+        "name": "",
+        "module": "auth",
+        "action": "restrict",
+        "options": {
+          "provider": "security",
+          "permissions": [
+            "write"
+          ],
+          "loginUrl": "/login",
+          "forbiddenUrl": "/403-forbidden"
+        }
+      },
+      {
+        "name": "GetCategory",
+        "module": "dbconnector",
+        "action": "select",
+        "options": {
+          "connection": "FoodApp",
+          "sql": {
+            "type": "SELECT",
+            "columns": [
+              {
+                "table": "m_category",
+                "column": "en_name"
+              },
+              {
+                "table": "m_category",
+                "column": "image"
+              },
+              {
+                "table": "m_category",
+                "column": "cat_type_id"
+              },
+              {
+                "table": "m_category",
+                "column": "id"
+              }
+            ],
+            "table": {
+              "name": "m_category"
+            },
+            "primary": "id",
+            "joins": [],
+            "wheres": {
+              "condition": "AND",
+              "rules": [
+                {
+                  "id": "m_category.cat_type_id",
+                  "field": "m_category.cat_type_id",
+                  "type": "double",
+                  "operator": "equal",
+                  "value": "{{$_GET.category_type_id}}",
+                  "data": {
+                    "table": "m_category",
+                    "column": "cat_type_id",
+                    "type": "number",
+                    "columnObj": {
+                      "type": "reference",
+                      "primary": false,
+                      "unique": false,
+                      "nullable": true,
+                      "references": "id",
+                      "inTable": "m_category_type",
+                      "referenceType": "integer",
+                      "onUpdate": "NO ACTION",
+                      "onDelete": "NO ACTION",
+                      "name": "cat_type_id"
+                    }
+                  },
+                  "operation": "="
+                },
+                {
+                  "id": "m_category.market_id",
+                  "field": "m_category.market_id",
+                  "type": "double",
+                  "operator": "equal",
+                  "value": "{{$_GET.market_id}}",
+                  "data": {
+                    "table": "m_category",
+                    "column": "market_id",
+                    "type": "number",
+                    "columnObj": {
+                      "type": "reference",
+                      "primary": false,
+                      "unique": false,
+                      "nullable": true,
+                      "references": "id",
+                      "inTable": "m_market",
+                      "referenceType": "integer",
+                      "onUpdate": "NO ACTION",
+                      "onDelete": "NO ACTION",
+                      "name": "market_id"
+                    }
+                  },
+                  "operation": "="
+                },
+                {
+                  "id": "m_category.status",
+                  "field": "m_category.status",
+                  "type": "double",
+                  "operator": "equal",
+                  "value": 1,
+                  "data": {
+                    "table": "m_category",
+                    "column": "status",
+                    "type": "number",
+                    "columnObj": {
+                      "type": "integer",
+                      "primary": false,
+                      "unique": false,
+                      "nullable": true,
+                      "name": "status"
+                    }
+                  },
+                  "operation": "="
+                }
+              ],
+              "conditional": null,
+              "valid": true
+            },
+            "query": "SELECT en_name, image, cat_type_id, id\nFROM m_category\nWHERE cat_type_id = :P1 /* {{$_GET.category_type_id}} */ AND market_id = :P2 /* {{$_GET.market_id}} */ AND status = 1",
+            "params": [
+              {
+                "operator": "equal",
+                "type": "expression",
+                "name": ":P1",
+                "value": "{{$_GET.category_type_id}}"
+              },
+              {
+                "operator": "equal",
+                "type": "expression",
+                "name": ":P2",
+                "value": "{{$_GET.market_id}}"
+              }
+            ]
+          }
+        },
+        "output": true,
+        "meta": [
+          {
+            "type": "text",
+            "name": "en_name"
+          },
+          {
+            "type": "text",
+            "name": "image"
+          },
+          {
+            "type": "number",
+            "name": "cat_type_id"
+          },
+          {
+            "type": "number",
+            "name": "id"
+          }
+        ],
+        "outputType": "array"
+      }
+    ]
+  }
+}

@@ -1,0 +1,205 @@
+{
+  "meta": {
+    "$_GET": [
+      {
+        "type": "text",
+        "name": "sort"
+      },
+      {
+        "type": "text",
+        "name": "dir"
+      }
+    ]
+  },
+  "exec": {
+    "steps": [
+      {
+        "name": "",
+        "module": "auth",
+        "action": "restrict",
+        "options": {
+          "provider": "security",
+          "permissions": [
+            "write"
+          ],
+          "loginUrl": "/login",
+          "forbiddenUrl": "/403-forbidden"
+        }
+      },
+      {
+        "name": "UserTypeList",
+        "module": "dbconnector",
+        "action": "paged",
+        "options": {
+          "connection": "FoodApp",
+          "sql": {
+            "type": "SELECT",
+            "columns": [
+              {
+                "table": "m_user_type",
+                "column": "id"
+              },
+              {
+                "table": "m_user_type",
+                "column": "type_name"
+              },
+              {
+                "table": "m_user_type",
+                "column": "type_code"
+              },
+              {
+                "table": "m_user_type",
+                "column": "status"
+              },
+              {
+                "table": "m_user_type",
+                "column": "remarks"
+              },
+              {
+                "table": "m_user_type",
+                "column": "created_on"
+              },
+              {
+                "table": "m_user_type",
+                "column": "updated_on"
+              },
+              {
+                "table": "mc",
+                "column": "fname"
+              },
+              {
+                "table": "mc",
+                "column": "lname"
+              }
+            ],
+            "table": {
+              "name": "m_user_type"
+            },
+            "primary": "id",
+            "joins": [
+              {
+                "table": "m_customer",
+                "column": "*",
+                "alias": "mc",
+                "type": "LEFT",
+                "clauses": {
+                  "condition": "AND",
+                  "rules": [
+                    {
+                      "table": "mc",
+                      "column": "id",
+                      "operator": "equal",
+                      "value": {
+                        "table": "m_user_type",
+                        "column": "created_by"
+                      },
+                      "operation": "="
+                    }
+                  ]
+                },
+                "primary": "id"
+              }
+            ],
+            "query": "SELECT m_user_type.id, m_user_type.type_name, m_user_type.type_code, m_user_type.status, m_user_type.remarks, m_user_type.created_on, m_user_type.updated_on, mc.fname, mc.lname\nFROM m_user_type\nLEFT JOIN m_customer AS mc ON (mc.id = m_user_type.created_by)",
+            "params": []
+          }
+        },
+        "output": true,
+        "meta": [
+          {
+            "name": "offset",
+            "type": "number"
+          },
+          {
+            "name": "limit",
+            "type": "number"
+          },
+          {
+            "name": "total",
+            "type": "number"
+          },
+          {
+            "name": "page",
+            "type": "object",
+            "sub": [
+              {
+                "name": "offset",
+                "type": "object",
+                "sub": [
+                  {
+                    "name": "first",
+                    "type": "number"
+                  },
+                  {
+                    "name": "prev",
+                    "type": "number"
+                  },
+                  {
+                    "name": "next",
+                    "type": "number"
+                  },
+                  {
+                    "name": "last",
+                    "type": "number"
+                  }
+                ]
+              },
+              {
+                "name": "current",
+                "type": "number"
+              },
+              {
+                "name": "total",
+                "type": "number"
+              }
+            ]
+          },
+          {
+            "name": "data",
+            "type": "array",
+            "sub": [
+              {
+                "type": "number",
+                "name": "id"
+              },
+              {
+                "type": "text",
+                "name": "type_name"
+              },
+              {
+                "type": "text",
+                "name": "type_code"
+              },
+              {
+                "type": "number",
+                "name": "status"
+              },
+              {
+                "type": "text",
+                "name": "remarks"
+              },
+              {
+                "type": "datetime",
+                "name": "created_on"
+              },
+              {
+                "type": "datetime",
+                "name": "updated_on"
+              },
+              {
+                "type": "text",
+                "name": "fname"
+              },
+              {
+                "type": "text",
+                "name": "lname"
+              }
+            ]
+          }
+        ],
+        "type": "dbconnector_paged_select",
+        "outputType": "object"
+      }
+    ]
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "meta": {
+    "$_GET": [
+      {
+        "type": "text",
+        "name": "pincode"
+      }
+    ]
+  },
+  "exec": {
+    "steps": {
+      "name": "apiPINCode",
+      "module": "api",
+      "action": "send",
+      "options": {
+        "url": "{{'https://api.postalpincode.in/pincode/'+$_GET.pincode}}"
+      },
+      "output": true
+    }
+  }
+}

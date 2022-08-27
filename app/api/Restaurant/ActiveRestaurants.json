@@ -1,0 +1,178 @@
+{
+  "meta": {
+    "$_GET": [
+      {
+        "type": "text",
+        "name": "market_id"
+      },
+      {
+        "type": "text",
+        "name": "category_type_id"
+      }
+    ]
+  },
+  "exec": {
+    "steps": [
+      {
+        "name": "",
+        "module": "auth",
+        "action": "restrict",
+        "options": {
+          "provider": "security",
+          "permissions": [
+            "write"
+          ],
+          "loginUrl": "/login",
+          "forbiddenUrl": "/403-forbidden"
+        }
+      },
+      {
+        "name": "MarketRestaurents",
+        "module": "dbconnector",
+        "action": "select",
+        "options": {
+          "connection": "FoodApp",
+          "sql": {
+            "type": "SELECT",
+            "columns": [
+              {
+                "table": "m_restaurant",
+                "column": "id"
+              },
+              {
+                "table": "m_restaurant",
+                "column": "gen_shop_id"
+              },
+              {
+                "table": "m_restaurant",
+                "column": "shop_name_en"
+              },
+              {
+                "table": "m_restaurant",
+                "column": "shop_logo"
+              }
+            ],
+            "table": {
+              "name": "m_restaurant"
+            },
+            "primary": "id",
+            "joins": [],
+            "wheres": {
+              "condition": "AND",
+              "rules": [
+                {
+                  "id": "m_restaurant.market_id",
+                  "field": "m_restaurant.market_id",
+                  "type": "double",
+                  "operator": "equal",
+                  "value": "{{$_GET.market_id}}",
+                  "data": {
+                    "table": "m_restaurant",
+                    "column": "market_id",
+                    "type": "number",
+                    "columnObj": {
+                      "type": "reference",
+                      "primary": false,
+                      "unique": false,
+                      "nullable": true,
+                      "references": "id",
+                      "inTable": "m_market",
+                      "referenceType": "integer",
+                      "onUpdate": "NO ACTION",
+                      "onDelete": "NO ACTION",
+                      "name": "market_id"
+                    }
+                  },
+                  "operation": "="
+                },
+                {
+                  "id": "m_restaurant.cat_type_id",
+                  "field": "m_restaurant.cat_type_id",
+                  "type": "double",
+                  "operator": "equal",
+                  "value": "{{$_GET.category_type_id}}",
+                  "data": {
+                    "table": "m_restaurant",
+                    "column": "cat_type_id",
+                    "type": "number",
+                    "columnObj": {
+                      "type": "reference",
+                      "primary": false,
+                      "unique": false,
+                      "nullable": true,
+                      "references": "id",
+                      "inTable": "m_category_type",
+                      "referenceType": "integer",
+                      "onUpdate": "NO ACTION",
+                      "onDelete": "NO ACTION",
+                      "name": "cat_type_id"
+                    }
+                  },
+                  "operation": "="
+                },
+                {
+                  "id": "m_restaurant.status",
+                  "field": "m_restaurant.status",
+                  "type": "double",
+                  "operator": "equal",
+                  "value": 1,
+                  "data": {
+                    "table": "m_restaurant",
+                    "column": "status",
+                    "type": "number",
+                    "columnObj": {
+                      "type": "integer",
+                      "primary": false,
+                      "unique": false,
+                      "nullable": true,
+                      "name": "status"
+                    }
+                  },
+                  "operation": "="
+                }
+              ],
+              "conditional": null,
+              "valid": true
+            },
+            "query": "SELECT id, gen_shop_id, shop_name_en, shop_logo\nFROM m_restaurant\nWHERE market_id = :P1 /* {{$_GET.market_id}} */ AND cat_type_id = :P2 /* {{$_GET.category_type_id}} */ AND status = 1",
+            "params": [
+              {
+                "operator": "equal",
+                "type": "expression",
+                "name": ":P1",
+                "value": "{{$_GET.market_id}}"
+              },
+              {
+                "operator": "equal",
+                "type": "expression",
+                "name": ":P2",
+                "value": "{{$_GET.category_type_id}}"
+              }
+            ]
+          }
+        },
+        "output": true,
+        "meta": [
+          {
+            "type": "number",
+            "name": "id"
+          },
+          {
+            "type": "text",
+            "name": "gen_shop_id"
+          },
+          {
+            "type": "text",
+            "name": "shop_name_en"
+          },
+          {
+            "type": "text",
+            "name": "shop_logo"
+          }
+        ],
+        "outputType": "array",
+        "type": "dbconnector_select"
+      }
+    ]
+  }
+}

@@ -1,0 +1,390 @@
+{
+  "meta": {
+    "$_GET": [
+      {
+        "type": "text",
+        "name": "offset"
+      },
+      {
+        "type": "text",
+        "name": "limit"
+      },
+      {
+        "type": "text",
+        "name": "sort"
+      },
+      {
+        "type": "text",
+        "name": "dir"
+      },
+      {
+        "type": "text",
+        "name": "search_value"
+      }
+    ]
+  },
+  "exec": {
+    "steps": [
+      {
+        "name": "",
+        "module": "auth",
+        "action": "restrict",
+        "options": {
+          "provider": "security",
+          "permissions": [
+            "write"
+          ],
+          "loginUrl": "/login",
+          "forbiddenUrl": "403-forbidden"
+        }
+      },
+      {
+        "name": "",
+        "module": "core",
+        "action": "condition",
+        "options": {
+          "if": "{{$_GET.search_value}}",
+          "then": {
+            "steps": {
+              "name": "Brands",
+              "module": "dbconnector",
+              "action": "paged",
+              "options": {
+                "connection": "FoodApp",
+                "sql": {
+                  "type": "SELECT",
+                  "columns": [
+                    {
+                      "table": "m_brand",
+                      "column": "id"
+                    },
+                    {
+                      "table": "m_brand",
+                      "column": "brand_name"
+                    },
+                    {
+                      "table": "m_brand",
+                      "column": "status"
+                    },
+                    {
+                      "table": "m_brand",
+                      "column": "remarks"
+                    },
+                    {
+                      "table": "m_brand",
+                      "column": "created_by"
+                    },
+                    {
+                      "table": "m_brand",
+                      "column": "created_on"
+                    },
+                    {
+                      "table": "m_brand",
+                      "column": "updated_on"
+                    },
+                    {
+                      "table": "m_brand",
+                      "column": "brand_image"
+                    }
+                  ],
+                  "table": {
+                    "name": "m_brand"
+                  },
+                  "joins": [],
+                  "primary": "id",
+                  "orders": [
+                    {
+                      "table": "m_brand",
+                      "column": "id",
+                      "direction": "DESC",
+                      "recid": 1
+                    }
+                  ],
+                  "query": "SELECT id, brand_name, status, remarks, created_by, created_on, updated_on, brand_image\nFROM m_brand\nWHERE brand_name = :P1 /* {{$_GET.search_value}} */\nORDER BY id DESC",
+                  "params": [
+                    {
+                      "operator": "equal",
+                      "type": "expression",
+                      "name": ":P1",
+                      "value": "{{$_GET.search_value}}"
+                    }
+                  ],
+                  "wheres": {
+                    "condition": "AND",
+                    "rules": [
+                      {
+                        "id": "m_brand.brand_name",
+                        "field": "m_brand.brand_name",
+                        "type": "string",
+                        "operator": "equal",
+                        "value": "{{$_GET.search_value}}",
+                        "data": {
+                          "table": "m_brand",
+                          "column": "brand_name",
+                          "type": "text",
+                          "columnObj": {
+                            "type": "string",
+                            "maxLength": -5,
+                            "primary": false,
+                            "unique": false,
+                            "nullable": true,
+                            "name": "brand_name"
+                          }
+                        },
+                        "operation": "="
+                      }
+                    ],
+                    "conditional": null,
+                    "valid": true
+                  }
+                }
+              },
+              "output": true,
+              "meta": [
+                {
+                  "name": "offset",
+                  "type": "number"
+                },
+                {
+                  "name": "limit",
+                  "type": "number"
+                },
+                {
+                  "name": "total",
+                  "type": "number"
+                },
+                {
+                  "name": "page",
+                  "type": "object",
+                  "sub": [
+                    {
+                      "name": "offset",
+                      "type": "object",
+                      "sub": [
+                        {
+                          "name": "first",
+                          "type": "number"
+                        },
+                        {
+                          "name": "prev",
+                          "type": "number"
+                        },
+                        {
+                          "name": "next",
+                          "type": "number"
+                        },
+                        {
+                          "name": "last",
+                          "type": "number"
+                        }
+                      ]
+                    },
+                    {
+                      "name": "current",
+                      "type": "number"
+                    },
+                    {
+                      "name": "total",
+                      "type": "number"
+                    }
+                  ]
+                },
+                {
+                  "name": "data",
+                  "type": "array",
+                  "sub": [
+                    {
+                      "type": "number",
+                      "name": "id"
+                    },
+                    {
+                      "type": "text",
+                      "name": "brand_name"
+                    },
+                    {
+                      "type": "number",
+                      "name": "status"
+                    },
+                    {
+                      "type": "text",
+                      "name": "remarks"
+                    },
+                    {
+                      "type": "number",
+                      "name": "created_by"
+                    },
+                    {
+                      "type": "datetime",
+                      "name": "created_on"
+                    },
+                    {
+                      "type": "datetime",
+                      "name": "updated_on"
+                    },
+                    {
+                      "type": "text",
+                      "name": "brand_image"
+                    }
+                  ]
+                }
+              ],
+              "outputType": "object"
+            }
+          },
+          "else": {
+            "steps": {
+              "name": "Brands",
+              "module": "dbconnector",
+              "action": "paged",
+              "options": {
+                "connection": "FoodApp",
+                "sql": {
+                  "type": "SELECT",
+                  "columns": [
+                    {
+                      "table": "m_brand",
+                      "column": "id"
+                    },
+                    {
+                      "table": "m_brand",
+                      "column": "brand_name"
+                    },
+                    {
+                      "table": "m_brand",
+                      "column": "status"
+                    },
+                    {
+                      "table": "m_brand",
+                      "column": "remarks"
+                    },
+                    {
+                      "table": "m_brand",
+                      "column": "created_by"
+                    },
+                    {
+                      "table": "m_brand",
+                      "column": "created_on"
+                    },
+                    {
+                      "table": "m_brand",
+                      "column": "updated_on"
+                    },
+                    {
+                      "table": "m_brand",
+                      "column": "brand_image"
+                    }
+                  ],
+                  "table": {
+                    "name": "m_brand"
+                  },
+                  "joins": [],
+                  "primary": "id",
+                  "orders": [
+                    {
+                      "table": "m_brand",
+                      "column": "id",
+                      "direction": "DESC"
+                    }
+                  ],
+                  "query": "SELECT id, brand_name, status, remarks, created_by, created_on, updated_on, brand_image\nFROM m_brand\nORDER BY id DESC",
+                  "params": []
+                }
+              },
+              "output": true,
+              "meta": [
+                {
+                  "name": "offset",
+                  "type": "number"
+                },
+                {
+                  "name": "limit",
+                  "type": "number"
+                },
+                {
+                  "name": "total",
+                  "type": "number"
+                },
+                {
+                  "name": "page",
+                  "type": "object",
+                  "sub": [
+                    {
+                      "name": "offset",
+                      "type": "object",
+                      "sub": [
+                        {
+                          "name": "first",
+                          "type": "number"
+                        },
+                        {
+                          "name": "prev",
+                          "type": "number"
+                        },
+                        {
+                          "name": "next",
+                          "type": "number"
+                        },
+                        {
+                          "name": "last",
+                          "type": "number"
+                        }
+                      ]
+                    },
+                    {
+                      "name": "current",
+                      "type": "number"
+                    },
+                    {
+                      "name": "total",
+                      "type": "number"
+                    }
+                  ]
+                },
+                {
+                  "name": "data",
+                  "type": "array",
+                  "sub": [
+                    {
+                      "type": "number",
+                      "name": "id"
+                    },
+                    {
+                      "type": "text",
+                      "name": "brand_name"
+                    },
+                    {
+                      "type": "number",
+                      "name": "status"
+                    },
+                    {
+                      "type": "text",
+                      "name": "remarks"
+                    },
+                    {
+                      "type": "number",
+                      "name": "created_by"
+                    },
+                    {
+                      "type": "datetime",
+                      "name": "created_on"
+                    },
+                    {
+                      "type": "datetime",
+                      "name": "updated_on"
+                    },
+                    {
+                      "type": "text",
+                      "name": "brand_image"
+                    }
+                  ]
+                }
+              ],
+              "outputType": "object"
+            }
+          }
+        },
+        "outputType": "boolean"
+      }
+    ]
+  }
+}

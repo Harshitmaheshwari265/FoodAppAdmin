@@ -1,0 +1,119 @@
+{
+  "meta": {
+    "$_GET": [
+      {
+        "type": "text",
+        "name": "sort"
+      },
+      {
+        "type": "text",
+        "name": "dir"
+      }
+    ]
+  },
+  "exec": {
+    "steps": [
+      {
+        "name": "",
+        "module": "auth",
+        "action": "restrict",
+        "options": {
+          "provider": "security",
+          "permissions": [
+            "write"
+          ],
+          "loginUrl": "/login",
+          "forbiddenUrl": "/403-forbidden"
+        }
+      },
+      {
+        "name": "ActiveMarkets",
+        "module": "dbconnector",
+        "action": "select",
+        "options": {
+          "connection": "FoodApp",
+          "sql": {
+            "type": "SELECT",
+            "columns": [
+              {
+                "table": "m_market",
+                "column": "id"
+              },
+              {
+                "table": "m_market",
+                "column": "market_name_en"
+              },
+              {
+                "table": "m_market",
+                "column": "market_name_bn"
+              },
+              {
+                "table": "m_market",
+                "column": "market_name_hin"
+              },
+              {
+                "table": "m_market",
+                "column": "market_code"
+              },
+              {
+                "table": "m_market",
+                "column": "market_pin"
+              },
+              {
+                "table": "m_market",
+                "column": "longitude"
+              },
+              {
+                "table": "m_market",
+                "column": "latitude"
+              }
+            ],
+            "table": {
+              "name": "m_market"
+            },
+            "primary": "id",
+            "joins": [],
+            "query": "SELECT id, market_name_en, market_name_bn, market_name_hin, market_code, market_pin, longitude, latitude\nFROM m_market",
+            "params": []
+          }
+        },
+        "output": true,
+        "meta": [
+          {
+            "type": "number",
+            "name": "id"
+          },
+          {
+            "type": "text",
+            "name": "market_name_en"
+          },
+          {
+            "type": "text",
+            "name": "market_name_bn"
+          },
+          {
+            "type": "text",
+            "name": "market_name_hin"
+          },
+          {
+            "type": "text",
+            "name": "market_code"
+          },
+          {
+            "type": "text",
+            "name": "market_pin"
+          },
+          {
+            "type": "text",
+            "name": "longitude"
+          },
+          {
+            "type": "text",
+            "name": "latitude"
+          }
+        ],
+        "outputType": "array"
+      }
+    ]
+  }
+}

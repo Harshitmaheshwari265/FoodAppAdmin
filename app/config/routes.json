@@ -1,0 +1,80 @@
+{
+  "routes": [
+    {
+      "path": "/",
+      "page": "index",
+      "routeType": "page",
+      "layout": "main"
+    },
+    {
+      "path": "/login1",
+      "page": "login1",
+      "layout": "main",
+      "exec": ""
+    },
+    {
+      "path": "/dashboard",
+      "page": "dashboard",
+      "layout": "main"
+    },
+    {
+      "path": "/login",
+      "page": "login",
+      "layout": ""
+    },
+    {
+      "path": "/product-list",
+      "page": "product-list",
+      "layout": "main"
+    },
+    {
+      "path": "/404-not-found",
+      "page": "404-not-found"
+    },
+    {
+      "path": "/user-type",
+      "page": "user-type",
+      "layout": "main"
+    },
+    {
+      "path": "/user-view",
+      "page": "user-view",
+      "layout": "main"
+    },
+    {
+      "path": "/category",
+      "page": "category",
+      "layout": "main"
+    },
+    {
+      "path": "/market",
+      "page": "market",
+      "layout": "main"
+    },
+    {
+      "path": "/product-mark",
+      "page": "product-mark",
+      "layout": "main"
+    },
+    {
+      "path": "/product-occurrence",
+      "page": "product-occurrence",
+      "layout": "main"
+    },
+    {
+      "path": "/restaurants",
+      "page": "restaurants",
+      "layout": "main"
+    },
+    {
+      "path": "/brand",
+      "page": "brand",
+      "layout": "main"
+    }
+  ],
+  "layouts": {
+    "main": {
+      "exec": "/api/PageAccess/LoginAccess"
+    }
+  }
+}

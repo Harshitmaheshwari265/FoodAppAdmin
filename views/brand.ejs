@@ -1,0 +1,145 @@
+<!-- Wappler include head-page="layouts/main" fontawesome_5="cdn" bootstrap5="local" is="dmx-app" id="brand" appConnect="local" components="{dmxBootstrap5Navigation:{},dmxDataTraversal:{},dmxStateManagement:{},dmxBootstrap5Modal:{},dmxBootstrap5TableGenerator:{}}" -->
+<meta name="ac:route" content="/brand">
+<dmx-query-manager id="qm"></dmx-query-manager>
+<dmx-serverconnect id="scMarketList" url="/api/Location/ActiveMarketList"></dmx-serverconnect>
+<dmx-serverconnect id="scBrandList" url="/api/Brand/BrandList" dmx-param:offset="qm.data.offset" dmx-param:limit="25" dmx-param:sort="qm.data.sort" dmx-param:dir="qm.data.dir" dmx-param:search_value="formSearch.SearchValue.value.titlecase()"></dmx-serverconnect>
+<dmx-data-view id="dvBrandList" dmx-bind:data="content.scBrandList.data.Brands.data"></dmx-data-view>
+<dmx-data-detail id="ddBrandList" dmx-bind:data="content.dvBrandList.data" key="id"></dmx-data-detail>
+<div class="breadcome-area">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="breadcome-list">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-12">
+                            <div class="breadcomb-wp">
+                                <div class="breadcomb-icon">
+                                    <i class="icon nalika-home"></i>
+                                </div>
+                                <div class="breadcomb-ctn">
+                                    <h2>Brand List</h2>
+                                    <p>Total:<span class="bread-ntd">500</span></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="product-status mg-b-30">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="product-status-wrap">
+                    <h4>All Brand List</h4>
+                    <div class="add-product">
+                        <a href="#" data-toggle="modal" data-target="#modalAddEdit" dmx-on:click="ddBrandList.select(0)">Add New Brand</a>
+                    </div>
+                    <div class="breadcome-heading">
+                        <form role="search" class="" id="formSearch">
+                            <input type="text" placeholder="Search..." class="form-control" id="SearchValue">
+                            <a href=""><i class="fa fa-search"></i></a>
+                        </form>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th class="sorting" dmx-on:click="qm.set('sort','id');qm.set('offset',qm.data.offset == 'desc' ? 'asc' : 'desc')" dmx-class:sorting_asc="qm.data.sort=='id' && qm.data.offset == 'asc'" dmx-class:sorting_desc="qm.data.sort=='id' && qm.data.offset == 'desc'">Id</th>
+                                    <th class="sorting" dmx-on:click="qm.set('sort','brand_image');qm.set('offset',qm.data.offset == 'desc' ? 'asc' : 'desc')" dmx-class:sorting_asc="qm.data.sort=='brand_image' && qm.data.offset == 'asc'" dmx-class:sorting_desc="qm.data.sort=='brand_image' && qm.data.offset == 'desc'">Brand Image</th>
+                                    <th class="sorting" dmx-on:click="qm.set('sort','brand_name');qm.set('offset',qm.data.offset == 'desc' ? 'asc' : 'desc')" dmx-class:sorting_asc="qm.data.sort=='brand_name' && qm.data.offset == 'asc'" dmx-class:sorting_desc="qm.data.sort=='brand_name' && qm.data.offset == 'desc'">Brand Name</th>
+                                    <th class="sorting" dmx-on:click="qm.set('sort','status');qm.set('offset',qm.data.offset == 'desc' ? 'asc' : 'desc')" dmx-class:sorting_asc="qm.data.sort=='status' && qm.data.offset == 'asc'" dmx-class:sorting_desc="qm.data.sort=='status' && qm.data.offset == 'desc'">Status</th>
+                                    <th class="sorting" dmx-on:click="qm.set('sort','remarks');qm.set('offset',qm.data.offset == 'desc' ? 'asc' : 'desc')" dmx-class:sorting_asc="qm.data.sort=='remarks' && qm.data.offset == 'asc'" dmx-class:sorting_desc="qm.data.sort=='remarks' && qm.data.offset == 'desc'">Remarks</th>
+                                    <th class="sorting" dmx-on:click="qm.set('sort','created_on');qm.set('offset',qm.data.offset == 'desc' ? 'asc' : 'desc')" dmx-class:sorting_asc="qm.data.sort=='created_on' && qm.data.offset == 'asc'" dmx-class:sorting_desc="qm.data.sort=='created_on' && qm.data.offset == 'desc'">Created on</th>
+                                    <th class="sorting" dmx-on:click="qm.set('sort','updated_on');qm.set('offset',qm.data.offset == 'desc' ? 'asc' : 'desc')" dmx-class:sorting_asc="qm.data.sort=='updated_on' && qm.data.offset == 'asc'" dmx-class:sorting_desc="qm.data.sort=='updated_on' && qm.data.offset == 'desc'">Updated on</th>
+                                </tr>
+                            </thead>
+                            <tbody is="dmx-repeat" dmx-generator="bs5table" dmx-bind:repeat="dvBrandList.data" id="tableRepeat2" dmx-state="qm" dmx-sort="sort" dmx-order="offset">
+                                <tr>
+                                    <td dmx-text="id"></td>
+                                    <td><img dmx-bind:src="brand_image? brand_image:'assets/img/blog-details/1.jpg'"></td>
+                                    <td dmx-text="brand_name"></td>
+                                    <td><button dmx-class:pd-setting="status==1" dmx-class:ds-setting="status==0">{{(status==1)?'Active':'InActive'}}</button></td>
+                                    <td dmx-text="remarks"></td>
+                                    <td dmx-text="created_on.formatDate('dd-MM-yyyy hh:mm:ss A')"></td>
+                                    <td dmx-text="updated_on.formatDate('dd-MM-yyyy hh:mm:ss A')"></td>
+                                    <td>
+                                        <button title="Edit" class="pd-setting-ed" data-toggle="modal" data-target="#modalAddEdit" dmx-on:click="ddBrandList.select(id)"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="text-light" dmx-show="content.scBrandList.data.Brands.data.length==0">
+                        <p class="text-center fa-2x text-warning">
+                            No record Found!
+                        </p>
+                    </div>
+                    <ul class="pagination" dmx-populate="scBrandList.data.Brands" dmx-state="qm" dmx-offset="offset" dmx-generator="bs5paging">
+                        <li class="page-item" dmx-class:disabled="scBrandList.data.Brands.page.current == 1" aria-label="First">
+                            <a href="javascript:void(0)" class="page-link" dmx-on:click="qm.set('offset',scBrandList.data.Brands.page.offset.first)"><span aria-hidden="true">&lsaquo;&lsaquo;</span></a>
+                        </li>
+                        <li class="page-item" dmx-class:disabled="scBrandList.data.Brands.page.current == 1" aria-label="Previous">
+                            <a href="javascript:void(0)" class="page-link" dmx-on:click="qm.set('offset',scBrandList.data.Brands.page.offset.prev)"><span aria-hidden="true">&lsaquo;</span></a>
+                        </li>
+                        <li class="page-item" dmx-class:active="title == scBrandList.data.Brands.page.current" dmx-class:disabled="!active" dmx-repeat="scBrandList.data.Brands.getServerConnectPagination(2,1,'...')">
+                            <a href="javascript:void(0)" class="page-link" dmx-on:click="qm.set('offset',(page-1)*scBrandList.data.Brands.limit)">{{title}}</a>
+                        </li>
+                        <li class="page-item" dmx-class:disabled="scBrandList.data.Brands.page.current ==  scBrandList.data.Brands.page.total" aria-label="Next">
+                            <a href="javascript:void(0)" class="page-link" dmx-on:click="qm.set('offset',scBrandList.data.Brands.page.offset.next)"><span aria-hidden="true">&rsaquo;</span></a>
+                        </li>
+                        <li class="page-item" dmx-class:disabled="scBrandList.data.Brands.page.current ==  scBrandList.data.Brands.page.total" aria-label="Last">
+                            <a href="javascript:void(0)" class="page-link" dmx-on:click="qm.set('offset',scBrandList.data.Brands.page.offset.last)"><span aria-hidden="true">&rsaquo;&rsaquo;</span></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- modal start -->
+<div id="modalAddEdit" class="modal modal-adminpro-general Customwidth-popup-WarningModal fade" role="dialog" is="dmx-bs5-modal" tabindex="-1">
+    <form id="scformAddEdit" is="dmx-serverconnect-form" method="post" action="/api/Brand/BrandAddEdit" dmx-generator="bootstrap5" dmx-form-type="horizontal" dmx-on:success="scBrandList.load();notifMain.success(scformAddEdit.data);scformAddEdit.reset(true)" dmx-on:forbidden="notifMain.warning(lastError.response)" dmx-on:error="notifMain.warning(lastError.response)" dmx-on:unauthorized="notifMain.warning(lastError.response)" dmx-on:invalid="notifMain.warning(lastError.response.data.validate_1)">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="modal-close-area modal-close-df">
+                        <a class="close" data-dismiss="modal" href="#"><i class="fa fa-close"></i></a>
+                    </div>
+                    <h4 class="modal-title">{{content.ddBrandList.data.id?'Edit Brand':'Add A New Brand'}}</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row mx-0">
+                        <input type="hidden" name="EditBrandId" id="EditBrandId" dmx-bind:value="content.ddBrandList.data.id">
+                        <div class="col-12 col-md-6 mg-b-15">
+                            <label>Brand Name<span class="compulsory">*</span></label>
+                            <input type="text" class="select2_demo_3 form-control" name="en_name" required="" dmx-bind:value="content.ddBrandList.data.brand_name">
+                        </div>
+                        <div class="col-12 col-md-6 mg-b-15">
+                            <label>Brand Image (if any)</label>
+                            <input class="select2_demo_3 form-control" name="image" type="file">
+                        </div>
+                        <div class="col-12 col-md-6 mg-b-15" dmx-show="content.ddBrandList.data.id">
+                            <label>Status</label>
+                            <select class="select2_demo_3 form-control" id="status" name="status" dmx-bind:value="content.ddBrandList.data.status">
+                                <option value="1">Active</option>
+                                <option value="0">InActive</option>
+                            </select>
+                        </div>
+                        <div class="col-12 col-md-6 mg-b-15" dmx-show="content.ddBrandList.data.id">
+                            <label>Remarks</label>
+                            <textarea type="text" class="select2_demo_3 form-control" name="remarks" id="remarks" placeholder="Enter Any remarks" dmx-bind:value="content.ddBrandList.data.remarks"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary" type="submit" dmx-bind:disabled="state.executing">{{content.ddBrandList.data.id?'Update':'Submit'}}<span class="spinner-border spinner-border-sm text-success" role="status" dmx-show="state.executing"></span></button>
+                    <button data-dismiss="modal" class="btn btn-warning">Close</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

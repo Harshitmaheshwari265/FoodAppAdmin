@@ -1,0 +1,114 @@
+{
+  "meta": {
+    "$_GET": [
+      {
+        "type": "text",
+        "name": "sort"
+      },
+      {
+        "type": "text",
+        "name": "dir"
+      }
+    ]
+  },
+  "exec": {
+    "steps": [
+      {
+        "name": "",
+        "module": "auth",
+        "action": "restrict",
+        "options": {
+          "provider": "security",
+          "permissions": [
+            "write"
+          ],
+          "loginUrl": "/login",
+          "forbiddenUrl": "/403-forbidden"
+        }
+      },
+      {
+        "name": "CatrgoryType",
+        "module": "dbconnector",
+        "action": "select",
+        "options": {
+          "connection": "FoodApp",
+          "sql": {
+            "type": "SELECT",
+            "columns": [
+              {
+                "table": "m_category_type",
+                "column": "id"
+              },
+              {
+                "table": "m_category_type",
+                "column": "type_name_en"
+              },
+              {
+                "table": "m_category_type",
+                "column": "type_name_bn"
+              },
+              {
+                "table": "m_category_type",
+                "column": "type_name_hin"
+              }
+            ],
+            "table": {
+              "name": "m_category_type"
+            },
+            "primary": "id",
+            "joins": [],
+            "wheres": {
+              "condition": "AND",
+              "rules": [
+                {
+                  "id": "m_category_type.status",
+                  "field": "m_category_type.status",
+                  "type": "double",
+                  "operator": "equal",
+                  "value": 1,
+                  "data": {
+                    "table": "m_category_type",
+                    "column": "status",
+                    "type": "number",
+                    "columnObj": {
+                      "type": "integer",
+                      "primary": false,
+                      "unique": false,
+                      "nullable": true,
+                      "name": "status"
+                    }
+                  },
+                  "operation": "="
+                }
+              ],
+              "conditional": null,
+              "valid": true
+            },
+            "query": "SELECT id, type_name_en, type_name_bn, type_name_hin\nFROM m_category_type\nWHERE status = 1",
+            "params": []
+          }
+        },
+        "output": true,
+        "meta": [
+          {
+            "type": "number",
+            "name": "id"
+          },
+          {
+            "type": "text",
+            "name": "type_name_en"
+          },
+          {
+            "type": "text",
+            "name": "type_name_bn"
+          },
+          {
+            "type": "text",
+            "name": "type_name_hin"
+          }
+        ],
+        "outputType": "array"
+      }
+    ]
+  }
+}

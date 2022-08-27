@@ -1,0 +1,734 @@
+{
+  "meta": {
+    "$_GET": [
+      {
+        "type": "text",
+        "name": "offset"
+      },
+      {
+        "type": "text",
+        "name": "limit"
+      },
+      {
+        "type": "text",
+        "name": "sort"
+      },
+      {
+        "type": "text",
+        "name": "dir"
+      },
+      {
+        "type": "text",
+        "name": "user_type"
+      },
+      {
+        "type": "text",
+        "name": "search_value"
+      }
+    ]
+  },
+  "exec": {
+    "steps": [
+      {
+        "name": "",
+        "module": "auth",
+        "action": "restrict",
+        "options": {
+          "provider": "security",
+          "permissions": [
+            "write"
+          ],
+          "loginUrl": "/login",
+          "forbiddenUrl": "/403-forbidden"
+        }
+      },
+      {
+        "name": "",
+        "module": "core",
+        "action": "condition",
+        "options": {
+          "if": "{{$_GET.search_value}}",
+          "then": {
+            "steps": {
+              "name": "FetchUsers",
+              "module": "dbconnector",
+              "action": "paged",
+              "options": {
+                "connection": "FoodApp",
+                "sql": {
+                  "type": "SELECT",
+                  "columns": [
+                    {
+                      "table": "m_customer",
+                      "column": "id"
+                    },
+                    {
+                      "table": "m_customer",
+                      "column": "user_type_id"
+                    },
+                    {
+                      "table": "m_customer",
+                      "column": "fname"
+                    },
+                    {
+                      "table": "m_customer",
+                      "column": "lname"
+                    },
+                    {
+                      "table": "m_customer",
+                      "column": "mobile"
+                    },
+                    {
+                      "table": "m_customer",
+                      "column": "is_watsapp"
+                    },
+                    {
+                      "table": "m_customer",
+                      "column": "watsapp_no"
+                    },
+                    {
+                      "table": "m_customer",
+                      "column": "customer_email"
+                    },
+                    {
+                      "table": "m_customer",
+                      "column": "user_dob"
+                    },
+                    {
+                      "table": "m_customer",
+                      "column": "address"
+                    },
+                    {
+                      "table": "m_customer",
+                      "column": "district"
+                    },
+                    {
+                      "table": "m_customer",
+                      "column": "wallet_bal"
+                    },
+                    {
+                      "table": "m_customer",
+                      "column": "signup_via"
+                    },
+                    {
+                      "table": "m_customer",
+                      "column": "status"
+                    },
+                    {
+                      "table": "m_customer",
+                      "column": "remarks"
+                    },
+                    {
+                      "table": "m_customer",
+                      "column": "created_on"
+                    },
+                    {
+                      "table": "m_customer",
+                      "column": "pin"
+                    }
+                  ],
+                  "table": {
+                    "name": "m_customer"
+                  },
+                  "primary": "id",
+                  "joins": [],
+                  "wheres": {
+                    "condition": "AND",
+                    "rules": [
+                      {
+                        "id": "m_customer.user_type_id",
+                        "field": "m_customer.user_type_id",
+                        "type": "double",
+                        "operator": "equal",
+                        "value": "{{$_GET.user_type}}",
+                        "data": {
+                          "table": "m_customer",
+                          "column": "user_type_id",
+                          "type": "number",
+                          "columnObj": {
+                            "type": "reference",
+                            "primary": false,
+                            "unique": false,
+                            "nullable": true,
+                            "references": "id",
+                            "inTable": "m_user_type",
+                            "referenceType": "integer",
+                            "onUpdate": "NO ACTION",
+                            "onDelete": "NO ACTION",
+                            "name": "user_type_id"
+                          }
+                        },
+                        "operation": "="
+                      },
+                      {
+                        "condition": "OR",
+                        "rules": [
+                          {
+                            "id": "m_customer.fname",
+                            "field": "m_customer.fname",
+                            "type": "string",
+                            "operator": "contains",
+                            "value": "{{$_GET.search_value}}",
+                            "data": {
+                              "table": "m_customer",
+                              "column": "fname",
+                              "type": "text",
+                              "columnObj": {
+                                "type": "string",
+                                "maxLength": -5,
+                                "primary": false,
+                                "unique": false,
+                                "nullable": true,
+                                "name": "fname"
+                              }
+                            },
+                            "operation": "LIKE"
+                          },
+                          {
+                            "id": "m_customer.lname",
+                            "field": "m_customer.lname",
+                            "type": "string",
+                            "operator": "contains",
+                            "value": "{{$_GET.search_value}}",
+                            "data": {
+                              "table": "m_customer",
+                              "column": "lname",
+                              "type": "text",
+                              "columnObj": {
+                                "type": "string",
+                                "maxLength": -5,
+                                "primary": false,
+                                "unique": false,
+                                "nullable": true,
+                                "name": "lname"
+                              }
+                            },
+                            "operation": "LIKE"
+                          },
+                          {
+                            "id": "m_customer.mobile",
+                            "field": "m_customer.mobile",
+                            "type": "string",
+                            "operator": "contains",
+                            "value": "{{$_GET.search_value}}",
+                            "data": {
+                              "table": "m_customer",
+                              "column": "mobile",
+                              "type": "text",
+                              "columnObj": {
+                                "type": "string",
+                                "maxLength": -5,
+                                "primary": false,
+                                "unique": false,
+                                "nullable": true,
+                                "name": "mobile"
+                              }
+                            },
+                            "operation": "LIKE"
+                          },
+                          {
+                            "id": "m_customer.watsapp_no",
+                            "field": "m_customer.watsapp_no",
+                            "type": "string",
+                            "operator": "contains",
+                            "value": "{{$_GET.search_value}}",
+                            "data": {
+                              "table": "m_customer",
+                              "column": "watsapp_no",
+                              "type": "text",
+                              "columnObj": {
+                                "type": "string",
+                                "maxLength": -5,
+                                "primary": false,
+                                "unique": false,
+                                "nullable": true,
+                                "name": "watsapp_no"
+                              }
+                            },
+                            "operation": "LIKE"
+                          },
+                          {
+                            "id": "m_customer.address",
+                            "field": "m_customer.address",
+                            "type": "string",
+                            "operator": "contains",
+                            "value": "{{$_GET.search_value}}",
+                            "data": {
+                              "table": "m_customer",
+                              "column": "address",
+                              "type": "text",
+                              "columnObj": {
+                                "type": "string",
+                                "maxLength": -5,
+                                "primary": false,
+                                "unique": false,
+                                "nullable": true,
+                                "name": "address"
+                              }
+                            },
+                            "operation": "LIKE"
+                          },
+                          {
+                            "id": "m_customer.pin",
+                            "field": "m_customer.pin",
+                            "type": "string",
+                            "operator": "contains",
+                            "value": "{{$_GET.search_value}}",
+                            "data": {
+                              "table": "m_customer",
+                              "column": "pin",
+                              "type": "text",
+                              "columnObj": {
+                                "type": "string",
+                                "maxLength": -5,
+                                "primary": false,
+                                "unique": false,
+                                "nullable": true,
+                                "name": "pin"
+                              }
+                            },
+                            "operation": "LIKE"
+                          }
+                        ],
+                        "conditional": null
+                      }
+                    ],
+                    "conditional": null,
+                    "valid": true
+                  },
+                  "query": "SELECT id, user_type_id, fname, lname, mobile, is_watsapp, watsapp_no, customer_email, user_dob, address, district, wallet_bal, signup_via, status, remarks, created_on, pin\nFROM m_customer\nWHERE user_type_id = :P1 /* {{$_GET.user_type}} */ AND (fname LIKE :P2 /* {{$_GET.search_value}} */ OR lname LIKE :P3 /* {{$_GET.search_value}} */ OR mobile LIKE :P4 /* {{$_GET.search_value}} */ OR watsapp_no LIKE :P5 /* {{$_GET.search_value}} */ OR address LIKE :P6 /* {{$_GET.search_value}} */ OR pin LIKE :P7 /* {{$_GET.search_value}} */)",
+                  "params": [
+                    {
+                      "operator": "equal",
+                      "type": "expression",
+                      "name": ":P1",
+                      "value": "{{$_GET.user_type}}"
+                    },
+                    {
+                      "operator": "contains",
+                      "type": "expression",
+                      "name": ":P2",
+                      "value": "{{$_GET.search_value}}"
+                    },
+                    {
+                      "operator": "contains",
+                      "type": "expression",
+                      "name": ":P3",
+                      "value": "{{$_GET.search_value}}"
+                    },
+                    {
+                      "operator": "contains",
+                      "type": "expression",
+                      "name": ":P4",
+                      "value": "{{$_GET.search_value}}"
+                    },
+                    {
+                      "operator": "contains",
+                      "type": "expression",
+                      "name": ":P5",
+                      "value": "{{$_GET.search_value}}"
+                    },
+                    {
+                      "operator": "contains",
+                      "type": "expression",
+                      "name": ":P6",
+                      "value": "{{$_GET.search_value}}"
+                    },
+                    {
+                      "operator": "contains",
+                      "type": "expression",
+                      "name": ":P7",
+                      "value": "{{$_GET.search_value}}"
+                    }
+                  ]
+                }
+              },
+              "output": true,
+              "meta": [
+                {
+                  "name": "offset",
+                  "type": "number"
+                },
+                {
+                  "name": "limit",
+                  "type": "number"
+                },
+                {
+                  "name": "total",
+                  "type": "number"
+                },
+                {
+                  "name": "page",
+                  "type": "object",
+                  "sub": [
+                    {
+                      "name": "offset",
+                      "type": "object",
+                      "sub": [
+                        {
+                          "name": "first",
+                          "type": "number"
+                        },
+                        {
+                          "name": "prev",
+                          "type": "number"
+                        },
+                        {
+                          "name": "next",
+                          "type": "number"
+                        },
+                        {
+                          "name": "last",
+                          "type": "number"
+                        }
+                      ]
+                    },
+                    {
+                      "name": "current",
+                      "type": "number"
+                    },
+                    {
+                      "name": "total",
+                      "type": "number"
+                    }
+                  ]
+                },
+                {
+                  "name": "data",
+                  "type": "array",
+                  "sub": [
+                    {
+                      "type": "number",
+                      "name": "id"
+                    },
+                    {
+                      "type": "number",
+                      "name": "user_type_id"
+                    },
+                    {
+                      "type": "text",
+                      "name": "fname"
+                    },
+                    {
+                      "type": "text",
+                      "name": "lname"
+                    },
+                    {
+                      "type": "text",
+                      "name": "mobile"
+                    },
+                    {
+                      "type": "text",
+                      "name": "is_watsapp"
+                    },
+                    {
+                      "type": "text",
+                      "name": "watsapp_no"
+                    },
+                    {
+                      "type": "text",
+                      "name": "customer_email"
+                    },
+                    {
+                      "type": "text",
+                      "name": "user_dob"
+                    },
+                    {
+                      "type": "text",
+                      "name": "address"
+                    },
+                    {
+                      "type": "text",
+                      "name": "district"
+                    },
+                    {
+                      "type": "text",
+                      "name": "wallet_bal"
+                    },
+                    {
+                      "type": "text",
+                      "name": "signup_via"
+                    },
+                    {
+                      "type": "number",
+                      "name": "status"
+                    },
+                    {
+                      "type": "text",
+                      "name": "remarks"
+                    },
+                    {
+                      "type": "datetime",
+                      "name": "created_on"
+                    },
+                    {
+                      "type": "text",
+                      "name": "pin"
+                    }
+                  ]
+                }
+              ],
+              "outputType": "object"
+            }
+          },
+          "else": {
+            "steps": {
+              "name": "FetchUsers",
+              "module": "dbconnector",
+              "action": "paged",
+              "options": {
+                "connection": "FoodApp",
+                "sql": {
+                  "type": "SELECT",
+                  "columns": [
+                    {
+                      "table": "m_customer",
+                      "column": "id"
+                    },
+                    {
+                      "table": "m_customer",
+                      "column": "user_type_id"
+                    },
+                    {
+                      "table": "m_customer",
+                      "column": "fname"
+                    },
+                    {
+                      "table": "m_customer",
+                      "column": "lname"
+                    },
+                    {
+                      "table": "m_customer",
+                      "column": "mobile"
+                    },
+                    {
+                      "table": "m_customer",
+                      "column": "is_watsapp"
+                    },
+                    {
+                      "table": "m_customer",
+                      "column": "watsapp_no"
+                    },
+                    {
+                      "table": "m_customer",
+                      "column": "customer_email"
+                    },
+                    {
+                      "table": "m_customer",
+                      "column": "user_dob"
+                    },
+                    {
+                      "table": "m_customer",
+                      "column": "address"
+                    },
+                    {
+                      "table": "m_customer",
+                      "column": "district"
+                    },
+                    {
+                      "table": "m_customer",
+                      "column": "wallet_bal"
+                    },
+                    {
+                      "table": "m_customer",
+                      "column": "signup_via"
+                    },
+                    {
+                      "table": "m_customer",
+                      "column": "status"
+                    },
+                    {
+                      "table": "m_customer",
+                      "column": "remarks"
+                    },
+                    {
+                      "table": "m_customer",
+                      "column": "created_on"
+                    },
+                    {
+                      "table": "m_customer",
+                      "column": "pin"
+                    }
+                  ],
+                  "table": {
+                    "name": "m_customer"
+                  },
+                  "primary": "id",
+                  "joins": [],
+                  "wheres": {
+                    "condition": "AND",
+                    "rules": [
+                      {
+                        "id": "m_customer.user_type_id",
+                        "field": "m_customer.user_type_id",
+                        "type": "double",
+                        "operator": "equal",
+                        "value": "{{$_GET.user_type}}",
+                        "data": {
+                          "table": "m_customer",
+                          "column": "user_type_id",
+                          "type": "number",
+                          "columnObj": {
+                            "type": "reference",
+                            "primary": false,
+                            "unique": false,
+                            "nullable": true,
+                            "references": "id",
+                            "inTable": "m_user_type",
+                            "referenceType": "integer",
+                            "onUpdate": "NO ACTION",
+                            "onDelete": "NO ACTION",
+                            "name": "user_type_id"
+                          }
+                        },
+                        "operation": "="
+                      }
+                    ],
+                    "conditional": null,
+                    "valid": true
+                  },
+                  "query": "SELECT id, user_type_id, fname, lname, mobile, is_watsapp, watsapp_no, customer_email, user_dob, address, district, wallet_bal, signup_via, status, remarks, created_on, pin\nFROM m_customer\nWHERE user_type_id = :P1 /* {{$_GET.user_type}} */",
+                  "params": [
+                    {
+                      "operator": "equal",
+                      "type": "expression",
+                      "name": ":P1",
+                      "value": "{{$_GET.user_type}}"
+                    }
+                  ]
+                }
+              },
+              "output": true,
+              "meta": [
+                {
+                  "name": "offset",
+                  "type": "number"
+                },
+                {
+                  "name": "limit",
+                  "type": "number"
+                },
+                {
+                  "name": "total",
+                  "type": "number"
+                },
+                {
+                  "name": "page",
+                  "type": "object",
+                  "sub": [
+                    {
+                      "name": "offset",
+                      "type": "object",
+                      "sub": [
+                        {
+                          "name": "first",
+                          "type": "number"
+                        },
+                        {
+                          "name": "prev",
+                          "type": "number"
+                        },
+                        {
+                          "name": "next",
+                          "type": "number"
+                        },
+                        {
+                          "name": "last",
+                          "type": "number"
+                        }
+                      ]
+                    },
+                    {
+                      "name": "current",
+                      "type": "number"
+                    },
+                    {
+                      "name": "total",
+                      "type": "number"
+                    }
+                  ]
+                },
+                {
+                  "name": "data",
+                  "type": "array",
+                  "sub": [
+                    {
+                      "type": "number",
+                      "name": "id"
+                    },
+                    {
+                      "type": "number",
+                      "name": "user_type_id"
+                    },
+                    {
+                      "type": "text",
+                      "name": "fname"
+                    },
+                    {
+                      "type": "text",
+                      "name": "lname"
+                    },
+                    {
+                      "type": "text",
+                      "name": "mobile"
+                    },
+                    {
+                      "type": "text",
+                      "name": "is_watsapp"
+                    },
+                    {
+                      "type": "text",
+                      "name": "watsapp_no"
+                    },
+                    {
+                      "type": "text",
+                      "name": "customer_email"
+                    },
+                    {
+                      "type": "text",
+                      "name": "user_dob"
+                    },
+                    {
+                      "type": "text",
+                      "name": "address"
+                    },
+                    {
+                      "type": "text",
+                      "name": "district"
+                    },
+                    {
+                      "type": "text",
+                      "name": "wallet_bal"
+                    },
+                    {
+                      "type": "text",
+                      "name": "signup_via"
+                    },
+                    {
+                      "type": "number",
+                      "name": "status"
+                    },
+                    {
+                      "type": "text",
+                      "name": "remarks"
+                    },
+                    {
+                      "type": "datetime",
+                      "name": "created_on"
+                    },
+                    {
+                      "type": "text",
+                      "name": "pin"
+                    }
+                  ]
+                }
+              ],
+              "outputType": "object"
+            }
+          }
+        },
+        "outputType": "boolean"
+      }
+    ]
+  }
+}

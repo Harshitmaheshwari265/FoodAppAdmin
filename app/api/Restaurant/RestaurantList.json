@@ -1,0 +1,2580 @@
+{
+  "meta": {
+    "$_GET": [
+      {
+        "type": "text",
+        "name": "offset"
+      },
+      {
+        "type": "text",
+        "name": "limit"
+      },
+      {
+        "type": "text",
+        "name": "sort"
+      },
+      {
+        "type": "text",
+        "name": "dir"
+      },
+      {
+        "type": "text",
+        "name": "search_value"
+      },
+      {
+        "type": "text",
+        "name": "market_id"
+      },
+      {
+        "type": "text",
+        "name": "cat_type_id"
+      }
+    ]
+  },
+  "exec": {
+    "steps": [
+      {
+        "name": "",
+        "module": "auth",
+        "action": "restrict",
+        "options": {
+          "provider": "security",
+          "permissions": [
+            "write"
+          ],
+          "loginUrl": "/login",
+          "forbiddenUrl": "/403-forbidden"
+        }
+      },
+      {
+        "name": "",
+        "module": "core",
+        "action": "condition",
+        "options": {
+          "if": "{{$_GET.cat_type_id}}",
+          "then": {
+            "steps": {
+              "name": "",
+              "module": "core",
+              "action": "condition",
+              "options": {
+                "if": "{{$_GET.search_value}}",
+                "then": {
+                  "steps": {
+                    "name": "Restaurants",
+                    "module": "dbconnector",
+                    "action": "paged",
+                    "options": {
+                      "connection": "FoodApp",
+                      "sql": {
+                        "type": "SELECT",
+                        "columns": [
+                          {
+                            "table": "m_restaurant",
+                            "column": "id"
+                          },
+                          {
+                            "table": "m_restaurant",
+                            "column": "gen_shop_id"
+                          },
+                          {
+                            "table": "m_restaurant",
+                            "column": "shop_name_en"
+                          },
+                          {
+                            "table": "m_restaurant",
+                            "column": "shop_name_bn"
+                          },
+                          {
+                            "table": "m_restaurant",
+                            "column": "shop_name_hin"
+                          },
+                          {
+                            "table": "m_restaurant",
+                            "column": "shop_logo"
+                          },
+                          {
+                            "table": "m_restaurant",
+                            "column": "shop_mobile_no"
+                          },
+                          {
+                            "table": "m_restaurant",
+                            "column": "is_watsapp"
+                          },
+                          {
+                            "table": "m_restaurant",
+                            "column": "watsapp_no"
+                          },
+                          {
+                            "table": "m_restaurant",
+                            "column": "email_id"
+                          },
+                          {
+                            "table": "m_restaurant",
+                            "column": "owner_name"
+                          },
+                          {
+                            "table": "m_restaurant",
+                            "column": "gst_in"
+                          },
+                          {
+                            "table": "m_restaurant",
+                            "column": "is_rmc"
+                          },
+                          {
+                            "table": "m_restaurant",
+                            "column": "rmc_no"
+                          },
+                          {
+                            "table": "m_restaurant",
+                            "column": "is_fsc"
+                          },
+                          {
+                            "table": "m_restaurant",
+                            "column": "balance_amount"
+                          },
+                          {
+                            "table": "m_restaurant",
+                            "column": "is_sliding_img"
+                          },
+                          {
+                            "table": "m_restaurant",
+                            "column": "pan_no"
+                          },
+                          {
+                            "table": "m_restaurant",
+                            "column": "address"
+                          },
+                          {
+                            "table": "m_restaurant",
+                            "column": "pin"
+                          },
+                          {
+                            "table": "m_restaurant",
+                            "column": "kyc_status"
+                          },
+                          {
+                            "table": "m_restaurant",
+                            "column": "status"
+                          },
+                          {
+                            "table": "m_restaurant",
+                            "column": "created_by"
+                          },
+                          {
+                            "table": "m_restaurant",
+                            "column": "created_on"
+                          },
+                          {
+                            "table": "rsi",
+                            "column": "sliding_image1"
+                          },
+                          {
+                            "table": "rsi",
+                            "column": "sliding_image2"
+                          },
+                          {
+                            "table": "rsi",
+                            "column": "sliding_image3"
+                          },
+                          {
+                            "table": "rsi",
+                            "column": "sliding_image4"
+                          },
+                          {
+                            "table": "rsi",
+                            "column": "sliding_image5"
+                          },
+                          {
+                            "table": "rsi",
+                            "column": "cover_image"
+                          },
+                          {
+                            "table": "rsi",
+                            "column": "status",
+                            "alias": "sliding_img_status"
+                          },
+                          {
+                            "table": "restkycdoc",
+                            "column": "upload_pan"
+                          },
+                          {
+                            "table": "restkycdoc",
+                            "column": "upload_gstin"
+                          },
+                          {
+                            "table": "restkycdoc",
+                            "column": "upload_rmc"
+                          },
+                          {
+                            "table": "restkycdoc",
+                            "column": "upload_fsc"
+                          },
+                          {
+                            "table": "restkycdoc",
+                            "column": "upload_aadhar_front"
+                          },
+                          {
+                            "table": "restkycdoc",
+                            "column": "upload_aadhar_back"
+                          },
+                          {
+                            "table": "restkycdoc",
+                            "column": "other_id_proof"
+                          },
+                          {
+                            "table": "restkycdoc",
+                            "column": "bank_account"
+                          },
+                          {
+                            "table": "restkycdoc",
+                            "column": "owner_image"
+                          },
+                          {
+                            "table": "restkycdoc",
+                            "column": "agreement_copy1"
+                          },
+                          {
+                            "table": "restkycdoc",
+                            "column": "agreement_copy2"
+                          },
+                          {
+                            "table": "restkycdoc",
+                            "column": "agreement_copy3"
+                          },
+                          {
+                            "table": "restkycdoc",
+                            "column": "agreement_copy4"
+                          }
+                        ],
+                        "table": {
+                          "name": "m_restaurant"
+                        },
+                        "primary": "id",
+                        "joins": [
+                          {
+                            "table": "rest_sliding_img",
+                            "column": "*",
+                            "alias": "rsi",
+                            "type": "LEFT",
+                            "clauses": {
+                              "condition": "AND",
+                              "rules": [
+                                {
+                                  "table": "rsi",
+                                  "column": "rest_id",
+                                  "operator": "equal",
+                                  "value": {
+                                    "table": "m_restaurant",
+                                    "column": "id"
+                                  },
+                                  "operation": "="
+                                }
+                              ]
+                            },
+                            "primary": "id"
+                          },
+                          {
+                            "table": "rest_kyc_doc",
+                            "column": "*",
+                            "alias": "restkycdoc",
+                            "type": "INNER",
+                            "clauses": {
+                              "condition": "AND",
+                              "rules": [
+                                {
+                                  "table": "restkycdoc",
+                                  "column": "rest_id",
+                                  "operator": "equal",
+                                  "value": {
+                                    "table": "m_restaurant",
+                                    "column": "id"
+                                  },
+                                  "operation": "="
+                                }
+                              ]
+                            },
+                            "primary": "id"
+                          }
+                        ],
+                        "query": "SELECT m_restaurant.id, m_restaurant.gen_shop_id, m_restaurant.shop_name_en, m_restaurant.shop_name_bn, m_restaurant.shop_name_hin, m_restaurant.shop_logo, m_restaurant.shop_mobile_no, m_restaurant.is_watsapp, m_restaurant.watsapp_no, m_restaurant.email_id, m_restaurant.owner_name, m_restaurant.gst_in, m_restaurant.is_rmc, m_restaurant.rmc_no, m_restaurant.is_fsc, m_restaurant.balance_amount, m_restaurant.is_sliding_img, m_restaurant.pan_no, m_restaurant.address, m_restaurant.pin, m_restaurant.kyc_status, m_restaurant.status, m_restaurant.created_by, m_restaurant.created_on, rsi.sliding_image1, rsi.sliding_image2, rsi.sliding_image3, rsi.sliding_image4, rsi.sliding_image5, rsi.cover_image, rsi.status AS sliding_img_status, restkycdoc.upload_pan, restkycdoc.upload_gstin, restkycdoc.upload_rmc, restkycdoc.upload_fsc, restkycdoc.upload_aadhar_front, restkycdoc.upload_aadhar_back, restkycdoc.other_id_proof, restkycdoc.bank_account, restkycdoc.owner_image, restkycdoc.agreement_copy1, restkycdoc.agreement_copy2, restkycdoc.agreement_copy3, restkycdoc.agreement_copy4\nFROM m_restaurant\nLEFT JOIN rest_sliding_img AS rsi ON (rsi.rest_id = m_restaurant.id) INNER JOIN rest_kyc_doc AS restkycdoc ON (restkycdoc.rest_id = m_restaurant.id)\nWHERE (m_restaurant.owner_name LIKE :P1 /* {{$_GET.search_value}} */ OR m_restaurant.shop_name_hin LIKE :P2 /* {{$_GET.search_value}} */ OR m_restaurant.shop_name_bn LIKE :P3 /* {{$_GET.search_value}} */ OR m_restaurant.shop_mobile_no LIKE :P4 /* {{$_GET.search_value}} */ OR m_restaurant.shop_name_en LIKE :P5 /* {{$_GET.search_value}} */ OR m_restaurant.watsapp_no LIKE :P6 /* {{$_GET.search_value}} */) AND m_restaurant.market_id = :P7 /* {{$_GET.market_id}} */ AND m_restaurant.cat_type_id = :P8 /* {{$_GET.cat_type_id}} */\nORDER BY m_restaurant.id DESC",
+                        "params": [
+                          {
+                            "operator": "contains",
+                            "type": "expression",
+                            "name": ":P1",
+                            "value": "{{$_GET.search_value}}"
+                          },
+                          {
+                            "operator": "contains",
+                            "type": "expression",
+                            "name": ":P2",
+                            "value": "{{$_GET.search_value}}"
+                          },
+                          {
+                            "operator": "contains",
+                            "type": "expression",
+                            "name": ":P3",
+                            "value": "{{$_GET.search_value}}"
+                          },
+                          {
+                            "operator": "contains",
+                            "type": "expression",
+                            "name": ":P4",
+                            "value": "{{$_GET.search_value}}"
+                          },
+                          {
+                            "operator": "contains",
+                            "type": "expression",
+                            "name": ":P5",
+                            "value": "{{$_GET.search_value}}"
+                          },
+                          {
+                            "operator": "contains",
+                            "type": "expression",
+                            "name": ":P6",
+                            "value": "{{$_GET.search_value}}"
+                          },
+                          {
+                            "operator": "equal",
+                            "type": "expression",
+                            "name": ":P7",
+                            "value": "{{$_GET.market_id}}"
+                          },
+                          {
+                            "operator": "equal",
+                            "type": "expression",
+                            "name": ":P8",
+                            "value": "{{$_GET.cat_type_id}}"
+                          }
+                        ],
+                        "wheres": {
+                          "condition": "AND",
+                          "rules": [
+                            {
+                              "condition": "OR",
+                              "rules": [
+                                {
+                                  "id": "m_restaurant.owner_name",
+                                  "field": "m_restaurant.owner_name",
+                                  "type": "string",
+                                  "operator": "contains",
+                                  "value": "{{$_GET.search_value}}",
+                                  "data": {
+                                    "table": "m_restaurant",
+                                    "column": "owner_name",
+                                    "type": "text",
+                                    "columnObj": {
+                                      "type": "string",
+                                      "maxLength": -5,
+                                      "primary": false,
+                                      "unique": false,
+                                      "nullable": true,
+                                      "name": "owner_name"
+                                    }
+                                  },
+                                  "operation": "LIKE"
+                                },
+                                {
+                                  "id": "m_restaurant.shop_name_hin",
+                                  "field": "m_restaurant.shop_name_hin",
+                                  "type": "string",
+                                  "operator": "contains",
+                                  "value": "{{$_GET.search_value}}",
+                                  "data": {
+                                    "table": "m_restaurant",
+                                    "column": "shop_name_hin",
+                                    "type": "text",
+                                    "columnObj": {
+                                      "type": "string",
+                                      "maxLength": -5,
+                                      "primary": false,
+                                      "unique": false,
+                                      "nullable": true,
+                                      "name": "shop_name_hin"
+                                    }
+                                  },
+                                  "operation": "LIKE"
+                                },
+                                {
+                                  "id": "m_restaurant.shop_name_bn",
+                                  "field": "m_restaurant.shop_name_bn",
+                                  "type": "string",
+                                  "operator": "contains",
+                                  "value": "{{$_GET.search_value}}",
+                                  "data": {
+                                    "table": "m_restaurant",
+                                    "column": "shop_name_bn",
+                                    "type": "text",
+                                    "columnObj": {
+                                      "type": "string",
+                                      "maxLength": -5,
+                                      "primary": false,
+                                      "unique": false,
+                                      "nullable": true,
+                                      "name": "shop_name_bn"
+                                    }
+                                  },
+                                  "operation": "LIKE"
+                                },
+                                {
+                                  "id": "m_restaurant.shop_mobile_no",
+                                  "field": "m_restaurant.shop_mobile_no",
+                                  "type": "string",
+                                  "operator": "contains",
+                                  "value": "{{$_GET.search_value}}",
+                                  "data": {
+                                    "table": "m_restaurant",
+                                    "column": "shop_mobile_no",
+                                    "type": "text",
+                                    "columnObj": {
+                                      "type": "string",
+                                      "maxLength": -5,
+                                      "primary": false,
+                                      "unique": false,
+                                      "nullable": true,
+                                      "name": "shop_mobile_no"
+                                    }
+                                  },
+                                  "operation": "LIKE"
+                                },
+                                {
+                                  "id": "m_restaurant.shop_name_en",
+                                  "field": "m_restaurant.shop_name_en",
+                                  "type": "string",
+                                  "operator": "contains",
+                                  "value": "{{$_GET.search_value}}",
+                                  "data": {
+                                    "table": "m_restaurant",
+                                    "column": "shop_name_en",
+                                    "type": "text",
+                                    "columnObj": {
+                                      "type": "string",
+                                      "maxLength": -5,
+                                      "primary": false,
+                                      "unique": false,
+                                      "nullable": true,
+                                      "name": "shop_name_en"
+                                    }
+                                  },
+                                  "operation": "LIKE"
+                                },
+                                {
+                                  "id": "m_restaurant.watsapp_no",
+                                  "field": "m_restaurant.watsapp_no",
+                                  "type": "string",
+                                  "operator": "contains",
+                                  "value": "{{$_GET.search_value}}",
+                                  "data": {
+                                    "table": "m_restaurant",
+                                    "column": "watsapp_no",
+                                    "type": "text",
+                                    "columnObj": {
+                                      "type": "string",
+                                      "maxLength": -5,
+                                      "primary": false,
+                                      "unique": false,
+                                      "nullable": true,
+                                      "name": "watsapp_no"
+                                    }
+                                  },
+                                  "operation": "LIKE"
+                                }
+                              ],
+                              "conditional": null
+                            },
+                            {
+                              "id": "m_restaurant.market_id",
+                              "field": "m_restaurant.market_id",
+                              "type": "double",
+                              "operator": "equal",
+                              "value": "{{$_GET.market_id}}",
+                              "data": {
+                                "table": "m_restaurant",
+                                "column": "market_id",
+                                "type": "number",
+                                "columnObj": {
+                                  "type": "reference",
+                                  "primary": false,
+                                  "unique": false,
+                                  "nullable": true,
+                                  "references": "id",
+                                  "inTable": "m_market",
+                                  "referenceType": "integer",
+                                  "onUpdate": "NO ACTION",
+                                  "onDelete": "NO ACTION",
+                                  "name": "market_id"
+                                }
+                              },
+                              "operation": "="
+                            },
+                            {
+                              "id": "m_restaurant.cat_type_id",
+                              "field": "m_restaurant.cat_type_id",
+                              "type": "double",
+                              "operator": "equal",
+                              "value": "{{$_GET.cat_type_id}}",
+                              "data": {
+                                "table": "m_restaurant",
+                                "column": "cat_type_id",
+                                "type": "number",
+                                "columnObj": {
+                                  "type": "reference",
+                                  "primary": false,
+                                  "unique": false,
+                                  "nullable": true,
+                                  "references": "id",
+                                  "inTable": "m_category_type",
+                                  "referenceType": "integer",
+                                  "onUpdate": "NO ACTION",
+                                  "onDelete": "NO ACTION",
+                                  "name": "cat_type_id"
+                                }
+                              },
+                              "operation": "="
+                            }
+                          ],
+                          "conditional": null,
+                          "valid": true
+                        },
+                        "orders": [
+                          {
+                            "table": "m_restaurant",
+                            "column": "id",
+                            "direction": "DESC",
+                            "recid": 1
+                          }
+                        ]
+                      }
+                    },
+                    "output": true,
+                    "meta": [
+                      {
+                        "name": "offset",
+                        "type": "number"
+                      },
+                      {
+                        "name": "limit",
+                        "type": "number"
+                      },
+                      {
+                        "name": "total",
+                        "type": "number"
+                      },
+                      {
+                        "name": "page",
+                        "type": "object",
+                        "sub": [
+                          {
+                            "name": "offset",
+                            "type": "object",
+                            "sub": [
+                              {
+                                "name": "first",
+                                "type": "number"
+                              },
+                              {
+                                "name": "prev",
+                                "type": "number"
+                              },
+                              {
+                                "name": "next",
+                                "type": "number"
+                              },
+                              {
+                                "name": "last",
+                                "type": "number"
+                              }
+                            ]
+                          },
+                          {
+                            "name": "current",
+                            "type": "number"
+                          },
+                          {
+                            "name": "total",
+                            "type": "number"
+                          }
+                        ]
+                      },
+                      {
+                        "name": "data",
+                        "type": "array",
+                        "sub": [
+                          {
+                            "type": "number",
+                            "name": "id"
+                          },
+                          {
+                            "type": "text",
+                            "name": "gen_shop_id"
+                          },
+                          {
+                            "type": "text",
+                            "name": "shop_name_en"
+                          },
+                          {
+                            "type": "text",
+                            "name": "shop_name_bn"
+                          },
+                          {
+                            "type": "text",
+                            "name": "shop_name_hin"
+                          },
+                          {
+                            "type": "text",
+                            "name": "shop_logo"
+                          },
+                          {
+                            "type": "text",
+                            "name": "shop_mobile_no"
+                          },
+                          {
+                            "type": "text",
+                            "name": "is_watsapp"
+                          },
+                          {
+                            "type": "text",
+                            "name": "watsapp_no"
+                          },
+                          {
+                            "type": "text",
+                            "name": "email_id"
+                          },
+                          {
+                            "type": "text",
+                            "name": "owner_name"
+                          },
+                          {
+                            "type": "text",
+                            "name": "gst_in"
+                          },
+                          {
+                            "type": "text",
+                            "name": "is_rmc"
+                          },
+                          {
+                            "type": "text",
+                            "name": "rmc_no"
+                          },
+                          {
+                            "type": "text",
+                            "name": "is_fsc"
+                          },
+                          {
+                            "type": "text",
+                            "name": "balance_amount"
+                          },
+                          {
+                            "type": "text",
+                            "name": "is_sliding_img"
+                          },
+                          {
+                            "type": "text",
+                            "name": "pan_no"
+                          },
+                          {
+                            "type": "text",
+                            "name": "address"
+                          },
+                          {
+                            "type": "text",
+                            "name": "pin"
+                          },
+                          {
+                            "type": "text",
+                            "name": "kyc_status"
+                          },
+                          {
+                            "type": "number",
+                            "name": "status"
+                          },
+                          {
+                            "type": "number",
+                            "name": "created_by"
+                          },
+                          {
+                            "type": "datetime",
+                            "name": "created_on"
+                          },
+                          {
+                            "type": "text",
+                            "name": "sliding_image1"
+                          },
+                          {
+                            "type": "text",
+                            "name": "sliding_image2"
+                          },
+                          {
+                            "type": "text",
+                            "name": "sliding_image3"
+                          },
+                          {
+                            "type": "text",
+                            "name": "sliding_image4"
+                          },
+                          {
+                            "type": "text",
+                            "name": "sliding_image5"
+                          },
+                          {
+                            "type": "text",
+                            "name": "cover_image"
+                          },
+                          {
+                            "type": "number",
+                            "name": "sliding_img_status"
+                          },
+                          {
+                            "type": "text",
+                            "name": "upload_pan"
+                          },
+                          {
+                            "type": "text",
+                            "name": "upload_gstin"
+                          },
+                          {
+                            "type": "text",
+                            "name": "upload_rmc"
+                          },
+                          {
+                            "type": "text",
+                            "name": "upload_fsc"
+                          },
+                          {
+                            "type": "text",
+                            "name": "upload_aadhar_front"
+                          },
+                          {
+                            "type": "text",
+                            "name": "upload_aadhar_back"
+                          },
+                          {
+                            "type": "text",
+                            "name": "other_id_proof"
+                          },
+                          {
+                            "type": "text",
+                            "name": "bank_account"
+                          },
+                          {
+                            "type": "text",
+                            "name": "owner_image"
+                          },
+                          {
+                            "type": "text",
+                            "name": "agreement_copy1"
+                          },
+                          {
+                            "type": "text",
+                            "name": "agreement_copy2"
+                          },
+                          {
+                            "type": "text",
+                            "name": "agreement_copy3"
+                          },
+                          {
+                            "type": "text",
+                            "name": "agreement_copy4"
+                          }
+                        ]
+                      }
+                    ],
+                    "outputType": "object"
+                  }
+                },
+                "else": {
+                  "steps": {
+                    "name": "Restaurants",
+                    "module": "dbconnector",
+                    "action": "paged",
+                    "options": {
+                      "connection": "FoodApp",
+                      "sql": {
+                        "type": "SELECT",
+                        "columns": [
+                          {
+                            "table": "m_restaurant",
+                            "column": "id"
+                          },
+                          {
+                            "table": "m_restaurant",
+                            "column": "gen_shop_id"
+                          },
+                          {
+                            "table": "m_restaurant",
+                            "column": "shop_name_en"
+                          },
+                          {
+                            "table": "m_restaurant",
+                            "column": "shop_name_bn"
+                          },
+                          {
+                            "table": "m_restaurant",
+                            "column": "shop_name_hin"
+                          },
+                          {
+                            "table": "m_restaurant",
+                            "column": "shop_logo"
+                          },
+                          {
+                            "table": "m_restaurant",
+                            "column": "shop_mobile_no"
+                          },
+                          {
+                            "table": "m_restaurant",
+                            "column": "is_watsapp"
+                          },
+                          {
+                            "table": "m_restaurant",
+                            "column": "watsapp_no"
+                          },
+                          {
+                            "table": "m_restaurant",
+                            "column": "email_id"
+                          },
+                          {
+                            "table": "m_restaurant",
+                            "column": "owner_name"
+                          },
+                          {
+                            "table": "m_restaurant",
+                            "column": "gst_in"
+                          },
+                          {
+                            "table": "m_restaurant",
+                            "column": "is_rmc"
+                          },
+                          {
+                            "table": "m_restaurant",
+                            "column": "rmc_no"
+                          },
+                          {
+                            "table": "m_restaurant",
+                            "column": "is_fsc"
+                          },
+                          {
+                            "table": "m_restaurant",
+                            "column": "balance_amount"
+                          },
+                          {
+                            "table": "m_restaurant",
+                            "column": "is_sliding_img"
+                          },
+                          {
+                            "table": "m_restaurant",
+                            "column": "pan_no"
+                          },
+                          {
+                            "table": "m_restaurant",
+                            "column": "address"
+                          },
+                          {
+                            "table": "m_restaurant",
+                            "column": "pin"
+                          },
+                          {
+                            "table": "m_restaurant",
+                            "column": "kyc_status"
+                          },
+                          {
+                            "table": "m_restaurant",
+                            "column": "status"
+                          },
+                          {
+                            "table": "m_restaurant",
+                            "column": "created_by"
+                          },
+                          {
+                            "table": "m_restaurant",
+                            "column": "created_on"
+                          },
+                          {
+                            "table": "rsi",
+                            "column": "sliding_image1"
+                          },
+                          {
+                            "table": "rsi",
+                            "column": "sliding_image2"
+                          },
+                          {
+                            "table": "rsi",
+                            "column": "sliding_image3"
+                          },
+                          {
+                            "table": "rsi",
+                            "column": "sliding_image4"
+                          },
+                          {
+                            "table": "rsi",
+                            "column": "sliding_image5"
+                          },
+                          {
+                            "table": "rsi",
+                            "column": "cover_image"
+                          },
+                          {
+                            "table": "rsi",
+                            "column": "status",
+                            "alias": "sliding_img_status"
+                          },
+                          {
+                            "table": "restkycdoc",
+                            "column": "upload_pan"
+                          },
+                          {
+                            "table": "restkycdoc",
+                            "column": "upload_gstin"
+                          },
+                          {
+                            "table": "restkycdoc",
+                            "column": "upload_rmc"
+                          },
+                          {
+                            "table": "restkycdoc",
+                            "column": "upload_fsc"
+                          },
+                          {
+                            "table": "restkycdoc",
+                            "column": "upload_aadhar_front"
+                          },
+                          {
+                            "table": "restkycdoc",
+                            "column": "upload_aadhar_back"
+                          },
+                          {
+                            "table": "restkycdoc",
+                            "column": "other_id_proof"
+                          },
+                          {
+                            "table": "restkycdoc",
+                            "column": "bank_account"
+                          },
+                          {
+                            "table": "restkycdoc",
+                            "column": "owner_image"
+                          },
+                          {
+                            "table": "restkycdoc",
+                            "column": "agreement_copy1"
+                          },
+                          {
+                            "table": "restkycdoc",
+                            "column": "agreement_copy2"
+                          },
+                          {
+                            "table": "restkycdoc",
+                            "column": "agreement_copy3"
+                          },
+                          {
+                            "table": "restkycdoc",
+                            "column": "agreement_copy4"
+                          }
+                        ],
+                        "table": {
+                          "name": "m_restaurant"
+                        },
+                        "primary": "id",
+                        "joins": [
+                          {
+                            "table": "rest_sliding_img",
+                            "column": "*",
+                            "alias": "rsi",
+                            "type": "LEFT",
+                            "clauses": {
+                              "condition": "AND",
+                              "rules": [
+                                {
+                                  "table": "rsi",
+                                  "column": "rest_id",
+                                  "operator": "equal",
+                                  "value": {
+                                    "table": "m_restaurant",
+                                    "column": "id"
+                                  },
+                                  "operation": "="
+                                }
+                              ]
+                            },
+                            "primary": "id"
+                          },
+                          {
+                            "table": "rest_kyc_doc",
+                            "column": "*",
+                            "alias": "restkycdoc",
+                            "type": "INNER",
+                            "clauses": {
+                              "condition": "AND",
+                              "rules": [
+                                {
+                                  "table": "restkycdoc",
+                                  "column": "rest_id",
+                                  "operator": "equal",
+                                  "value": {
+                                    "table": "m_restaurant",
+                                    "column": "id"
+                                  },
+                                  "operation": "="
+                                }
+                              ]
+                            },
+                            "primary": "id"
+                          }
+                        ],
+                        "query": "SELECT m_restaurant.id, m_restaurant.gen_shop_id, m_restaurant.shop_name_en, m_restaurant.shop_name_bn, m_restaurant.shop_name_hin, m_restaurant.shop_logo, m_restaurant.shop_mobile_no, m_restaurant.is_watsapp, m_restaurant.watsapp_no, m_restaurant.email_id, m_restaurant.owner_name, m_restaurant.gst_in, m_restaurant.is_rmc, m_restaurant.rmc_no, m_restaurant.is_fsc, m_restaurant.balance_amount, m_restaurant.is_sliding_img, m_restaurant.pan_no, m_restaurant.address, m_restaurant.pin, m_restaurant.kyc_status, m_restaurant.status, m_restaurant.created_by, m_restaurant.created_on, rsi.sliding_image1, rsi.sliding_image2, rsi.sliding_image3, rsi.sliding_image4, rsi.sliding_image5, rsi.cover_image, rsi.status AS sliding_img_status, restkycdoc.upload_pan, restkycdoc.upload_gstin, restkycdoc.upload_rmc, restkycdoc.upload_fsc, restkycdoc.upload_aadhar_front, restkycdoc.upload_aadhar_back, restkycdoc.other_id_proof, restkycdoc.bank_account, restkycdoc.owner_image, restkycdoc.agreement_copy1, restkycdoc.agreement_copy2, restkycdoc.agreement_copy3, restkycdoc.agreement_copy4\nFROM m_restaurant\nLEFT JOIN rest_sliding_img AS rsi ON (rsi.rest_id = m_restaurant.id) INNER JOIN rest_kyc_doc AS restkycdoc ON (restkycdoc.rest_id = m_restaurant.id)\nWHERE m_restaurant.market_id = :P1 /* {{$_GET.market_id}} */ AND m_restaurant.cat_type_id = :P2 /* {{$_GET.cat_type_id}} */\nORDER BY m_restaurant.id DESC",
+                        "params": [
+                          {
+                            "operator": "equal",
+                            "type": "expression",
+                            "name": ":P1",
+                            "value": "{{$_GET.market_id}}"
+                          },
+                          {
+                            "operator": "equal",
+                            "type": "expression",
+                            "name": ":P2",
+                            "value": "{{$_GET.cat_type_id}}"
+                          }
+                        ],
+                        "wheres": {
+                          "condition": "AND",
+                          "rules": [
+                            {
+                              "id": "m_restaurant.market_id",
+                              "field": "m_restaurant.market_id",
+                              "type": "double",
+                              "operator": "equal",
+                              "value": "{{$_GET.market_id}}",
+                              "data": {
+                                "table": "m_restaurant",
+                                "column": "market_id",
+                                "type": "number",
+                                "columnObj": {
+                                  "type": "reference",
+                                  "primary": false,
+                                  "unique": false,
+                                  "nullable": true,
+                                  "references": "id",
+                                  "inTable": "m_market",
+                                  "referenceType": "integer",
+                                  "onUpdate": "NO ACTION",
+                                  "onDelete": "NO ACTION",
+                                  "name": "market_id"
+                                }
+                              },
+                              "operation": "="
+                            },
+                            {
+                              "id": "m_restaurant.cat_type_id",
+                              "field": "m_restaurant.cat_type_id",
+                              "type": "double",
+                              "operator": "equal",
+                              "value": "{{$_GET.cat_type_id}}",
+                              "data": {
+                                "table": "m_restaurant",
+                                "column": "cat_type_id",
+                                "type": "number",
+                                "columnObj": {
+                                  "type": "reference",
+                                  "primary": false,
+                                  "unique": false,
+                                  "nullable": true,
+                                  "references": "id",
+                                  "inTable": "m_category_type",
+                                  "referenceType": "integer",
+                                  "onUpdate": "NO ACTION",
+                                  "onDelete": "NO ACTION",
+                                  "name": "cat_type_id"
+                                }
+                              },
+                              "operation": "="
+                            }
+                          ],
+                          "conditional": null,
+                          "valid": true
+                        },
+                        "orders": [
+                          {
+                            "table": "m_restaurant",
+                            "column": "id",
+                            "direction": "DESC",
+                            "recid": 1
+                          }
+                        ]
+                      }
+                    },
+                    "output": true,
+                    "meta": [
+                      {
+                        "name": "offset",
+                        "type": "number"
+                      },
+                      {
+                        "name": "limit",
+                        "type": "number"
+                      },
+                      {
+                        "name": "total",
+                        "type": "number"
+                      },
+                      {
+                        "name": "page",
+                        "type": "object",
+                        "sub": [
+                          {
+                            "name": "offset",
+                            "type": "object",
+                            "sub": [
+                              {
+                                "name": "first",
+                                "type": "number"
+                              },
+                              {
+                                "name": "prev",
+                                "type": "number"
+                              },
+                              {
+                                "name": "next",
+                                "type": "number"
+                              },
+                              {
+                                "name": "last",
+                                "type": "number"
+                              }
+                            ]
+                          },
+                          {
+                            "name": "current",
+                            "type": "number"
+                          },
+                          {
+                            "name": "total",
+                            "type": "number"
+                          }
+                        ]
+                      },
+                      {
+                        "name": "data",
+                        "type": "array",
+                        "sub": [
+                          {
+                            "type": "number",
+                            "name": "id"
+                          },
+                          {
+                            "type": "text",
+                            "name": "gen_shop_id"
+                          },
+                          {
+                            "type": "text",
+                            "name": "shop_name_en"
+                          },
+                          {
+                            "type": "text",
+                            "name": "shop_name_bn"
+                          },
+                          {
+                            "type": "text",
+                            "name": "shop_name_hin"
+                          },
+                          {
+                            "type": "text",
+                            "name": "shop_logo"
+                          },
+                          {
+                            "type": "text",
+                            "name": "shop_mobile_no"
+                          },
+                          {
+                            "type": "text",
+                            "name": "is_watsapp"
+                          },
+                          {
+                            "type": "text",
+                            "name": "watsapp_no"
+                          },
+                          {
+                            "type": "text",
+                            "name": "email_id"
+                          },
+                          {
+                            "type": "text",
+                            "name": "owner_name"
+                          },
+                          {
+                            "type": "text",
+                            "name": "gst_in"
+                          },
+                          {
+                            "type": "text",
+                            "name": "is_rmc"
+                          },
+                          {
+                            "type": "text",
+                            "name": "rmc_no"
+                          },
+                          {
+                            "type": "text",
+                            "name": "is_fsc"
+                          },
+                          {
+                            "type": "text",
+                            "name": "balance_amount"
+                          },
+                          {
+                            "type": "text",
+                            "name": "is_sliding_img"
+                          },
+                          {
+                            "type": "text",
+                            "name": "pan_no"
+                          },
+                          {
+                            "type": "text",
+                            "name": "address"
+                          },
+                          {
+                            "type": "text",
+                            "name": "pin"
+                          },
+                          {
+                            "type": "text",
+                            "name": "kyc_status"
+                          },
+                          {
+                            "type": "number",
+                            "name": "status"
+                          },
+                          {
+                            "type": "number",
+                            "name": "created_by"
+                          },
+                          {
+                            "type": "datetime",
+                            "name": "created_on"
+                          },
+                          {
+                            "type": "text",
+                            "name": "sliding_image1"
+                          },
+                          {
+                            "type": "text",
+                            "name": "sliding_image2"
+                          },
+                          {
+                            "type": "text",
+                            "name": "sliding_image3"
+                          },
+                          {
+                            "type": "text",
+                            "name": "sliding_image4"
+                          },
+                          {
+                            "type": "text",
+                            "name": "sliding_image5"
+                          },
+                          {
+                            "type": "text",
+                            "name": "cover_image"
+                          },
+                          {
+                            "type": "number",
+                            "name": "sliding_img_status"
+                          },
+                          {
+                            "type": "text",
+                            "name": "upload_pan"
+                          },
+                          {
+                            "type": "text",
+                            "name": "upload_gstin"
+                          },
+                          {
+                            "type": "text",
+                            "name": "upload_rmc"
+                          },
+                          {
+                            "type": "text",
+                            "name": "upload_fsc"
+                          },
+                          {
+                            "type": "text",
+                            "name": "upload_aadhar_front"
+                          },
+                          {
+                            "type": "text",
+                            "name": "upload_aadhar_back"
+                          },
+                          {
+                            "type": "text",
+                            "name": "other_id_proof"
+                          },
+                          {
+                            "type": "text",
+                            "name": "bank_account"
+                          },
+                          {
+                            "type": "text",
+                            "name": "owner_image"
+                          },
+                          {
+                            "type": "text",
+                            "name": "agreement_copy1"
+                          },
+                          {
+                            "type": "text",
+                            "name": "agreement_copy2"
+                          },
+                          {
+                            "type": "text",
+                            "name": "agreement_copy3"
+                          },
+                          {
+                            "type": "text",
+                            "name": "agreement_copy4"
+                          }
+                        ]
+                      }
+                    ],
+                    "outputType": "object"
+                  }
+                }
+              },
+              "outputType": "boolean"
+            }
+          },
+          "else": {
+            "steps": {
+              "name": "",
+              "module": "core",
+              "action": "condition",
+              "options": {
+                "if": "{{$_GET.search_value}}",
+                "then": {
+                  "steps": {
+                    "name": "Restaurants",
+                    "module": "dbconnector",
+                    "action": "paged",
+                    "options": {
+                      "connection": "FoodApp",
+                      "sql": {
+                        "type": "SELECT",
+                        "columns": [
+                          {
+                            "table": "m_restaurant",
+                            "column": "id"
+                          },
+                          {
+                            "table": "m_restaurant",
+                            "column": "gen_shop_id"
+                          },
+                          {
+                            "table": "m_restaurant",
+                            "column": "shop_name_en"
+                          },
+                          {
+                            "table": "m_restaurant",
+                            "column": "shop_name_bn"
+                          },
+                          {
+                            "table": "m_restaurant",
+                            "column": "shop_name_hin"
+                          },
+                          {
+                            "table": "m_restaurant",
+                            "column": "shop_logo"
+                          },
+                          {
+                            "table": "m_restaurant",
+                            "column": "shop_mobile_no"
+                          },
+                          {
+                            "table": "m_restaurant",
+                            "column": "is_watsapp"
+                          },
+                          {
+                            "table": "m_restaurant",
+                            "column": "watsapp_no"
+                          },
+                          {
+                            "table": "m_restaurant",
+                            "column": "email_id"
+                          },
+                          {
+                            "table": "m_restaurant",
+                            "column": "owner_name"
+                          },
+                          {
+                            "table": "m_restaurant",
+                            "column": "gst_in"
+                          },
+                          {
+                            "table": "m_restaurant",
+                            "column": "is_rmc"
+                          },
+                          {
+                            "table": "m_restaurant",
+                            "column": "rmc_no"
+                          },
+                          {
+                            "table": "m_restaurant",
+                            "column": "is_fsc"
+                          },
+                          {
+                            "table": "m_restaurant",
+                            "column": "balance_amount"
+                          },
+                          {
+                            "table": "m_restaurant",
+                            "column": "is_sliding_img"
+                          },
+                          {
+                            "table": "m_restaurant",
+                            "column": "pan_no"
+                          },
+                          {
+                            "table": "m_restaurant",
+                            "column": "address"
+                          },
+                          {
+                            "table": "m_restaurant",
+                            "column": "pin"
+                          },
+                          {
+                            "table": "m_restaurant",
+                            "column": "kyc_status"
+                          },
+                          {
+                            "table": "m_restaurant",
+                            "column": "status"
+                          },
+                          {
+                            "table": "m_restaurant",
+                            "column": "created_by"
+                          },
+                          {
+                            "table": "m_restaurant",
+                            "column": "created_on"
+                          },
+                          {
+                            "table": "rsi",
+                            "column": "sliding_image1"
+                          },
+                          {
+                            "table": "rsi",
+                            "column": "sliding_image2"
+                          },
+                          {
+                            "table": "rsi",
+                            "column": "sliding_image3"
+                          },
+                          {
+                            "table": "rsi",
+                            "column": "sliding_image4"
+                          },
+                          {
+                            "table": "rsi",
+                            "column": "sliding_image5"
+                          },
+                          {
+                            "table": "rsi",
+                            "column": "cover_image"
+                          },
+                          {
+                            "table": "rsi",
+                            "column": "status",
+                            "alias": "sliding_img_status"
+                          },
+                          {
+                            "table": "restkycdoc",
+                            "column": "upload_pan"
+                          },
+                          {
+                            "table": "restkycdoc",
+                            "column": "upload_gstin"
+                          },
+                          {
+                            "table": "restkycdoc",
+                            "column": "upload_rmc"
+                          },
+                          {
+                            "table": "restkycdoc",
+                            "column": "upload_fsc"
+                          },
+                          {
+                            "table": "restkycdoc",
+                            "column": "upload_aadhar_front"
+                          },
+                          {
+                            "table": "restkycdoc",
+                            "column": "upload_aadhar_back"
+                          },
+                          {
+                            "table": "restkycdoc",
+                            "column": "other_id_proof"
+                          },
+                          {
+                            "table": "restkycdoc",
+                            "column": "bank_account"
+                          },
+                          {
+                            "table": "restkycdoc",
+                            "column": "owner_image"
+                          },
+                          {
+                            "table": "restkycdoc",
+                            "column": "agreement_copy1"
+                          },
+                          {
+                            "table": "restkycdoc",
+                            "column": "agreement_copy2"
+                          },
+                          {
+                            "table": "restkycdoc",
+                            "column": "agreement_copy3"
+                          },
+                          {
+                            "table": "restkycdoc",
+                            "column": "agreement_copy4"
+                          }
+                        ],
+                        "table": {
+                          "name": "m_restaurant"
+                        },
+                        "primary": "id",
+                        "joins": [
+                          {
+                            "table": "rest_sliding_img",
+                            "column": "*",
+                            "alias": "rsi",
+                            "type": "LEFT",
+                            "clauses": {
+                              "condition": "AND",
+                              "rules": [
+                                {
+                                  "table": "rsi",
+                                  "column": "rest_id",
+                                  "operator": "equal",
+                                  "value": {
+                                    "table": "m_restaurant",
+                                    "column": "id"
+                                  },
+                                  "operation": "="
+                                }
+                              ]
+                            },
+                            "primary": "id"
+                          },
+                          {
+                            "table": "rest_kyc_doc",
+                            "column": "*",
+                            "alias": "restkycdoc",
+                            "type": "INNER",
+                            "clauses": {
+                              "condition": "AND",
+                              "rules": [
+                                {
+                                  "table": "restkycdoc",
+                                  "column": "rest_id",
+                                  "operator": "equal",
+                                  "value": {
+                                    "table": "m_restaurant",
+                                    "column": "id"
+                                  },
+                                  "operation": "="
+                                }
+                              ]
+                            },
+                            "primary": "id"
+                          }
+                        ],
+                        "query": "SELECT m_restaurant.id, m_restaurant.gen_shop_id, m_restaurant.shop_name_en, m_restaurant.shop_name_bn, m_restaurant.shop_name_hin, m_restaurant.shop_logo, m_restaurant.shop_mobile_no, m_restaurant.is_watsapp, m_restaurant.watsapp_no, m_restaurant.email_id, m_restaurant.owner_name, m_restaurant.gst_in, m_restaurant.is_rmc, m_restaurant.rmc_no, m_restaurant.is_fsc, m_restaurant.balance_amount, m_restaurant.is_sliding_img, m_restaurant.pan_no, m_restaurant.address, m_restaurant.pin, m_restaurant.kyc_status, m_restaurant.status, m_restaurant.created_by, m_restaurant.created_on, rsi.sliding_image1, rsi.sliding_image2, rsi.sliding_image3, rsi.sliding_image4, rsi.sliding_image5, rsi.cover_image, rsi.status AS sliding_img_status, restkycdoc.upload_pan, restkycdoc.upload_gstin, restkycdoc.upload_rmc, restkycdoc.upload_fsc, restkycdoc.upload_aadhar_front, restkycdoc.upload_aadhar_back, restkycdoc.other_id_proof, restkycdoc.bank_account, restkycdoc.owner_image, restkycdoc.agreement_copy1, restkycdoc.agreement_copy2, restkycdoc.agreement_copy3, restkycdoc.agreement_copy4\nFROM m_restaurant\nLEFT JOIN rest_sliding_img AS rsi ON (rsi.rest_id = m_restaurant.id) INNER JOIN rest_kyc_doc AS restkycdoc ON (restkycdoc.rest_id = m_restaurant.id)\nWHERE (m_restaurant.owner_name LIKE :P1 /* {{$_GET.search_value}} */ OR m_restaurant.shop_name_hin LIKE :P2 /* {{$_GET.search_value}} */ OR m_restaurant.shop_name_bn LIKE :P3 /* {{$_GET.search_value}} */ OR m_restaurant.shop_mobile_no LIKE :P4 /* {{$_GET.search_value}} */ OR m_restaurant.shop_name_en LIKE :P5 /* {{$_GET.search_value}} */ OR m_restaurant.watsapp_no LIKE :P6 /* {{$_GET.search_value}} */) AND m_restaurant.market_id = :P7 /* {{$_GET.market_id}} */\nORDER BY m_restaurant.id DESC",
+                        "params": [
+                          {
+                            "operator": "contains",
+                            "type": "expression",
+                            "name": ":P1",
+                            "value": "{{$_GET.search_value}}"
+                          },
+                          {
+                            "operator": "contains",
+                            "type": "expression",
+                            "name": ":P2",
+                            "value": "{{$_GET.search_value}}"
+                          },
+                          {
+                            "operator": "contains",
+                            "type": "expression",
+                            "name": ":P3",
+                            "value": "{{$_GET.search_value}}"
+                          },
+                          {
+                            "operator": "contains",
+                            "type": "expression",
+                            "name": ":P4",
+                            "value": "{{$_GET.search_value}}"
+                          },
+                          {
+                            "operator": "contains",
+                            "type": "expression",
+                            "name": ":P5",
+                            "value": "{{$_GET.search_value}}"
+                          },
+                          {
+                            "operator": "contains",
+                            "type": "expression",
+                            "name": ":P6",
+                            "value": "{{$_GET.search_value}}"
+                          },
+                          {
+                            "operator": "equal",
+                            "type": "expression",
+                            "name": ":P7",
+                            "value": "{{$_GET.market_id}}"
+                          }
+                        ],
+                        "wheres": {
+                          "condition": "AND",
+                          "rules": [
+                            {
+                              "condition": "OR",
+                              "rules": [
+                                {
+                                  "id": "m_restaurant.owner_name",
+                                  "field": "m_restaurant.owner_name",
+                                  "type": "string",
+                                  "operator": "contains",
+                                  "value": "{{$_GET.search_value}}",
+                                  "data": {
+                                    "table": "m_restaurant",
+                                    "column": "owner_name",
+                                    "type": "text",
+                                    "columnObj": {
+                                      "type": "string",
+                                      "maxLength": -5,
+                                      "primary": false,
+                                      "unique": false,
+                                      "nullable": true,
+                                      "name": "owner_name"
+                                    }
+                                  },
+                                  "operation": "LIKE"
+                                },
+                                {
+                                  "id": "m_restaurant.shop_name_hin",
+                                  "field": "m_restaurant.shop_name_hin",
+                                  "type": "string",
+                                  "operator": "contains",
+                                  "value": "{{$_GET.search_value}}",
+                                  "data": {
+                                    "table": "m_restaurant",
+                                    "column": "shop_name_hin",
+                                    "type": "text",
+                                    "columnObj": {
+                                      "type": "string",
+                                      "maxLength": -5,
+                                      "primary": false,
+                                      "unique": false,
+                                      "nullable": true,
+                                      "name": "shop_name_hin"
+                                    }
+                                  },
+                                  "operation": "LIKE"
+                                },
+                                {
+                                  "id": "m_restaurant.shop_name_bn",
+                                  "field": "m_restaurant.shop_name_bn",
+                                  "type": "string",
+                                  "operator": "contains",
+                                  "value": "{{$_GET.search_value}}",
+                                  "data": {
+                                    "table": "m_restaurant",
+                                    "column": "shop_name_bn",
+                                    "type": "text",
+                                    "columnObj": {
+                                      "type": "string",
+                                      "maxLength": -5,
+                                      "primary": false,
+                                      "unique": false,
+                                      "nullable": true,
+                                      "name": "shop_name_bn"
+                                    }
+                                  },
+                                  "operation": "LIKE"
+                                },
+                                {
+                                  "id": "m_restaurant.shop_mobile_no",
+                                  "field": "m_restaurant.shop_mobile_no",
+                                  "type": "string",
+                                  "operator": "contains",
+                                  "value": "{{$_GET.search_value}}",
+                                  "data": {
+                                    "table": "m_restaurant",
+                                    "column": "shop_mobile_no",
+                                    "type": "text",
+                                    "columnObj": {
+                                      "type": "string",
+                                      "maxLength": -5,
+                                      "primary": false,
+                                      "unique": false,
+                                      "nullable": true,
+                                      "name": "shop_mobile_no"
+                                    }
+                                  },
+                                  "operation": "LIKE"
+                                },
+                                {
+                                  "id": "m_restaurant.shop_name_en",
+                                  "field": "m_restaurant.shop_name_en",
+                                  "type": "string",
+                                  "operator": "contains",
+                                  "value": "{{$_GET.search_value}}",
+                                  "data": {
+                                    "table": "m_restaurant",
+                                    "column": "shop_name_en",
+                                    "type": "text",
+                                    "columnObj": {
+                                      "type": "string",
+                                      "maxLength": -5,
+                                      "primary": false,
+                                      "unique": false,
+                                      "nullable": true,
+                                      "name": "shop_name_en"
+                                    }
+                                  },
+                                  "operation": "LIKE"
+                                },
+                                {
+                                  "id": "m_restaurant.watsapp_no",
+                                  "field": "m_restaurant.watsapp_no",
+                                  "type": "string",
+                                  "operator": "contains",
+                                  "value": "{{$_GET.search_value}}",
+                                  "data": {
+                                    "table": "m_restaurant",
+                                    "column": "watsapp_no",
+                                    "type": "text",
+                                    "columnObj": {
+                                      "type": "string",
+                                      "maxLength": -5,
+                                      "primary": false,
+                                      "unique": false,
+                                      "nullable": true,
+                                      "name": "watsapp_no"
+                                    }
+                                  },
+                                  "operation": "LIKE"
+                                }
+                              ],
+                              "conditional": null
+                            },
+                            {
+                              "id": "m_restaurant.market_id",
+                              "field": "m_restaurant.market_id",
+                              "type": "double",
+                              "operator": "equal",
+                              "value": "{{$_GET.market_id}}",
+                              "data": {
+                                "table": "m_restaurant",
+                                "column": "market_id",
+                                "type": "number",
+                                "columnObj": {
+                                  "type": "reference",
+                                  "primary": false,
+                                  "unique": false,
+                                  "nullable": true,
+                                  "references": "id",
+                                  "inTable": "m_market",
+                                  "referenceType": "integer",
+                                  "onUpdate": "NO ACTION",
+                                  "onDelete": "NO ACTION",
+                                  "name": "market_id"
+                                }
+                              },
+                              "operation": "="
+                            }
+                          ],
+                          "conditional": null,
+                          "valid": true
+                        },
+                        "orders": [
+                          {
+                            "table": "m_restaurant",
+                            "column": "id",
+                            "direction": "DESC",
+                            "recid": 1
+                          }
+                        ]
+                      }
+                    },
+                    "output": true,
+                    "meta": [
+                      {
+                        "name": "offset",
+                        "type": "number"
+                      },
+                      {
+                        "name": "limit",
+                        "type": "number"
+                      },
+                      {
+                        "name": "total",
+                        "type": "number"
+                      },
+                      {
+                        "name": "page",
+                        "type": "object",
+                        "sub": [
+                          {
+                            "name": "offset",
+                            "type": "object",
+                            "sub": [
+                              {
+                                "name": "first",
+                                "type": "number"
+                              },
+                              {
+                                "name": "prev",
+                                "type": "number"
+                              },
+                              {
+                                "name": "next",
+                                "type": "number"
+                              },
+                              {
+                                "name": "last",
+                                "type": "number"
+                              }
+                            ]
+                          },
+                          {
+                            "name": "current",
+                            "type": "number"
+                          },
+                          {
+                            "name": "total",
+                            "type": "number"
+                          }
+                        ]
+                      },
+                      {
+                        "name": "data",
+                        "type": "array",
+                        "sub": [
+                          {
+                            "type": "number",
+                            "name": "id"
+                          },
+                          {
+                            "type": "text",
+                            "name": "gen_shop_id"
+                          },
+                          {
+                            "type": "text",
+                            "name": "shop_name_en"
+                          },
+                          {
+                            "type": "text",
+                            "name": "shop_name_bn"
+                          },
+                          {
+                            "type": "text",
+                            "name": "shop_name_hin"
+                          },
+                          {
+                            "type": "text",
+                            "name": "shop_logo"
+                          },
+                          {
+                            "type": "text",
+                            "name": "shop_mobile_no"
+                          },
+                          {
+                            "type": "text",
+                            "name": "is_watsapp"
+                          },
+                          {
+                            "type": "text",
+                            "name": "watsapp_no"
+                          },
+                          {
+                            "type": "text",
+                            "name": "email_id"
+                          },
+                          {
+                            "type": "text",
+                            "name": "owner_name"
+                          },
+                          {
+                            "type": "text",
+                            "name": "gst_in"
+                          },
+                          {
+                            "type": "text",
+                            "name": "is_rmc"
+                          },
+                          {
+                            "type": "text",
+                            "name": "rmc_no"
+                          },
+                          {
+                            "type": "text",
+                            "name": "is_fsc"
+                          },
+                          {
+                            "type": "text",
+                            "name": "balance_amount"
+                          },
+                          {
+                            "type": "text",
+                            "name": "is_sliding_img"
+                          },
+                          {
+                            "type": "text",
+                            "name": "pan_no"
+                          },
+                          {
+                            "type": "text",
+                            "name": "address"
+                          },
+                          {
+                            "type": "text",
+                            "name": "pin"
+                          },
+                          {
+                            "type": "text",
+                            "name": "kyc_status"
+                          },
+                          {
+                            "type": "number",
+                            "name": "status"
+                          },
+                          {
+                            "type": "number",
+                            "name": "created_by"
+                          },
+                          {
+                            "type": "datetime",
+                            "name": "created_on"
+                          },
+                          {
+                            "type": "text",
+                            "name": "sliding_image1"
+                          },
+                          {
+                            "type": "text",
+                            "name": "sliding_image2"
+                          },
+                          {
+                            "type": "text",
+                            "name": "sliding_image3"
+                          },
+                          {
+                            "type": "text",
+                            "name": "sliding_image4"
+                          },
+                          {
+                            "type": "text",
+                            "name": "sliding_image5"
+                          },
+                          {
+                            "type": "text",
+                            "name": "cover_image"
+                          },
+                          {
+                            "type": "number",
+                            "name": "sliding_img_status"
+                          },
+                          {
+                            "type": "text",
+                            "name": "upload_pan"
+                          },
+                          {
+                            "type": "text",
+                            "name": "upload_gstin"
+                          },
+                          {
+                            "type": "text",
+                            "name": "upload_rmc"
+                          },
+                          {
+                            "type": "text",
+                            "name": "upload_fsc"
+                          },
+                          {
+                            "type": "text",
+                            "name": "upload_aadhar_front"
+                          },
+                          {
+                            "type": "text",
+                            "name": "upload_aadhar_back"
+                          },
+                          {
+                            "type": "text",
+                            "name": "other_id_proof"
+                          },
+                          {
+                            "type": "text",
+                            "name": "bank_account"
+                          },
+                          {
+                            "type": "text",
+                            "name": "owner_image"
+                          },
+                          {
+                            "type": "text",
+                            "name": "agreement_copy1"
+                          },
+                          {
+                            "type": "text",
+                            "name": "agreement_copy2"
+                          },
+                          {
+                            "type": "text",
+                            "name": "agreement_copy3"
+                          },
+                          {
+                            "type": "text",
+                            "name": "agreement_copy4"
+                          }
+                        ]
+                      }
+                    ],
+                    "outputType": "object"
+                  }
+                },
+                "else": {
+                  "steps": {
+                    "name": "Restaurants",
+                    "module": "dbconnector",
+                    "action": "paged",
+                    "options": {
+                      "connection": "FoodApp",
+                      "sql": {
+                        "type": "SELECT",
+                        "columns": [
+                          {
+                            "table": "m_restaurant",
+                            "column": "id"
+                          },
+                          {
+                            "table": "m_restaurant",
+                            "column": "gen_shop_id"
+                          },
+                          {
+                            "table": "m_restaurant",
+                            "column": "shop_name_en"
+                          },
+                          {
+                            "table": "m_restaurant",
+                            "column": "shop_name_bn"
+                          },
+                          {
+                            "table": "m_restaurant",
+                            "column": "shop_name_hin"
+                          },
+                          {
+                            "table": "m_restaurant",
+                            "column": "shop_logo"
+                          },
+                          {
+                            "table": "m_restaurant",
+                            "column": "shop_mobile_no"
+                          },
+                          {
+                            "table": "m_restaurant",
+                            "column": "is_watsapp"
+                          },
+                          {
+                            "table": "m_restaurant",
+                            "column": "watsapp_no"
+                          },
+                          {
+                            "table": "m_restaurant",
+                            "column": "email_id"
+                          },
+                          {
+                            "table": "m_restaurant",
+                            "column": "owner_name"
+                          },
+                          {
+                            "table": "m_restaurant",
+                            "column": "gst_in"
+                          },
+                          {
+                            "table": "m_restaurant",
+                            "column": "is_rmc"
+                          },
+                          {
+                            "table": "m_restaurant",
+                            "column": "rmc_no"
+                          },
+                          {
+                            "table": "m_restaurant",
+                            "column": "is_fsc"
+                          },
+                          {
+                            "table": "m_restaurant",
+                            "column": "balance_amount"
+                          },
+                          {
+                            "table": "m_restaurant",
+                            "column": "is_sliding_img"
+                          },
+                          {
+                            "table": "m_restaurant",
+                            "column": "pan_no"
+                          },
+                          {
+                            "table": "m_restaurant",
+                            "column": "address"
+                          },
+                          {
+                            "table": "m_restaurant",
+                            "column": "pin"
+                          },
+                          {
+                            "table": "m_restaurant",
+                            "column": "kyc_status"
+                          },
+                          {
+                            "table": "m_restaurant",
+                            "column": "status"
+                          },
+                          {
+                            "table": "m_restaurant",
+                            "column": "created_by"
+                          },
+                          {
+                            "table": "m_restaurant",
+                            "column": "created_on"
+                          },
+                          {
+                            "table": "rsi",
+                            "column": "sliding_image1"
+                          },
+                          {
+                            "table": "rsi",
+                            "column": "sliding_image2"
+                          },
+                          {
+                            "table": "rsi",
+                            "column": "sliding_image3"
+                          },
+                          {
+                            "table": "rsi",
+                            "column": "sliding_image4"
+                          },
+                          {
+                            "table": "rsi",
+                            "column": "sliding_image5"
+                          },
+                          {
+                            "table": "rsi",
+                            "column": "cover_image"
+                          },
+                          {
+                            "table": "rsi",
+                            "column": "status",
+                            "alias": "sliding_img_status"
+                          },
+                          {
+                            "table": "restkycdoc",
+                            "column": "upload_pan"
+                          },
+                          {
+                            "table": "restkycdoc",
+                            "column": "upload_gstin"
+                          },
+                          {
+                            "table": "restkycdoc",
+                            "column": "upload_rmc"
+                          },
+                          {
+                            "table": "restkycdoc",
+                            "column": "upload_fsc"
+                          },
+                          {
+                            "table": "restkycdoc",
+                            "column": "upload_aadhar_front"
+                          },
+                          {
+                            "table": "restkycdoc",
+                            "column": "upload_aadhar_back"
+                          },
+                          {
+                            "table": "restkycdoc",
+                            "column": "other_id_proof"
+                          },
+                          {
+                            "table": "restkycdoc",
+                            "column": "bank_account"
+                          },
+                          {
+                            "table": "restkycdoc",
+                            "column": "owner_image"
+                          },
+                          {
+                            "table": "restkycdoc",
+                            "column": "agreement_copy1"
+                          },
+                          {
+                            "table": "restkycdoc",
+                            "column": "agreement_copy2"
+                          },
+                          {
+                            "table": "restkycdoc",
+                            "column": "agreement_copy3"
+                          },
+                          {
+                            "table": "restkycdoc",
+                            "column": "agreement_copy4"
+                          }
+                        ],
+                        "table": {
+                          "name": "m_restaurant"
+                        },
+                        "primary": "id",
+                        "joins": [
+                          {
+                            "table": "rest_sliding_img",
+                            "column": "*",
+                            "alias": "rsi",
+                            "type": "LEFT",
+                            "clauses": {
+                              "condition": "AND",
+                              "rules": [
+                                {
+                                  "table": "rsi",
+                                  "column": "rest_id",
+                                  "operator": "equal",
+                                  "value": {
+                                    "table": "m_restaurant",
+                                    "column": "id"
+                                  },
+                                  "operation": "="
+                                }
+                              ]
+                            },
+                            "primary": "id"
+                          },
+                          {
+                            "table": "rest_kyc_doc",
+                            "column": "*",
+                            "alias": "restkycdoc",
+                            "type": "INNER",
+                            "clauses": {
+                              "condition": "AND",
+                              "rules": [
+                                {
+                                  "table": "restkycdoc",
+                                  "column": "rest_id",
+                                  "operator": "equal",
+                                  "value": {
+                                    "table": "m_restaurant",
+                                    "column": "id"
+                                  },
+                                  "operation": "="
+                                }
+                              ]
+                            },
+                            "primary": "id"
+                          }
+                        ],
+                        "query": "SELECT m_restaurant.id, m_restaurant.gen_shop_id, m_restaurant.shop_name_en, m_restaurant.shop_name_bn, m_restaurant.shop_name_hin, m_restaurant.shop_logo, m_restaurant.shop_mobile_no, m_restaurant.is_watsapp, m_restaurant.watsapp_no, m_restaurant.email_id, m_restaurant.owner_name, m_restaurant.gst_in, m_restaurant.is_rmc, m_restaurant.rmc_no, m_restaurant.is_fsc, m_restaurant.balance_amount, m_restaurant.is_sliding_img, m_restaurant.pan_no, m_restaurant.address, m_restaurant.pin, m_restaurant.kyc_status, m_restaurant.status, m_restaurant.created_by, m_restaurant.created_on, rsi.sliding_image1, rsi.sliding_image2, rsi.sliding_image3, rsi.sliding_image4, rsi.sliding_image5, rsi.cover_image, rsi.status AS sliding_img_status, restkycdoc.upload_pan, restkycdoc.upload_gstin, restkycdoc.upload_rmc, restkycdoc.upload_fsc, restkycdoc.upload_aadhar_front, restkycdoc.upload_aadhar_back, restkycdoc.other_id_proof, restkycdoc.bank_account, restkycdoc.owner_image, restkycdoc.agreement_copy1, restkycdoc.agreement_copy2, restkycdoc.agreement_copy3, restkycdoc.agreement_copy4\nFROM m_restaurant\nLEFT JOIN rest_sliding_img AS rsi ON (rsi.rest_id = m_restaurant.id) INNER JOIN rest_kyc_doc AS restkycdoc ON (restkycdoc.rest_id = m_restaurant.id)\nWHERE m_restaurant.market_id = :P1 /* {{$_GET.market_id}} */\nORDER BY m_restaurant.id DESC",
+                        "params": [
+                          {
+                            "operator": "equal",
+                            "type": "expression",
+                            "name": ":P1",
+                            "value": "{{$_GET.market_id}}"
+                          }
+                        ],
+                        "wheres": {
+                          "condition": "AND",
+                          "rules": [
+                            {
+                              "id": "m_restaurant.market_id",
+                              "field": "m_restaurant.market_id",
+                              "type": "double",
+                              "operator": "equal",
+                              "value": "{{$_GET.market_id}}",
+                              "data": {
+                                "table": "m_restaurant",
+                                "column": "market_id",
+                                "type": "number",
+                                "columnObj": {
+                                  "type": "reference",
+                                  "primary": false,
+                                  "unique": false,
+                                  "nullable": true,
+                                  "references": "id",
+                                  "inTable": "m_market",
+                                  "referenceType": "integer",
+                                  "onUpdate": "NO ACTION",
+                                  "onDelete": "NO ACTION",
+                                  "name": "market_id"
+                                }
+                              },
+                              "operation": "="
+                            }
+                          ],
+                          "conditional": null,
+                          "valid": true
+                        },
+                        "orders": [
+                          {
+                            "table": "m_restaurant",
+                            "column": "id",
+                            "direction": "DESC",
+                            "recid": 1
+                          }
+                        ]
+                      }
+                    },
+                    "output": true,
+                    "meta": [
+                      {
+                        "name": "offset",
+                        "type": "number"
+                      },
+                      {
+                        "name": "limit",
+                        "type": "number"
+                      },
+                      {
+                        "name": "total",
+                        "type": "number"
+                      },
+                      {
+                        "name": "page",
+                        "type": "object",
+                        "sub": [
+                          {
+                            "name": "offset",
+                            "type": "object",
+                            "sub": [
+                              {
+                                "name": "first",
+                                "type": "number"
+                              },
+                              {
+                                "name": "prev",
+                                "type": "number"
+                              },
+                              {
+                                "name": "next",
+                                "type": "number"
+                              },
+                              {
+                                "name": "last",
+                                "type": "number"
+                              }
+                            ]
+                          },
+                          {
+                            "name": "current",
+                            "type": "number"
+                          },
+                          {
+                            "name": "total",
+                            "type": "number"
+                          }
+                        ]
+                      },
+                      {
+                        "name": "data",
+                        "type": "array",
+                        "sub": [
+                          {
+                            "type": "number",
+                            "name": "id"
+                          },
+                          {
+                            "type": "text",
+                            "name": "gen_shop_id"
+                          },
+                          {
+                            "type": "text",
+                            "name": "shop_name_en"
+                          },
+                          {
+                            "type": "text",
+                            "name": "shop_name_bn"
+                          },
+                          {
+                            "type": "text",
+                            "name": "shop_name_hin"
+                          },
+                          {
+                            "type": "text",
+                            "name": "shop_logo"
+                          },
+                          {
+                            "type": "text",
+                            "name": "shop_mobile_no"
+                          },
+                          {
+                            "type": "text",
+                            "name": "is_watsapp"
+                          },
+                          {
+                            "type": "text",
+                            "name": "watsapp_no"
+                          },
+                          {
+                            "type": "text",
+                            "name": "email_id"
+                          },
+                          {
+                            "type": "text",
+                            "name": "owner_name"
+                          },
+                          {
+                            "type": "text",
+                            "name": "gst_in"
+                          },
+                          {
+                            "type": "text",
+                            "name": "is_rmc"
+                          },
+                          {
+                            "type": "text",
+                            "name": "rmc_no"
+                          },
+                          {
+                            "type": "text",
+                            "name": "is_fsc"
+                          },
+                          {
+                            "type": "text",
+                            "name": "balance_amount"
+                          },
+                          {
+                            "type": "text",
+                            "name": "is_sliding_img"
+                          },
+                          {
+                            "type": "text",
+                            "name": "pan_no"
+                          },
+                          {
+                            "type": "text",
+                            "name": "address"
+                          },
+                          {
+                            "type": "text",
+                            "name": "pin"
+                          },
+                          {
+                            "type": "text",
+                            "name": "kyc_status"
+                          },
+                          {
+                            "type": "number",
+                            "name": "status"
+                          },
+                          {
+                            "type": "number",
+                            "name": "created_by"
+                          },
+                          {
+                            "type": "datetime",
+                            "name": "created_on"
+                          },
+                          {
+                            "type": "text",
+                            "name": "sliding_image1"
+                          },
+                          {
+                            "type": "text",
+                            "name": "sliding_image2"
+                          },
+                          {
+                            "type": "text",
+                            "name": "sliding_image3"
+                          },
+                          {
+                            "type": "text",
+                            "name": "sliding_image4"
+                          },
+                          {
+                            "type": "text",
+                            "name": "sliding_image5"
+                          },
+                          {
+                            "type": "text",
+                            "name": "cover_image"
+                          },
+                          {
+                            "type": "number",
+                            "name": "sliding_img_status"
+                          },
+                          {
+                            "type": "text",
+                            "name": "upload_pan"
+                          },
+                          {
+                            "type": "text",
+                            "name": "upload_gstin"
+                          },
+                          {
+                            "type": "text",
+                            "name": "upload_rmc"
+                          },
+                          {
+                            "type": "text",
+                            "name": "upload_fsc"
+                          },
+                          {
+                            "type": "text",
+                            "name": "upload_aadhar_front"
+                          },
+                          {
+                            "type": "text",
+                            "name": "upload_aadhar_back"
+                          },
+                          {
+                            "type": "text",
+                            "name": "other_id_proof"
+                          },
+                          {
+                            "type": "text",
+                            "name": "bank_account"
+                          },
+                          {
+                            "type": "text",
+                            "name": "owner_image"
+                          },
+                          {
+                            "type": "text",
+                            "name": "agreement_copy1"
+                          },
+                          {
+                            "type": "text",
+                            "name": "agreement_copy2"
+                          },
+                          {
+                            "type": "text",
+                            "name": "agreement_copy3"
+                          },
+                          {
+                            "type": "text",
+                            "name": "agreement_copy4"
+                          }
+                        ]
+                      }
+                    ],
+                    "outputType": "object"
+                  }
+                }
+              },
+              "outputType": "boolean"
+            }
+          }
+        },
+        "outputType": "boolean"
+      }
+    ]
+  }
+}

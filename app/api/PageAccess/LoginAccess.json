@@ -1,0 +1,185 @@
+[
+  {
+    "name": "",
+    "module": "auth",
+    "action": "restrict",
+    "options": {
+      "provider": "security",
+      "permissions": [
+        "write"
+      ],
+      "loginUrl": "/login",
+      "forbiddenUrl": "/403-forbidden"
+    }
+  },
+  {
+    "name": "identity",
+    "module": "auth",
+    "action": "identify",
+    "options": {
+      "provider": "security"
+    },
+    "output": false,
+    "meta": []
+  },
+  {
+    "name": "",
+    "module": "core",
+    "action": "condition",
+    "options": {
+      "if": "{{identity}}",
+      "then": {
+        "steps": [
+          {
+            "name": "CheckUser",
+            "module": "dbconnector",
+            "action": "single",
+            "options": {
+              "connection": "FoodApp",
+              "sql": {
+                "type": "SELECT",
+                "columns": [
+                  {
+                    "table": "m_customer",
+                    "column": "id",
+                    "alias": "access",
+                    "aggregate": "COUNT"
+                  }
+                ],
+                "table": {
+                  "name": "m_customer"
+                },
+                "primary": "id",
+                "joins": [],
+                "groupBy": [],
+                "wheres": {
+                  "condition": "AND",
+                  "rules": [
+                    {
+                      "id": "m_customer.id",
+                      "field": "m_customer.id",
+                      "type": "double",
+                      "operator": "equal",
+                      "value": "{{identity}}",
+                      "data": {
+                        "table": "m_customer",
+                        "column": "id",
+                        "type": "number",
+                        "columnObj": {
+                          "type": "increments",
+                          "default": "",
+                          "primary": true,
+                          "unique": true,
+                          "nullable": false,
+                          "name": "id"
+                        }
+                      },
+                      "operation": "="
+                    },
+                    {
+                      "id": "m_customer.user_type_id",
+                      "field": "m_customer.user_type_id",
+                      "type": "double",
+                      "operator": "between",
+                      "value": [
+                        1,
+                        3
+                      ],
+                      "data": {
+                        "table": "m_customer",
+                        "column": "user_type_id",
+                        "type": "number",
+                        "columnObj": {
+                          "type": "reference",
+                          "primary": false,
+                          "unique": false,
+                          "nullable": true,
+                          "references": "id",
+                          "inTable": "m_user_type",
+                          "referenceType": "integer",
+                          "onUpdate": "NO ACTION",
+                          "onDelete": "NO ACTION",
+                          "name": "user_type_id"
+                        }
+                      },
+                      "operation": "BETWEEN"
+                    },
+                    {
+                      "id": "m_customer.status",
+                      "field": "m_customer.status",
+                      "type": "double",
+                      "operator": "equal",
+                      "value": 1,
+                      "data": {
+                        "table": "m_customer",
+                        "column": "status",
+                        "type": "number",
+                        "columnObj": {
+                          "type": "integer",
+                          "primary": false,
+                          "unique": false,
+                          "nullable": true,
+                          "name": "status"
+                        }
+                      },
+                      "operation": "="
+                    }
+                  ],
+                  "conditional": null,
+                  "valid": true
+                },
+                "query": "SELECT COUNT(id) AS access\nFROM m_customer\nWHERE id = :P1 /* {{identity}} */ AND user_type_id BETWEEN 1 AND 3 AND status = 1",
+                "params": [
+                  {
+                    "operator": "equal",
+                    "type": "expression",
+                    "name": ":P1",
+                    "value": "{{identity}}"
+                  }
+                ]
+              }
+            },
+            "output": true,
+            "meta": [
+              {
+                "type": "number",
+                "name": "access"
+              }
+            ],
+            "outputType": "object"
+          },
+          {
+            "name": "",
+            "module": "core",
+            "action": "condition",
+            "options": {
+              "if": "{{CheckUser.access==0}}",
+              "then": {
+                "steps": {
+                  "name": "Forbidden",
+                  "module": "core",
+                  "action": "redirect",
+                  "options": {
+                    "url": "/403-forbidden"
+                  }
+                }
+              }
+            },
+            "outputType": "boolean"
+          }
+        ]
+      },
+      "else": {
+        "steps": {
+          "name": "login",
+          "module": "core",
+          "action": "redirect",
+          "options": {
+            "url": "/login"
+          }
+        }
+      }
+    },
+    "outputType": "boolean"
+  }
+]

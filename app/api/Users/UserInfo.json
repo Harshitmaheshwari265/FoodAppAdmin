@@ -1,0 +1,313 @@
+[
+  {
+    "name": "",
+    "module": "auth",
+    "action": "restrict",
+    "options": {
+      "provider": "security",
+      "permissions": [
+        "write"
+      ],
+      "loginUrl": "/login",
+      "forbiddenUrl": "/403-forbidden"
+    }
+  },
+  {
+    "name": "identity",
+    "module": "auth",
+    "action": "identify",
+    "options": {
+      "provider": "security"
+    },
+    "output": true,
+    "meta": []
+  },
+  {
+    "name": "GetLoginUser",
+    "module": "dbconnector",
+    "action": "single",
+    "options": {
+      "connection": "FoodApp",
+      "sql": {
+        "type": "SELECT",
+        "columns": [
+          {
+            "table": "m_customer",
+            "column": "id"
+          },
+          {
+            "table": "m_customer",
+            "column": "fname"
+          },
+          {
+            "table": "m_customer",
+            "column": "lname"
+          },
+          {
+            "table": "m_customer",
+            "column": "mobile"
+          },
+          {
+            "table": "m_customer",
+            "column": "is_watsapp"
+          },
+          {
+            "table": "m_customer",
+            "column": "watsapp_no"
+          },
+          {
+            "table": "m_customer",
+            "column": "customer_email"
+          },
+          {
+            "table": "m_customer",
+            "column": "user_dob"
+          },
+          {
+            "table": "m_customer",
+            "column": "address"
+          },
+          {
+            "table": "m_customer",
+            "column": "pin"
+          },
+          {
+            "table": "m_customer",
+            "column": "ps"
+          },
+          {
+            "table": "m_customer",
+            "column": "district"
+          },
+          {
+            "table": "m_customer",
+            "column": "state"
+          },
+          {
+            "table": "m_customer",
+            "column": "country"
+          },
+          {
+            "table": "m_customer",
+            "column": "gst_in"
+          },
+          {
+            "table": "m_customer",
+            "column": "wallet_bal"
+          },
+          {
+            "table": "m_customer",
+            "column": "signup_via"
+          },
+          {
+            "table": "m_customer",
+            "column": "status"
+          },
+          {
+            "table": "m_customer",
+            "column": "remarks"
+          },
+          {
+            "table": "m_customer",
+            "column": "created_by"
+          },
+          {
+            "table": "m_customer",
+            "column": "created_on"
+          },
+          {
+            "table": "mut",
+            "column": "type_name",
+            "alias": "user_type"
+          },
+          {
+            "table": "mut",
+            "column": "type_code",
+            "alias": "user_type_code"
+          }
+        ],
+        "table": {
+          "name": "m_customer"
+        },
+        "primary": "id",
+        "joins": [
+          {
+            "table": "m_user_type",
+            "column": "*",
+            "alias": "mut",
+            "type": "LEFT",
+            "clauses": {
+              "condition": "AND",
+              "rules": [
+                {
+                  "table": "mut",
+                  "column": "id",
+                  "operator": "equal",
+                  "value": {
+                    "table": "m_customer",
+                    "column": "user_type_id"
+                  },
+                  "operation": "="
+                }
+              ]
+            },
+            "primary": "id"
+          }
+        ],
+        "query": "SELECT m_customer.id, m_customer.fname, m_customer.lname, m_customer.mobile, m_customer.is_watsapp, m_customer.watsapp_no, m_customer.customer_email, m_customer.user_dob, m_customer.address, m_customer.pin, m_customer.ps, m_customer.district, m_customer.state, m_customer.country, m_customer.gst_in, m_customer.wallet_bal, m_customer.signup_via, m_customer.status, m_customer.remarks, m_customer.created_by, m_customer.created_on, mut.type_name AS user_type, mut.type_code AS user_type_code\nFROM m_customer\nLEFT JOIN m_user_type AS mut ON (mut.id = m_customer.user_type_id)\nWHERE m_customer.id = :P1 /* {{identity}} */ AND m_customer.status = 1",
+        "params": [
+          {
+            "operator": "equal",
+            "type": "expression",
+            "name": ":P1",
+            "value": "{{identity}}"
+          }
+        ],
+        "wheres": {
+          "condition": "AND",
+          "rules": [
+            {
+              "id": "m_customer.id",
+              "field": "m_customer.id",
+              "type": "double",
+              "operator": "equal",
+              "value": "{{identity}}",
+              "data": {
+                "table": "m_customer",
+                "column": "id",
+                "type": "number",
+                "columnObj": {
+                  "type": "increments",
+                  "default": "",
+                  "primary": true,
+                  "unique": true,
+                  "nullable": false,
+                  "name": "id"
+                }
+              },
+              "operation": "="
+            },
+            {
+              "id": "m_customer.status",
+              "field": "m_customer.status",
+              "type": "double",
+              "operator": "equal",
+              "value": 1,
+              "data": {
+                "table": "m_customer",
+                "column": "status",
+                "type": "number",
+                "columnObj": {
+                  "type": "integer",
+                  "primary": false,
+                  "unique": false,
+                  "nullable": true,
+                  "name": "status"
+                }
+              },
+              "operation": "="
+            }
+          ],
+          "conditional": null,
+          "valid": true
+        }
+      }
+    },
+    "output": true,
+    "meta": [
+      {
+        "type": "number",
+        "name": "id"
+      },
+      {
+        "type": "text",
+        "name": "fname"
+      },
+      {
+        "type": "text",
+        "name": "lname"
+      },
+      {
+        "type": "text",
+        "name": "mobile"
+      },
+      {
+        "type": "text",
+        "name": "is_watsapp"
+      },
+      {
+        "type": "text",
+        "name": "watsapp_no"
+      },
+      {
+        "type": "text",
+        "name": "customer_email"
+      },
+      {
+        "type": "text",
+        "name": "user_dob"
+      },
+      {
+        "type": "text",
+        "name": "address"
+      },
+      {
+        "type": "text",
+        "name": "pin"
+      },
+      {
+        "type": "text",
+        "name": "ps"
+      },
+      {
+        "type": "text",
+        "name": "district"
+      },
+      {
+        "type": "text",
+        "name": "state"
+      },
+      {
+        "type": "text",
+        "name": "country"
+      },
+      {
+        "type": "text",
+        "name": "gst_in"
+      },
+      {
+        "type": "text",
+        "name": "wallet_bal"
+      },
+      {
+        "type": "text",
+        "name": "signup_via"
+      },
+      {
+        "type": "number",
+        "name": "status"
+      },
+      {
+        "type": "text",
+        "name": "remarks"
+      },
+      {
+        "type": "number",
+        "name": "created_by"
+      },
+      {
+        "type": "datetime",
+        "name": "created_on"
+      },
+      {
+        "type": "text",
+        "name": "user_type"
+      },
+      {
+        "type": "text",
+        "name": "user_type_code"
+      }
+    ],
+    "outputType": "object"
+  }
+]

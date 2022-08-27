@@ -1,0 +1,470 @@
+<!-- Wappler include head-page="layouts/main" fontawesome_5="cdn" bootstrap5="local" is="dmx-app" id="restaurants" appConnect="local" components="{dmxBootstrap5Navigation:{},dmxDataTraversal:{},dmxStateManagement:{},dmxBootstrap5Modal:{},dmxBootstrap5TableGenerator:{},dmxBootstrap5PagingGenerator:{}}" -->
+<meta name="ac:route" content="/restaurants">
+<dmx-query-manager id="qm"></dmx-query-manager>
+<dmx-serverconnect id="scMarketList" url="/api/Location/ActiveMarketList"></dmx-serverconnect>
+<dmx-serverconnect id="scCategoryType" url="/api/Category/ActiveCategoryType"></dmx-serverconnect>
+<dmx-serverconnect id="scRestaurantList" url="/api/Restaurant/RestaurantList" dmx-param:offset="qm.data.offset" dmx-param:limit="25" dmx-param:sort="qm.data.sort" dmx-param:dir="qm.data.dir" dmx-param:search_value="formSearch.SearchValue.value.titlecase()" dmx-param:market_id="market_select.value" dmx-param:cat_type_id="cattype_select.value"></dmx-serverconnect>
+<dmx-data-view id="dvRestaurantList" dmx-bind:data="content.scRestaurantList.data.Restaurants.data"></dmx-data-view>
+<dmx-data-detail id="ddRestaurantList" dmx-bind:data="content.dvRestaurantList.data" key="id"></dmx-data-detail>
+<div class="breadcome-area">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="breadcome-list">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-12">
+                            <div class="breadcomb-wp">
+                                <div class="breadcomb-icon">
+                                    <i class="icon nalika-home"></i>
+                                </div>
+                                <div class="breadcomb-ctn">
+                                    <h2>Restaurant List</h2>
+                                    <p>Total:<span class="bread-ntd">500</span></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-3 col-12">
+                            <div class="breadcomb-report">
+                                <select class="form-control pro-edt-select form-control-primary" type="text" id="market_select" dmx-bind:options="scMarketList.data.ActiveMarkets" optionvalue="id" dmx-bind:value="1" optiontext="market_name_en">
+                                    <option value="">Select</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-3 col-12">
+                            <div class="breadcomb-report">
+                                <select class="form-control pro-edt-select form-control-primary" type="text" id="cattype_select" dmx-bind:options="scCategoryType.data.CatrgoryType" optionvalue="id" optiontext="type_name_en" dmx-bind:value="1">
+                                    <option value="">All</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="product-status mg-b-30">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="product-status-wrap">
+                    <h4>All Restaurant List</h4>
+                    <div class="add-product">
+                        <a href="#" data-toggle="modal" data-target="#modalAddEdit" dmx-on:click="ddRestaurantList.select(0)">Add New Restaurant</a>
+                    </div>
+                    <div class="breadcome-heading">
+                        <form role="search" class="" id="formSearch">
+                            <input type="text" placeholder="Search..." class="form-control" id="SearchValue">
+                            <a href=""><i class="fa fa-search"></i></a>
+                        </form>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th class="sorting" dmx-on:click="qm.set('sort','gen_shop_id');qm.set('offset',qm.data.offset == 'desc' ? 'asc' : 'desc')" dmx-class:sorting_asc="qm.data.sort=='gen_shop_id' && qm.data.offset == 'asc'" dmx-class:sorting_desc="qm.data.sort=='gen_shop_id' && qm.data.offset == 'desc'">Shop Id</th>
+                                    <th class="sorting" dmx-on:click="qm.set('sort','shop_logo');qm.set('offset',qm.data.offset == 'desc' ? 'asc' : 'desc')" dmx-class:sorting_asc="qm.data.sort=='shop_logo' && qm.data.offset == 'asc'" dmx-class:sorting_desc="qm.data.sort=='shop_logo' && qm.data.offset == 'desc'">Shop Logo</th>
+                                    <th class="sorting" dmx-on:click="qm.set('sort','shop_name_en');qm.set('offset',qm.data.offset == 'desc' ? 'asc' : 'desc')" dmx-class:sorting_asc="qm.data.sort=='shop_name_en' && qm.data.offset == 'asc'" dmx-class:sorting_desc="qm.data.sort=='shop_name_en' && qm.data.offset == 'desc'">Shop Name EN</th>
+                                    <th class="sorting" dmx-on:click="qm.set('sort','shop_mobile_no');qm.set('offset',qm.data.offset == 'desc' ? 'asc' : 'desc')" dmx-class:sorting_asc="qm.data.sort=='shop_mobile_no' && qm.data.offset == 'asc'" dmx-class:sorting_desc="qm.data.sort=='shop_mobile_no' && qm.data.offset == 'desc'">Shop mobile no</th>
+                                    <th class="sorting" dmx-on:click="qm.set('sort','is_watsapp');qm.set('offset',qm.data.offset == 'desc' ? 'asc' : 'desc')" dmx-class:sorting_asc="qm.data.sort=='is_watsapp' && qm.data.offset == 'asc'" dmx-class:sorting_desc="qm.data.sort=='is_watsapp' && qm.data.offset == 'desc'">Is watsapp</th>
+                                    <th class="sorting" dmx-on:click="qm.set('sort','watsapp_no');qm.set('offset',qm.data.offset == 'desc' ? 'asc' : 'desc')" dmx-class:sorting_asc="qm.data.sort=='watsapp_no' && qm.data.offset == 'asc'" dmx-class:sorting_desc="qm.data.sort=='watsapp_no' && qm.data.offset == 'desc'">Watsapp no</th>
+                                    <th class="sorting" dmx-on:click="qm.set('sort','owner_name');qm.set('offset',qm.data.offset == 'desc' ? 'asc' : 'desc')" dmx-class:sorting_asc="qm.data.sort=='owner_name' && qm.data.offset == 'asc'" dmx-class:sorting_desc="qm.data.sort=='owner_name' && qm.data.offset == 'desc'">Owner name</th>
+                                    <th class="sorting" dmx-on:click="qm.set('sort','gst_in');qm.set('offset',qm.data.offset == 'desc' ? 'asc' : 'desc')" dmx-class:sorting_asc="qm.data.sort=='gst_in' && qm.data.offset == 'asc'" dmx-class:sorting_desc="qm.data.sort=='gst_in' && qm.data.offset == 'desc'">GSTIN</th>
+                                    <th class="sorting" dmx-on:click="qm.set('sort','balance_amount');qm.set('offset',qm.data.offset == 'desc' ? 'asc' : 'desc')" dmx-class:sorting_asc="qm.data.sort=='balance_amount' && qm.data.offset == 'asc'" dmx-class:sorting_desc="qm.data.sort=='balance_amount' && qm.data.offset == 'desc'">Balance amount</th>
+                                    <th class="sorting" dmx-on:click="qm.set('sort','kyc_status');qm.set('offset',qm.data.offset == 'desc' ? 'asc' : 'desc')" dmx-class:sorting_asc="qm.data.sort=='kyc_status' && qm.data.offset == 'asc'" dmx-class:sorting_desc="qm.data.sort=='kyc_status' && qm.data.offset == 'desc'">Kyc status</th>
+                                    <th class="sorting" dmx-on:click="qm.set('sort','status');qm.set('offset',qm.data.offset == 'desc' ? 'asc' : 'desc')" dmx-class:sorting_asc="qm.data.sort=='status' && qm.data.offset == 'asc'" dmx-class:sorting_desc="qm.data.sort=='status' && qm.data.offset == 'desc'">Status</th>
+                                    <th class="sorting" dmx-on:click="qm.set('sort','created_on');qm.set('offset',qm.data.offset == 'desc' ? 'asc' : 'desc')" dmx-class:sorting_asc="qm.data.sort=='created_on' && qm.data.offset == 'asc'" dmx-class:sorting_desc="qm.data.sort=='created_on' && qm.data.offset == 'desc'">Created on</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody is="dmx-repeat" dmx-generator="bs5table" dmx-bind:repeat="dvRestaurantList.data" id="tableRepeat2" dmx-state="qm" dmx-sort="sort" dmx-order="offset">
+                                <tr>
+                                    <td dmx-text="$index+1"></td>
+                                    <td dmx-text="gen_shop_id"></td>
+                                    <td><img dmx-bind:src="shop_logo"></td>
+                                    <td dmx-text="shop_name_en"></td>
+                                    <td dmx-text="shop_mobile_no"></td>
+                                    <td dmx-text="is_watsapp"></td>
+                                    <td dmx-text="watsapp_no"></td>
+                                    <td dmx-text="owner_name"></td>
+                                    <td dmx-text="gst_in"></td>
+                                    <td dmx-text="balance_amount"></td>
+                                    <td dmx-text="kyc_status"></td>
+                                    <td><button dmx-class:pd-setting="status==1" dmx-class:ds-setting="status==0">{{(status==1)?'Active':'InActive'}}</button></td>
+                                    <td dmx-text="created_on.formatDate('dd-MM-yyyy hh:mm:ss A')"></td>
+                                    <td>
+                                        <button title="Edit" class="pd-setting-ed" data-toggle="modal" data-target="#modalAddEdit" dmx-on:click="ddRestaurantList.select(id)"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+                                        <button data-toggle="tooltip" title="Shipping Address" class="pd-setting-ed"><i class="fas fa-shipping-fast" aria-hidden="true"></i></button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="text-light" dmx-show="content.scRestaurantList.data.Restaurants.data.length==0">
+                        <p class="text-center fa-2x text-warning">
+                            No record Found!
+                        </p>
+                    </div>
+                    <ul class="pagination" dmx-populate="scRestaurantList.data.Restaurants" dmx-state="qm" dmx-offset="offset" dmx-generator="bs5paging">
+                        <li class="page-item" dmx-class:disabled="scRestaurantList.data.Restaurants.page.current == 1" aria-label="First">
+                            <a href="javascript:void(0)" class="page-link" dmx-on:click="qm.set('offset',scRestaurantList.data.Restaurants.page.offset.first)"><span aria-hidden="true">&lsaquo;&lsaquo;</span></a>
+                        </li>
+                        <li class="page-item" dmx-class:disabled="scRestaurantList.data.Restaurants.page.current == 1" aria-label="Previous">
+                            <a href="javascript:void(0)" class="page-link" dmx-on:click="qm.set('offset',scRestaurantList.data.Restaurants.page.offset.prev)"><span aria-hidden="true">&lsaquo;</span></a>
+                        </li>
+                        <li class="page-item" dmx-class:active="title == scRestaurantList.data.Restaurants.page.current" dmx-class:disabled="!active" dmx-repeat="scRestaurantList.data.Restaurants.getServerConnectPagination(2,1,'...')">
+                            <a href="javascript:void(0)" class="page-link" dmx-on:click="qm.set('offset',(page-1)*scRestaurantList.data.Restaurants.limit)">{{title}}</a>
+                        </li>
+                        <li class="page-item" dmx-class:disabled="scRestaurantList.data.Restaurants.page.current ==  scRestaurantList.data.Restaurants.page.total" aria-label="Next">
+                            <a href="javascript:void(0)" class="page-link" dmx-on:click="qm.set('offset',scRestaurantList.data.Restaurants.page.offset.next)"><span aria-hidden="true">&rsaquo;</span></a>
+                        </li>
+                        <li class="page-item" dmx-class:disabled="scRestaurantList.data.Restaurants.page.current ==  scRestaurantList.data.Restaurants.page.total" aria-label="Last">
+                            <a href="javascript:void(0)" class="page-link" dmx-on:click="qm.set('offset',scRestaurantList.data.Restaurants.page.offset.last)"><span aria-hidden="true">&rsaquo;&rsaquo;</span></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- modal start -->
+<div id="modalAddEdit" class="modal modal-adminpro-general Customwidth-popup-WarningModal fade" role="dialog" is="dmx-bs5-modal" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-close-area modal-close-df" dmx-on:click="scformAddEditRestDetails.reset(true);ddRestaurantList.select(0)">
+                    <a class="close" data-dismiss="modal" href="#"><i class="fa fa-close"></i></a>
+                </div>
+                <h4 class="modal-title">{{content.ddRestaurantList.data.id?'Edit Restaurant':'Add A New Restaurant'}}</h4>
+            </div>
+            <form id="scformAddEditRestDetails" is="dmx-serverconnect-form" method="post" action="/api/Restaurant/ResturentAddEdit" dmx-generator="bootstrap5" dmx-form-type="horizontal" dmx-on:success="scRestaurantList.load({market_id: market_select.value, cat_type_id: cattype_select.value});notifMain.success(scformAddEditRestDetails.data)" dmx-on:forbidden="notifMain.warning(lastError.response)" dmx-on:error="notifMain.warning(lastError.response)" dmx-on:unauthorized="notifMain.warning(lastError.response)" dmx-on:invalid="notifMain.warning(lastError.response)">
+                <div class="modal-body gito-py-0">
+                    <div class="row mx-0">
+                        <div class="col-12">
+                            <div class="review-tab-pro-inner">
+                                <ul id="myTab3" class="tab-review-design">
+                                    <li class="active"><a href="#shopdetails"><i class="icon nalika-edit" aria-hidden="true"></i>Shop Details</a></li>
+                                    <li><a href="#Pictures"><i class="icon nalika-picture" aria-hidden="true"></i> Pictures</a></li>
+                                    <li><a href="#KYCUpload"><i class="icon nalika-chat" aria-hidden="true"></i> KYC Upload</a></li>
+                                </ul>
+                                <div id="myTabContent" class="tab-content custom-product-edit">
+                                    <div class="product-tab-list tab-pane fade active in" id="shopdetails">
+                                        <div class="row">
+                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                <div class="review-content-section">
+                                                    <input type="hidden" name="EditRestaurantId" id="EditRestaurantId" dmx-bind:value="content.ddRestaurantList.data.id">
+                                                    <input type="hidden" name="MarketId" id="MarketId" dmx-bind:value="content.market_select.value">
+                                                    <input type="hidden" name="CategoryTypeId" id="CategoryTypeId" value="1">
+
+                                                    <div class="input-group mg-b-pro-edt">
+                                                        <span class="input-group-addon"><i class="icon nalika-home" aria-hidden="true"></i></span>
+                                                        <input type="text" class="form-control" name="shop_name_en" required="" dmx-bind:value="content.ddRestaurantList.data.shop_name_en" placeholder="Shop Name (English)" id="shop_name_en">
+                                                    </div>
+                                                    <div class="input-group mg-b-pro-edt">
+                                                        <span class="input-group-addon"><i class="icon nalika-home" aria-hidden="true"></i></span>
+                                                        <input type="text" class="form-control" placeholder="Shop Name (Bengali)" name="shop_name_bn" required="" dmx-bind:value="content.ddRestaurantList.data.shop_name_bn">
+                                                    </div>
+                                                    <div class="input-group mg-b-pro-edt">
+                                                        <span class="input-group-addon"><i class="icon nalika-home" aria-hidden="true"></i></span>
+                                                        <input type="text" class="form-control" placeholder="Shop Name (Hindi)" name="shop_name_hin" required="" dmx-bind:value="content.ddRestaurantList.data.shop_name_hin">
+                                                    </div>
+                                                    <div class="input-group mg-b-pro-edt">
+                                                        <span class="input-group-addon"><i class="icon nalika-smartphone-call" aria-hidden="true"></i></span>
+                                                        <input type="number" class="form-control" placeholder="Mobile No." name="shop_mobile_no" required="" dmx-bind:value="content.ddRestaurantList.data.shop_mobile_no">
+                                                    </div>
+                                                    <label class="text-info">Is this your whatsapp Number?</label>
+                                                    <div class="input-group mg-b-pro-edt">
+                                                        <span class="input-group-addon"><i class="icon nalika-info" aria-hidden="true"></i></span>
+                                                        <select type="text" class="form-control" id="is_whatsapp" name="is_watsapp" dmx-bind:value="content.ddRestaurantList.data.is_watsapp">
+                                                            <option value="Yes">Yes</option>
+                                                            <option value="No">No</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="input-group mg-b-pro-edt" dmx-show="is_whatsapp.value=='No'">
+                                                        <span class="input-group-addon"><i class="icon nalika-smartphone-call" aria-hidden="true"></i></span>
+                                                        <input type="number" class="form-control" placeholder="Whatsapp Number" name="whatsapp_no" dmx-bind:value="content.ddRestaurantList.data.watsapp_no">
+                                                    </div>
+                                                    <div class="input-group mg-b-pro-edt">
+                                                        <span class="input-group-addon"><i class="icon nalika-user" aria-hidden="true"></i></span>
+                                                        <input type="text" class="form-control" placeholder="Owner Name" name="owner_name" dmx-bind:value="content.ddRestaurantList.data.owner_name">
+                                                    </div>
+                                                    <div class="input-group mg-b-pro-edt">
+                                                        <span class="input-group-addon"><i class="icon nalika-mail" aria-hidden="true"></i></span>
+                                                        <input class="form-control" placeholder="Email Id" name="email_id" type="email" dmx-bind:value="content.ddUserList.data.email_id">
+                                                    </div>
+                                                    <div class="input-group mg-b-pro-edt">
+                                                        <span class="input-group-addon"><i class="fa fa-shopping-bag" aria-hidden="true"></i></span>
+                                                        <input type="text" class="form-control" placeholder="GSTIN" name="gst_in" dmx-bind:value="content.ddRestaurantList.data.gst_in">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                <div class="review-content-section">
+                                                    <div class="input-group mg-b-pro-edt">
+                                                        <span class="input-group-addon"><i class="icon nalika-credit-cards" aria-hidden="true"></i></span>
+                                                        <input type="text" class="form-control" placeholder="PAN No." name="pan_no" dmx-bind:value="content.ddRestaurantList.data.pan_no">
+                                                    </div>
+                                                    <div class="input-group mg-b-pro-edt">
+                                                        <span class="input-group-addon"><i class="icon nalika-credit-cards" aria-hidden="true"></i></span>
+                                                        <input type="text" class="form-control" placeholder="Area PIN No." name="pin" dmx-bind:value="content.ddRestaurantList.data.pin">
+                                                    </div>
+                                                    <div class="input-group mg-b-pro-edt">
+                                                        <span class="input-group-addon"><i class="fa fa-location-arrow" aria-hidden="true"></i></span>
+                                                        <textarea type="text" class="form-control" placeholder="Address" name="address" dmx-bind:value="content.ddRestaurantList.data.address"></textarea>
+                                                    </div>
+                                                    <label class="text-info">Registered Under Muncipal Corporation?</label>
+                                                    <div class="input-group mg-b-pro-edt">
+                                                        <span class="input-group-addon"><i class="icon nalika-info" aria-hidden="true"></i></span>
+                                                        <select type="text" class="form-control" placeholder="Last Name" id="is_rmc" name="is_rmc" dmx-bind:value="content.ddRestaurantList.data.is_rmc">
+                                                            <option value="Yes">Yes</option>
+                                                            <option value="No">No</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="input-group mg-b-pro-edt" dmx-show="is_rmc.value=='Yes'">
+                                                        <span class="input-group-addon"><i class="icon nalika-favorites-button" aria-hidden="true"></i></span>
+                                                        <input type="text" class="form-control" placeholder="Municipal Corporation No." name="rmc_no" dmx-bind:value="content.ddRestaurantList.data.rmc_no">
+                                                    </div>
+                                                    <label class="text-info">Registered Under FSSAI?</label>
+                                                    <div class="input-group mg-b-pro-edt">
+                                                        <span class="input-group-addon"><i class="icon nalika-info" aria-hidden="true"></i></span>
+                                                        <select type="text" class="form-control" id="is_fsc" name="is_fsc" dmx-bind:value="content.ddRestaurantList.data.is_fsc">
+                                                            <option value="Yes">Yes</option>
+                                                            <option value="No">No</option>
+                                                        </select>
+                                                    </div>
+                                                    <label class="text-info">Is Sliding Images?</label>
+                                                    <div class="input-group mg-b-pro-edt">
+                                                        <span class="input-group-addon"><i class="icon nalika-info" aria-hidden="true"></i></span>
+                                                        <select type="text" class="form-control" id="is_sliding_img" name="is_sliding_img" dmx-bind:value="content.ddRestaurantList.data.is_sliding_img">
+                                                            <option value="Yes">Yes</option>
+                                                            <option value="No">No</option>
+                                                        </select>
+                                                    </div>
+                                                    <label class="text-info">Status</label>
+                                                    <div class="input-group mg-b-pro-edt" dmx-show="content.ddRestaurantList.data.id"><span class="input-group-addon"><i class="icon nalika-flag" aria-hidden="true"></i></span>
+                                                        <select class="form-control" id="status" name="status" dmx-bind:value="content.ddRestaurantList.data.status">
+                                                            <option value="1">Active</option>
+                                                            <option value="0">InActive</option>
+                                                        </select>
+                                                    </div>
+                                                    <label class="text-info">Remarks</label>
+                                                    <div class="input-group mg-b-pro-edt" dmx-show="content.ddRestaurantList.data.id"><span class="input-group-addon"><i class="icon nalika-edit" aria-hidden="true"></i></span>
+                                                        <textarea type="text" class="form-control" name="remarks" id="remarks" placeholder="Enter Any remarks" dmx-bind:value="content.ddRestaurantList.data.remarks"></textarea>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="product-tab-list tab-pane fade" id="Pictures">
+                                        <div class="row">
+                                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                <div class="review-content-section">
+                                                    <div class="row">
+                                                        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                                                            <label class="text-info">Shop Logo (200x200px less than 80kb)</label>
+                                                            <div class="input-group mg-b-pro-edt">
+                                                                <input type="file" class="form-control" id="logo" name="logo">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                                            <div class="pro-edt-img">
+                                                                <img dmx-bind:src="logo.file.dataUrl ? logo.file.dataUrl : content.ddRestaurantList.data.id? content.ddRestaurantList.data.shop_logo:'assets/img/blog-details/1.jpg'" alt="" />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                                                            <label class="text-info">Main Cover Picture (600x100px less than 100kb)</label>
+                                                            <div class="input-group mg-b-pro-edt">
+                                                                <input type="file" class="form-control" name="CoverImage" id="CoverImage">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                                            <div class="pro-edt-img">
+                                                                <img alt="" dmx-bind:src="CoverImage.file.dataUrl ? CoverImage.file.dataUrl : content.ddRestaurantList.data.id? content.ddRestaurantList.data.cover_image:'assets/img/blog-details/1.jpg'" />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                                                            <label class="text-info">Sliding Image1 (600x100px less than 100kb)</label>
+                                                            <div class="input-group mg-b-pro-edt">
+                                                                <input type="file" class="form-control" id="SlidingImage1" name="SlidingImage1">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                                            <div class="pro-edt-img">
+                                                                <img alt="" dmx-bind:src="SlidingImage1.file.dataUrl ? SlidingImage1.file.dataUrl : content.ddRestaurantList.data.id? content.ddRestaurantList.data.sliding_image1:'assets/img/blog-details/1.jpg'" />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                                                            <label class="text-info">Sliding Image2 (600x100px less than 100kb)</label>
+                                                            <div class="input-group mg-b-pro-edt">
+                                                                <input type="file" class="form-control" placeholder="Sliding Image" name="SlidingImage2" id="SlidingImage2">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                                            <div class="pro-edt-img">
+                                                                <img alt="" dmx-bind:src="SlidingImage2.file.dataUrl ? SlidingImage2.file.dataUrl : content.ddRestaurantList.data.id? content.ddRestaurantList.data.sliding_image2:'assets/img/blog-details/1.jpg'" />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                                                            <label class="text-info">Sliding Image3 (600x100px less than 100kb)</label>
+                                                            <div class="input-group mg-b-pro-edt">
+                                                                <input type="file" class="form-control" id="SlidingImage3" name="SlidingImage3">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                                            <div class="pro-edt-img">
+                                                                <img dmx-bind:src="SlidingImage3.file.dataUrl ? SlidingImage3.file.dataUrl : content.ddRestaurantList.data.id? content.ddRestaurantList.data.sliding_image3:'assets/img/blog-details/1.jpg'" alt="" />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="product-tab-list tab-pane fade" id="KYCUpload">
+                                        <div class="row">
+                                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                <div class="review-content-section">
+                                                    <div class="row">
+                                                        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                                                            <label class="text-info">PAN Card (.jpg/.png less than 100kb)</label>
+                                                            <div class="input-group mg-b-pro-edt">
+                                                                <input type="file" class="form-control" id="upload_pan" name="upload_pan">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                                            <div class="pro-edt-img">
+                                                                <img alt="" dmx-bind:src="upload_pan.file.dataUrl ? upload_pan.file.dataUrl : content.ddRestaurantList.data.id? content.ddRestaurantList.data.upload_pan:'assets/img/new-product/5-small.jpg'" />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                                                            <label class="text-info">GSTIN (.jpg/.png less than 100kb)</label>
+                                                            <div class="input-group mg-b-pro-edt">
+                                                                <input type="file" class="form-control" id="upload_gstin" name="upload_gstin">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                                            <div class="pro-edt-img">
+                                                                <img dmx-bind:src="upload_gstin.file.dataUrl ? upload_gstin.file.dataUrl : content.ddRestaurantList.data.id? content.ddRestaurantList.data.upload_gstin:'assets/img/new-product/5-small.jpg'" alt="" />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                                                            <label class="text-info">Municipal Corporation Reg. (.jpg/.png less than 100kb)</label>
+                                                            <div class="input-group mg-b-pro-edt">
+                                                                <input type="file" class="form-control" name="upload_rmc" id="upload_rmc">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                                            <div class="pro-edt-img">
+                                                                <img dmx-bind:src="upload_rmc.file.dataUrl ? upload_rmc.file.dataUrl : content.ddRestaurantList.data.id? content.ddRestaurantList.data.upload_rmc:'assets/img/new-product/5-small.jpg'" alt="" />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                                                            <label class="text-info">FSSAI Reg. (.jpg/.png less than 100kb)</label>
+                                                            <div class="input-group mg-b-pro-edt">
+                                                                <input type="file" class="form-control" name="upload_fsc" id="upload_fsc">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                                            <div class="pro-edt-img">
+                                                                <img dmx-bind:src="upload_fsc.file.dataUrl ? upload_fsc.file.dataUrl : content.ddRestaurantList.data.id? content.ddRestaurantList.data.upload_fsc:'assets/img/new-product/5-small.jpg'" alt="" />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                                                            <label class="text-info">Aadhar Front (.jpg/.png less than 100kb)</label>
+                                                            <div class="input-group mg-b-pro-edt">
+                                                                <input type="file" class="form-control" name="upload_aadhar_front" id="upload_aadhar_front">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                                            <div class="pro-edt-img">
+                                                                <img dmx-bind:src="upload_aadhar_front.file.dataUrl ? upload_aadhar_front.file.dataUrl : content.ddRestaurantList.data.id? content.ddRestaurantList.data.upload_aadhar_front:'assets/img/new-product/5-small.jpg'" alt="" />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                                                            <label class="text-info">Aadhar Back (.jpg/.png less than 100kb)</label>
+                                                            <div class="input-group mg-b-pro-edt">
+                                                                <input type="file" class="form-control" name="upload_aadhar_back" id="upload_aadhar_back">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                                            <div class="pro-edt-img">
+                                                                <img dmx-bind:src="upload_aadhar_back.file.dataUrl ? upload_aadhar_back.file.dataUrl : content.ddRestaurantList.data.id? content.ddRestaurantList.data.upload_aadhar_back:'assets/img/new-product/5-small.jpg'" alt="" />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                                                            <label class="text-info">Other ID Proof (.jpg/.png less than 100kb)</label>
+                                                            <div class="input-group mg-b-pro-edt">
+                                                                <input type="file" class="form-control" name="other_id_proof" id="other_id_proof">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                                            <div class="pro-edt-img">
+                                                                <img dmx-bind:src="other_id_proof.file.dataUrl ? other_id_proof.file.dataUrl : content.ddRestaurantList.data.id? content.ddRestaurantList.data.other_id_proof:'assets/img/new-product/5-small.jpg'" alt="" />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                                                            <label class="text-info">Bank Account (.jpg/.png less than 100kb)</label>
+                                                            <div class="input-group mg-b-pro-edt">
+                                                                <input type="file" class="form-control" name="bank_account" id="bank_account">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                                            <div class="pro-edt-img">
+                                                                <img dmx-bind:src="bank_account.file.dataUrl ? bank_account.file.dataUrl : content.ddRestaurantList.data.id? content.ddRestaurantList.data.bank_account:'assets/img/new-product/5-small.jpg'" alt="" />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                                                            <label class="text-info">Owner Image (.jpg/.png less than 100kb)</label>
+                                                            <div class="input-group mg-b-pro-edt">
+                                                                <input type="file" class="form-control" name="owner_image" id="owner_image">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                                            <div class="pro-edt-img">
+                                                                <img dmx-bind:src="owner_image.file.dataUrl ? owner_image.file.dataUrl : content.ddRestaurantList.data.id? content.ddRestaurantList.data.owner_image:'assets/img/new-product/5-small.jpg'" alt="" />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary" type="submit" dmx-bind:disabled="state.executing">{{content.ddUserList.data.id?'Update':'Submit'}}<span class="spinner-border spinner-border-sm text-success" role="status" dmx-show="state.executing"></span></button>
+                    <button data-dismiss="modal" class="btn btn-warning" dmx-on:click="scformAddEditRestDetails.reset(true);ddRestaurantList.select(0)">Close</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

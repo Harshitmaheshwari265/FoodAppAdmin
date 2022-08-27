@@ -1,0 +1,397 @@
+<!-- Wappler include head-page="layouts/main" fontawesome_5="cdn" bootstrap5="local" is="dmx-app" id="productlist" appConnect="local" components="{dmxBootstrap5Navigation:{},dmxDataTraversal:{},dmxStateManagement:{},dmxBootstrap5Modal:{},dmxBootstrap5TableGenerator:{},dmxBootstrap5PagingGenerator:{}}" -->
+<meta name="ac:route" content="/product-list">
+
+<dmx-query-manager id="qm"></dmx-query-manager>
+<dmx-serverconnect id="scMarketList" url="/api/Location/ActiveMarketList"></dmx-serverconnect>
+<dmx-serverconnect id="scCategoryType" url="/api/Category/ActiveCategoryType"></dmx-serverconnect>
+<dmx-serverconnect id="scCategory" url="/api/Category/ActiveCategory" dmx-param:market_id="content.market_select.value" dmx-param:category_type_id="content.cattype_select.value"></dmx-serverconnect>
+<dmx-serverconnect id="scBrand" url="/api/Brand/ActiveBrand"></dmx-serverconnect>
+<dmx-serverconnect id="scProdMark" url="/api/Product/ActiveProductMark"></dmx-serverconnect>
+<dmx-serverconnect id="scProdoccurrance" url="/api/Product/ActiveProductOccurance"></dmx-serverconnect>
+<dmx-serverconnect id="scRestaurants" url="/api/Restaurant/ActiveRestaurants" dmx-param:market_id="market_select.value" dmx-param:category_type_id="cattype_select.value"></dmx-serverconnect>
+<dmx-serverconnect id="scProductList" url="/api/Product/ProductList" dmx-param:offset="qm.data.offset" dmx-param:limit="25" dmx-param:sort="qm.data.sort" dmx-param:dir="qm.data.dir" dmx-param:search_value="formSearch.SearchValue.value.titlecase()" dmx-param:market_id="market_select.value" dmx-param:cat_type_id="cattype_select.value" dmx-param:restaurant_id="restaurant_select.value"></dmx-serverconnect>
+<dmx-data-view id="dvProductList" dmx-bind:data="scProductList.data.Products"></dmx-data-view>
+<dmx-data-detail id="ddProductList" dmx-bind:data="dvProductList.data" key="id"></dmx-data-detail>
+<div class="breadcome-area">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="breadcome-list">
+                    <div class="row">
+                        <div class="col-lg-5 col-md-5 col-sm-5 col-12">
+                            <div class="breadcomb-wp">
+                                <div class="breadcomb-icon">
+                                    <i class="icon nalika-home"></i>
+                                </div>
+                                <div class="breadcomb-ctn">
+                                    <h2>Product List</h2>
+                                    <p>Total:<span class="bread-ntd">500</span></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-2 col-sm-2 col-12">
+                            <div class="breadcomb-report">
+                                <select class="form-control pro-edt-select form-control-primary" type="text" id="market_select" dmx-bind:options="scMarketList.data.ActiveMarkets" optionvalue="id" dmx-bind:value="1" optiontext="market_name_en">
+                                    <option value="">Select</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-2 col-sm-2 col-12">
+                            <div class="breadcomb-report">
+                                <select class="form-control pro-edt-select form-control-primary" type="text" id="cattype_select" dmx-bind:options="scCategoryType.data.CatrgoryType" optionvalue="id" optiontext="type_name_en" dmx-bind:value="1">
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-3 col-12">
+                            <div class="breadcomb-report">
+                                <select class="form-control pro-edt-select form-control-primary" type="text" id="restaurant_select" dmx-bind:options="scRestaurants.data.MarketRestaurents" optionvalue="id" optiontext="shop_name_en" dmx-bind:value="1">
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="product-status mg-b-30">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="product-status-wrap">
+                    <h4>All Product List</h4>
+                    <div class="add-product">
+                        <a href="#" data-toggle="modal" data-target="#modalAddEdit" dmx-on:click="ddProductList.select(0)">Add New Product</a>
+                    </div>
+                    <div class="breadcome-heading">
+                        <form role="search" class="" id="formSearch">
+                            <input type="text" placeholder="Search..." class="form-control" id="SearchValue">
+                            <a href=""><i class="fa fa-search"></i></a>
+                        </form>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Action</th>
+                                    <th class="sorting" dmx-on:click="qm.set('sort','prod_id');qm.set('offset',qm.data.offset == 'desc' ? 'asc' : 'desc')" dmx-class:sorting_asc="qm.data.sort=='prod_id' && qm.data.offset == 'asc'" dmx-class:sorting_desc="qm.data.sort=='prod_id' && qm.data.offset == 'desc'">Prod. Id</th>
+                                    <th class="sorting" dmx-on:click="qm.set('sort','category_name');qm.set('offset',qm.data.offset == 'desc' ? 'asc' : 'desc')" dmx-class:sorting_asc="qm.data.sort=='category_name' && qm.data.offset == 'asc'" dmx-class:sorting_desc="qm.data.sort=='category_name' && qm.data.offset == 'desc'">Category</th>
+                                    <th class="sorting" dmx-on:click="qm.set('sort','prod_name_en');qm.set('offset',qm.data.offset == 'desc' ? 'asc' : 'desc')" dmx-class:sorting_asc="qm.data.sort=='prod_name_en' && qm.data.offset == 'asc'" dmx-class:sorting_desc="qm.data.sort=='prod_name_en' && qm.data.offset == 'desc'">Prod Name En</th>
+                                    <th class="sorting" dmx-on:click="qm.set('sort','prod_name_bn');qm.set('offset',qm.data.offset == 'desc' ? 'asc' : 'desc')" dmx-class:sorting_asc="qm.data.sort=='prod_name_bn' && qm.data.offset == 'asc'" dmx-class:sorting_desc="qm.data.sort=='prod_name_bn' && qm.data.offset == 'desc'">Prod Name Bn</th>
+                                    <th class="sorting" dmx-on:click="qm.set('sort','prod_name_hin');qm.set('offset',qm.data.offset == 'desc' ? 'asc' : 'desc')" dmx-class:sorting_asc="qm.data.sort=='prod_name_hin' && qm.data.offset == 'asc'" dmx-class:sorting_desc="qm.data.sort=='prod_name_hin' && qm.data.offset == 'desc'">Prod Name Hin</th>
+                                    <th class="sorting" dmx-on:click="qm.set('sort','video');qm.set('offset',qm.data.offset == 'desc' ? 'asc' : 'desc')" dmx-class:sorting_asc="qm.data.sort=='video' && qm.data.offset == 'asc'" dmx-class:sorting_desc="qm.data.sort=='video' && qm.data.offset == 'desc'">Video</th>
+                                    <th class="sorting" dmx-on:click="qm.set('sort','prod_img1');qm.set('offset',qm.data.offset == 'desc' ? 'asc' : 'desc')" dmx-class:sorting_asc="qm.data.sort=='prod_img1' && qm.data.offset == 'asc'" dmx-class:sorting_desc="qm.data.sort=='prod_img1' && qm.data.offset == 'desc'">Prod img1</th>
+                                    <th class="sorting" dmx-on:click="qm.set('sort','prod_img2');qm.set('offset',qm.data.offset == 'desc' ? 'asc' : 'desc')" dmx-class:sorting_asc="qm.data.sort=='prod_img2' && qm.data.offset == 'asc'" dmx-class:sorting_desc="qm.data.sort=='prod_img2' && qm.data.offset == 'desc'">Prod img2</th>
+                                    <th class="sorting" dmx-on:click="qm.set('sort','prod_img3');qm.set('offset',qm.data.offset == 'desc' ? 'asc' : 'desc')" dmx-class:sorting_asc="qm.data.sort=='prod_img3' && qm.data.offset == 'asc'" dmx-class:sorting_desc="qm.data.sort=='prod_img3' && qm.data.offset == 'desc'">Prod img3</th>
+                                    <th class="sorting" dmx-on:click="qm.set('sort','prod_img4');qm.set('offset',qm.data.offset == 'desc' ? 'asc' : 'desc')" dmx-class:sorting_asc="qm.data.sort=='prod_img4' && qm.data.offset == 'asc'" dmx-class:sorting_desc="qm.data.sort=='prod_img4' && qm.data.offset == 'desc'">Prod img4</th>
+                                    <th class="sorting" dmx-on:click="qm.set('sort','status');qm.set('offset',qm.data.offset == 'desc' ? 'asc' : 'desc')" dmx-class:sorting_asc="qm.data.sort=='status' && qm.data.offset == 'asc'" dmx-class:sorting_desc="qm.data.sort=='status' && qm.data.offset == 'desc'">Status</th>
+                                    <th class="sorting" dmx-on:click="qm.set('sort','remarks');qm.set('offset',qm.data.offset == 'desc' ? 'asc' : 'desc')" dmx-class:sorting_asc="qm.data.sort=='remarks' && qm.data.offset == 'asc'" dmx-class:sorting_desc="qm.data.sort=='remarks' && qm.data.offset == 'desc'">Remarks</th>
+                                    <th class="sorting" dmx-on:click="qm.set('sort','mark_name');qm.set('offset',qm.data.offset == 'desc' ? 'asc' : 'desc')" dmx-class:sorting_asc="qm.data.sort=='mark_name' && qm.data.offset == 'asc'" dmx-class:sorting_desc="qm.data.sort=='mark_name' && qm.data.offset == 'desc'">Mark name</th>
+                                    <th class="sorting" dmx-on:click="qm.set('sort','occurrance');qm.set('offset',qm.data.offset == 'desc' ? 'asc' : 'desc')" dmx-class:sorting_asc="qm.data.sort=='occurrance' && qm.data.offset == 'asc'" dmx-class:sorting_desc="qm.data.sort=='occurrance' && qm.data.offset == 'desc'">occurrance</th>
+                                    <th>Created On</th>
+                                </tr>
+                            </thead>
+                            <tbody is="dmx-repeat" dmx-generator="bs5table" dmx-bind:repeat="dvProductList.data" id="tableRepeat1" dmx-state="qm" dmx-sort="sort" dmx-order="offset" key="id">
+                                <tr>
+                                    <td dmx-text="$index+1"></td>
+                                    <td>
+                                        <button title="Edit" class="pd-setting-ed" data-toggle="modal" data-target="#modalAddEdit" dmx-on:click="ddProductList.select(id)"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+                                    </td>
+                                    <td dmx-text="prod_id"></td>
+                                    <td dmx-text="category_name"></td>
+                                    <td dmx-text="prod_name_en"></td>
+                                    <td dmx-text="prod_name_bn"></td>
+                                    <td dmx-text="prod_name_hin"></td>
+                                    <td dmx-text="video"></td>
+                                    <td><img dmx-bind:src="prod_img1?prod_img1:'assets/img/blog-details/1.jpg'"></td>
+                                    <td><img dmx-bind:src="prod_img2? prod_img2:'assets/img/blog-details/1.jpg'"></td>
+                                    <td><img dmx-bind:src="prod_img3? prod_img3:'assets/img/blog-details/1.jpg'"></td>
+                                    <td><img dmx-bind:src="prod_img4? prod_img4:'assets/img/blog-details/1.jpg'"></td>
+                                    <td><button dmx-class:pd-setting="status==1" dmx-class:ds-setting="status==0">{{(status==1)?'Active':'InActive'}}</button></td>
+                                    <td dmx-text="remarks"></td>
+                                    <td dmx-text="mark_name"></td>
+                                    <td dmx-text="occurrance"></td>
+                                    <td dmx-text="created_on.formatDate('dd-MM-yyyy hh:mm:ss A')"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="text-light" dmx-show="content.scProductList.data.Products.length==0">
+                        <p class="text-center fa-2x text-warning">
+                            No record Found!
+                        </p>
+                    </div>
+                    <!-- <ul class="pagination" dmx-populate="scProductList.data.Products" dmx-state="qm" dmx-offset="offset" dmx-generator="bs5paging">
+                        <li class="page-item" dmx-class:disabled="scProductList.data.Products.page.current == 1" aria-label="First">
+                            <a href="javascript:void(0)" class="page-link" dmx-on:click="qm.set('offset',scProductList.data.Products.page.offset.first)"><span aria-hidden="true">&lsaquo;&lsaquo;</span></a>
+                        </li>
+                        <li class="page-item" dmx-class:disabled="scProductList.data.Products.page.current == 1" aria-label="Previous">
+                            <a href="javascript:void(0)" class="page-link" dmx-on:click="qm.set('offset',scProductList.data.Products.page.offset.prev)"><span aria-hidden="true">&lsaquo;</span></a>
+                        </li>
+                        <li class="page-item" dmx-class:active="title == scProductList.data.Products.page.current" dmx-class:disabled="!active" dmx-repeat="scProductList.data.Products.getServerConnectPagination(2,1,'...')">
+                            <a href="javascript:void(0)" class="page-link" dmx-on:click="qm.set('offset',(page-1)*scProductList.data.Products.limit)">{{title}}</a>
+                        </li>
+                        <li class="page-item" dmx-class:disabled="scProductList.data.Products.page.current ==  scProductList.data.Products.page.total" aria-label="Next">
+                            <a href="javascript:void(0)" class="page-link" dmx-on:click="qm.set('offset',scProductList.data.Products.page.offset.next)"><span aria-hidden="true">&rsaquo;</span></a>
+                        </li>
+                        <li class="page-item" dmx-class:disabled="scProductList.data.Products.page.current ==  scProductList.data.Products.page.total" aria-label="Last">
+                            <a href="javascript:void(0)" class="page-link" dmx-on:click="qm.set('offset',scProductList.data.Products.page.offset.last)"><span aria-hidden="true">&rsaquo;&rsaquo;</span></a>
+                        </li>
+                    </ul> -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- modal start -->
+<div id="modalAddEdit" class="modal modal-adminpro-general Customwidth-popup-WarningModal fade" role="dialog" is="dmx-bs5-modal" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-close-area modal-close-df" dmx-on:click="scformAddEditProduct.reset(true);ddProductList.select(0)">
+                    <a class="close" data-dismiss="modal" href="#"><i class="fa fa-close"></i></a>
+                </div>
+                <h4 class="modal-title">{{content.ddProductList.data.id?'Edit Product':'Add A New Product'}}</h4>
+            </div>
+            <form id="scformAddEditProduct" is="dmx-serverconnect-form" method="post" action="/api/Product/ProductAddEdit" dmx-generator="bootstrap5" dmx-form-type="horizontal" dmx-on:success="scProductList.load({market_id: market_select.value, cat_type_id: cattype_select.value, restaurant_id: restaurant_select.value});notifMain.success(scformAddEditProduct.data);scformAddEditProduct.reset(true);" dmx-on:forbidden="notifMain.warning(lastError.response)" dmx-on:error="notifMain.warning(lastError.response)" dmx-on:unauthorized="notifMain.warning(lastError.response)" dmx-on:invalid="notifMain.warning(lastError.response)">
+                <div class="modal-body gito-py-0">
+                    <div class="row mx-0">
+                        <div class="col-12">
+                            <div class="review-tab-pro-inner">
+                                <ul id="myTab3" class="tab-review-design">
+                                    <li class="active"><a href="#ProductDetails"><i class="icon nalika-edit" aria-hidden="true"></i>Product Details</a></li>
+                                    <li><a href="#Pictures"><i class="icon nalika-picture" aria-hidden="true"></i>Pictures</a></li>
+                                    <li><a href="#Pricing"><i class="icon nalika-chat" aria-hidden="true"></i>Pricing &#38; Commission</a></li>
+                                </ul>
+                                <div id="myTabContent" class="tab-content custom-product-edit">
+                                    <div class="product-tab-list tab-pane fade active in" id="ProductDetails">
+                                        <div class="row">
+                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                <div class="review-content-section">
+                                                    <input type="hidden" name="EditProductId" id="EditProductId" dmx-bind:value="content.ddProductList.data.id">
+                                                    <input type="hidden" name="MarketId" id="MarketId" dmx-bind:value="content.market_select.value">
+                                                    <label class="text-info">Restaurant/ Shop</label>
+                                                    <div class="input-group mg-b-pro-edt"><span class="input-group-addon"><i class="icon nalika-flag" aria-hidden="true"></i></span>
+                                                        <select class="form-control" id="rest_id" name="rest_id" dmx-bind:value="restaurant_select.value" dmx-bind:options="scRestaurants.data.MarketRestaurents" optiontext="shop_name_en" optionvalue="id" required="">
+                                                            <option value="">Select</option>
+                                                        </select>
+                                                    </div>
+                                                    <label class="text-info">Category Name</label>
+                                                    <div class="input-group mg-b-pro-edt"><span class="input-group-addon"><i class="icon nalika-flag" aria-hidden="true"></i></span>
+                                                        <select class="form-control" id="category_id" name="category_id" dmx-bind:value="restaurant_select.value" dmx-bind:options="scCategory.data.GetCategory" optiontext="en_name" optionvalue="id" required="">
+                                                            <option value="">Select</option>
+                                                        </select>
+                                                    </div>
+                                                    <label class="text-info">Brand Name</label>
+                                                    <div class="input-group mg-b-pro-edt"><span class="input-group-addon"><i class="icon nalika-flag" aria-hidden="true"></i></span>
+                                                        <select class="form-control" id="brand_id" name="brand_id" dmx-bind:value="content.ddProductList.data.brand_id" dmx-bind:options="scBrand.data.GetBrand" optiontext="brand_name" optionvalue="id" required="">
+                                                            <option value="">Select</option>
+                                                        </select>
+                                                    </div>
+                                                    <label class="text-info">Product Mark</label>
+                                                    <div class="input-group mg-b-pro-edt"><span class="input-group-addon"><i class="icon nalika-flag" aria-hidden="true"></i></span>
+                                                        <select class="form-control" id="prod_mark_id" name="prod_mark_id" dmx-bind:value="content.ddProductList.data.prod_mark_id" dmx-bind:options="scProdMark.data.GetProductMark" optiontext="mark_name" optionvalue="id" required="">
+                                                            <option value="">Select</option>
+                                                        </select>
+                                                    </div>
+                                                    <label class="text-info">Product occurrance</label>
+                                                    <div class="input-group mg-b-pro-edt"><span class="input-group-addon"><i class="icon nalika-flag" aria-hidden="true"></i></span>
+                                                        <select class="form-control" id="prod_occurrance_id" name="prod_occurance_id" dmx-bind:value="ddProductList.data.prod_occurance_id" dmx-bind:options="scProdoccurrance.data.GetProdOccurance" optiontext="name_en" optionvalue="id" required="">
+                                                            <option value="">Select</option>
+                                                        </select>
+                                                    </div>
+                                                    <label class="text-info">Status</label>
+                                                    <div class="input-group mg-b-pro-edt"><span class="input-group-addon"><i class="icon nalika-flag" aria-hidden="true"></i></span>
+                                                        <select class="form-control" id="status" name="status" dmx-bind:value="content.ddProductList.data.status">
+                                                            <option value="1">Active</option>
+                                                            <option value="0">InActive</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                <div class="review-content-section">
+                                                    <div class="input-group mg-b-pro-edt">
+                                                        <span class="input-group-addon"><i class="icon nalika-home" aria-hidden="true"></i></span>
+                                                        <input type="text" class="form-control" name="prod_name_en" required="" dmx-bind:value="content.ddProductList.data.prod_name_en" placeholder="Product Name (English)" id="prod_name_en">
+                                                    </div>
+                                                    <div class="input-group mg-b-pro-edt">
+                                                        <span class="input-group-addon"><i class="icon nalika-home" aria-hidden="true"></i></span>
+                                                        <input type="text" class="form-control" placeholder="Product Name (Bengali)" name="prod_name_bn" required="" dmx-bind:value="content.ddProductList.data.prod_name_bn">
+                                                    </div>
+                                                    <div class="input-group mg-b-pro-edt">
+                                                        <span class="input-group-addon"><i class="icon nalika-home" aria-hidden="true"></i></span>
+                                                        <input type="text" class="form-control" placeholder="Product Name (Hindi)" name="prod_name_hin" required="" dmx-bind:value="content.ddProductList.data.prod_name_hin">
+                                                    </div>
+                                                    <div class="input-group mg-b-pro-edt">
+                                                        <span class="input-group-addon"><i class="icon nalika-forms" aria-hidden="true"></i></span>
+                                                        <textarea type="text" class="form-control" placeholder="Product Description (En)" name="prod_desc_en" dmx-bind:value="content.ddProductList.data.prod_desc_en"></textarea>
+                                                    </div>
+                                                    <div class="input-group mg-b-pro-edt">
+                                                        <span class="input-group-addon"><i class="icon nalika-forms" aria-hidden="true"></i></span>
+                                                        <textarea type="text" class="form-control" placeholder="Product Description (Bn)" name="prod_desc_bn" dmx-bind:value="content.ddProductList.data.prod_desc_bn"></textarea>
+                                                    </div>
+                                                    <div class="input-group mg-b-pro-edt">
+                                                        <span class="input-group-addon"><i class="icon nalika-forms" aria-hidden="true"></i></span>
+                                                        <textarea type="text" class="form-control" placeholder="Product Description (Hin)" name="prod_desc_hin" dmx-bind:value="content.ddProductList.data.prod_desc_hin"></textarea>
+                                                    </div>
+                                                    <label class="text-info">Remarks</label>
+                                                    <div class="input-group mg-b-pro-edt"><span class="input-group-addon"><i class="icon nalika-edit" aria-hidden="true"></i></span>
+                                                        <textarea type="text" class="form-control" name="remarks" id="remarks" placeholder="Enter Any remarks" dmx-bind:value="content.ddProductList.data.remarks"></textarea>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="product-tab-list tab-pane fade" id="Pictures">
+                                        <div class="row">
+                                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                <div class="review-content-section">
+                                                    <div class="row">
+                                                        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                                                            <label class="text-info">Product Image1 (200x200px less than 80kb)</label>
+                                                            <div class="input-group mg-b-pro-edt">
+                                                                <input type="file" class="form-control" id="prod_img1" name="prod_img1">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                                            <div class="pro-edt-img">
+                                                                <img dmx-bind:src="prod_img1.file.dataUrl ? prod_img1.file.dataUrl : content.ddProductList.data.id? content.ddProductList.data.prod_img1:'assets/img/blog-details/1.jpg'" alt="" />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                                                            <label class="text-info">Product Image2 (200x200px less than 100kb)</label>
+                                                            <div class="input-group mg-b-pro-edt">
+                                                                <input type="file" class="form-control" name="prod_img2" id="prod_img2">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                                            <div class="pro-edt-img">
+                                                                <img alt="" dmx-bind:src="prod_img2.file.dataUrl ? prod_img2.file.dataUrl : content.ddProductList.data.id? content.ddProductList.data.prod_img2:'assets/img/blog-details/1.jpg'" />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                                                            <label class="text-info">Product Image3 (200x200px less than 100kb)</label>
+                                                            <div class="input-group mg-b-pro-edt">
+                                                                <input type="file" class="form-control" id="prod_img3" name="prod_img3">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                                            <div class="pro-edt-img">
+                                                                <img alt="" dmx-bind:src="prod_img3.file.dataUrl ? prod_img3.file.dataUrl : content.ddProductList.data.id? content.ddProductList.data.prod_img3:'assets/img/blog-details/1.jpg'" />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                                                            <label class="text-info">Product Image4 (200x200px less than 100kb)</label>
+                                                            <div class="input-group mg-b-pro-edt">
+                                                                <input type="file" class="form-control" name="prod_img4" id="prod_img4">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                                            <div class="pro-edt-img">
+                                                                <img alt="" dmx-bind:src="prod_img4.file.dataUrl ? prod_img4.file.dataUrl : content.ddProductList.data.id? content.ddProductList.data.prod_img4:'assets/img/blog-details/1.jpg'" />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="product-tab-list tab-pane fade" id="Pricing">
+                                        <div class="row">
+                                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 table-responsive">
+                                                <table class="table table-bordered table-responsive">
+                                                    <thead class="modal-thead">
+                                                        <tr>
+                                                            <th scope="col" class="text-info">Quantity</th>
+                                                            <th scope="col" class="text-info width-100">Unit</th>
+                                                            <th scope="col" class="text-info">Purchase Price</th>
+                                                            <th scope="col" class="text-info">Selling Price</th>
+                                                            <th scope="col" class="text-info">MRP</th>
+                                                            <th scope="col" class="text-info">Tax %</th>
+                                                            <th scope="col" class="text-info">Comm. %</th>
+                                                            <th scope="col" class="text-info">Comm. Val</th>
+                                                            <th scope="col" class="text-info">Charge %</th>
+                                                            <th scope="col" class="text-info">Charge Val</th>
+                                                            <th scope="col" class="text-info"><a href="javascript:void(0)" class="btn btn-success addRow">+</a></th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody class="modal-tbody" is="dmx-repeat" dmx-bind:repeat="ddProductList.data.price" id="tableRepeat2" key="price_id">
+                                                        <tr>
+                                                            <td><input type="text" class="form-control p-lr-0 text-center" name="quantity[]" required="" dmx-bind:value="content.ddProductList.data.price[$index].quantity" placeholder="E.g: 10"></td>
+                                                            <td><select class="form-control p-lr-0 text-center" name="q_unit[]" dmx-bind:value="content.ddProductList.data.price[$index].q_unit">
+                                                                    <option value="Gram">Gram</option>
+                                                                    <option value="Kg">Kg</option>
+                                                                    <option value="Piece">Piece</option>
+                                                                    <option value="Pieces">Pieces</option>
+                                                                    <option value="m">Meter</option>
+                                                                    <option value="cm">Centimeter</option>
+                                                                    <option value="mm">MiliMeter</option>
+                                                                </select></td>
+                                                            <td><input type="text" class="form-control p-lr-0 text-center" placeholder="E.g: 30" name="purchase_price[]" required="" dmx-bind:value="content.ddProductList.data.price[$index].purchase_price"></td>
+                                                            <td><input type="text" class="form-control p-lr-0 text-center" placeholder="E.g: 40" name="selling_price[]" required="" dmx-bind:value="content.ddProductList.data.price[$index].selling_price"></td>
+                                                            <td><input type="text" class="form-control p-lr-0 text-center" placeholder="E.g: 50" name="mrp[]" required="" dmx-bind:value="content.ddProductList.data.price[$index].mrp"></td>
+                                                            <td><input type="text" class="form-control p-lr-0 text-center" placeholder="E.g: 5" name="product_tax[]" required="" dmx-bind:value="content.ddProductList.data.price[$index].product_tax"></td>
+                                                            <td><input type="text" class="form-control p-lr-0 text-center" placeholder="E.g: 3" name="comm_per[]" required="" dmx-bind:value="content.ddProductList.data.price[$index].comm_per"></td>
+                                                            <td><input type="text" class="form-control p-lr-0 text-center" placeholder="E.g: 10" name="comm_val[]" required="" dmx-bind:value="content.ddProductList.data.price[$index].comm_val"></td>
+                                                            <td><input type="text" class="form-control p-lr-0 text-center" placeholder="E.g: 3" name="charge_per[]" required="" dmx-bind:value="content.ddProductList.data.price[$index].charge_per"></td>
+                                                            <td><input type="text" class="form-control p-lr-0 text-center" placeholder="E.g: 10" name="charge_val[]" required="" dmx-bind:value="content.ddProductList.data.price[$index].charge_val"></td>
+                                                            <th scope="col"><a href="javascript:void(0)" class="btn btn-danger deleteRow">-</a></th>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary" type="submit" dmx-bind:disabled="state.executing">{{content.ddUserList.data.id?'Update':'Submit'}}<span class="spinner-border spinner-border-sm text-success" role="status" dmx-show="state.executing"></span></button>
+                    <button data-dismiss="modal" class="btn btn-warning" dmx-on:click="scformAddEditProduct.reset(true);ddProductList.select(0)">Close</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script>
+    $('.modal-thead').on('click', '.addRow', function(){
+var tr = "<tr>"+
+    "<td><input type='text' class='form-control p-lr-0 text-center' name='quantity[]' required='' dmx-bind:value='content.ddProductList.data.quantity' placeholder='E.g: 10'></td>"+
+    "<td>"+
+        "<select class='form-control p-lr-0 text-center' name='q_unit[]' dmx-bind:value='content.ddProductList.data.q_unit'>"+
+            "<option value='Gram'>Gram</option>"+
+            "<option value='Kg'>Kg</option>"+
+            "<option value='Piece'>Piece</option>"+
+            "<option value='Pieces'>Pieces</option>"+
+            "<option value='m'>Meter</option>"+
+            "<option value='cm'>Centimeter</option>"+
+            "<option value='mm'>MiliMeter</option>"+
+        "</select>"+
+    "</td>"+
+    "<td><input type='text' class='form-control p-lr-0 text-center' placeholder='E.g: 30' name='purchase_price[]' required=' dmx-bind:value='content.ddProductList.data.purchase_price'></td>"+
+    "<td><input type='text' class='form-control p-lr-0 text-center' placeholder='E.g: 40' name='selling_price[]' required=' dmx-bind:value='content.ddProductList.data.selling_price'></td>"+
+    "<td><input type='text' class='form-control p-lr-0 text-center' placeholder='E.g: 50' name='mrp[]' required='' dmx-bind:value='content.ddProductList.data.mrp'></td>"+
+    "<td><input type='text' class='form-control p-lr-0 text-center' placeholder='E.g: 5' name='product_tax[]' required=' dmx-bind:value='content.ddProductList.data.product_tax'></td>"+
+    "<td><input type='text' class='form-control p-lr-0 text-center' placeholder='E.g: 3' name='comm_per[]' required=' dmx-bind:value='content.ddProductList.data.comm_per'></td>"+
+    "<td><input type='text' class='form-control p-lr-0 text-center' placeholder='E.g: 10' name='comm_val[]' required=' dmx-bind:value='content.ddProductList.data.comm_val'></td>"+
+    "<td><input type='text' class='form-control p-lr-0 text-center' placeholder='E.g: 3' name='charge_per[]' required=' dmx-bind:value='content.ddProductList.data.charge_per'></td>"+
+    "<td><input type='text' class='form-control p-lr-0 text-center' placeholder='E.g: 10' name='charge_val[]' required=' dmx-bind:value='content.ddProductList.data.charge_val'></td>"+
+    "<th scope='col'><a href='javascript:void(0)' class='btn btn-danger deleteRow'>-</a></th>"+
+"</tr>"
+$('.modal-tbody').append(tr);
+    });
+    $('.modal-tbody').on('click', '.deleteRow', function(){
+        $(this).parent().parent().remove();
+    });
+</script>

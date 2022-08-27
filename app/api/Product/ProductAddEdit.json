@@ -1,0 +1,1936 @@
+{
+  "meta": {
+    "options": {
+      "linkedFile": "/views/product-list.ejs",
+      "linkedForm": "scformAddEditProduct"
+    },
+    "$_POST": [
+      {
+        "type": "text",
+        "fieldName": "EditProductId",
+        "name": "EditProductId"
+      },
+      {
+        "type": "text",
+        "fieldName": "MarketId",
+        "name": "MarketId"
+      },
+      {
+        "type": "text",
+        "fieldName": "prod_name_en",
+        "options": {
+          "rules": {
+            "core:required": {
+              "param": ""
+            }
+          }
+        },
+        "name": "prod_name_en"
+      },
+      {
+        "type": "text",
+        "fieldName": "prod_name_bn",
+        "options": {
+          "rules": {
+            "core:required": {
+              "param": ""
+            }
+          }
+        },
+        "name": "prod_name_bn"
+      },
+      {
+        "type": "text",
+        "fieldName": "prod_name_hin",
+        "options": {
+          "rules": {
+            "core:required": {
+              "param": ""
+            }
+          }
+        },
+        "name": "prod_name_hin"
+      },
+      {
+        "type": "file",
+        "fieldName": "prod_img1",
+        "name": "prod_img1",
+        "sub": [
+          {
+            "name": "name",
+            "type": "text"
+          },
+          {
+            "name": "type",
+            "type": "text"
+          },
+          {
+            "name": "size",
+            "type": "number"
+          },
+          {
+            "name": "error",
+            "type": "text"
+          }
+        ],
+        "outputType": "file"
+      },
+      {
+        "type": "file",
+        "fieldName": "prod_img2",
+        "name": "prod_img2",
+        "sub": [
+          {
+            "name": "name",
+            "type": "text"
+          },
+          {
+            "name": "type",
+            "type": "text"
+          },
+          {
+            "name": "size",
+            "type": "number"
+          },
+          {
+            "name": "error",
+            "type": "text"
+          }
+        ],
+        "outputType": "file"
+      },
+      {
+        "type": "file",
+        "fieldName": "prod_img3",
+        "name": "prod_img3",
+        "sub": [
+          {
+            "name": "name",
+            "type": "text"
+          },
+          {
+            "name": "type",
+            "type": "text"
+          },
+          {
+            "name": "size",
+            "type": "number"
+          },
+          {
+            "name": "error",
+            "type": "text"
+          }
+        ],
+        "outputType": "file"
+      },
+      {
+        "type": "file",
+        "fieldName": "prod_img4",
+        "name": "prod_img4",
+        "sub": [
+          {
+            "name": "name",
+            "type": "text"
+          },
+          {
+            "name": "type",
+            "type": "text"
+          },
+          {
+            "name": "size",
+            "type": "number"
+          },
+          {
+            "name": "error",
+            "type": "text"
+          }
+        ],
+        "outputType": "file"
+      },
+      {
+        "type": "text",
+        "fieldName": "quantity[]",
+        "multiple": true,
+        "options": {
+          "rules": {
+            "core:required": {
+              "param": ""
+            }
+          }
+        },
+        "name": "quantity"
+      },
+      {
+        "type": "text",
+        "fieldName": "purchase_price[]",
+        "multiple": true,
+        "options": {
+          "rules": {
+            "core:required": {
+              "param": ""
+            }
+          }
+        },
+        "name": "purchase_price"
+      },
+      {
+        "type": "text",
+        "fieldName": "selling_price[]",
+        "multiple": true,
+        "options": {
+          "rules": {
+            "core:required": {
+              "param": ""
+            }
+          }
+        },
+        "name": "selling_price"
+      },
+      {
+        "type": "text",
+        "fieldName": "mrp[]",
+        "multiple": true,
+        "options": {
+          "rules": {
+            "core:required": {
+              "param": ""
+            }
+          }
+        },
+        "name": "mrp"
+      },
+      {
+        "type": "text",
+        "fieldName": "product_tax[]",
+        "multiple": true,
+        "options": {
+          "rules": {
+            "core:required": {
+              "param": ""
+            }
+          }
+        },
+        "name": "product_tax"
+      },
+      {
+        "type": "text",
+        "fieldName": "comm_per[]",
+        "multiple": true,
+        "options": {
+          "rules": {
+            "core:required": {
+              "param": ""
+            }
+          }
+        },
+        "name": "comm_per"
+      },
+      {
+        "type": "text",
+        "fieldName": "comm_val[]",
+        "multiple": true,
+        "options": {
+          "rules": {
+            "core:required": {
+              "param": ""
+            }
+          }
+        },
+        "name": "comm_val"
+      },
+      {
+        "type": "text",
+        "fieldName": "charge_per[]",
+        "multiple": true,
+        "options": {
+          "rules": {
+            "core:required": {
+              "param": ""
+            }
+          }
+        },
+        "name": "charge_per"
+      },
+      {
+        "type": "text",
+        "fieldName": "charge_val[]",
+        "multiple": true,
+        "options": {
+          "rules": {
+            "core:required": {
+              "param": ""
+            }
+          }
+        },
+        "name": "charge_val"
+      },
+      {
+        "type": "text",
+        "fieldName": "rest_id",
+        "options": {
+          "rules": {
+            "core:required": {
+              "param": ""
+            }
+          }
+        },
+        "name": "rest_id"
+      },
+      {
+        "type": "text",
+        "fieldName": "category_id",
+        "options": {
+          "rules": {
+            "core:required": {
+              "param": ""
+            }
+          }
+        },
+        "name": "category_id"
+      },
+      {
+        "type": "text",
+        "fieldName": "brand_id",
+        "options": {
+          "rules": {
+            "core:required": {
+              "param": ""
+            }
+          }
+        },
+        "name": "brand_id"
+      },
+      {
+        "type": "text",
+        "fieldName": "prod_mark_id",
+        "options": {
+          "rules": {
+            "core:required": {
+              "param": ""
+            }
+          }
+        },
+        "name": "prod_mark_id"
+      },
+      {
+        "type": "text",
+        "fieldName": "prod_occurance_id",
+        "options": {
+          "rules": {
+            "core:required": {
+              "param": ""
+            }
+          }
+        },
+        "name": "prod_occurance_id"
+      },
+      {
+        "type": "text",
+        "fieldName": "status",
+        "name": "status"
+      },
+      {
+        "type": "text",
+        "fieldName": "q_unit[]",
+        "multiple": true,
+        "name": "q_unit"
+      },
+      {
+        "type": "text",
+        "fieldName": "prod_desc_en",
+        "name": "prod_desc_en"
+      },
+      {
+        "type": "text",
+        "fieldName": "prod_desc_bn",
+        "name": "prod_desc_bn"
+      },
+      {
+        "type": "text",
+        "fieldName": "prod_desc_hin",
+        "name": "prod_desc_hin"
+      },
+      {
+        "type": "text",
+        "fieldName": "remarks",
+        "name": "remarks"
+      }
+    ]
+  },
+  "exec": {
+    "steps": [
+      {
+        "name": "",
+        "module": "auth",
+        "action": "restrict",
+        "options": {
+          "provider": "security",
+          "permissions": [
+            "write"
+          ],
+          "loginUrl": "/login",
+          "forbiddenUrl": "/403-forbidden"
+        }
+      },
+      {
+        "name": "identity",
+        "module": "auth",
+        "action": "identify",
+        "options": {
+          "provider": "security"
+        },
+        "meta": []
+      },
+      {
+        "name": "",
+        "module": "core",
+        "action": "condition",
+        "options": {
+          "if": "{{$_POST.EditProductId}}",
+          "then": {
+            "steps": [
+              {
+                "name": "GetProductDetails",
+                "module": "dbconnector",
+                "action": "single",
+                "options": {
+                  "connection": "FoodApp",
+                  "sql": {
+                    "type": "SELECT",
+                    "columns": [
+                      {
+                        "table": "m_product",
+                        "column": "prod_img1"
+                      },
+                      {
+                        "table": "m_product",
+                        "column": "prod_img2"
+                      },
+                      {
+                        "table": "m_product",
+                        "column": "prod_img3"
+                      },
+                      {
+                        "table": "m_product",
+                        "column": "prod_img4"
+                      }
+                    ],
+                    "table": {
+                      "name": "m_product"
+                    },
+                    "primary": "id",
+                    "joins": [],
+                    "wheres": {
+                      "condition": "AND",
+                      "rules": [
+                        {
+                          "id": "m_product.id",
+                          "field": "m_product.id",
+                          "type": "double",
+                          "operator": "equal",
+                          "value": "{{$_POST.EditProductId}}",
+                          "data": {
+                            "table": "m_product",
+                            "column": "id",
+                            "type": "number",
+                            "columnObj": {
+                              "type": "increments",
+                              "default": "",
+                              "primary": true,
+                              "unique": true,
+                              "nullable": false,
+                              "name": "id"
+                            }
+                          },
+                          "operation": "="
+                        }
+                      ],
+                      "conditional": null,
+                      "valid": true
+                    },
+                    "query": "SELECT prod_img1, prod_img2, prod_img3, prod_img4\nFROM m_product\nWHERE id = :P1 /* {{$_POST.EditProductId}} */",
+                    "params": [
+                      {
+                        "operator": "equal",
+                        "type": "expression",
+                        "name": ":P1",
+                        "value": "{{$_POST.EditProductId}}"
+                      }
+                    ]
+                  }
+                },
+                "output": false,
+                "meta": [
+                  {
+                    "type": "text",
+                    "name": "prod_img1"
+                  },
+                  {
+                    "type": "text",
+                    "name": "prod_img2"
+                  },
+                  {
+                    "type": "text",
+                    "name": "prod_img3"
+                  },
+                  {
+                    "type": "text",
+                    "name": "prod_img4"
+                  }
+                ],
+                "outputType": "object"
+              },
+              {
+                "name": "",
+                "module": "core",
+                "action": "condition",
+                "options": {
+                  "if": "{{$_POST.prod_img1}}",
+                  "then": {
+                    "steps": [
+                      {
+                        "name": "uploadFile1",
+                        "module": "upload",
+                        "action": "upload",
+                        "options": {
+                          "fields": "{{$_POST.prod_img1}}",
+                          "path": "/public/assets/img/product",
+                          "template": "{guid}{ext}",
+                          "replaceSpace": true,
+                          "replaceDiacritics": true,
+                          "asciiOnly": true,
+                          "overwrite": true
+                        },
+                        "meta": [
+                          {
+                            "name": "name",
+                            "type": "text"
+                          },
+                          {
+                            "name": "path",
+                            "type": "text"
+                          },
+                          {
+                            "name": "url",
+                            "type": "text"
+                          },
+                          {
+                            "name": "type",
+                            "type": "text"
+                          },
+                          {
+                            "name": "size",
+                            "type": "text"
+                          },
+                          {
+                            "name": "error",
+                            "type": "number"
+                          }
+                        ],
+                        "outputType": "file"
+                      },
+                      {
+                        "name": "fileExists1",
+                        "module": "fs",
+                        "action": "exists",
+                        "options": {
+                          "path": "{{'/public'+GetProductDetails.prod_img1}}",
+                          "then": {
+                            "steps": {
+                              "name": "fileRemove1",
+                              "module": "fs",
+                              "action": "remove",
+                              "options": {
+                                "path": "{{'/public'+GetProductDetails.prod_img1}}"
+                              },
+                              "outputType": "boolean"
+                            }
+                          }
+                        },
+                        "outputType": "boolean"
+                      }
+                    ]
+                  }
+                },
+                "outputType": "boolean"
+              },
+              {
+                "name": "",
+                "module": "core",
+                "action": "condition",
+                "options": {
+                  "if": "{{$_POST.prod_img2}}",
+                  "then": {
+                    "steps": [
+                      {
+                        "name": "uploadFile2",
+                        "module": "upload",
+                        "action": "upload",
+                        "options": {
+                          "fields": "{{$_POST.prod_img2}}",
+                          "path": "/public/assets/img/product",
+                          "template": "{guid}{ext}",
+                          "replaceSpace": true,
+                          "replaceDiacritics": true,
+                          "asciiOnly": true,
+                          "overwrite": true
+                        },
+                        "meta": [
+                          {
+                            "name": "name",
+                            "type": "text"
+                          },
+                          {
+                            "name": "path",
+                            "type": "text"
+                          },
+                          {
+                            "name": "url",
+                            "type": "text"
+                          },
+                          {
+                            "name": "type",
+                            "type": "text"
+                          },
+                          {
+                            "name": "size",
+                            "type": "text"
+                          },
+                          {
+                            "name": "error",
+                            "type": "number"
+                          }
+                        ],
+                        "outputType": "file"
+                      },
+                      {
+                        "name": "fileExists2",
+                        "module": "fs",
+                        "action": "exists",
+                        "options": {
+                          "path": "{{'/public'+GetProductDetails.prod_img2}}",
+                          "then": {
+                            "steps": {
+                              "name": "fileRemove2",
+                              "module": "fs",
+                              "action": "remove",
+                              "options": {
+                                "path": "{{'/public'+GetProductDetails.prod_img2}}"
+                              },
+                              "outputType": "boolean"
+                            }
+                          }
+                        },
+                        "outputType": "boolean"
+                      }
+                    ]
+                  }
+                },
+                "outputType": "boolean"
+              },
+              {
+                "name": "",
+                "module": "core",
+                "action": "condition",
+                "options": {
+                  "if": "{{$_POST.prod_img3}}",
+                  "then": {
+                    "steps": [
+                      {
+                        "name": "uploadFile3",
+                        "module": "upload",
+                        "action": "upload",
+                        "options": {
+                          "fields": "{{$_POST.prod_img3}}",
+                          "path": "/public/assets/img/product",
+                          "template": "{guid}{ext}",
+                          "replaceSpace": true,
+                          "replaceDiacritics": true,
+                          "asciiOnly": true,
+                          "overwrite": true
+                        },
+                        "meta": [
+                          {
+                            "name": "name",
+                            "type": "text"
+                          },
+                          {
+                            "name": "path",
+                            "type": "text"
+                          },
+                          {
+                            "name": "url",
+                            "type": "text"
+                          },
+                          {
+                            "name": "type",
+                            "type": "text"
+                          },
+                          {
+                            "name": "size",
+                            "type": "text"
+                          },
+                          {
+                            "name": "error",
+                            "type": "number"
+                          }
+                        ],
+                        "outputType": "file"
+                      },
+                      {
+                        "name": "fileExists3",
+                        "module": "fs",
+                        "action": "exists",
+                        "options": {
+                          "path": "{{'/public'+GetProductDetails.prod_img3}}",
+                          "then": {
+                            "steps": {
+                              "name": "fileRemove3",
+                              "module": "fs",
+                              "action": "remove",
+                              "options": {
+                                "path": "{{'/public'+GetProductDetails.prod_img3}}"
+                              },
+                              "outputType": "boolean"
+                            }
+                          }
+                        },
+                        "outputType": "boolean"
+                      }
+                    ]
+                  }
+                },
+                "outputType": "boolean"
+              },
+              {
+                "name": "",
+                "module": "core",
+                "action": "condition",
+                "options": {
+                  "if": "{{$_POST.prod_img4}}",
+                  "then": {
+                    "steps": [
+                      {
+                        "name": "uploadFile4",
+                        "module": "upload",
+                        "action": "upload",
+                        "options": {
+                          "fields": "{{$_POST.prod_img4}}",
+                          "path": "/public/assets/img/product",
+                          "template": "{guid}{ext}",
+                          "replaceSpace": true,
+                          "replaceDiacritics": true,
+                          "asciiOnly": true,
+                          "overwrite": true
+                        },
+                        "meta": [
+                          {
+                            "name": "name",
+                            "type": "text"
+                          },
+                          {
+                            "name": "path",
+                            "type": "text"
+                          },
+                          {
+                            "name": "url",
+                            "type": "text"
+                          },
+                          {
+                            "name": "type",
+                            "type": "text"
+                          },
+                          {
+                            "name": "size",
+                            "type": "text"
+                          },
+                          {
+                            "name": "error",
+                            "type": "number"
+                          }
+                        ],
+                        "outputType": "file"
+                      },
+                      {
+                        "name": "fileExists4",
+                        "module": "fs",
+                        "action": "exists",
+                        "options": {
+                          "path": "{{'/public'+GetProductDetails.prod_img4}}",
+                          "then": {
+                            "steps": {
+                              "name": "fileRemove4",
+                              "module": "fs",
+                              "action": "remove",
+                              "options": {
+                                "path": "{{'/public'+GetProductDetails.prod_img4}}"
+                              },
+                              "outputType": "boolean"
+                            }
+                          }
+                        },
+                        "outputType": "boolean"
+                      }
+                    ]
+                  }
+                },
+                "outputType": "boolean"
+              },
+              {
+                "name": "UpProduct",
+                "module": "dbupdater",
+                "action": "update",
+                "options": {
+                  "connection": "FoodApp",
+                  "sql": {
+                    "type": "update",
+                    "values": [
+                      {
+                        "table": "m_product",
+                        "column": "market_id",
+                        "type": "number",
+                        "value": "{{$_POST.MarketId}}"
+                      },
+                      {
+                        "table": "m_product",
+                        "column": "rest_id",
+                        "type": "number",
+                        "value": "{{$_POST.rest_id}}"
+                      },
+                      {
+                        "table": "m_product",
+                        "column": "category_id",
+                        "type": "number",
+                        "value": "{{$_POST.category_id}}"
+                      },
+                      {
+                        "table": "m_product",
+                        "column": "brand_id",
+                        "type": "number",
+                        "value": "{{$_POST.brand_id}}"
+                      },
+                      {
+                        "table": "m_product",
+                        "column": "prod_mark_id",
+                        "type": "number",
+                        "value": "{{$_POST.prod_mark_id}}"
+                      },
+                      {
+                        "table": "m_product",
+                        "column": "prod_occurance_id",
+                        "type": "number",
+                        "value": "{{$_POST.prod_occurance_id}}"
+                      },
+                      {
+                        "table": "m_product",
+                        "column": "prod_name_en",
+                        "type": "text",
+                        "value": "{{$_POST.prod_name_en}}"
+                      },
+                      {
+                        "table": "m_product",
+                        "column": "prod_name_bn",
+                        "type": "text",
+                        "value": "{{$_POST.prod_name_bn}}"
+                      },
+                      {
+                        "table": "m_product",
+                        "column": "prod_name_hin",
+                        "type": "text",
+                        "value": "{{$_POST.prod_name_hin}}"
+                      },
+                      {
+                        "table": "m_product",
+                        "column": "prod_desc_en",
+                        "type": "text",
+                        "value": "{{$_POST.prod_desc_en}}"
+                      },
+                      {
+                        "table": "m_product",
+                        "column": "prod_desc_bn",
+                        "type": "text",
+                        "value": "{{$_POST.prod_desc_bn}}"
+                      },
+                      {
+                        "table": "m_product",
+                        "column": "prod_desc_hin",
+                        "type": "text",
+                        "value": "{{$_POST.prod_desc_hin}}"
+                      },
+                      {
+                        "table": "m_product",
+                        "column": "prod_img1",
+                        "type": "text",
+                        "value": "{{$_POST.prod_img1?+'/assets/img/product/'+uploadFile1.name:''}}",
+                        "condition": "{{$_POST.prod_img1?+'/assets/img/product/'+uploadFile1.name:''}}"
+                      },
+                      {
+                        "table": "m_product",
+                        "column": "prod_img2",
+                        "type": "text",
+                        "value": "{{$_POST.prod_img2?+'/assets/img/product/'+uploadFile2.name:''}}",
+                        "condition": "{{$_POST.prod_img2?+'/assets/img/product/'+uploadFile2.name:''}}"
+                      },
+                      {
+                        "table": "m_product",
+                        "column": "prod_img3",
+                        "type": "text",
+                        "value": "{{$_POST.prod_img3?+'/assets/img/product/'+uploadFile3.name:''}}",
+                        "condition": "{{$_POST.prod_img3?+'/assets/img/product/'+uploadFile3.name:''}}"
+                      },
+                      {
+                        "table": "m_product",
+                        "column": "prod_img4",
+                        "type": "text",
+                        "value": "{{$_POST.prod_img4?+'/assets/img/product/'+uploadFile4.name:''}}",
+                        "condition": "{{$_POST.prod_img4?+'/assets/img/product/'+uploadFile4.name:''}}"
+                      },
+                      {
+                        "table": "m_product",
+                        "column": "status",
+                        "type": "number",
+                        "value": "{{$_POST.status}}"
+                      },
+                      {
+                        "table": "m_product",
+                        "column": "remarks",
+                        "type": "text",
+                        "value": "{{$_POST.remarks}}"
+                      },
+                      {
+                        "table": "m_product",
+                        "column": "updated_on",
+                        "type": "datetime",
+                        "value": "{{NOW}}"
+                      }
+                    ],
+                    "table": "m_product",
+                    "wheres": {
+                      "condition": "AND",
+                      "rules": [
+                        {
+                          "id": "id",
+                          "field": "id",
+                          "type": "double",
+                          "operator": "equal",
+                          "value": "{{$_POST.EditProductId}}",
+                          "data": {
+                            "column": "id"
+                          },
+                          "operation": "="
+                        }
+                      ],
+                      "conditional": null,
+                      "valid": true
+                    },
+                    "returning": "id",
+                    "query": "UPDATE m_product\nSET market_id = :P1 /* {{$_POST.MarketId}} */, rest_id = :P2 /* {{$_POST.rest_id}} */, category_id = :P3 /* {{$_POST.category_id}} */, brand_id = :P4 /* {{$_POST.brand_id}} */, prod_mark_id = :P5 /* {{$_POST.prod_mark_id}} */, prod_occurance_id = :P6 /* {{$_POST.prod_occurance_id}} */, prod_name_en = :P7 /* {{$_POST.prod_name_en}} */, prod_name_bn = :P8 /* {{$_POST.prod_name_bn}} */, prod_name_hin = :P9 /* {{$_POST.prod_name_hin}} */, prod_desc_en = :P10 /* {{$_POST.prod_desc_en}} */, prod_desc_bn = :P11 /* {{$_POST.prod_desc_bn}} */, prod_desc_hin = :P12 /* {{$_POST.prod_desc_hin}} */, prod_img1 = :P13 /* {{$_POST.prod_img1?+'/assets/img/product/'+uploadFile1.name:''}} */, prod_img2 = :P14 /* {{$_POST.prod_img2?+'/assets/img/product/'+uploadFile2.name:''}} */, prod_img3 = :P15 /* {{$_POST.prod_img3?+'/assets/img/product/'+uploadFile3.name:''}} */, prod_img4 = :P16 /* {{$_POST.prod_img4?+'/assets/img/product/'+uploadFile4.name:''}} */, status = :P17 /* {{$_POST.status}} */, remarks = :P18 /* {{$_POST.remarks}} */, updated_on = :P19 /* {{NOW}} */\nWHERE id = :P20 /* {{$_POST.EditProductId}} */",
+                    "params": [
+                      {
+                        "name": ":P1",
+                        "type": "expression",
+                        "value": "{{$_POST.MarketId}}"
+                      },
+                      {
+                        "name": ":P2",
+                        "type": "expression",
+                        "value": "{{$_POST.rest_id}}"
+                      },
+                      {
+                        "name": ":P3",
+                        "type": "expression",
+                        "value": "{{$_POST.category_id}}"
+                      },
+                      {
+                        "name": ":P4",
+                        "type": "expression",
+                        "value": "{{$_POST.brand_id}}"
+                      },
+                      {
+                        "name": ":P5",
+                        "type": "expression",
+                        "value": "{{$_POST.prod_mark_id}}"
+                      },
+                      {
+                        "name": ":P6",
+                        "type": "expression",
+                        "value": "{{$_POST.prod_occurance_id}}"
+                      },
+                      {
+                        "name": ":P7",
+                        "type": "expression",
+                        "value": "{{$_POST.prod_name_en}}"
+                      },
+                      {
+                        "name": ":P8",
+                        "type": "expression",
+                        "value": "{{$_POST.prod_name_bn}}"
+                      },
+                      {
+                        "name": ":P9",
+                        "type": "expression",
+                        "value": "{{$_POST.prod_name_hin}}"
+                      },
+                      {
+                        "name": ":P10",
+                        "type": "expression",
+                        "value": "{{$_POST.prod_desc_en}}"
+                      },
+                      {
+                        "name": ":P11",
+                        "type": "expression",
+                        "value": "{{$_POST.prod_desc_bn}}"
+                      },
+                      {
+                        "name": ":P12",
+                        "type": "expression",
+                        "value": "{{$_POST.prod_desc_hin}}"
+                      },
+                      {
+                        "name": ":P13",
+                        "type": "expression",
+                        "value": "{{$_POST.prod_img1?+'/assets/img/product/'+uploadFile1.name:''}}"
+                      },
+                      {
+                        "name": ":P14",
+                        "type": "expression",
+                        "value": "{{$_POST.prod_img2?+'/assets/img/product/'+uploadFile2.name:''}}"
+                      },
+                      {
+                        "name": ":P15",
+                        "type": "expression",
+                        "value": "{{$_POST.prod_img3?+'/assets/img/product/'+uploadFile3.name:''}}"
+                      },
+                      {
+                        "name": ":P16",
+                        "type": "expression",
+                        "value": "{{$_POST.prod_img4?+'/assets/img/product/'+uploadFile4.name:''}}"
+                      },
+                      {
+                        "name": ":P17",
+                        "type": "expression",
+                        "value": "{{$_POST.status}}"
+                      },
+                      {
+                        "name": ":P18",
+                        "type": "expression",
+                        "value": "{{$_POST.remarks}}"
+                      },
+                      {
+                        "name": ":P19",
+                        "type": "expression",
+                        "value": "{{NOW}}"
+                      },
+                      {
+                        "operator": "equal",
+                        "type": "expression",
+                        "name": ":P20",
+                        "value": "{{$_POST.EditProductId}}"
+                      }
+                    ]
+                  }
+                },
+                "meta": [
+                  {
+                    "name": "affected",
+                    "type": "number"
+                  }
+                ]
+              },
+              {
+                "name": "Resp",
+                "module": "core",
+                "action": "response",
+                "options": {
+                  "status": 200,
+                  "data": "{{'Product: '+$_POST.prod_name_en+' Updated Successfully.'}}"
+                },
+                "output": true
+              }
+            ]
+          },
+          "else": {
+            "steps": [
+              {
+                "name": "GetProduct",
+                "module": "dbconnector",
+                "action": "single",
+                "options": {
+                  "connection": "FoodApp",
+                  "sql": {
+                    "type": "SELECT",
+                    "columns": [
+                      {
+                        "table": "m_product",
+                        "column": "id",
+                        "alias": "CountId",
+                        "aggregate": "COUNT"
+                      }
+                    ],
+                    "table": {
+                      "name": "m_product"
+                    },
+                    "primary": "id",
+                    "joins": [
+                      {
+                        "table": "m_market",
+                        "column": "*",
+                        "alias": "mm",
+                        "type": "INNER",
+                        "clauses": {
+                          "condition": "AND",
+                          "rules": [
+                            {
+                              "table": "mm",
+                              "column": "id",
+                              "operator": "equal",
+                              "value": {
+                                "table": "m_product",
+                                "column": "market_id"
+                              },
+                              "operation": "="
+                            }
+                          ]
+                        },
+                        "primary": "id"
+                      }
+                    ],
+                    "groupBy": [],
+                    "wheres": {
+                      "condition": "AND",
+                      "rules": [
+                        {
+                          "id": "m_product.market_id",
+                          "field": "m_product.market_id",
+                          "type": "double",
+                          "operator": "equal",
+                          "value": "{{$_POST.MarketId}}",
+                          "data": {
+                            "table": "m_product",
+                            "column": "market_id",
+                            "type": "number",
+                            "columnObj": {
+                              "type": "reference",
+                              "primary": false,
+                              "unique": false,
+                              "nullable": true,
+                              "references": "id",
+                              "inTable": "m_market",
+                              "referenceType": "integer",
+                              "onUpdate": "NO ACTION",
+                              "onDelete": "NO ACTION",
+                              "name": "market_id"
+                            }
+                          },
+                          "operation": "="
+                        }
+                      ],
+                      "conditional": null,
+                      "valid": true
+                    },
+                    "query": "SELECT COUNT(m_product.id) AS CountId\nFROM m_product\nINNER JOIN m_market AS mm ON (mm.id = m_product.market_id)\nWHERE m_product.market_id = :P1 /* {{$_POST.MarketId}} */",
+                    "params": [
+                      {
+                        "operator": "equal",
+                        "type": "expression",
+                        "name": ":P1",
+                        "value": "{{$_POST.MarketId}}"
+                      }
+                    ],
+                    "orders": []
+                  }
+                },
+                "output": false,
+                "meta": [
+                  {
+                    "type": "number",
+                    "name": "CountId"
+                  }
+                ],
+                "outputType": "object"
+              },
+              {
+                "name": "GetMarket",
+                "module": "dbconnector",
+                "action": "single",
+                "options": {
+                  "connection": "FoodApp",
+                  "sql": {
+                    "type": "SELECT",
+                    "columns": [
+                      {
+                        "table": "m_market",
+                        "column": "market_code"
+                      }
+                    ],
+                    "table": {
+                      "name": "m_market"
+                    },
+                    "primary": "id",
+                    "joins": [],
+                    "wheres": {
+                      "condition": "AND",
+                      "rules": [
+                        {
+                          "id": "m_market.id",
+                          "field": "m_market.id",
+                          "type": "double",
+                          "operator": "equal",
+                          "value": "{{$_POST.MarketId}}",
+                          "data": {
+                            "table": "m_market",
+                            "column": "id",
+                            "type": "number",
+                            "columnObj": {
+                              "type": "increments",
+                              "default": "",
+                              "primary": true,
+                              "unique": true,
+                              "nullable": false,
+                              "name": "id"
+                            }
+                          },
+                          "operation": "="
+                        }
+                      ],
+                      "conditional": null,
+                      "valid": true
+                    },
+                    "query": "SELECT market_code\nFROM m_market\nWHERE id = :P1 /* {{$_POST.MarketId}} */",
+                    "params": [
+                      {
+                        "operator": "equal",
+                        "type": "expression",
+                        "name": ":P1",
+                        "value": "{{$_POST.MarketId}}"
+                      }
+                    ]
+                  }
+                },
+                "output": false,
+                "meta": [
+                  {
+                    "type": "text",
+                    "name": "market_code"
+                  }
+                ],
+                "outputType": "object"
+              },
+              {
+                "name": "ProductId",
+                "module": "core",
+                "action": "setvalue",
+                "options": {
+                  "value": "{{GetMarket.market_code+(GetProduct.CountId.toNumber()+1)}}"
+                },
+                "meta": [
+                  {
+                    "name": "market_code",
+                    "type": "text"
+                  }
+                ],
+                "outputType": "text",
+                "output": true
+              },
+              {
+                "name": "",
+                "module": "core",
+                "action": "condition",
+                "options": {
+                  "if": "{{$_POST.prod_img1}}",
+                  "then": {
+                    "steps": {
+                      "name": "uploadFile1",
+                      "module": "upload",
+                      "action": "upload",
+                      "options": {
+                        "fields": "{{$_POST.prod_img1}}",
+                        "path": "/public/assets/img/product",
+                        "template": "{guid}{ext}",
+                        "replaceSpace": true,
+                        "replaceDiacritics": true,
+                        "asciiOnly": true,
+                        "overwrite": true
+                      },
+                      "meta": [
+                        {
+                          "name": "name",
+                          "type": "text"
+                        },
+                        {
+                          "name": "path",
+                          "type": "text"
+                        },
+                        {
+                          "name": "url",
+                          "type": "text"
+                        },
+                        {
+                          "name": "type",
+                          "type": "text"
+                        },
+                        {
+                          "name": "size",
+                          "type": "text"
+                        },
+                        {
+                          "name": "error",
+                          "type": "number"
+                        }
+                      ],
+                      "outputType": "file"
+                    }
+                  }
+                },
+                "outputType": "boolean"
+              },
+              {
+                "name": "",
+                "module": "core",
+                "action": "condition",
+                "options": {
+                  "if": "{{$_POST.prod_img2}}",
+                  "then": {
+                    "steps": {
+                      "name": "uploadFile2",
+                      "module": "upload",
+                      "action": "upload",
+                      "options": {
+                        "fields": "{{$_POST.prod_img2}}",
+                        "path": "/public/assets/img/product",
+                        "template": "{guid}{ext}",
+                        "replaceSpace": true,
+                        "replaceDiacritics": true,
+                        "asciiOnly": true,
+                        "overwrite": true
+                      },
+                      "meta": [
+                        {
+                          "name": "name",
+                          "type": "text"
+                        },
+                        {
+                          "name": "path",
+                          "type": "text"
+                        },
+                        {
+                          "name": "url",
+                          "type": "text"
+                        },
+                        {
+                          "name": "type",
+                          "type": "text"
+                        },
+                        {
+                          "name": "size",
+                          "type": "text"
+                        },
+                        {
+                          "name": "error",
+                          "type": "number"
+                        }
+                      ],
+                      "outputType": "file"
+                    }
+                  }
+                },
+                "outputType": "boolean"
+              },
+              {
+                "name": "",
+                "module": "core",
+                "action": "condition",
+                "options": {
+                  "if": "{{$_POST.prod_img3}}",
+                  "then": {
+                    "steps": {
+                      "name": "uploadFile3",
+                      "module": "upload",
+                      "action": "upload",
+                      "options": {
+                        "fields": "{{$_POST.prod_img3}}",
+                        "path": "/public/assets/img/product",
+                        "template": "{guid}{ext}",
+                        "replaceSpace": true,
+                        "replaceDiacritics": true,
+                        "asciiOnly": true,
+                        "overwrite": true
+                      },
+                      "meta": [
+                        {
+                          "name": "name",
+                          "type": "text"
+                        },
+                        {
+                          "name": "path",
+                          "type": "text"
+                        },
+                        {
+                          "name": "url",
+                          "type": "text"
+                        },
+                        {
+                          "name": "type",
+                          "type": "text"
+                        },
+                        {
+                          "name": "size",
+                          "type": "text"
+                        },
+                        {
+                          "name": "error",
+                          "type": "number"
+                        }
+                      ],
+                      "outputType": "file"
+                    }
+                  }
+                },
+                "outputType": "boolean"
+              },
+              {
+                "name": "",
+                "module": "core",
+                "action": "condition",
+                "options": {
+                  "if": "{{$_POST.prod_img4}}",
+                  "then": {
+                    "steps": {
+                      "name": "uploadFile4",
+                      "module": "upload",
+                      "action": "upload",
+                      "options": {
+                        "fields": "{{$_POST.prod_img4}}",
+                        "path": "/public/assets/img/product",
+                        "template": "{guid}{ext}",
+                        "replaceSpace": true,
+                        "replaceDiacritics": true,
+                        "asciiOnly": true,
+                        "overwrite": true
+                      },
+                      "meta": [
+                        {
+                          "name": "name",
+                          "type": "text"
+                        },
+                        {
+                          "name": "path",
+                          "type": "text"
+                        },
+                        {
+                          "name": "url",
+                          "type": "text"
+                        },
+                        {
+                          "name": "type",
+                          "type": "text"
+                        },
+                        {
+                          "name": "size",
+                          "type": "text"
+                        },
+                        {
+                          "name": "error",
+                          "type": "number"
+                        }
+                      ],
+                      "outputType": "file"
+                    }
+                  }
+                },
+                "outputType": "boolean"
+              },
+              {
+                "name": "AddProduct",
+                "module": "dbupdater",
+                "action": "insert",
+                "options": {
+                  "connection": "FoodApp",
+                  "sql": {
+                    "type": "insert",
+                    "values": [
+                      {
+                        "table": "m_product",
+                        "column": "prod_id",
+                        "type": "text",
+                        "value": "{{ProductId}}"
+                      },
+                      {
+                        "table": "m_product",
+                        "column": "market_id",
+                        "type": "number",
+                        "value": "{{$_POST.MarketId}}"
+                      },
+                      {
+                        "table": "m_product",
+                        "column": "rest_id",
+                        "type": "number",
+                        "value": "{{$_POST.rest_id}}"
+                      },
+                      {
+                        "table": "m_product",
+                        "column": "category_id",
+                        "type": "number",
+                        "value": "{{$_POST.category_id}}"
+                      },
+                      {
+                        "table": "m_product",
+                        "column": "brand_id",
+                        "type": "number",
+                        "value": "{{$_POST.brand_id}}"
+                      },
+                      {
+                        "table": "m_product",
+                        "column": "prod_mark_id",
+                        "type": "number",
+                        "value": "{{$_POST.prod_mark_id}}"
+                      },
+                      {
+                        "table": "m_product",
+                        "column": "prod_occurance_id",
+                        "type": "number",
+                        "value": "{{$_POST.prod_occurance_id}}"
+                      },
+                      {
+                        "table": "m_product",
+                        "column": "prod_name_en",
+                        "type": "text",
+                        "value": "{{$_POST.prod_name_en}}"
+                      },
+                      {
+                        "table": "m_product",
+                        "column": "prod_name_bn",
+                        "type": "text",
+                        "value": "{{$_POST.prod_name_bn}}"
+                      },
+                      {
+                        "table": "m_product",
+                        "column": "prod_name_hin",
+                        "type": "text",
+                        "value": "{{$_POST.prod_name_hin}}"
+                      },
+                      {
+                        "table": "m_product",
+                        "column": "prod_desc_en",
+                        "type": "text",
+                        "value": "{{$_POST.prod_desc_en}}"
+                      },
+                      {
+                        "table": "m_product",
+                        "column": "prod_desc_bn",
+                        "type": "text",
+                        "value": "{{$_POST.prod_desc_bn}}"
+                      },
+                      {
+                        "table": "m_product",
+                        "column": "prod_desc_hin",
+                        "type": "text",
+                        "value": "{{$_POST.prod_desc_hin}}"
+                      },
+                      {
+                        "table": "m_product",
+                        "column": "prod_img1",
+                        "type": "text",
+                        "value": "{{$_POST.prod_img1?+'/assets/img/product/'+uploadFile1.name:''}}",
+                        "condition": "{{$_POST.prod_img1?+'/assets/img/product/'+uploadFile1.name:''}}"
+                      },
+                      {
+                        "table": "m_product",
+                        "column": "prod_img2",
+                        "type": "text",
+                        "value": "{{$_POST.prod_img2?+'/assets/img/product/'+uploadFile2.name:''}}",
+                        "condition": "{{$_POST.prod_img2?+'/assets/img/product/'+uploadFile2.name:''}}"
+                      },
+                      {
+                        "table": "m_product",
+                        "column": "prod_img3",
+                        "type": "text",
+                        "value": "{{$_POST.prod_img3?+'/assets/img/product/'+uploadFile3.name:''}}",
+                        "condition": "{{$_POST.prod_img3?+'/assets/img/product/'+uploadFile3.name:''}}"
+                      },
+                      {
+                        "table": "m_product",
+                        "column": "prod_img4",
+                        "type": "text",
+                        "value": "{{$_POST.prod_img4?+'/assets/img/product/'+uploadFile4.name:''}}",
+                        "condition": "{{$_POST.prod_img4?+'/assets/img/product/'+uploadFile4.name:''}}"
+                      },
+                      {
+                        "table": "m_product",
+                        "column": "status",
+                        "type": "number",
+                        "value": "{{$_POST.status}}"
+                      },
+                      {
+                        "table": "m_product",
+                        "column": "remarks",
+                        "type": "text",
+                        "value": "{{$_POST.remarks}}"
+                      },
+                      {
+                        "table": "m_product",
+                        "column": "created_by",
+                        "type": "number",
+                        "value": "{{identity}}"
+                      },
+                      {
+                        "table": "m_product",
+                        "column": "created_on",
+                        "type": "datetime",
+                        "value": "{{NOW}}"
+                      }
+                    ],
+                    "table": "m_product",
+                    "returning": "id",
+                    "query": "INSERT INTO m_product\n(prod_id, market_id, rest_id, category_id, brand_id, prod_mark_id, prod_occurance_id, prod_name_en, prod_name_bn, prod_name_hin, prod_desc_en, prod_desc_bn, prod_desc_hin, prod_img1, prod_img2, prod_img3, prod_img4, status, remarks, created_by, created_on) VALUES (:P1 /* {{ProductId}} */, :P2 /* {{$_POST.MarketId}} */, :P3 /* {{$_POST.rest_id}} */, :P4 /* {{$_POST.category_id}} */, :P5 /* {{$_POST.brand_id}} */, :P6 /* {{$_POST.prod_mark_id}} */, :P7 /* {{$_POST.prod_occurance_id}} */, :P8 /* {{$_POST.prod_name_en}} */, :P9 /* {{$_POST.prod_name_bn}} */, :P10 /* {{$_POST.prod_name_hin}} */, :P11 /* {{$_POST.prod_desc_en}} */, :P12 /* {{$_POST.prod_desc_bn}} */, :P13 /* {{$_POST.prod_desc_hin}} */, :P14 /* {{$_POST.prod_img1?+'/assets/img/product/'+uploadFile1.name:''}} */, :P15 /* {{$_POST.prod_img2?+'/assets/img/product/'+uploadFile2.name:''}} */, :P16 /* {{$_POST.prod_img3?+'/assets/img/product/'+uploadFile3.name:''}} */, :P17 /* {{$_POST.prod_img4?+'/assets/img/product/'+uploadFile4.name:''}} */, :P18 /* {{$_POST.status}} */, :P19 /* {{$_POST.remarks}} */, :P20 /* {{identity}} */, :P21 /* {{NOW}} */)",
+                    "params": [
+                      {
+                        "name": ":P1",
+                        "type": "expression",
+                        "value": "{{ProductId}}"
+                      },
+                      {
+                        "name": ":P2",
+                        "type": "expression",
+                        "value": "{{$_POST.MarketId}}"
+                      },
+                      {
+                        "name": ":P3",
+                        "type": "expression",
+                        "value": "{{$_POST.rest_id}}"
+                      },
+                      {
+                        "name": ":P4",
+                        "type": "expression",
+                        "value": "{{$_POST.category_id}}"
+                      },
+                      {
+                        "name": ":P5",
+                        "type": "expression",
+                        "value": "{{$_POST.brand_id}}"
+                      },
+                      {
+                        "name": ":P6",
+                        "type": "expression",
+                        "value": "{{$_POST.prod_mark_id}}"
+                      },
+                      {
+                        "name": ":P7",
+                        "type": "expression",
+                        "value": "{{$_POST.prod_occurance_id}}"
+                      },
+                      {
+                        "name": ":P8",
+                        "type": "expression",
+                        "value": "{{$_POST.prod_name_en}}"
+                      },
+                      {
+                        "name": ":P9",
+                        "type": "expression",
+                        "value": "{{$_POST.prod_name_bn}}"
+                      },
+                      {
+                        "name": ":P10",
+                        "type": "expression",
+                        "value": "{{$_POST.prod_name_hin}}"
+                      },
+                      {
+                        "name": ":P11",
+                        "type": "expression",
+                        "value": "{{$_POST.prod_desc_en}}"
+                      },
+                      {
+                        "name": ":P12",
+                        "type": "expression",
+                        "value": "{{$_POST.prod_desc_bn}}"
+                      },
+                      {
+                        "name": ":P13",
+                        "type": "expression",
+                        "value": "{{$_POST.prod_desc_hin}}"
+                      },
+                      {
+                        "name": ":P14",
+                        "type": "expression",
+                        "value": "{{$_POST.prod_img1?+'/assets/img/product/'+uploadFile1.name:''}}"
+                      },
+                      {
+                        "name": ":P15",
+                        "type": "expression",
+                        "value": "{{$_POST.prod_img2?+'/assets/img/product/'+uploadFile2.name:''}}"
+                      },
+                      {
+                        "name": ":P16",
+                        "type": "expression",
+                        "value": "{{$_POST.prod_img3?+'/assets/img/product/'+uploadFile3.name:''}}"
+                      },
+                      {
+                        "name": ":P17",
+                        "type": "expression",
+                        "value": "{{$_POST.prod_img4?+'/assets/img/product/'+uploadFile4.name:''}}"
+                      },
+                      {
+                        "name": ":P18",
+                        "type": "expression",
+                        "value": "{{$_POST.status}}"
+                      },
+                      {
+                        "name": ":P19",
+                        "type": "expression",
+                        "value": "{{$_POST.remarks}}"
+                      },
+                      {
+                        "name": ":P20",
+                        "type": "expression",
+                        "value": "{{identity}}"
+                      },
+                      {
+                        "name": ":P21",
+                        "type": "expression",
+                        "value": "{{NOW}}"
+                      }
+                    ]
+                  }
+                },
+                "meta": [
+                  {
+                    "name": "identity",
+                    "type": "text"
+                  },
+                  {
+                    "name": "affected",
+                    "type": "number"
+                  }
+                ]
+              },
+              {
+                "name": "repeat",
+                "module": "core",
+                "action": "repeat",
+                "options": {
+                  "repeat": "{{$_POST.q_unit}}",
+                  "outputFields": [],
+                  "exec": {
+                    "steps": {
+                      "name": "AddPrice",
+                      "module": "dbupdater",
+                      "action": "insert",
+                      "options": {
+                        "connection": "FoodApp",
+                        "sql": {
+                          "type": "insert",
+                          "values": [
+                            {
+                              "table": "r_price_table",
+                              "column": "prod_id",
+                              "type": "number",
+                              "value": "{{AddProduct.identity}}"
+                            },
+                            {
+                              "table": "r_price_table",
+                              "column": "quantity",
+                              "type": "text",
+                              "value": "{{$_POST.quantity[$index]}}"
+                            },
+                            {
+                              "table": "r_price_table",
+                              "column": "q_unit",
+                              "type": "text",
+                              "value": "{{$value}}"
+                            },
+                            {
+                              "table": "r_price_table",
+                              "column": "mrp",
+                              "type": "text",
+                              "value": "{{$_POST.mrp[$index]}}"
+                            },
+                            {
+                              "table": "r_price_table",
+                              "column": "purchase_price",
+                              "type": "text",
+                              "value": "{{$_POST.purchase_price[$index]}}"
+                            },
+                            {
+                              "table": "r_price_table",
+                              "column": "selling_price",
+                              "type": "text",
+                              "value": "{{$_POST.selling_price[$index]}}"
+                            },
+                            {
+                              "table": "r_price_table",
+                              "column": "product_tax",
+                              "type": "text",
+                              "value": "{{$_POST.product_tax[$index]}}"
+                            },
+                            {
+                              "table": "r_price_table",
+                              "column": "comm_per",
+                              "type": "text",
+                              "value": "{{$_POST.comm_per[$index]}}"
+                            },
+                            {
+                              "table": "r_price_table",
+                              "column": "comm_val",
+                              "type": "text",
+                              "value": "{{$_POST.comm_val[$index]}}"
+                            },
+                            {
+                              "table": "r_price_table",
+                              "column": "charge_per",
+                              "type": "text",
+                              "value": "{{$_POST.charge_per[$index]}}"
+                            },
+                            {
+                              "table": "r_price_table",
+                              "column": "charge_val",
+                              "type": "text",
+                              "value": "{{$_POST.charge_val[$index]}}"
+                            },
+                            {
+                              "table": "r_price_table",
+                              "column": "status",
+                              "type": "number",
+                              "value": "{{1}}"
+                            },
+                            {
+                              "table": "r_price_table",
+                              "column": "created_by",
+                              "type": "number",
+                              "value": "{{identity}}"
+                            },
+                            {
+                              "table": "r_price_table",
+                              "column": "created_on",
+                              "type": "datetime",
+                              "value": "{{NOW}}"
+                            }
+                          ],
+                          "table": "r_price_table",
+                          "returning": "id",
+                          "query": "INSERT INTO r_price_table\n(prod_id, quantity, q_unit, mrp, purchase_price, selling_price, product_tax, comm_per, comm_val, charge_per, charge_val, status, created_by, created_on) VALUES (:P1 /* {{AddProduct.identity}} */, :P2 /* {{$_POST.quantity[$index]}} */, :P3 /* {{$value}} */, :P4 /* {{$_POST.mrp[$index]}} */, :P5 /* {{$_POST.purchase_price[$index]}} */, :P6 /* {{$_POST.selling_price[$index]}} */, :P7 /* {{$_POST.product_tax[$index]}} */, :P8 /* {{$_POST.comm_per[$index]}} */, :P9 /* {{$_POST.comm_val[$index]}} */, :P10 /* {{$_POST.charge_per[$index]}} */, :P11 /* {{$_POST.charge_val[$index]}} */, :P12 /* {{1}} */, :P13 /* {{identity}} */, :P14 /* {{NOW}} */)",
+                          "params": [
+                            {
+                              "name": ":P1",
+                              "type": "expression",
+                              "value": "{{AddProduct.identity}}"
+                            },
+                            {
+                              "name": ":P2",
+                              "type": "expression",
+                              "value": "{{$_POST.quantity[$index]}}"
+                            },
+                            {
+                              "name": ":P3",
+                              "type": "expression",
+                              "value": "{{$value}}"
+                            },
+                            {
+                              "name": ":P4",
+                              "type": "expression",
+                              "value": "{{$_POST.mrp[$index]}}"
+                            },
+                            {
+                              "name": ":P5",
+                              "type": "expression",
+                              "value": "{{$_POST.purchase_price[$index]}}"
+                            },
+                            {
+                              "name": ":P6",
+                              "type": "expression",
+                              "value": "{{$_POST.selling_price[$index]}}"
+                            },
+                            {
+                              "name": ":P7",
+                              "type": "expression",
+                              "value": "{{$_POST.product_tax[$index]}}"
+                            },
+                            {
+                              "name": ":P8",
+                              "type": "expression",
+                              "value": "{{$_POST.comm_per[$index]}}"
+                            },
+                            {
+                              "name": ":P9",
+                              "type": "expression",
+                              "value": "{{$_POST.comm_val[$index]}}"
+                            },
+                            {
+                              "name": ":P10",
+                              "type": "expression",
+                              "value": "{{$_POST.charge_per[$index]}}"
+                            },
+                            {
+                              "name": ":P11",
+                              "type": "expression",
+                              "value": "{{$_POST.charge_val[$index]}}"
+                            },
+                            {
+                              "name": ":P12",
+                              "type": "expression",
+                              "value": "{{1}}"
+                            },
+                            {
+                              "name": ":P13",
+                              "type": "expression",
+                              "value": "{{identity}}"
+                            },
+                            {
+                              "name": ":P14",
+                              "type": "expression",
+                              "value": "{{NOW}}"
+                            }
+                          ]
+                        }
+                      },
+                      "meta": [
+                        {
+                          "name": "identity",
+                          "type": "text"
+                        },
+                        {
+                          "name": "affected",
+                          "type": "number"
+                        }
+                      ]
+                    }
+                  }
+                },
+                "output": false,
+                "meta": [
+                  {
+                    "name": "$index",
+                    "type": "number"
+                  },
+                  {
+                    "name": "$number",
+                    "type": "number"
+                  },
+                  {
+                    "name": "$name",
+                    "type": "text"
+                  },
+                  {
+                    "name": "$value",
+                    "type": "object"
+                  }
+                ],
+                "outputType": "array"
+              },
+              {
+                "name": "Resp",
+                "module": "core",
+                "action": "response",
+                "options": {
+                  "status": 200,
+                  "data": "{{'Product: '+$_POST.prod_name_en+' Added Successfully.'}}"
+                },
+                "output": true
+              }
+            ]
+          }
+        },
+        "outputType": "boolean"
+      }
+    ]
+  }
+}

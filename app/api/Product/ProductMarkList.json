@@ -1,0 +1,111 @@
+{
+  "meta": {
+    "$_GET": [
+      {
+        "type": "text",
+        "name": "sort"
+      },
+      {
+        "type": "text",
+        "name": "dir"
+      }
+    ]
+  },
+  "exec": {
+    "steps": [
+      {
+        "name": "",
+        "module": "auth",
+        "action": "restrict",
+        "options": {
+          "provider": "security",
+          "permissions": [
+            "write"
+          ],
+          "loginUrl": "/login",
+          "forbiddenUrl": "/403-forbidden"
+        }
+      },
+      {
+        "name": "Mark",
+        "module": "dbconnector",
+        "action": "select",
+        "options": {
+          "connection": "FoodApp",
+          "sql": {
+            "type": "SELECT",
+            "columns": [
+              {
+                "table": "m_prod_mark",
+                "column": "id"
+              },
+              {
+                "table": "m_prod_mark",
+                "column": "mark_name"
+              },
+              {
+                "table": "m_prod_mark",
+                "column": "color_code"
+              },
+              {
+                "table": "m_prod_mark",
+                "column": "status"
+              },
+              {
+                "table": "m_prod_mark",
+                "column": "remarks"
+              },
+              {
+                "table": "m_prod_mark",
+                "column": "created_by"
+              },
+              {
+                "table": "m_prod_mark",
+                "column": "created_on"
+              }
+            ],
+            "table": {
+              "name": "m_prod_mark"
+            },
+            "primary": "id",
+            "joins": [],
+            "query": "SELECT id, mark_name, color_code, status, remarks, created_by, created_on\nFROM m_prod_mark",
+            "params": []
+          }
+        },
+        "output": true,
+        "meta": [
+          {
+            "type": "number",
+            "name": "id"
+          },
+          {
+            "type": "text",
+            "name": "mark_name"
+          },
+          {
+            "type": "text",
+            "name": "color_code"
+          },
+          {
+            "type": "number",
+            "name": "status"
+          },
+          {
+            "type": "text",
+            "name": "remarks"
+          },
+          {
+            "type": "number",
+            "name": "created_by"
+          },
+          {
+            "type": "datetime",
+            "name": "created_on"
+          }
+        ],
+        "outputType": "array"
+      }
+    ]
+  }
+}

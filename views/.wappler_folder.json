@@ -1,0 +1,66 @@
+{
+  "dashboard.ejs": {
+    "layoutPage": "main",
+    "description": ""
+  },
+  "login1.ejs": {
+    "layoutPage": "main",
+    "description": ""
+  },
+  "login.ejs": {
+    "layoutPage": "",
+    "description": ""
+  },
+  "product-list.ejs": {
+    "layoutPage": "main",
+    "description": ""
+  },
+  "product-edit.ejs": {
+    "layoutPage": "main",
+    "description": ""
+  },
+  "404-not-found.ejs": {
+    "layoutPage": "",
+    "description": ""
+  },
+  "user-type.ejs": {
+    "layoutPage": "main",
+    "description": ""
+  },
+  "user-add.ejs": {
+    "layoutPage": "main",
+    "description": ""
+  },
+  "user-view.ejs": {
+    "layoutPage": "main",
+    "description": ""
+  },
+  "category.ejs": {
+    "layoutPage": "main",
+    "description": ""
+  },
+  "market.ejs": {
+    "layoutPage": "main",
+    "description": ""
+  },
+  "product-mark.ejs": {
+    "layoutPage": "main",
+    "description": ""
+  },
+  "product-occurence.ejs": {
+    "layoutPage": "main",
+    "description": ""
+  },
+  "product-occurrence.ejs": {
+    "layoutPage": "main",
+    "description": ""
+  },
+  "restaurants.ejs": {
+    "layoutPage": "main",
+    "description": ""
+  },
+  "brand.ejs": {
+    "layoutPage": "main",
+    "description": ""
+  }
+}

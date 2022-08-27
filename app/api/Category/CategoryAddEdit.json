@@ -1,0 +1,634 @@
+{
+  "meta": {
+    "options": {
+      "linkedFile": "/views/category.ejs",
+      "linkedForm": "scformAddEdit"
+    },
+    "$_POST": [
+      {
+        "type": "text",
+        "fieldName": "EditCategoryId",
+        "name": "EditCategoryId"
+      },
+      {
+        "type": "text",
+        "fieldName": "MarketId",
+        "name": "MarketId"
+      },
+      {
+        "type": "text",
+        "fieldName": "CategoryTypeId",
+        "name": "CategoryTypeId"
+      },
+      {
+        "type": "text",
+        "fieldName": "en_name",
+        "options": {
+          "rules": {
+            "core:required": {
+              "param": ""
+            }
+          }
+        },
+        "name": "en_name"
+      },
+      {
+        "type": "text",
+        "fieldName": "bn_name",
+        "options": {
+          "rules": {
+            "core:required": {
+              "param": ""
+            }
+          }
+        },
+        "name": "bn_name"
+      },
+      {
+        "type": "text",
+        "fieldName": "hin_name",
+        "options": {
+          "rules": {
+            "core:required": {
+              "param": ""
+            }
+          }
+        },
+        "name": "hin_name"
+      },
+      {
+        "type": "file",
+        "fieldName": "image",
+        "name": "image",
+        "sub": [
+          {
+            "type": "text",
+            "name": "name"
+          },
+          {
+            "type": "text",
+            "name": "type"
+          },
+          {
+            "type": "number",
+            "name": "size"
+          },
+          {
+            "type": "text",
+            "name": "error"
+          }
+        ],
+        "outputType": "file"
+      },
+      {
+        "type": "text",
+        "fieldName": "status",
+        "name": "status"
+      },
+      {
+        "type": "text",
+        "fieldName": "remarks",
+        "name": "remarks"
+      },
+      {
+        "type": "number",
+        "name": "id"
+      }
+    ]
+  },
+  "exec": {
+    "steps": [
+      {
+        "name": "",
+        "module": "auth",
+        "action": "restrict",
+        "options": {
+          "provider": "security",
+          "permissions": [
+            "write"
+          ],
+          "loginUrl": "/login",
+          "forbiddenUrl": "/403-forbidden"
+        }
+      },
+      {
+        "name": "identity",
+        "module": "auth",
+        "action": "identify",
+        "options": {
+          "provider": "security"
+        },
+        "output": false,
+        "meta": []
+      },
+      {
+        "name": "",
+        "module": "core",
+        "action": "condition",
+        "options": {
+          "if": "{{$_POST.EditCategoryId}}",
+          "then": {
+            "steps": [
+              {
+                "name": "GetOldImage",
+                "module": "dbconnector",
+                "action": "single",
+                "options": {
+                  "connection": "FoodApp",
+                  "sql": {
+                    "type": "SELECT",
+                    "columns": [
+                      {
+                        "table": "m_category",
+                        "column": "image"
+                      }
+                    ],
+                    "table": {
+                      "name": "m_category"
+                    },
+                    "primary": "id",
+                    "joins": [],
+                    "wheres": {
+                      "condition": "AND",
+                      "rules": [
+                        {
+                          "id": "m_category.id",
+                          "field": "m_category.id",
+                          "type": "double",
+                          "operator": "equal",
+                          "value": "{{$_POST.EditCategoryId}}",
+                          "data": {
+                            "table": "m_category",
+                            "column": "id",
+                            "type": "number",
+                            "columnObj": {
+                              "type": "increments",
+                              "default": "",
+                              "primary": true,
+                              "unique": true,
+                              "nullable": false,
+                              "name": "id"
+                            }
+                          },
+                          "operation": "="
+                        }
+                      ],
+                      "conditional": null,
+                      "valid": true
+                    },
+                    "query": "SELECT image\nFROM m_category\nWHERE id = :P1 /* {{$_POST.EditCategoryId}} */",
+                    "params": [
+                      {
+                        "operator": "equal",
+                        "type": "expression",
+                        "name": ":P1",
+                        "value": "{{$_POST.EditCategoryId}}"
+                      }
+                    ]
+                  }
+                },
+                "output": false,
+                "meta": [
+                  {
+                    "type": "text",
+                    "name": "image"
+                  }
+                ],
+                "outputType": "object"
+              },
+              {
+                "name": "",
+                "module": "core",
+                "action": "condition",
+                "options": {
+                  "if": "{{$_POST.image}}",
+                  "then": {
+                    "steps": [
+                      {
+                        "name": "uploadEdit",
+                        "module": "upload",
+                        "action": "upload",
+                        "options": {
+                          "fields": "{{$_POST.image}}",
+                          "path": "/public/assets/img/category",
+                          "template": "{guid}{ext}",
+                          "replaceSpace": true,
+                          "replaceDiacritics": true,
+                          "asciiOnly": true,
+                          "throwErrors": true
+                        },
+                        "meta": [
+                          {
+                            "name": "name",
+                            "type": "text"
+                          },
+                          {
+                            "name": "path",
+                            "type": "text"
+                          },
+                          {
+                            "name": "url",
+                            "type": "text"
+                          },
+                          {
+                            "name": "type",
+                            "type": "text"
+                          },
+                          {
+                            "name": "size",
+                            "type": "text"
+                          },
+                          {
+                            "name": "error",
+                            "type": "number"
+                          }
+                        ],
+                        "outputType": "file",
+                        "output": false
+                      },
+                      {
+                        "name": "fileExists",
+                        "module": "fs",
+                        "action": "exists",
+                        "options": {
+                          "path": "{{'/public'+GetOldImage.image}}",
+                          "then": {
+                            "steps": {
+                              "name": "fileRemove",
+                              "module": "fs",
+                              "action": "remove",
+                              "options": {
+                                "path": "{{'/public'+GetOldImage.image}}"
+                              },
+                              "outputType": "boolean",
+                              "output": false
+                            }
+                          }
+                        },
+                        "outputType": "boolean"
+                      }
+                    ]
+                  }
+                },
+                "outputType": "boolean"
+              },
+              {
+                "name": "CategoryUp",
+                "module": "dbupdater",
+                "action": "update",
+                "options": {
+                  "connection": "FoodApp",
+                  "sql": {
+                    "type": "update",
+                    "values": [
+                      {
+                        "table": "m_category",
+                        "column": "en_name",
+                        "type": "text",
+                        "value": "{{$_POST.en_name}}"
+                      },
+                      {
+                        "table": "m_category",
+                        "column": "bn_name",
+                        "type": "text",
+                        "value": "{{$_POST.bn_name}}"
+                      },
+                      {
+                        "table": "m_category",
+                        "column": "hin_name",
+                        "type": "text",
+                        "value": "{{$_POST.hin_name}}"
+                      },
+                      {
+                        "table": "m_category",
+                        "column": "cat_type_id",
+                        "type": "number",
+                        "value": "{{$_POST.CategoryTypeId}}"
+                      },
+                      {
+                        "table": "m_category",
+                        "column": "market_id",
+                        "type": "number",
+                        "value": "{{$_POST.MarketId}}"
+                      },
+                      {
+                        "table": "m_category",
+                        "column": "image",
+                        "type": "text",
+                        "value": "{{$_POST.image?+'/assets/img/category/'+uploadEdit.name:GetOldImage.image}}"
+                      },
+                      {
+                        "table": "m_category",
+                        "column": "status",
+                        "type": "number",
+                        "value": "{{$_POST.status}}"
+                      },
+                      {
+                        "table": "m_category",
+                        "column": "remarks",
+                        "type": "text",
+                        "value": "{{$_POST.remarks}}"
+                      },
+                      {
+                        "table": "m_category",
+                        "column": "updated_on",
+                        "type": "datetime",
+                        "value": "{{NOW}}"
+                      }
+                    ],
+                    "table": "m_category",
+                    "wheres": {
+                      "condition": "AND",
+                      "rules": [
+                        {
+                          "id": "id",
+                          "field": "id",
+                          "type": "double",
+                          "operator": "equal",
+                          "value": "{{$_POST.EditCategoryId}}",
+                          "data": {
+                            "column": "id"
+                          },
+                          "operation": "="
+                        }
+                      ],
+                      "conditional": null,
+                      "valid": true
+                    },
+                    "returning": "id",
+                    "query": "UPDATE m_category\nSET en_name = :P1 /* {{$_POST.en_name}} */, bn_name = :P2 /* {{$_POST.bn_name}} */, hin_name = :P3 /* {{$_POST.hin_name}} */, cat_type_id = :P4 /* {{$_POST.CategoryTypeId}} */, market_id = :P5 /* {{$_POST.MarketId}} */, image = :P6 /* {{$_POST.image?+'/assets/img/category/'+uploadEdit.name:GetOldImage.image}} */, status = :P7 /* {{$_POST.status}} */, remarks = :P8 /* {{$_POST.remarks}} */, updated_on = :P9 /* {{NOW}} */\nWHERE id = :P10 /* {{$_POST.EditCategoryId}} */",
+                    "params": [
+                      {
+                        "name": ":P1",
+                        "type": "expression",
+                        "value": "{{$_POST.en_name}}"
+                      },
+                      {
+                        "name": ":P2",
+                        "type": "expression",
+                        "value": "{{$_POST.bn_name}}"
+                      },
+                      {
+                        "name": ":P3",
+                        "type": "expression",
+                        "value": "{{$_POST.hin_name}}"
+                      },
+                      {
+                        "name": ":P4",
+                        "type": "expression",
+                        "value": "{{$_POST.CategoryTypeId}}"
+                      },
+                      {
+                        "name": ":P5",
+                        "type": "expression",
+                        "value": "{{$_POST.MarketId}}"
+                      },
+                      {
+                        "name": ":P6",
+                        "type": "expression",
+                        "value": "{{$_POST.image?+'/assets/img/category/'+uploadEdit.name:GetOldImage.image}}"
+                      },
+                      {
+                        "name": ":P7",
+                        "type": "expression",
+                        "value": "{{$_POST.status}}"
+                      },
+                      {
+                        "name": ":P8",
+                        "type": "expression",
+                        "value": "{{$_POST.remarks}}"
+                      },
+                      {
+                        "name": ":P9",
+                        "type": "expression",
+                        "value": "{{NOW}}"
+                      },
+                      {
+                        "operator": "equal",
+                        "type": "expression",
+                        "name": ":P10",
+                        "value": "{{$_POST.EditCategoryId}}"
+                      }
+                    ]
+                  }
+                },
+                "meta": [
+                  {
+                    "name": "affected",
+                    "type": "number"
+                  }
+                ],
+                "output": false
+              },
+              {
+                "name": "Resp",
+                "module": "core",
+                "action": "response",
+                "options": {
+                  "status": 200,
+                  "data": "New Category Updated Successfully"
+                },
+                "output": true
+              }
+            ]
+          },
+          "else": {
+            "steps": [
+              {
+                "name": "",
+                "module": "core",
+                "action": "condition",
+                "options": {
+                  "if": "{{$_POST.image}}",
+                  "then": {
+                    "steps": {
+                      "name": "upload",
+                      "module": "upload",
+                      "action": "upload",
+                      "options": {
+                        "path": "/public/assets/img/category",
+                        "replaceSpace": true,
+                        "replaceDiacritics": true,
+                        "asciiOnly": true,
+                        "template": "{guid}{ext}",
+                        "throwErrors": true,
+                        "fields": "{{$_POST.image}}"
+                      },
+                      "meta": [
+                        {
+                          "name": "name",
+                          "type": "text"
+                        },
+                        {
+                          "name": "path",
+                          "type": "text"
+                        },
+                        {
+                          "name": "url",
+                          "type": "text"
+                        },
+                        {
+                          "name": "type",
+                          "type": "text"
+                        },
+                        {
+                          "name": "size",
+                          "type": "text"
+                        },
+                        {
+                          "name": "error",
+                          "type": "number"
+                        }
+                      ],
+                      "outputType": "file"
+                    }
+                  }
+                },
+                "outputType": "boolean"
+              },
+              {
+                "name": "AddCategory",
+                "module": "dbupdater",
+                "action": "insert",
+                "options": {
+                  "connection": "FoodApp",
+                  "sql": {
+                    "type": "insert",
+                    "values": [
+                      {
+                        "table": "m_category",
+                        "column": "en_name",
+                        "type": "text",
+                        "value": "{{$_POST.en_name}}"
+                      },
+                      {
+                        "table": "m_category",
+                        "column": "bn_name",
+                        "type": "text",
+                        "value": "{{$_POST.bn_name}}"
+                      },
+                      {
+                        "table": "m_category",
+                        "column": "hin_name",
+                        "type": "text",
+                        "value": "{{$_POST.hin_name}}"
+                      },
+                      {
+                        "table": "m_category",
+                        "column": "cat_type_id",
+                        "type": "number",
+                        "value": "{{$_POST.CategoryTypeId}}"
+                      },
+                      {
+                        "table": "m_category",
+                        "column": "market_id",
+                        "type": "number",
+                        "value": "{{$_POST.MarketId}}"
+                      },
+                      {
+                        "table": "m_category",
+                        "column": "image",
+                        "type": "text",
+                        "value": "{{$_POST.image?+'/assets/img/category/'+upload.name:''}}",
+                        "condition": "{{$_POST.image?+'/assets/img/category/'+upload.name:''}}"
+                      },
+                      {
+                        "table": "m_category",
+                        "column": "status",
+                        "type": "number",
+                        "value": "{{1}}"
+                      },
+                      {
+                        "table": "m_category",
+                        "column": "created_by",
+                        "type": "number",
+                        "value": "{{identity}}"
+                      },
+                      {
+                        "table": "m_category",
+                        "column": "created_on",
+                        "type": "datetime",
+                        "value": "{{NOW}}"
+                      }
+                    ],
+                    "table": "m_category",
+                    "returning": "id",
+                    "query": "INSERT INTO m_category\n(en_name, bn_name, hin_name, cat_type_id, market_id, image, status, created_by, created_on) VALUES (:P1 /* {{$_POST.en_name}} */, :P2 /* {{$_POST.bn_name}} */, :P3 /* {{$_POST.hin_name}} */, :P4 /* {{$_POST.CategoryTypeId}} */, :P5 /* {{$_POST.MarketId}} */, :P6 /* {{$_POST.image?+'/assets/img/category/'+upload.name:''}} */, :P7 /* {{1}} */, :P8 /* {{identity}} */, :P9 /* {{NOW}} */)",
+                    "params": [
+                      {
+                        "name": ":P1",
+                        "type": "expression",
+                        "value": "{{$_POST.en_name}}"
+                      },
+                      {
+                        "name": ":P2",
+                        "type": "expression",
+                        "value": "{{$_POST.bn_name}}"
+                      },
+                      {
+                        "name": ":P3",
+                        "type": "expression",
+                        "value": "{{$_POST.hin_name}}"
+                      },
+                      {
+                        "name": ":P4",
+                        "type": "expression",
+                        "value": "{{$_POST.CategoryTypeId}}"
+                      },
+                      {
+                        "name": ":P5",
+                        "type": "expression",
+                        "value": "{{$_POST.MarketId}}"
+                      },
+                      {
+                        "name": ":P6",
+                        "type": "expression",
+                        "value": "{{$_POST.image?+'/assets/img/category/'+upload.name:''}}"
+                      },
+                      {
+                        "name": ":P7",
+                        "type": "expression",
+                        "value": "{{1}}"
+                      },
+                      {
+                        "name": ":P8",
+                        "type": "expression",
+                        "value": "{{identity}}"
+                      },
+                      {
+                        "name": ":P9",
+                        "type": "expression",
+                        "value": "{{NOW}}"
+                      }
+                    ]
+                  }
+                },
+                "meta": [
+                  {
+                    "name": "identity",
+                    "type": "text"
+                  },
+                  {
+                    "name": "affected",
+                    "type": "number"
+                  }
+                ]
+              },
+              {
+                "name": "Resp",
+                "module": "core",
+                "action": "response",
+                "options": {
+                  "status": 200,
+                  "data": "New Category Added Successfully"
+                },
+                "output": true
+              }
+            ]
+          }
+        },
+        "outputType": "boolean"
+      }
+    ]
+  }
+}
