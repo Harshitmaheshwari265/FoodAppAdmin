@@ -28,10 +28,6 @@
       "layout": "main"
     },
     {
-      "path": "/404-not-found",
-      "page": "404-not-found"
-    },
-    {
       "path": "/user-type",
       "page": "user-type",
       "layout": "main"
@@ -70,6 +66,14 @@
       "path": "/brand",
       "page": "brand",
       "layout": "main"
+    },
+    {
+      "path": "/403-forbidden",
+      "page": "403-forbidden"
+    },
+    {
+      "path": "*",
+      "page": "404-not-found"
     }
   ],
   "layouts": {

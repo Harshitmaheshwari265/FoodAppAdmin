@@ -62,5 +62,9 @@
   "brand.ejs": {
     "layoutPage": "main",
     "description": ""
+  },
+  "403-forbidden.ejs": {
+    "layoutPage": "",
+    "description": ""
   }
 }
