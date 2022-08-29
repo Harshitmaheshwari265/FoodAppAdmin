@@ -1,0 +1,57 @@
+[
+  {
+    "name": "",
+    "module": "auth",
+    "action": "restrict",
+    "options": {
+      "provider": "security",
+      "permissions": [
+        "write"
+      ],
+      "loginUrl": "/login",
+      "forbiddenUrl": "/403-forbidden"
+    }
+  },
+  {
+    "name": "identity",
+    "module": "auth",
+    "action": "identify",
+    "options": {
+      "provider": "security"
+    },
+    "output": false,
+    "meta": []
+  },
+  {
+    "name": "Logout",
+    "module": "dbupdater",
+    "action": "custom",
+    "options": {
+      "connection": "FoodApp",
+      "sql": {
+        "query": "update t_user_log  \n set logout_time = @logout_time\n where user_id = @identity and id = (select max(id) from t_user_log)",
+        "params": [
+          {
+            "name": "@logout_time",
+            "value": "{{NOW}}"
+          },
+          {
+            "name": "@identity",
+            "value": "{{identity}}"
+          }
+        ]
+      }
+    },
+    "output": false,
+    "meta": [],
+    "outputType": "array"
+  },
+  {
+    "name": "",
+    "module": "auth",
+    "action": "logout",
+    "options": {
+      "provider": "security"
+    }
+  }
+]
