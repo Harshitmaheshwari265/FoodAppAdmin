@@ -123,23 +123,6 @@
                             No record Found!
                         </p>
                     </div>
-                    <!-- <ul class="pagination" dmx-populate="scProductList.data.Products" dmx-state="qm" dmx-offset="offset" dmx-generator="bs5paging">
-                        <li class="page-item" dmx-class:disabled="scProductList.data.Products.page.current == 1" aria-label="First">
-                            <a href="javascript:void(0)" class="page-link" dmx-on:click="qm.set('offset',scProductList.data.Products.page.offset.first)"><span aria-hidden="true">&lsaquo;&lsaquo;</span></a>
-                        </li>
-                        <li class="page-item" dmx-class:disabled="scProductList.data.Products.page.current == 1" aria-label="Previous">
-                            <a href="javascript:void(0)" class="page-link" dmx-on:click="qm.set('offset',scProductList.data.Products.page.offset.prev)"><span aria-hidden="true">&lsaquo;</span></a>
-                        </li>
-                        <li class="page-item" dmx-class:active="title == scProductList.data.Products.page.current" dmx-class:disabled="!active" dmx-repeat="scProductList.data.Products.getServerConnectPagination(2,1,'...')">
-                            <a href="javascript:void(0)" class="page-link" dmx-on:click="qm.set('offset',(page-1)*scProductList.data.Products.limit)">{{title}}</a>
-                        </li>
-                        <li class="page-item" dmx-class:disabled="scProductList.data.Products.page.current ==  scProductList.data.Products.page.total" aria-label="Next">
-                            <a href="javascript:void(0)" class="page-link" dmx-on:click="qm.set('offset',scProductList.data.Products.page.offset.next)"><span aria-hidden="true">&rsaquo;</span></a>
-                        </li>
-                        <li class="page-item" dmx-class:disabled="scProductList.data.Products.page.current ==  scProductList.data.Products.page.total" aria-label="Last">
-                            <a href="javascript:void(0)" class="page-link" dmx-on:click="qm.set('offset',scProductList.data.Products.page.offset.last)"><span aria-hidden="true">&rsaquo;&rsaquo;</span></a>
-                        </li>
-                    </ul> -->
                 </div>
             </div>
         </div>
@@ -180,7 +163,7 @@
                                                     </div>
                                                     <label class="text-info">Category Name</label>
                                                     <div class="input-group mg-b-pro-edt"><span class="input-group-addon"><i class="icon nalika-flag" aria-hidden="true"></i></span>
-                                                        <select class="form-control" id="category_id" name="category_id" dmx-bind:value="restaurant_select.value" dmx-bind:options="scCategory.data.GetCategory" optiontext="en_name" optionvalue="id" required="">
+                                                        <select class="form-control" id="category_id" name="category_id" dmx-bind:value="content.ddProductList.data.category_id" dmx-bind:options="scCategory.data.GetCategory" optiontext="en_name" optionvalue="id" required="">
                                                             <option value="">Select</option>
                                                         </select>
                                                     </div>
