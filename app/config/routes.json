@@ -72,6 +72,11 @@
       "page": "403-forbidden"
     },
     {
+      "path": "/sliding-image",
+      "page": "sliding-image",
+      "layout": "main"
+    },
+    {
       "path": "*",
       "page": "404-not-found"
     }

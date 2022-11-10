@@ -1,0 +1,563 @@
+{
+  "meta": {
+    "options": {
+      "linkedFile": "/views/sliding-image.ejs",
+      "linkedForm": "scformAddEdit"
+    },
+    "$_POST": [
+      {
+        "type": "text",
+        "fieldName": "EditSlidingImageId",
+        "name": "EditSlidingImageId"
+      },
+      {
+        "type": "text",
+        "fieldName": "MarketId",
+        "name": "MarketId"
+      },
+      {
+        "type": "text",
+        "fieldName": "heading",
+        "options": {
+          "rules": {
+            "core:required": {
+              "param": ""
+            }
+          }
+        },
+        "name": "heading"
+      },
+      {
+        "type": "text",
+        "fieldName": "description",
+        "options": {
+          "rules": {
+            "core:required": {
+              "param": ""
+            }
+          }
+        },
+        "name": "description"
+      },
+      {
+        "type": "file",
+        "fieldName": "image",
+        "name": "image",
+        "sub": [
+          {
+            "name": "name",
+            "type": "text"
+          },
+          {
+            "name": "type",
+            "type": "text"
+          },
+          {
+            "name": "size",
+            "type": "number"
+          },
+          {
+            "name": "error",
+            "type": "text"
+          }
+        ],
+        "outputType": "file"
+      },
+      {
+        "type": "text",
+        "fieldName": "status",
+        "name": "status"
+      }
+    ]
+  },
+  "exec": {
+    "steps": [
+      {
+        "name": "",
+        "module": "auth",
+        "action": "restrict",
+        "options": {
+          "provider": "security",
+          "permissions": [
+            "write"
+          ],
+          "loginUrl": "/login",
+          "forbiddenUrl": "/403-forbidden"
+        }
+      },
+      {
+        "name": "identity",
+        "module": "auth",
+        "action": "identify",
+        "options": {
+          "provider": "security"
+        },
+        "output": false,
+        "meta": []
+      },
+      {
+        "name": "",
+        "module": "core",
+        "action": "condition",
+        "options": {
+          "if": "{{$_POST.EditSlidingImageId}}",
+          "then": {
+            "steps": [
+              {
+                "name": "GetSlidingImg",
+                "module": "dbconnector",
+                "action": "single",
+                "options": {
+                  "connection": "FoodApp",
+                  "sql": {
+                    "type": "SELECT",
+                    "columns": [
+                      {
+                        "table": "m_sliding_image",
+                        "column": "image"
+                      }
+                    ],
+                    "table": {
+                      "name": "m_sliding_image"
+                    },
+                    "primary": "id",
+                    "joins": [],
+                    "wheres": {
+                      "condition": "AND",
+                      "rules": [
+                        {
+                          "id": "m_sliding_image.id",
+                          "field": "m_sliding_image.id",
+                          "type": "double",
+                          "operator": "equal",
+                          "value": "{{$_POST.EditSlidingImageId}}",
+                          "data": {
+                            "table": "m_sliding_image",
+                            "column": "id",
+                            "type": "number",
+                            "columnObj": {
+                              "type": "increments",
+                              "default": "",
+                              "primary": true,
+                              "unique": true,
+                              "nullable": false,
+                              "name": "id"
+                            }
+                          },
+                          "operation": "="
+                        }
+                      ],
+                      "conditional": null,
+                      "valid": true
+                    },
+                    "query": "SELECT image\nFROM m_sliding_image\nWHERE id = :P1 /* {{$_POST.EditSlidingImageId}} */",
+                    "params": [
+                      {
+                        "operator": "equal",
+                        "type": "expression",
+                        "name": ":P1",
+                        "value": "{{$_POST.EditSlidingImageId}}"
+                      }
+                    ]
+                  }
+                },
+                "output": false,
+                "meta": [
+                  {
+                    "type": "text",
+                    "name": "image"
+                  }
+                ],
+                "outputType": "object"
+              },
+              {
+                "name": "",
+                "module": "core",
+                "action": "condition",
+                "options": {
+                  "if": "{{$_POST.image}}",
+                  "then": {
+                    "steps": [
+                      {
+                        "name": "uploadEdit",
+                        "module": "upload",
+                        "action": "upload",
+                        "options": {
+                          "fields": "{{$_POST.image}}",
+                          "template": "{guid}{ext}",
+                          "replaceSpace": true,
+                          "replaceDiacritics": true,
+                          "asciiOnly": true,
+                          "throwErrors": true,
+                          "path": "/public/assets/img/sliding",
+                          "overwrite": true
+                        },
+                        "meta": [
+                          {
+                            "name": "name",
+                            "type": "text"
+                          },
+                          {
+                            "name": "path",
+                            "type": "text"
+                          },
+                          {
+                            "name": "url",
+                            "type": "text"
+                          },
+                          {
+                            "name": "type",
+                            "type": "text"
+                          },
+                          {
+                            "name": "size",
+                            "type": "text"
+                          },
+                          {
+                            "name": "error",
+                            "type": "number"
+                          }
+                        ],
+                        "outputType": "array"
+                      },
+                      {
+                        "name": "fileExists",
+                        "module": "fs",
+                        "action": "exists",
+                        "options": {
+                          "path": "{{'/public'+GetSlidingImg.image}}",
+                          "then": {
+                            "steps": {
+                              "name": "fileRemove",
+                              "module": "fs",
+                              "action": "remove",
+                              "options": {
+                                "path": "{{'/public'+GetSlidingImg.image}}"
+                              },
+                              "outputType": "boolean"
+                            }
+                          }
+                        },
+                        "outputType": "boolean"
+                      }
+                    ]
+                  }
+                },
+                "outputType": "boolean"
+              },
+              {
+                "name": "SlidingImgUp",
+                "module": "dbupdater",
+                "action": "update",
+                "options": {
+                  "connection": "FoodApp",
+                  "sql": {
+                    "type": "update",
+                    "values": [
+                      {
+                        "table": "m_sliding_image",
+                        "column": "heading",
+                        "type": "text",
+                        "value": "{{$_POST.heading}}"
+                      },
+                      {
+                        "table": "m_sliding_image",
+                        "column": "description",
+                        "type": "text",
+                        "value": "{{$_POST.description}}"
+                      },
+                      {
+                        "table": "m_sliding_image",
+                        "column": "image",
+                        "type": "text",
+                        "value": "{{($_POST.image ? '/assets/img/sliding/'+uploadEdit.name : GetSlidingImg.image)}}",
+                        "condition": "{{($_POST.image ? '/assets/img/sliding/'+uploadEdit[0].name : GetSlidingImg.image)}}"
+                      },
+                      {
+                        "table": "m_sliding_image",
+                        "column": "market_id",
+                        "type": "number",
+                        "value": "{{$_POST.MarketId}}"
+                      },
+                      {
+                        "table": "m_sliding_image",
+                        "column": "status",
+                        "type": "number",
+                        "value": "{{$_POST.status}}"
+                      },
+                      {
+                        "table": "m_sliding_image",
+                        "column": "updated_on",
+                        "type": "datetime",
+                        "value": "{{NOW}}"
+                      },
+                      {
+                        "table": "m_sliding_image",
+                        "column": "updated_by",
+                        "type": "number",
+                        "value": "{{identity}}"
+                      }
+                    ],
+                    "table": "m_sliding_image",
+                    "wheres": {
+                      "condition": "AND",
+                      "rules": [
+                        {
+                          "id": "id",
+                          "field": "id",
+                          "type": "double",
+                          "operator": "equal",
+                          "value": "{{$_POST.EditSlidingImageId}}",
+                          "data": {
+                            "column": "id"
+                          },
+                          "operation": "="
+                        }
+                      ],
+                      "conditional": null,
+                      "valid": true
+                    },
+                    "returning": "id",
+                    "query": "UPDATE m_sliding_image\nSET heading = :P1 /* {{$_POST.heading}} */, description = :P2 /* {{$_POST.description}} */, image = :P3 /* {{($_POST.image ? '/assets/img/sliding/'+uploadEdit.name : GetSlidingImg.image)}} */, market_id = :P4 /* {{$_POST.MarketId}} */, status = :P5 /* {{$_POST.status}} */, updated_on = :P6 /* {{NOW}} */, updated_by = :P7 /* {{identity}} */\nWHERE id = :P8 /* {{$_POST.EditSlidingImageId}} */",
+                    "params": [
+                      {
+                        "name": ":P1",
+                        "type": "expression",
+                        "value": "{{$_POST.heading}}"
+                      },
+                      {
+                        "name": ":P2",
+                        "type": "expression",
+                        "value": "{{$_POST.description}}"
+                      },
+                      {
+                        "name": ":P3",
+                        "type": "expression",
+                        "value": "{{($_POST.image ? '/assets/img/sliding/'+uploadEdit.name : GetSlidingImg.image)}}"
+                      },
+                      {
+                        "name": ":P4",
+                        "type": "expression",
+                        "value": "{{$_POST.MarketId}}"
+                      },
+                      {
+                        "name": ":P5",
+                        "type": "expression",
+                        "value": "{{$_POST.status}}"
+                      },
+                      {
+                        "name": ":P6",
+                        "type": "expression",
+                        "value": "{{NOW}}"
+                      },
+                      {
+                        "name": ":P7",
+                        "type": "expression",
+                        "value": "{{identity}}"
+                      },
+                      {
+                        "operator": "equal",
+                        "type": "expression",
+                        "name": ":P8",
+                        "value": "{{$_POST.EditSlidingImageId}}"
+                      }
+                    ]
+                  }
+                },
+                "meta": [
+                  {
+                    "name": "affected",
+                    "type": "number"
+                  }
+                ]
+              },
+              {
+                "name": "Resp",
+                "module": "core",
+                "action": "response",
+                "options": {
+                  "status": 200,
+                  "data": "Sliding Image Updated Successfully"
+                },
+                "output": true
+              }
+            ]
+          },
+          "else": {
+            "steps": [
+              {
+                "name": "",
+                "module": "core",
+                "action": "condition",
+                "options": {
+                  "if": "{{$_POST.image}}",
+                  "then": {
+                    "steps": {
+                      "name": "upload",
+                      "module": "upload",
+                      "action": "upload",
+                      "options": {
+                        "fields": "{{$_POST.image}}",
+                        "template": "{guid}{ext}",
+                        "replaceSpace": true,
+                        "replaceDiacritics": true,
+                        "asciiOnly": true,
+                        "throwErrors": true,
+                        "path": "/public/assets/img/sliding"
+                      },
+                      "meta": [
+                        {
+                          "name": "name",
+                          "type": "text"
+                        },
+                        {
+                          "name": "path",
+                          "type": "text"
+                        },
+                        {
+                          "name": "url",
+                          "type": "text"
+                        },
+                        {
+                          "name": "type",
+                          "type": "text"
+                        },
+                        {
+                          "name": "size",
+                          "type": "text"
+                        },
+                        {
+                          "name": "error",
+                          "type": "number"
+                        }
+                      ],
+                      "outputType": "array"
+                    }
+                  }
+                },
+                "outputType": "boolean"
+              },
+              {
+                "name": "SlidingImgAdd",
+                "module": "dbupdater",
+                "action": "insert",
+                "options": {
+                  "connection": "FoodApp",
+                  "sql": {
+                    "type": "insert",
+                    "values": [
+                      {
+                        "table": "m_sliding_image",
+                        "column": "heading",
+                        "type": "text",
+                        "value": "{{$_POST.heading}}"
+                      },
+                      {
+                        "table": "m_sliding_image",
+                        "column": "description",
+                        "type": "text",
+                        "value": "{{$_POST.description}}"
+                      },
+                      {
+                        "table": "m_sliding_image",
+                        "column": "image",
+                        "type": "text",
+                        "value": "{{($_POST.image ? '/assets/img/sliding/'+upload.name : '')}}",
+                        "condition": "{{($_POST.image ? '/assets/img/sliding/'+upload.name : '')}}"
+                      },
+                      {
+                        "table": "m_sliding_image",
+                        "column": "market_id",
+                        "type": "number",
+                        "value": "{{$_POST.MarketId}}"
+                      },
+                      {
+                        "table": "m_sliding_image",
+                        "column": "status",
+                        "type": "number",
+                        "value": "{{1}}"
+                      },
+                      {
+                        "table": "m_sliding_image",
+                        "column": "created_on",
+                        "type": "datetime",
+                        "value": "{{NOW}}"
+                      },
+                      {
+                        "table": "m_sliding_image",
+                        "column": "created_by",
+                        "type": "number",
+                        "value": "{{identity}}"
+                      }
+                    ],
+                    "table": "m_sliding_image",
+                    "returning": "id",
+                    "query": "INSERT INTO m_sliding_image\n(heading, description, image, market_id, status, created_on, created_by) VALUES (:P1 /* {{$_POST.heading}} */, :P2 /* {{$_POST.description}} */, :P3 /* {{($_POST.image ? '/assets/img/sliding/'+upload.name : '')}} */, :P4 /* {{$_POST.MarketId}} */, :P5 /* {{1}} */, :P6 /* {{NOW}} */, :P7 /* {{identity}} */)",
+                    "params": [
+                      {
+                        "name": ":P1",
+                        "type": "expression",
+                        "value": "{{$_POST.heading}}"
+                      },
+                      {
+                        "name": ":P2",
+                        "type": "expression",
+                        "value": "{{$_POST.description}}"
+                      },
+                      {
+                        "name": ":P3",
+                        "type": "expression",
+                        "value": "{{($_POST.image ? '/assets/img/sliding/'+upload.name : '')}}"
+                      },
+                      {
+                        "name": ":P4",
+                        "type": "expression",
+                        "value": "{{$_POST.MarketId}}"
+                      },
+                      {
+                        "name": ":P5",
+                        "type": "expression",
+                        "value": "{{1}}"
+                      },
+                      {
+                        "name": ":P6",
+                        "type": "expression",
+                        "value": "{{NOW}}"
+                      },
+                      {
+                        "name": ":P7",
+                        "type": "expression",
+                        "value": "{{identity}}"
+                      }
+                    ]
+                  }
+                },
+                "meta": [
+                  {
+                    "name": "identity",
+                    "type": "text"
+                  },
+                  {
+                    "name": "affected",
+                    "type": "number"
+                  }
+                ]
+              },
+              {
+                "name": "Resp",
+                "module": "core",
+                "action": "response",
+                "options": {
+                  "status": 200,
+                  "data": "Sliding Image Uploaded Successfully"
+                },
+                "output": true
+              }
+            ]
+          }
+        },
+        "outputType": "boolean"
+      }
+    ]
+  }
+}

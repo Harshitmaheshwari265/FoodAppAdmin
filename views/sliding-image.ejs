@@ -1,0 +1,155 @@
+<!-- Wappler include head-page="layouts/main" is="dmx-app" id="slidingimage" appConnect="local" components="{dmxDataTraversal:{}}" components="{dmxDataTraversal:{},dmxStateManagement:{}}" -->
+<meta name="ac:route" content="/sliding-image">
+<!-- New Wappler Page -->
+<dmx-query-manager id="qm"></dmx-query-manager>
+<dmx-serverconnect id="scMarketList" url="/api/Location/ActiveMarketList"></dmx-serverconnect>
+<dmx-serverconnect id="scSlidingImageList" url="/api/Android/SlidingImage" dmx-param:offset="qm.data.offset" dmx-param:limit="25" dmx-param:sort="qm.data.sort" dmx-param:dir="qm.data.dir" dmx-param:search_value="formSearch.SearchValue.value.titlecase()" dmx-param:market_id="market_select.value" dmx-param:cat_type_id="cattype_select.value"></dmx-serverconnect>
+<dmx-data-view id="dvSlidingImageList" dmx-bind:data="scSlidingImageList.data.SlidingImageList.data"></dmx-data-view>
+<dmx-data-detail id="ddSlidingImageList" dmx-bind:data="dvSlidingImageList.data" key="id"></dmx-data-detail>
+<div class="breadcome-area">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="breadcome-list">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-12">
+                            <div class="breadcomb-wp">
+                                <div class="breadcomb-icon">
+                                    <i class="icon nalika-home"></i>
+                                </div>
+                                <div class="breadcomb-ctn">
+                                    <h2>SlidingImage List</h2>
+                                    <p>Total:<span class="bread-ntd panel-heading" dmx-text="content.scSlidingImageList.data.SlidingImageList.data.length"></span></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-3 col-12">
+                            <div class="breadcomb-report">
+                                <select class="form-control pro-edt-select form-control-primary" type="text" id="market_select" dmx-bind:options="scMarketList.data.ActiveMarkets" optionvalue="id" dmx-bind:value="1" optiontext="market_name_en">
+                                    <option value="">Select</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="product-status mg-b-30">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="product-status-wrap">
+                    <h4>All SlidingImage List</h4>
+                    <div class="add-product">
+                        <a href="#" data-toggle="modal" data-target="#modalAddEdit">Add New SlidingImage</a>
+                    </div>
+                    <div class="breadcome-heading">
+                        <form role="search" class="" id="formSearch">
+                            <input type="text" placeholder="Search..." class="form-control" id="SearchValue">
+                            <a href=""><i class="fa fa-search"></i></a>
+                        </form>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th class="sorting" dmx-on:click="qm.set('sort','id');qm.set('offset',qm.data.offset == 'desc' ? 'asc' : 'desc')" dmx-class:sorting_asc="qm.data.sort=='id' && qm.data.offset == 'asc'" dmx-class:sorting_desc="qm.data.sort=='id' && qm.data.offset == 'desc'">Id</th>
+                                    <th class="sorting" dmx-on:click="qm.set('sort','image');qm.set('offset',qm.data.offset == 'desc' ? 'asc' : 'desc')" dmx-class:sorting_asc="qm.data.sort=='image' && qm.data.offset == 'asc'" dmx-class:sorting_desc="qm.data.sort=='image' && qm.data.offset == 'desc'">Image</th>
+                                    <th class="sorting" dmx-on:click="qm.set('sort','heading');qm.set('offset',qm.data.offset == 'desc' ? 'asc' : 'desc')" dmx-class:sorting_asc="qm.data.sort=='heading' && qm.data.offset == 'asc'" dmx-class:sorting_desc="qm.data.sort=='heading' && qm.data.offset == 'desc'">Heading</th>
+                                    <th class="sorting" dmx-on:click="qm.set('sort','description');qm.set('offset',qm.data.offset == 'desc' ? 'asc' : 'desc')" dmx-class:sorting_asc="qm.data.sort=='description' && qm.data.offset == 'asc'" dmx-class:sorting_desc="qm.data.sort=='description' && qm.data.offset == 'desc'">Description</th>
+                                    <th class="sorting" dmx-on:click="qm.set('sort','remarks');qm.set('offset',qm.data.offset == 'desc' ? 'asc' : 'desc')" dmx-class:sorting_asc="qm.data.sort=='remarks' && qm.data.offset == 'asc'" dmx-class:sorting_desc="qm.data.sort=='remarks' && qm.data.offset == 'desc'">Remarks</th>
+                                    <th class="sorting" dmx-on:click="qm.set('sort','status');qm.set('offset',qm.data.offset == 'desc' ? 'asc' : 'desc')" dmx-class:sorting_asc="qm.data.sort=='status' && qm.data.offset == 'asc'" dmx-class:sorting_desc="qm.data.sort=='status' && qm.data.offset == 'desc'">Status</th>
+                                    <th>Action</th>
+                                    <th class="sorting" dmx-on:click="qm.set('sort','created_on');qm.set('offset',qm.data.offset == 'desc' ? 'asc' : 'desc')" dmx-class:sorting_asc="qm.data.sort=='created_on' && qm.data.offset == 'asc'" dmx-class:sorting_desc="qm.data.sort=='created_on' && qm.data.offset == 'desc'">Created on</th>
+                                </tr>
+                            </thead>
+                            <tbody is="dmx-repeat" dmx-generator="bs5table" dmx-bind:repeat="dvSlidingImageList.data" id="tableRepeat1" dmx-state="qm" dmx-sort="sort" dmx-order="offset" key="id">
+                                <tr>
+                                    <td dmx-text="$index+1"></td>
+                                    <td><img dmx-bind:src="image"></td>
+                                    <td dmx-text="heading"></td>
+                                    <td dmx-text="description"></td>
+                                    <td dmx-text="remarks"></td>
+                                    <td><button dmx-class:pd-setting="status==1" dmx-class:ds-setting="status==0">{{(status==1)?'Active':'InActive'}}</button></td>
+                                    <td>
+                                        <button title="Edit" class="pd-setting-ed" data-toggle="modal" data-target="#modalAddEdit" dmx-on:click="ddSlidingImageList.select(id)"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+                                    </td>
+                                    <td dmx-text="created_on.formatDate('dd-MM-yyyy hh:mm:ss A')"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="text-light" dmx-show="content.scSlidingImageList.data.SlidingImageList.data.length==0">
+                        <p class="text-center fa-2x text-warning">
+                            No record Found!
+                        </p>
+                    </div>
+                    <ul class="pagination" dmx-populate="scSlidingImageList.data.SlidingImageList" dmx-state="qm" dmx-offset="offset" dmx-generator="bs5paging">
+                        <li class="page-item" dmx-class:disabled="scSlidingImageList.data.SlidingImageList.page.current == 1" aria-label="First">
+                            <a href="javascript:void(0)" class="page-link" dmx-on:click="qm.set('offset',scSlidingImageList.data.SlidingImageList.page.offset.first)"><span aria-hidden="true">&lsaquo;&lsaquo;</span></a>
+                        </li>
+                        <li class="page-item" dmx-class:disabled="scSlidingImageList.data.SlidingImageList.page.current == 1" aria-label="Previous">
+                            <a href="javascript:void(0)" class="page-link" dmx-on:click="qm.set('offset',scSlidingImageList.data.SlidingImageList.page.offset.prev)"><span aria-hidden="true">&lsaquo;</span></a>
+                        </li>
+                        <li class="page-item" dmx-class:active="title == scSlidingImageList.data.SlidingImageList.page.current" dmx-class:disabled="!active" dmx-repeat="scSlidingImageList.data.SlidingImageList.getServerConnectPagination(2,1,'...')">
+                            <a href="javascript:void(0)" class="page-link" dmx-on:click="qm.set('offset',(page-1)*scSlidingImageList.data.SlidingImageList.limit)">{{title}}</a>
+                        </li>
+                        <li class="page-item" dmx-class:disabled="scSlidingImageList.data.SlidingImageList.page.current ==  scSlidingImageList.data.SlidingImageList.page.total" aria-label="Next">
+                            <a href="javascript:void(0)" class="page-link" dmx-on:click="qm.set('offset',scSlidingImageList.data.SlidingImageList.page.offset.next)"><span aria-hidden="true">&rsaquo;</span></a>
+                        </li>
+                        <li class="page-item" dmx-class:disabled="scSlidingImageList.data.SlidingImageList.page.current ==  scSlidingImageList.data.SlidingImageList.page.total" aria-label="Last">
+                            <a href="javascript:void(0)" class="page-link" dmx-on:click="qm.set('offset',scSlidingImageList.data.SlidingImageList.page.offset.last)"><span aria-hidden="true">&rsaquo;&rsaquo;</span></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- modal start -->
+<div id="modalAddEdit" class="modal modal-adminpro-general Customwidth-popup-WarningModal fade" role="dialog" is="dmx-bs5-modal" tabindex="-1">
+    <form id="scformAddEdit" is="dmx-serverconnect-form" method="post" action="/api/Android/SlidingImgAddEdit" dmx-generator="bootstrap5" dmx-form-type="horizontal" dmx-on:success="scformAddEdit.reset(true);scSlidingImageList.load({market_id: market_select.value})" dmx-on:forbidden="notifMain.warning(modalAddEdit.scformAddEdit.lastError.response)" dmx-on:error="notifMain.warning(modalAddEdit.scformAddEdit.lastError.response)" dmx-on:unauthorized="notifMain.warning(modalAddEdit.scformAddEdit.lastError.response)" dmx-on:invalid="notifMain.warning(modalAddEdit.scformAddEdit.lastError.response)">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="modal-close-area modal-close-df">
+                        <a class="close" data-dismiss="modal" href="#"><i class="fa fa-close"></i></a>
+                    </div>
+                    <h4 class="modal-title">{{content.ddSlidingImageList.data.id?'Edit SlidingImage':'Add A New SlidingImage'}}</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row mx-0">
+                        <input type="hidden" name="EditSlidingImageId" id="EditSlidingImageId" dmx-bind:value="content.ddSlidingImageList.data.id">
+                        <input type="hidden" name="MarketId" id="MarketId" dmx-bind:value="content.market_select.value">
+                        <div class="col-12 col-md-6 mg-b-15">
+                            <label>Heading<span class="compulsory">*</span></label>
+                            <input type="text" class="select2_demo_3 form-control" name="heading" required="" dmx-bind:value="content.ddSlidingImageList.data.heading">
+                        </div>
+                        <div class="col-12 col-md-6 mg-b-15">
+                            <label>SlidingImage Description<span class="compulsory">*</span></label>
+                            <input type="text" class="select2_demo_3 form-control" name="description" required="" dmx-bind:value="content.ddSlidingImageList.data.description">
+                        </div>
+                        <div class="col-12 col-md-6 mg-b-15">
+                            <label>Image</label>
+                            <input class="select2_demo_3 form-control" name="image" type="file">
+                        </div>
+                        <div class="col-12 col-md-6 mg-b-15" dmx-show="content.ddSlidingImageList.data.id">
+                            <label>Status</label>
+                            <select class="select2_demo_3 form-control" id="status" name="status" dmx-bind:value="content.ddSlidingImageList.data.status">
+                                <option value="1">Active</option>
+                                <option value="0">InActive</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary" type="submit" dmx-bind:disabled="state.executing">{{content.ddSlidingImageList.data.id?'Update':'Submit'}}<span class="spinner-border spinner-border-sm text-success" role="status" dmx-show="state.executing"></span></button>
+                    <button data-dismiss="modal" class="btn btn-warning">Close</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

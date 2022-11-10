@@ -1291,5 +1291,166 @@ dmx.config({
       ],
       "outputType": "array"
     }
+  },
+  "slidingimage": {
+    "dvSlidingImageList": {
+      "meta": [
+        {
+          "type": "number",
+          "name": "id"
+        },
+        {
+          "type": "text",
+          "name": "banner_name"
+        },
+        {
+          "type": "text",
+          "name": "heading"
+        },
+        {
+          "type": "text",
+          "name": "description"
+        },
+        {
+          "type": "text",
+          "name": "image"
+        },
+        {
+          "type": "number",
+          "name": "market_id"
+        },
+        {
+          "type": "number",
+          "name": "status"
+        },
+        {
+          "type": "datetime",
+          "name": "created_on"
+        },
+        {
+          "type": "text",
+          "name": "market_name_en"
+        },
+        {
+          "type": "text",
+          "name": "market_code"
+        },
+        {
+          "type": "text",
+          "name": "market_loc"
+        }
+      ],
+      "outputType": "array"
+    },
+    "ddSlidingImageList": {
+      "meta": [
+        {
+          "type": "number",
+          "name": "id"
+        },
+        {
+          "type": "text",
+          "name": "banner_name"
+        },
+        {
+          "type": "text",
+          "name": "heading"
+        },
+        {
+          "type": "text",
+          "name": "description"
+        },
+        {
+          "type": "text",
+          "name": "image"
+        },
+        {
+          "type": "number",
+          "name": "market_id"
+        },
+        {
+          "type": "number",
+          "name": "status"
+        },
+        {
+          "type": "datetime",
+          "name": "created_on"
+        },
+        {
+          "type": "text",
+          "name": "market_name_en"
+        },
+        {
+          "type": "text",
+          "name": "market_code"
+        },
+        {
+          "type": "text",
+          "name": "market_loc"
+        }
+      ],
+      "outputType": "array"
+    },
+    "tableRepeat1": {
+      "meta": [
+        {
+          "name": "$index",
+          "type": "number"
+        },
+        {
+          "name": "$key",
+          "type": "text"
+        },
+        {
+          "name": "$value",
+          "type": "object"
+        },
+        {
+          "type": "number",
+          "name": "id"
+        },
+        {
+          "type": "text",
+          "name": "banner_name"
+        },
+        {
+          "type": "text",
+          "name": "heading"
+        },
+        {
+          "type": "text",
+          "name": "description"
+        },
+        {
+          "type": "text",
+          "name": "image"
+        },
+        {
+          "type": "number",
+          "name": "market_id"
+        },
+        {
+          "type": "number",
+          "name": "status"
+        },
+        {
+          "type": "datetime",
+          "name": "created_on"
+        },
+        {
+          "type": "text",
+          "name": "market_name_en"
+        },
+        {
+          "type": "text",
+          "name": "market_code"
+        },
+        {
+          "type": "text",
+          "name": "market_loc"
+        }
+      ],
+      "outputType": "array"
+    }
   }
 });

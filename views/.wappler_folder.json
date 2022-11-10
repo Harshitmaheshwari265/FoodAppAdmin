@@ -66,5 +66,9 @@
   "403-forbidden.ejs": {
     "layoutPage": "",
     "description": ""
+  },
+  "sliding-image.ejs": {
+    "layoutPage": "main",
+    "description": ""
   }
 }
