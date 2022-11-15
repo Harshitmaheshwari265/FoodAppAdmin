@@ -107,9 +107,6 @@
               "nullable": true
             }
           }
-        },
-        "refs": {
-          "m_product": "brand_id"
         }
       },
       "m_category": {
@@ -266,17 +263,12 @@
           }
         },
         "refs": {
-          "m_product": "category_id",
           "r_slab": "category_id"
         }
       },
       "m_category_type": {
         "db": {
           "schema": "public"
-        },
-        "refs": {
-          "m_category": "cat_type_id",
-          "m_restaurant": "cat_type_id"
         }
       },
       "m_contact_us": {
@@ -568,11 +560,7 @@
           }
         },
         "refs": {
-          "r_cart": "user_id",
-          "r_order": "user_id",
-          "r_order_details": "user_id",
-          "r_shipping_add": "c_id",
-          "t_user_log": "user_id"
+          "r_shipping_add": "c_id"
         }
       },
       "m_help_desk": {
@@ -872,11 +860,6 @@
               "nullable": true
             }
           }
-        },
-        "refs": {
-          "m_category": "market_id",
-          "m_product": "market_id",
-          "m_restaurant": "market_id"
         }
       },
       "m_prod_mark": {
@@ -987,9 +970,6 @@
               "nullable": true
             }
           }
-        },
-        "refs": {
-          "m_product": "prod_mark_id"
         }
       },
       "m_prod_occurance": {
@@ -1082,9 +1062,6 @@
               "nullable": true
             }
           }
-        },
-        "refs": {
-          "m_product": "prod_occurance_id"
         }
       },
       "m_product": {
@@ -1378,8 +1355,6 @@
           }
         },
         "refs": {
-          "r_cart": "prod_id",
-          "r_order_details": "prod_id",
           "r_price_table": "prod_id"
         }
       },
@@ -1679,11 +1654,6 @@
               "nullable": true
             }
           }
-        },
-        "refs": {
-          "m_product": "rest_id",
-          "rest_kyc_doc": "rest_id",
-          "rest_sliding_img": "rest_id"
         }
       },
       "m_sliding_image": {
@@ -1810,24 +1780,17 @@
       "r_cart": {
         "db": {
           "schema": "public"
-        },
-        "refs": {
-          "r_order_details": "cart_id"
         }
       },
       "r_order": {
         "db": {
           "schema": "public"
-        },
-        "sub": {
-          "r_order_details": "order_table_id"
         }
       },
       "r_order_details": {
         "db": {
           "schema": "public"
-        },
-        "parent": "r_order"
+        }
       },
       "r_price_table": {
         "db": {
@@ -2022,10 +1985,6 @@
               "nullable": true
             }
           }
-        },
-        "refs": {
-          "r_cart": "price_id",
-          "r_order_details": "price_id"
         }
       },
       "r_shipping_add": {
@@ -2036,9 +1995,6 @@
       "r_slab": {
         "db": {
           "schema": "public"
-        },
-        "refs": {
-          "m_product": "slab_id"
         }
       },
       "r_wishlist": {
@@ -2430,6 +2386,86 @@
       "t_user_log": {
         "db": {
           "schema": "public"
+        },
+        "columns": {
+          "id": {
+            "db": {
+              "type": "increments",
+              "default": "",
+              "primary": true,
+              "unique": true,
+              "nullable": false
+            }
+          },
+          "user_id": {
+            "db": {
+              "type": "integer",
+              "primary": false,
+              "unique": false,
+              "nullable": true
+            }
+          },
+          "ip_address": {
+            "db": {
+              "type": "string",
+              "maxLength": -5,
+              "primary": false,
+              "unique": false,
+              "nullable": true
+            }
+          },
+          "login_time": {
+            "db": {
+              "type": "timestamp",
+              "primary": false,
+              "unique": false,
+              "nullable": true
+            }
+          },
+          "logout_time": {
+            "db": {
+              "type": "timestamp",
+              "primary": false,
+              "unique": false,
+              "nullable": true
+            }
+          },
+          "login_from": {
+            "db": {
+              "type": "string",
+              "maxLength": -5,
+              "primary": false,
+              "unique": false,
+              "nullable": true
+            }
+          },
+          "remote_ip": {
+            "db": {
+              "type": "string",
+              "maxLength": -5,
+              "primary": false,
+              "unique": false,
+              "nullable": true
+            }
+          },
+          "login_server": {
+            "db": {
+              "type": "string",
+              "maxLength": -5,
+              "primary": false,
+              "unique": false,
+              "nullable": true
+            }
+          },
+          "login_token": {
+            "db": {
+              "type": "string",
+              "maxLength": -5,
+              "primary": false,
+              "unique": false,
+              "nullable": true
+            }
+          }
         }
       },
       "temp_otp_code": {
