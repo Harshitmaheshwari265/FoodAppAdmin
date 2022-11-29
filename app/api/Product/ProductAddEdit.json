@@ -1035,7 +1035,761 @@
                     "name": "affected",
                     "type": "number"
                   }
-                ]
+                ],
+                "output": false
+              },
+              {
+                "name": "deletePrices",
+                "module": "dbupdater",
+                "action": "delete",
+                "options": {
+                  "connection": "FoodApp",
+                  "sql": {
+                    "type": "delete",
+                    "table": "r_price_table",
+                    "wheres": {
+                      "condition": "AND",
+                      "rules": [
+                        {
+                          "id": "prod_id",
+                          "field": "prod_id",
+                          "type": "double",
+                          "operator": "equal",
+                          "value": "{{$_POST.EditProductId}}",
+                          "data": {
+                            "column": "prod_id"
+                          },
+                          "operation": "="
+                        }
+                      ],
+                      "conditional": null,
+                      "valid": true
+                    },
+                    "returning": "id",
+                    "query": "DELETE\nFROM r_price_table\nWHERE prod_id = :P1 /* {{$_POST.EditProductId}} */",
+                    "params": [
+                      {
+                        "operator": "equal",
+                        "type": "expression",
+                        "name": ":P1",
+                        "value": "{{$_POST.EditProductId}}"
+                      }
+                    ]
+                  }
+                },
+                "meta": [
+                  {
+                    "name": "affected",
+                    "type": "number"
+                  }
+                ],
+                "output": false
+              },
+              {
+                "name": "repeatUp",
+                "module": "core",
+                "action": "repeat",
+                "options": {
+                  "repeat": "{{$_POST.q_unit}}",
+                  "outputFields": [],
+                  "exec": {
+                    "steps": [
+                      {
+                        "name": "AddPrice",
+                        "module": "dbupdater",
+                        "action": "insert",
+                        "options": {
+                          "connection": "FoodApp",
+                          "sql": {
+                            "type": "insert",
+                            "values": [
+                              {
+                                "table": "r_price_table",
+                                "column": "prod_id",
+                                "type": "number",
+                                "value": "{{$_POST.EditProductId}}"
+                              },
+                              {
+                                "table": "r_price_table",
+                                "column": "quantity",
+                                "type": "text",
+                                "value": "{{$_POST.quantity[$index]}}"
+                              },
+                              {
+                                "table": "r_price_table",
+                                "column": "q_unit",
+                                "type": "text",
+                                "value": "{{$value}}"
+                              },
+                              {
+                                "table": "r_price_table",
+                                "column": "mrp",
+                                "type": "text",
+                                "value": "{{$_POST.mrp[$index]}}"
+                              },
+                              {
+                                "table": "r_price_table",
+                                "column": "purchase_price",
+                                "type": "text",
+                                "value": "{{$_POST.purchase_price[$index]}}"
+                              },
+                              {
+                                "table": "r_price_table",
+                                "column": "selling_price",
+                                "type": "text",
+                                "value": "{{$_POST.selling_price[$index]}}"
+                              },
+                              {
+                                "table": "r_price_table",
+                                "column": "product_tax",
+                                "type": "text",
+                                "value": "{{$_POST.product_tax[$index]}}"
+                              },
+                              {
+                                "table": "r_price_table",
+                                "column": "comm_per",
+                                "type": "text",
+                                "value": "{{$_POST.comm_per[$index]}}"
+                              },
+                              {
+                                "table": "r_price_table",
+                                "column": "comm_val",
+                                "type": "text",
+                                "value": "{{$_POST.comm_val[$index]}}"
+                              },
+                              {
+                                "table": "r_price_table",
+                                "column": "charge_per",
+                                "type": "text",
+                                "value": "{{$_POST.charge_per[$index]}}"
+                              },
+                              {
+                                "table": "r_price_table",
+                                "column": "charge_val",
+                                "type": "text",
+                                "value": "{{$_POST.charge_val[$index]}}"
+                              },
+                              {
+                                "table": "r_price_table",
+                                "column": "status",
+                                "type": "number",
+                                "value": "{{1}}"
+                              },
+                              {
+                                "table": "r_price_table",
+                                "column": "created_by",
+                                "type": "number",
+                                "value": "{{identity}}"
+                              },
+                              {
+                                "table": "r_price_table",
+                                "column": "created_on",
+                                "type": "datetime",
+                                "value": "{{NOW}}"
+                              }
+                            ],
+                            "table": "r_price_table",
+                            "returning": "id",
+                            "query": "INSERT INTO r_price_table\n(prod_id, quantity, q_unit, mrp, purchase_price, selling_price, product_tax, comm_per, comm_val, charge_per, charge_val, status, created_by, created_on) VALUES (:P1 /* {{$_POST.EditProductId}} */, :P2 /* {{$_POST.quantity[$index]}} */, :P3 /* {{$value}} */, :P4 /* {{$_POST.mrp[$index]}} */, :P5 /* {{$_POST.purchase_price[$index]}} */, :P6 /* {{$_POST.selling_price[$index]}} */, :P7 /* {{$_POST.product_tax[$index]}} */, :P8 /* {{$_POST.comm_per[$index]}} */, :P9 /* {{$_POST.comm_val[$index]}} */, :P10 /* {{$_POST.charge_per[$index]}} */, :P11 /* {{$_POST.charge_val[$index]}} */, :P12 /* {{1}} */, :P13 /* {{identity}} */, :P14 /* {{NOW}} */)",
+                            "params": [
+                              {
+                                "name": ":P1",
+                                "type": "expression",
+                                "value": "{{$_POST.EditProductId}}"
+                              },
+                              {
+                                "name": ":P2",
+                                "type": "expression",
+                                "value": "{{$_POST.quantity[$index]}}"
+                              },
+                              {
+                                "name": ":P3",
+                                "type": "expression",
+                                "value": "{{$value}}"
+                              },
+                              {
+                                "name": ":P4",
+                                "type": "expression",
+                                "value": "{{$_POST.mrp[$index]}}"
+                              },
+                              {
+                                "name": ":P5",
+                                "type": "expression",
+                                "value": "{{$_POST.purchase_price[$index]}}"
+                              },
+                              {
+                                "name": ":P6",
+                                "type": "expression",
+                                "value": "{{$_POST.selling_price[$index]}}"
+                              },
+                              {
+                                "name": ":P7",
+                                "type": "expression",
+                                "value": "{{$_POST.product_tax[$index]}}"
+                              },
+                              {
+                                "name": ":P8",
+                                "type": "expression",
+                                "value": "{{$_POST.comm_per[$index]}}"
+                              },
+                              {
+                                "name": ":P9",
+                                "type": "expression",
+                                "value": "{{$_POST.comm_val[$index]}}"
+                              },
+                              {
+                                "name": ":P10",
+                                "type": "expression",
+                                "value": "{{$_POST.charge_per[$index]}}"
+                              },
+                              {
+                                "name": ":P11",
+                                "type": "expression",
+                                "value": "{{$_POST.charge_val[$index]}}"
+                              },
+                              {
+                                "name": ":P12",
+                                "type": "expression",
+                                "value": "{{1}}"
+                              },
+                              {
+                                "name": ":P13",
+                                "type": "expression",
+                                "value": "{{identity}}"
+                              },
+                              {
+                                "name": ":P14",
+                                "type": "expression",
+                                "value": "{{NOW}}"
+                              }
+                            ]
+                          }
+                        },
+                        "meta": [
+                          {
+                            "name": "identity",
+                            "type": "text"
+                          },
+                          {
+                            "name": "affected",
+                            "type": "number"
+                          }
+                        ],
+                        "output": false
+                      },
+                      {
+                        "name": "CheckPrice",
+                        "module": "dbconnector",
+                        "action": "single",
+                        "options": {
+                          "connection": "FoodApp",
+                          "sql": {
+                            "type": "SELECT",
+                            "columns": [
+                              {
+                                "table": "r_price_table",
+                                "column": "id",
+                                "alias": "CountPrice",
+                                "aggregate": "COUNT"
+                              }
+                            ],
+                            "table": {
+                              "name": "r_price_table"
+                            },
+                            "primary": "id",
+                            "joins": [],
+                            "groupBy": [],
+                            "wheres": {
+                              "condition": "AND",
+                              "rules": [
+                                {
+                                  "id": "r_price_table.id",
+                                  "field": "r_price_table.id",
+                                  "type": "double",
+                                  "operator": "equal",
+                                  "value": "{{$_POST.price_id[$index]}}",
+                                  "data": {
+                                    "table": "r_price_table",
+                                    "column": "id",
+                                    "type": "number",
+                                    "columnObj": {
+                                      "type": "increments",
+                                      "default": "",
+                                      "primary": true,
+                                      "unique": true,
+                                      "nullable": false,
+                                      "name": "id"
+                                    }
+                                  },
+                                  "operation": "="
+                                },
+                                {
+                                  "id": "r_price_table.prod_id",
+                                  "field": "r_price_table.prod_id",
+                                  "type": "double",
+                                  "operator": "equal",
+                                  "value": "{{$_POST.EditProductId}}",
+                                  "data": {
+                                    "table": "r_price_table",
+                                    "column": "prod_id",
+                                    "type": "number",
+                                    "columnObj": {
+                                      "type": "reference",
+                                      "primary": false,
+                                      "unique": false,
+                                      "nullable": true,
+                                      "references": "id",
+                                      "inTable": "m_product",
+                                      "referenceType": "integer",
+                                      "onUpdate": "NO ACTION",
+                                      "onDelete": "NO ACTION",
+                                      "name": "prod_id"
+                                    }
+                                  },
+                                  "operation": "="
+                                }
+                              ],
+                              "conditional": null,
+                              "valid": true
+                            },
+                            "query": "SELECT COUNT(id) AS CountPrice\nFROM r_price_table\nWHERE id = :P1 /* {{$_POST.price_id[$index]}} */ AND prod_id = :P2 /* {{$_POST.EditProductId}} */",
+                            "params": [
+                              {
+                                "operator": "equal",
+                                "type": "expression",
+                                "name": ":P1",
+                                "value": "{{$_POST.price_id[$index]}}"
+                              },
+                              {
+                                "operator": "equal",
+                                "type": "expression",
+                                "name": ":P2",
+                                "value": "{{$_POST.EditProductId}}"
+                              }
+                            ]
+                          }
+                        },
+                        "output": true,
+                        "meta": [
+                          {
+                            "type": "number",
+                            "name": "CountPrice"
+                          }
+                        ],
+                        "outputType": "object",
+                        "disabled": true
+                      },
+                      {
+                        "name": "",
+                        "module": "core",
+                        "action": "condition",
+                        "options": {
+                          "if": "{{CheckPrice.CountPrice<1}}",
+                          "then": {
+                            "steps": {
+                              "name": "AddPrice_copy",
+                              "module": "dbupdater",
+                              "action": "insert",
+                              "options": {
+                                "connection": "FoodApp",
+                                "sql": {
+                                  "type": "insert",
+                                  "values": [
+                                    {
+                                      "table": "r_price_table",
+                                      "column": "prod_id",
+                                      "type": "number",
+                                      "value": "{{$_POST.EditProductId}}"
+                                    },
+                                    {
+                                      "table": "r_price_table",
+                                      "column": "quantity",
+                                      "type": "text",
+                                      "value": "{{$_POST.quantity[$index]}}"
+                                    },
+                                    {
+                                      "table": "r_price_table",
+                                      "column": "q_unit",
+                                      "type": "text",
+                                      "value": "{{$value}}"
+                                    },
+                                    {
+                                      "table": "r_price_table",
+                                      "column": "mrp",
+                                      "type": "text",
+                                      "value": "{{$_POST.mrp[$index]}}"
+                                    },
+                                    {
+                                      "table": "r_price_table",
+                                      "column": "purchase_price",
+                                      "type": "text",
+                                      "value": "{{$_POST.purchase_price[$index]}}"
+                                    },
+                                    {
+                                      "table": "r_price_table",
+                                      "column": "selling_price",
+                                      "type": "text",
+                                      "value": "{{$_POST.selling_price[$index]}}"
+                                    },
+                                    {
+                                      "table": "r_price_table",
+                                      "column": "product_tax",
+                                      "type": "text",
+                                      "value": "{{$_POST.product_tax[$index]}}"
+                                    },
+                                    {
+                                      "table": "r_price_table",
+                                      "column": "comm_per",
+                                      "type": "text",
+                                      "value": "{{$_POST.comm_per[$index]}}"
+                                    },
+                                    {
+                                      "table": "r_price_table",
+                                      "column": "comm_val",
+                                      "type": "text",
+                                      "value": "{{$_POST.comm_val[$index]}}"
+                                    },
+                                    {
+                                      "table": "r_price_table",
+                                      "column": "charge_per",
+                                      "type": "text",
+                                      "value": "{{$_POST.charge_per[$index]}}"
+                                    },
+                                    {
+                                      "table": "r_price_table",
+                                      "column": "charge_val",
+                                      "type": "text",
+                                      "value": "{{$_POST.charge_val[$index]}}"
+                                    },
+                                    {
+                                      "table": "r_price_table",
+                                      "column": "status",
+                                      "type": "number",
+                                      "value": "{{1}}"
+                                    },
+                                    {
+                                      "table": "r_price_table",
+                                      "column": "created_by",
+                                      "type": "number",
+                                      "value": "{{identity}}"
+                                    },
+                                    {
+                                      "table": "r_price_table",
+                                      "column": "created_on",
+                                      "type": "datetime",
+                                      "value": "{{NOW}}"
+                                    }
+                                  ],
+                                  "table": "r_price_table",
+                                  "returning": "id",
+                                  "query": "INSERT INTO r_price_table\n(prod_id, quantity, q_unit, mrp, purchase_price, selling_price, product_tax, comm_per, comm_val, charge_per, charge_val, status, created_by, created_on) VALUES (:P1 /* {{$_POST.EditProductId}} */, :P2 /* {{$_POST.quantity[$index]}} */, :P3 /* {{$value}} */, :P4 /* {{$_POST.mrp[$index]}} */, :P5 /* {{$_POST.purchase_price[$index]}} */, :P6 /* {{$_POST.selling_price[$index]}} */, :P7 /* {{$_POST.product_tax[$index]}} */, :P8 /* {{$_POST.comm_per[$index]}} */, :P9 /* {{$_POST.comm_val[$index]}} */, :P10 /* {{$_POST.charge_per[$index]}} */, :P11 /* {{$_POST.charge_val[$index]}} */, :P12 /* {{1}} */, :P13 /* {{identity}} */, :P14 /* {{NOW}} */)",
+                                  "params": [
+                                    {
+                                      "name": ":P1",
+                                      "type": "expression",
+                                      "value": "{{$_POST.EditProductId}}"
+                                    },
+                                    {
+                                      "name": ":P2",
+                                      "type": "expression",
+                                      "value": "{{$_POST.quantity[$index]}}"
+                                    },
+                                    {
+                                      "name": ":P3",
+                                      "type": "expression",
+                                      "value": "{{$value}}"
+                                    },
+                                    {
+                                      "name": ":P4",
+                                      "type": "expression",
+                                      "value": "{{$_POST.mrp[$index]}}"
+                                    },
+                                    {
+                                      "name": ":P5",
+                                      "type": "expression",
+                                      "value": "{{$_POST.purchase_price[$index]}}"
+                                    },
+                                    {
+                                      "name": ":P6",
+                                      "type": "expression",
+                                      "value": "{{$_POST.selling_price[$index]}}"
+                                    },
+                                    {
+                                      "name": ":P7",
+                                      "type": "expression",
+                                      "value": "{{$_POST.product_tax[$index]}}"
+                                    },
+                                    {
+                                      "name": ":P8",
+                                      "type": "expression",
+                                      "value": "{{$_POST.comm_per[$index]}}"
+                                    },
+                                    {
+                                      "name": ":P9",
+                                      "type": "expression",
+                                      "value": "{{$_POST.comm_val[$index]}}"
+                                    },
+                                    {
+                                      "name": ":P10",
+                                      "type": "expression",
+                                      "value": "{{$_POST.charge_per[$index]}}"
+                                    },
+                                    {
+                                      "name": ":P11",
+                                      "type": "expression",
+                                      "value": "{{$_POST.charge_val[$index]}}"
+                                    },
+                                    {
+                                      "name": ":P12",
+                                      "type": "expression",
+                                      "value": "{{1}}"
+                                    },
+                                    {
+                                      "name": ":P13",
+                                      "type": "expression",
+                                      "value": "{{identity}}"
+                                    },
+                                    {
+                                      "name": ":P14",
+                                      "type": "expression",
+                                      "value": "{{NOW}}"
+                                    }
+                                  ]
+                                }
+                              },
+                              "meta": [
+                                {
+                                  "name": "identity",
+                                  "type": "text"
+                                },
+                                {
+                                  "name": "affected",
+                                  "type": "number"
+                                }
+                              ],
+                              "disabled": true
+                            }
+                          },
+                          "else": {
+                            "steps": {
+                              "name": "updatePrice",
+                              "module": "dbupdater",
+                              "action": "update",
+                              "options": {
+                                "connection": "FoodApp",
+                                "sql": {
+                                  "type": "update",
+                                  "values": [
+                                    {
+                                      "table": "r_price_table",
+                                      "column": "quantity",
+                                      "type": "text",
+                                      "value": "{{$_POST.quantity[$index]}}"
+                                    },
+                                    {
+                                      "table": "r_price_table",
+                                      "column": "q_unit",
+                                      "type": "text",
+                                      "value": "{{$value}}"
+                                    },
+                                    {
+                                      "table": "r_price_table",
+                                      "column": "mrp",
+                                      "type": "text",
+                                      "value": "{{$_POST.mrp[$index]}}"
+                                    },
+                                    {
+                                      "table": "r_price_table",
+                                      "column": "purchase_price",
+                                      "type": "text",
+                                      "value": "{{$_POST.purchase_price[$index]}}"
+                                    },
+                                    {
+                                      "table": "r_price_table",
+                                      "column": "selling_price",
+                                      "type": "text",
+                                      "value": "{{$_POST.selling_price[$index]}}"
+                                    },
+                                    {
+                                      "table": "r_price_table",
+                                      "column": "product_tax",
+                                      "type": "text",
+                                      "value": "{{$_POST.product_tax[$index]}}"
+                                    },
+                                    {
+                                      "table": "r_price_table",
+                                      "column": "comm_per",
+                                      "type": "text",
+                                      "value": "{{$_POST.comm_per[$index]}}"
+                                    },
+                                    {
+                                      "table": "r_price_table",
+                                      "column": "comm_val",
+                                      "type": "text",
+                                      "value": "{{$_POST.comm_val[$index]}}"
+                                    },
+                                    {
+                                      "table": "r_price_table",
+                                      "column": "charge_per",
+                                      "type": "text",
+                                      "value": "{{$_POST.charge_per[$index]}}"
+                                    },
+                                    {
+                                      "table": "r_price_table",
+                                      "column": "charge_val",
+                                      "type": "text",
+                                      "value": "{{$_POST.charge_val[$index]}}"
+                                    },
+                                    {
+                                      "table": "r_price_table",
+                                      "column": "status",
+                                      "type": "number",
+                                      "value": "{{1}}"
+                                    },
+                                    {
+                                      "table": "r_price_table",
+                                      "column": "updated_on",
+                                      "type": "datetime",
+                                      "value": "{{NOW}}"
+                                    }
+                                  ],
+                                  "table": "r_price_table",
+                                  "wheres": {
+                                    "condition": "AND",
+                                    "rules": [
+                                      {
+                                        "id": "id",
+                                        "field": "id",
+                                        "type": "double",
+                                        "operator": "equal",
+                                        "value": "{{$_POST.price_id[$index]}}",
+                                        "data": {
+                                          "column": "id"
+                                        },
+                                        "operation": "="
+                                      }
+                                    ],
+                                    "conditional": null,
+                                    "valid": true
+                                  },
+                                  "returning": "id",
+                                  "query": "UPDATE r_price_table\nSET quantity = :P1 /* {{$_POST.quantity[$index]}} */, q_unit = :P2 /* {{$value}} */, mrp = :P3 /* {{$_POST.mrp[$index]}} */, purchase_price = :P4 /* {{$_POST.purchase_price[$index]}} */, selling_price = :P5 /* {{$_POST.selling_price[$index]}} */, product_tax = :P6 /* {{$_POST.product_tax[$index]}} */, comm_per = :P7 /* {{$_POST.comm_per[$index]}} */, comm_val = :P8 /* {{$_POST.comm_val[$index]}} */, charge_per = :P9 /* {{$_POST.charge_per[$index]}} */, charge_val = :P10 /* {{$_POST.charge_val[$index]}} */, status = :P11 /* {{1}} */, updated_on = :P12 /* {{NOW}} */\nWHERE id = :P13 /* {{$_POST.price_id[$index]}} */",
+                                  "params": [
+                                    {
+                                      "name": ":P1",
+                                      "type": "expression",
+                                      "value": "{{$_POST.quantity[$index]}}"
+                                    },
+                                    {
+                                      "name": ":P2",
+                                      "type": "expression",
+                                      "value": "{{$value}}"
+                                    },
+                                    {
+                                      "name": ":P3",
+                                      "type": "expression",
+                                      "value": "{{$_POST.mrp[$index]}}"
+                                    },
+                                    {
+                                      "name": ":P4",
+                                      "type": "expression",
+                                      "value": "{{$_POST.purchase_price[$index]}}"
+                                    },
+                                    {
+                                      "name": ":P5",
+                                      "type": "expression",
+                                      "value": "{{$_POST.selling_price[$index]}}"
+                                    },
+                                    {
+                                      "name": ":P6",
+                                      "type": "expression",
+                                      "value": "{{$_POST.product_tax[$index]}}"
+                                    },
+                                    {
+                                      "name": ":P7",
+                                      "type": "expression",
+                                      "value": "{{$_POST.comm_per[$index]}}"
+                                    },
+                                    {
+                                      "name": ":P8",
+                                      "type": "expression",
+                                      "value": "{{$_POST.comm_val[$index]}}"
+                                    },
+                                    {
+                                      "name": ":P9",
+                                      "type": "expression",
+                                      "value": "{{$_POST.charge_per[$index]}}"
+                                    },
+                                    {
+                                      "name": ":P10",
+                                      "type": "expression",
+                                      "value": "{{$_POST.charge_val[$index]}}"
+                                    },
+                                    {
+                                      "name": ":P11",
+                                      "type": "expression",
+                                      "value": "{{1}}"
+                                    },
+                                    {
+                                      "name": ":P12",
+                                      "type": "expression",
+                                      "value": "{{NOW}}"
+                                    },
+                                    {
+                                      "operator": "equal",
+                                      "type": "expression",
+                                      "name": ":P13",
+                                      "value": "{{$_POST.price_id[$index]}}"
+                                    }
+                                  ]
+                                }
+                              },
+                              "meta": [
+                                {
+                                  "name": "affected",
+                                  "type": "number"
+                                }
+                              ],
+                              "disabled": true
+                            }
+                          }
+                        },
+                        "outputType": "boolean",
+                        "disabled": true
+                      }
+                    ]
+                  }
+                },
+                "output": false,
+                "meta": [
+                  {
+                    "name": "$index",
+                    "type": "number"
+                  },
+                  {
+                    "name": "$number",
+                    "type": "number"
+                  },
+                  {
+                    "name": "$name",
+                    "type": "text"
+                  },
+                  {
+                    "name": "$value",
+                    "type": "object"
+                  },
+                  {
+                    "name": "CheckPrice",
+                    "type": "object",
+                    "sub": [
+                      {
+                        "type": "number",
+                        "name": "CountPrice"
+                      }
+                    ]
+                  }
+                ],
+                "outputType": "array"
               },
               {
                 "name": "Resp",
